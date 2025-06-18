@@ -4,7 +4,7 @@
 .globl __bound_alloca
 __bound_alloca:
 
-#ifdef _WIN32
+#SeDefinido _WIN32
     # bound checking is not implemented
     pop     %rdx
     mov     %rcx,%rax
@@ -28,7 +28,7 @@ p2:
 p3:
     push    %rdx
     ret
-#else
+#Senão
     pop     %rdx
     mov     %rdi,%rax
     mov     %rax,%rsi	# size, a second parm to the __bound_new_region
@@ -51,6 +51,6 @@ p3:
 p3:
     push    %rdx
     ret
-#endif
+#FimSe
 
 /* ---------------------------------------------- */

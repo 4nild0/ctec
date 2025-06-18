@@ -5,16 +5,16 @@
 
 alloca:
     pop     %rdx
-#ifdef _WIN32
+#SeDefinido _WIN32
     mov     %rcx,%rax
-#else
+#Senão
     mov     %rdi,%rax
-#endif
+#FimSe
     add     $15,%rax
     and     $-16,%rax
     jz      p3
 
-#ifdef _WIN32
+#SeDefinido _WIN32
 p1:
     cmp     $4096,%rax
     jbe     p2
@@ -23,7 +23,7 @@ p1:
     sub     $4096,%rax
     jmp p1
 p2:
-#endif
+#FimSe
 
     sub     %rax,%rsp
     mov     %rsp,%rax

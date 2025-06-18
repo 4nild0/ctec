@@ -1,0 +1,9 @@
+#Inclua <stdio.h>
+
+// Preprocessador
+#Defina exibaFormatado printf
+
+Inteiro Início(){
+	exibaFormatado("Deus seja louvado!");
+	Retorne 0;
+}

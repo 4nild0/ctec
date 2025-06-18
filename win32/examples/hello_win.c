@@ -4,15 +4,15 @@
 //
 //+---------------------------------------------------------------------------
 
-#include <windows.h>
+#Inclua <windows.h>
 
-#define APPNAME "HELLO_WIN"
+#Defina APPNAME "HELLO_WIN"
 
-char szAppName[] = APPNAME; // The name of this application
-char szTitle[]   = APPNAME; // The title bar text
-const char *pWindowText;
+Caractere szAppName[] = APPNAME; // The name of this application
+Caractere szTitle[]   = APPNAME; // The title bar text
+Constante Caractere *pWindowText;
 
-void CenterWindow(HWND hWnd);
+Vazio CenterWindow(HWND hWnd);
 
 //+---------------------------------------------------------------------------
 //
@@ -26,29 +26,29 @@ void CenterWindow(HWND hWnd);
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    switch (message) {
+    Troque (message) {
 
         // ----------------------- first and last
-        case WM_CREATE:
+        Caso WM_CREATE:
             CenterWindow(hwnd);
-            break;
+            Interrompa;
 
-        case WM_DESTROY:
+        Caso WM_DESTROY:
             PostQuitMessage(0);
-            break;
+            Interrompa;
 
         // ----------------------- get out of it...
-        case WM_RBUTTONUP:
+        Caso WM_RBUTTONUP:
             DestroyWindow(hwnd);
-            break;
+            Interrompa;
 
-        case WM_KEYDOWN:
-            if (VK_ESCAPE == wParam)
+        Caso WM_KEYDOWN:
+            Se (VK_ESCAPE == wParam)
                 DestroyWindow(hwnd);
-            break;
+            Interrompa;
 
         // ----------------------- display our minimal info
-        case WM_PAINT:
+        Caso WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC         hdc;
@@ -61,28 +61,28 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             DrawText(hdc, pWindowText, -1, &rc, DT_CENTER|DT_SINGLELINE|DT_VCENTER);
 
             EndPaint(hwnd, &ps);
-            break;
+            Interrompa;
         }
 
-        // ----------------------- let windows do all other stuff
-        default:
-            return DefWindowProc(hwnd, message, wParam, lParam);
+        // ----------------------- let windows Faça all other stuff
+        Padrão:
+            Retorne DefWindowProc(hwnd, message, wParam, lParam);
     }
-    return 0;
+    Retorne 0;
 }
 
 //+---------------------------------------------------------------------------
 //
 //  Function:   WinMain
 //
-//  Synopsis:   standard entrypoint for GUI Win32 apps
+//  Synopsis:   standard entrypoint Itere GUI Win32 apps
 //
 //----------------------------------------------------------------------------
-int APIENTRY WinMain(
+Inteiro APIENTRY WinMain(
         HINSTANCE hInstance,
         HINSTANCE hPrevInstance,
         LPSTR lpCmdLine,
-        int nCmdShow
+        Inteiro nCmdShow
         )
 {
     MSG msg;
@@ -94,7 +94,7 @@ int APIENTRY WinMain(
     // Fill in window class structure with parameters that describe
     // the main window.
 
-    ZeroMemory(&wc, sizeof wc);
+    ZeroMemory(&wc, TamanhoDe wc);
     wc.hInstance     = hInstance;
     wc.lpszClassName = szAppName;
     wc.lpfnWndProc   = (WNDPROC)WndProc;
@@ -103,8 +103,8 @@ int APIENTRY WinMain(
     wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
 
-    if (FALSE == RegisterClass(&wc))
-        return 0;
+    Se (FALSE == RegisterClass(&wc))
+        Retorne 0;
 
     // create the browser
     hwnd = CreateWindow(
@@ -120,30 +120,30 @@ int APIENTRY WinMain(
         hInstance,
         0);
 
-    if (NULL == hwnd)
-        return 0;
+    Se (NULL == hwnd)
+        Retorne 0;
 
     // Main message loop:
-    while (GetMessage(&msg, NULL, 0, 0) > 0) {
+    Enquanto (GetMessage(&msg, NULL, 0, 0) > 0) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
 
-    return msg.wParam;
+    Retorne msg.wParam;
 }
 
 //+---------------------------------------------------------------------------
 
 //+---------------------------------------------------------------------------
 
-void CenterWindow(HWND hwnd_self)
+Vazio CenterWindow(HWND hwnd_self)
 {
     HWND hwnd_parent;
     RECT rw_self, rc_parent, rw_parent;
-    int xpos, ypos;
+    Inteiro xpos, ypos;
 
     hwnd_parent = GetParent(hwnd_self);
-    if (NULL == hwnd_parent)
+    Se (NULL == hwnd_parent)
         hwnd_parent = GetDesktopWindow();
 
     GetWindowRect(hwnd_parent, &rw_parent);

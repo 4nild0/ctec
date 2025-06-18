@@ -11,7 +11,7 @@ __bound_alloca:
     and     $-4,%eax
     jz      p6
 
-#ifdef _WIN32
+#SeDefinido _WIN32
 p4:
     cmp     $4096,%eax
     jbe     p5
@@ -21,7 +21,7 @@ p4:
     jmp p4
 
 p5:
-#endif
+#FimSe
 
     sub     %eax,%esp
     mov     %esp,%eax
@@ -41,7 +41,7 @@ p6:
     ret
 
 /* mark stack as nonexecutable */
-#if defined __ELF__ && defined __linux__
+#Se Definido __ELF__ && Definido __linux__
     .section    .note.GNU-stack,"",@progbits
-#endif
+#FimSe
 /* ---------------------------------------------- */

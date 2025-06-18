@@ -10,7 +10,7 @@ alloca:
     and     $-4,%eax
     jz      p3
 
-#ifdef _WIN32
+#SeDefinido _WIN32
 p1:
     cmp     $4096,%eax
     jbe     p2
@@ -19,7 +19,7 @@ p1:
     sub     $4096,%eax
     jmp p1
 p2:
-#endif
+#FimSe
 
     sub     %eax,%esp
     mov     %esp,%eax
