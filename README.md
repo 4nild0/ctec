@@ -6,6 +6,12 @@
 
 ---
 
+## Instalação
+ - **Windows**: Se você tem gcc ou clang basta rodar em win32/construa-ctec.bat
+ - **Outros**: Provalvelmente funciona, mas eu não testei
+
+---
+
 ## 1. REGRAS GERAIS DE ESTILO
 
 - **Indentação**: 4 espaços (sem tabulações)  
