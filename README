@@ -1,95 +1,188 @@
-CTEC Compiler - C Scripting Everywhere - The Smallest ANSI C compiler
------------------------------------------------------------------------
 
-Features:
---------
+# CONVENÇÃO DE ESTILO - LINGUAGEM [CTEC]
 
-- SMALL! You can compile and execute C code everywhere, for example on
-  rescue disks.
+**VERSÃO**: 0.1.0  
+**AUTOR**: Anildo Carneiro
 
-- FAST! ctec generates optimized x86 code. No byte code
-  overhead. Compile, assemble and link about 7 times faster than 'gcc
-  -O0'.
+---
 
-- UNLIMITED! Any C dynamic library can be used directly. CTEC is
-  heading torward full ISOC99 compliance. CTEC can of course compile
-  itself.
+## 1. REGRAS GERAIS DE ESTILO
 
-- SAFE! ctec includes an optional memory and bound checker. Bound
-  checked code can be mixed freely with standard code.
+- **Indentação**: 4 espaços (sem tabulações)  
+- **Chaves**: estilo Allman (cada chave em sua própria linha)  
+- **Comprimento máximo de linha**: 100 colunas  
+- **Espaçamento**: utilize espaços ao redor de operadores, após vírgulas e entre palavras-chave e parênteses  
+- **Comentários**:
+  - Comentários de linha única devem começar com `//` e ser usados para explicações curtas  
+  - Comentários de múltiplas linhas devem usar `/* */` e ser reservados para documentação mais elaborada  
+  - Evite comentários redundantes; prefira nomes de variáveis e funções autoexplicativos
 
-- Compile and execute C source directly. No linking or assembly
-  necessary. Full C preprocessor included. 
+**Exemplo:**
+```ctec
+Se (condição) {
+    // Verifica se a condição é verdadeira
+    Retorno 0;
+}
+```
 
-- C script supported : just add '#!/usr/local/bin/ctec -run' at the first
-  line of your C source, and execute it directly from the command
-  line.
+---
 
-Documentation:
--------------
+## 2. CONVENÇÕES DE NOMES
 
-1) Installation on a i386/x86_64/arm Linux/OSX/FreeBSD host
+- **Funções**: usar verbos na terceira pessoa do singular em *camelCase*  
+  Ex: `calculaTotal`, `enviaEmail`  
+- **Classes e Estruturas**: usar substantivos em *PascalCase*  
+  Ex: `Produto`, `CarrinhoDeCompras`  
+- **Variáveis**: usar *camelCase*  
+  Ex: `precoComDesconto`, `nomeUsuarioAtual`  
+- **Constantes**: usar *UPPER_SNAKE_CASE*  
+  Ex: `TAMANHO_MAXIMO`, `TEMPO_ESPERA_PADRAO`  
+- **Coleções**: nomes devem estar no plural  
+  Ex: `usuarios`, `produtosNoCarrinho`  
+- **Enumerações**:
+  - Nome da enumeração em *PascalCase*  
+    Ex: `EstadoPedido`  
+  - Valores em *UPPER_SNAKE_CASE*  
+    Ex: `EM_PROCESSAMENTO`, `ENVIADO`, `ENTREGUE`
 
-   ./configure
-   make
-   make test
-   make install
+- **Parâmetros de função**: utilizar nomes claros e significativos  
+- **Prefixos** (evite abreviações excessivas):
+  - `ptr` para ponteiros  
+    Ex: `ptrProduto`  
+  - `num` para contadores  
+    Ex: `numItens`
 
-   Notes: For OSX and FreeBSD, gmake should be used instead of make.
-   For Windows read ctec-win32.txt.
+---
 
-makeinfo must be installed to compile the doc.  By default, ctec is
-installed in /usr/local/bin.  ./configure --help  shows configuration
-options.
+## 3. PALAVRAS-CHAVE
 
+### Tipos Primitivos
+- Inteiro  
+- Real  
+- Lógico  
+- Caractere  
+- Vazio  
 
-2) Introduction
+### Modificadores de Tipo
+- Bilateral  
+- Curto  
+- Duplo  
+- Longo  
+- Natural  
 
-We assume here that you know ANSI C. Look at the example ex1.c to know
-what the programs look like.
+### Geradores de Tipo
+- Tipo  
 
-The include file <cteclib.h> can be used if you want a small basic libc
-include support (especially useful for floppy disks). Of course, you
-can also use standard headers, although they are slower to compile.
+### Agrupadores de Tipo
+- Enumeração  
+- Estrutura  
+- União  
 
-You can begin your C script with '#!/usr/local/bin/ctec -run' on the first
-line and set its execute bits (chmod a+x your_script). Then, you can
-launch the C code as a shell or perl script :-) The command line
-arguments are put in 'argc' and 'argv' of the main functions, as in
-ANSI C.
+### Modificadores e Qualificadores
+- Constante  
+- Volátil  
 
-3) Examples
+### Ligação de Tipos
+- Estático  
+- Externo  
 
-ex1.c: simplest example (hello world). Can also be launched directly
-as a script: './ex1.c'.
+### Controle de Fluxo
+- Se  
+- Senão  
+- Itere  
+- Enquanto  
+- Faça  
+- Troque  
+- Caso  
+- Pare  
+- Continue  
+- VáPara  
+- Retorne  
 
-ex2.c: more complicated example: find a number with the four
-operations given a list of numbers (benchmark).
+### Utilitários
+- TamanhoDe  
+- TipoDe  
+- AlinhamentoDe  
+- Atributo  
+- Montador  
+- Etiqueta  
 
-ex3.c: compute fibonacci numbers (benchmark).
+---
 
-ex4.c: more complicated: X11 program. Very complicated test in fact
-because standard headers are being used ! As for ex1.c, can also be launched
-directly as a script: './ex4.c'.
+## 4. DIRETIVAS DE PRÉ-PROCESSADOR
 
-ex5.c: 'hello world' with standard glibc headers.
+- Devem ser precedidas por `#` e iniciadas com letra maiúscula  
+- Não devem ser indentadas  
+- Evitar o uso excessivo de diretivas condicionais; prefira modularização  
 
-ctec.c: CTEC can of course compile itself. Used to check the code
-generator.
+**Palavras reservadas:**
+- `#Defina`  
+- `#Inclua`  
+- `#IncluaPróximo`  
+- `#SeDefinido`  
+- `#SeNãoDefinido`  
+- `#SenãoSe`  
+- `#Senão`  
+- `#FimSe`  
+- `#Definido`  
+- `#Indefinido`  
+- `#Erro`  
+- `#Aviso`  
+- `#Linha`  
+- `#Diretiva`  
 
-ctectest.c: auto test for CTEC which tests many subtle possible bugs. Used
-when doing 'make test'.
+---
 
-4) Full Documentation
+## 5. BOAS PRÁTICAS ADICIONAIS
 
-Please read ctec-doc.html to have all the features of CTEC.
+- Cada função deve ter uma responsabilidade única e bem definida  
+- Funções não devem exceder 50 linhas; em caso de necessidade, refatore  
+- Variáveis devem ser declaradas o mais próximo possível de seu uso  
+- Use `Constante` sempre que possível para evitar efeitos colaterais  
+- Prefira nomes completos e descritivos a abreviações  
+  (Ex: `quantidadeMaxima` em vez de `qtdMax`)  
+- Utilize comentários estruturais para marcar seções:
 
-Additional information is available for the Windows port in ctec-win32.txt.
+```ctec
+// ===========================
+// Seção: Inicialização
+// ===========================
+```
 
-License:
--------
+---
 
-CTEC is distributed under the GNU Lesser General Public License (see
-COPYING file).
+## 6. EXEMPLO DE CÓDIGO PADRONIZADO
 
-Fabrice Bellard.
+```ctec
+Tipo Produto {
+    Caractere nome [];
+    Real preço;
+}
+
+Real calculaDesconto(Real preçoOriginal, Real taxa) {
+    Se (taxa <= 0.0) {
+        Retorno preçoOriginal;
+    }
+
+    Retorno preçoOriginal * (1.0 - taxa);
+}
+
+Inteiro Início() {
+    Produto produto;
+    Real desconto;
+
+    produto.nome = "Teclado";
+    produto.preço = 200.0;
+
+    desconto = calculaDesconto(produto.preço, 0.15);
+
+    // Exibir o valor com desconto (exemplo hipotético)
+    escreva("Preço com desconto: ", desconto);
+
+    Retorno 0;
+}
+```
+
+---
+
+**FIM DO DOCUMENTO**
