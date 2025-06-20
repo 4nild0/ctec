@@ -22,7 +22,6 @@ libctec*.def
 config*.h
 config*.mak
 config.texi
-conftest*
 tags
 TAGS
 ctec.1
