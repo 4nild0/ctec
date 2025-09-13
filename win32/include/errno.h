@@ -9,12 +9,12 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _CRT_ERRNO_DEFINED
 #Defina _CRT_ERRNO_DEFINED
-  _CRTIMP Externo Inteiro *__cdecl _errno(Vazio);
+  _CRTIMP Importe Inteiro *__cdecl _errno(Vazio);
 #Defina errno (*_errno())
 
   errno_t __cdecl _set_errno(Inteiro _Value);

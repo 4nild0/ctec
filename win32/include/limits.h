@@ -14,7 +14,7 @@
 * TODO: NAME_MAX and OPEN_MAX are file system limits or not? Are they the
 *       same as FILENAME_MAX and FOPEN_MAX from stdio.h?
 * NOTE: Apparently the actual size of PATH_MAX is 260, but a space is
-*       required Itere the NUL. TODO: Test?
+*       required Para the NUL. TODO: Test?
 */
 #Defina PATH_MAX	(259)
 

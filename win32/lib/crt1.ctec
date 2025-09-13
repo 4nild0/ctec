@@ -1,7 +1,7 @@
 // =============================================
 // crt1.c
 
-// _UNICODE Itere tchar.h, UNICODE Itere API
+// _UNICODE Para tchar.h, UNICODE Para API
 #Inclua <tchar.h>
 
 #Inclua <stdio.h>
@@ -19,7 +19,7 @@
 #SeDefinido _UNICODE
 #Defina __tgetmainargs __wgetmainargs
 #Defina _tstart _wstart
-#Defina _tmain wInício
+#Defina _tmain wmain
 #Defina _runtmain _runwmain
 #Senão
 #Defina __tgetmainargs __getmainargs
@@ -32,9 +32,9 @@ Tipo Estrutura { Inteiro newmode; } _startupinfo;
 Inteiro __cdecl __tgetmainargs(Inteiro *pargc, _TCHAR ***pargv, _TCHAR ***penv, Inteiro globb, _startupinfo*);
 Vazio __cdecl __set_app_type(Inteiro apptype);
 Natural Inteiro __cdecl _controlfp(Natural Inteiro new_value, Natural Inteiro mask);
-Externo Inteiro _tmain(Inteiro argc, _TCHAR * argv[], _TCHAR * env[]);
+Importe Inteiro _tmain(Inteiro argc, _TCHAR * argv[], _TCHAR * env[]);
 
-/* Allow command-line globbing with "Inteiro _dowildcard = 1;" in the user source */
+/* Allow command-Linha globbing with "Inteiro _dowildcard = 1;" in the user source */
 Inteiro _dowildcard;
 
 Vazio _tstart(Vazio)

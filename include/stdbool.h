@@ -3,7 +3,7 @@
 
 /* ISOC99 boolean */
 
-#Defina bool	Lógico
+#Defina Lógico	_Bool
 #Defina true	1
 #Defina false	0
 #Defina __bool_true_false_are_defined 1

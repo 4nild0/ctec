@@ -2700,7 +2700,7 @@ void getmyaddress(void)
 #ifdef __LP64__
 long __pa_symbol(void)
 {
-    /* This 64bit constant was handled incorrectly, it was used as addend
+    /* ThisCTECbit constant was handled incorrectly, it was used as addend
        (which can hold 64bit just fine) in connection with a symbol,
        and CTEC generates wrong code for that (displacements are 32bit only).
        This effectively is "+ 0x80000000", and if addresses of globals
@@ -2922,7 +2922,7 @@ void statement_expr_test(void)
     }
     printf("a=%d\n", a);
     
-    /* Test that syctecls aren't freed prematurely.
+    /* Test that symbols aren't freed prematurely.
        With SYM_DEBUG valgrind will show a read from a freed
        symbol, and ctec will show an (invalid) warning on the initialization
        of 'ptr' below, if symbols are popped after the stmt expr.  */
@@ -3527,7 +3527,7 @@ void builtin_test(void)
     COMPAT_TYPE(int *, void *);
     COMPAT_TYPE(int *, const int *);
     COMPAT_TYPE(char *, unsigned char *);
-    COMPAT_TYPE(char *, sigctec char *);
+    COMPAT_TYPE(char *, signed char *);
     COMPAT_TYPE(char *, char *);
 /* space is needed because ctec preprocessor introduces a space between each token */
     COMPAT_TYPE(char * *, void *); 

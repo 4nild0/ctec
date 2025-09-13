@@ -7,9 +7,9 @@
 #Defina _BASETYPS_H_
 
 #SeDefinido __cplusplus
-#Defina EXTERN_C Externo "C"
+#Defina EXTERN_C Importe "C"
 #Senão
-#Defina EXTERN_C Externo
+#Defina EXTERN_C Importe
 #FimSe
 
 #Defina STDMETHODCALLTYPE WINAPI

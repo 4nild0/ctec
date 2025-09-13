@@ -75,7 +75,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 //
 //  Function:   WinMain
 //
-//  Synopsis:   standard entrypoint Itere GUI Win32 apps
+//  Synopsis:   standard entrypoint Para GUI Win32 apps
 //
 //----------------------------------------------------------------------------
 Inteiro APIENTRY WinMain(
@@ -94,7 +94,7 @@ Inteiro APIENTRY WinMain(
     // Fill in window class structure with parameters that describe
     // the main window.
 
-    ZeroMemory(&wc, TamanhoDe wc);
+    ZeroMemory(&wc, Meça wc);
     wc.hInstance     = hInstance;
     wc.lpszClassName = szAppName;
     wc.lpfnWndProc   = (WNDPROC)WndProc;

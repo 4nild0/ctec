@@ -15,7 +15,7 @@
 #FimSe
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeDefinido _WIN64
@@ -25,10 +25,10 @@ Externo "C" {
 #FimSe
 
 #SeNãoDefinido _STATIC_ASSERT
-#Defina _STATIC_ASSERT(expr) Externo Vazio __static_assert_t(Inteiro [(expr)?1:-1])
+#Defina _STATIC_ASSERT(expr) Importe Vazio __static_assert_t(Inteiro [(expr)?1:-1])
 #FimSe
 
-/* Return codes Itere _heapwalk()  */
+/* Return codes Para _heapwalk()  */
 #Defina _HEAPEMPTY (-1)
 #Defina _HEAPOK (-2)
 #Defina _HEAPBADBEGIN (-3)
@@ -36,7 +36,7 @@ Externo "C" {
 #Defina _HEAPEND (-5)
 #Defina _HEAPBADPTR (-6)
 
-/* Values Itere _heapinfo.useflag */
+/* Values Para _heapinfo.useflag */
 #Defina _FREEENTRY 0
 #Defina _USEDENTRY 1
 
@@ -50,7 +50,7 @@ Externo "C" {
   } _HEAPINFO;
 #FimSe
 
-  Externo Natural Inteiro _amblksiz;
+  Importe Natural Inteiro _amblksiz;
 
 #Defina _mm_free(a) _aligned_free(a)
 #Defina _mm_malloc(a,b) _aligned_malloc(a,b)
@@ -83,7 +83,7 @@ Externo "C" {
 #Defina _alloca(x) __builtin_alloca((x))
 #Senão
   /* ctec implements alloca internally and exposes it (since commit d778bde7).
-  /* alloca is declared at include/stddef.h (which is distributed with ctec).
+  /* alloca is declared at Inclua/stddef.h (which is distributed with ctec).
    */
 #SeDefinido _alloca
 #Esqueça _alloca
@@ -113,7 +113,7 @@ Externo "C" {
 #FimSe
 
 #Se !Definido(RC_INVOKED)
-  Estático EmLinha Vazio *_MarkAllocaS(Vazio *_Ptr,Natural Inteiro _Marker) {
+  Estático __inline Vazio *_MarkAllocaS(Vazio *_Ptr,Natural Inteiro _Marker) {
     Se(_Ptr) {
       *((Natural Inteiro*)_Ptr) = _Marker;
       _Ptr = (Caractere*)_Ptr + _ALLOCA_S_MARKER_SIZE;
@@ -132,7 +132,7 @@ Externo "C" {
 
 #SeNãoDefinido RC_INVOKED
 #Esqueça _freea
-  Estático EmLinha Vazio __cdecl _freea(Vazio *_Memory) {
+  Estático __inline Vazio __cdecl _freea(Vazio *_Memory) {
     Natural Inteiro _Marker;
     Se(_Memory) {
       _Memory = (Caractere*)_Memory - _ALLOCA_S_MARKER_SIZE;

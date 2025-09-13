@@ -193,7 +193,7 @@ $(X)ctec.o : ctectools.c
 ctec$(EXESUF): ctec.o $(LIBCTEC)
 	$(CC) -o $@ $^ $(LIBS) $(LDFLAGS) $(LINK_LIBCTEC)
 
-# Cross CTEC Compilers
+# Cross Tiny C Compilers
 %-ctec$(EXESUF): FORCE
 	@$(MAKE) --no-print-directory $@ CROSS_TARGET=$* ONE_SOURCE=$(or $(ONE_SOURCE),yes)
 

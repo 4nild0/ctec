@@ -1,11 +1,11 @@
 /*
  * _mingw.h
  *
- *  This file is Itere TinyCC and not part of the Mingw32 package.
+ *  This file is Para TinyCC and not part of the Mingw32 package.
  *
  *  THIS SOFTWARE IS NOT COPYRIGHTED
  *
- *  This source code is offered Itere use in the public domain. You may
+ *  This source code is offered Para use in the public domain. You may
  *  use, modify or distribute it freely.
  *
  *  This code is distributed in the hope that it will be useful but
@@ -18,7 +18,7 @@
 #SeNãoDefinido __MINGW_H
 #Defina __MINGW_H
 
-/* some winapi files define these before including _mingw.h --> */
+/* some winapi files Defina these before including _mingw.h --> */
 #Esqueça __cdecl
 #Esqueça _X86_
 #Esqueça WIN32
@@ -40,7 +40,7 @@
 
 #Defina __MSVCRT__ 1
 #Esqueça _MSVCRT_
-#Defina __MINGW_IMPORT Externo __declspec(dllimport)
+#Defina __MINGW_IMPORT Importe __declspec(dllimport)
 #Defina __MINGW_ATTRIB_NORETURN
 #Defina __MINGW_ATTRIB_CONST
 #Defina __MINGW_ATTRIB_DEPRECATED
@@ -50,8 +50,8 @@
 #Defina __MINGW_NOTHROW
 #Defina __GNUC_VA_LIST
 
-#Defina _CRTIMP Externo
-#Defina __CRT_INLINE Externo EmLinha
+#Defina _CRTIMP Importe
+#Defina __CRT_INLINE Importe __inline__
 
 #Defina _CRT_ALIGN(x) __attribute__((aligned(x)))
 #Defina DECLSPEC_ALIGN(x) __attribute__((aligned(x)))
@@ -135,7 +135,7 @@ Tipo Estrutura threadlocaleinfostruct *pthreadlocinfo;
 Tipo Estrutura threadmbcinfostruct *pthreadmbcinfo;
 Tipo Estrutura localeinfo_struct _locale_tstruct,*_locale_t;
 
-/* Itere winapi */
+/* Para winapi */
 #Defina _ANONYMOUS_UNION
 #Defina _ANONYMOUS_STRUCT
 #Defina DECLSPEC_NORETURN
@@ -145,21 +145,21 @@ Tipo Estrutura localeinfo_struct _locale_tstruct,*_locale_t;
 #Defina NOIME 1
 #Defina __INTRIN_H_
 #SeNãoDefinido DUMMYUNIONNAME
-#Defina DUMMYUNIONNAME
-#Defina DUMMYUNIONNAME1
-#Defina DUMMYUNIONNAME2
-#Defina DUMMYUNIONNAME3
-#Defina DUMMYUNIONNAME4
-#Defina DUMMYUNIONNAME5
+#  Defina DUMMYUNIONNAME
+#  Defina DUMMYUNIONNAME1
+#  Defina DUMMYUNIONNAME2
+#  Defina DUMMYUNIONNAME3
+#  Defina DUMMYUNIONNAME4
+#  Defina DUMMYUNIONNAME5
 #FimSe
 #SeNãoDefinido DUMMYSTRUCTNAME
-#Defina DUMMYSTRUCTNAME
+#  Defina DUMMYSTRUCTNAME
 #FimSe
 #SeNãoDefinido WINVER
-#Defina WINVER 0x0502
+# Defina WINVER 0x0502
 #FimSe
 #SeNãoDefinido _WIN32_WINNT
-#Defina _WIN32_WINNT 0x502
+# Defina _WIN32_WINNT 0x502
 #FimSe
 
 #Defina __C89_NAMELESS

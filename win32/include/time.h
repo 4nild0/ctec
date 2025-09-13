@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -268,7 +268,7 @@ Estrutura timezone {
   Inteiro tz_dsttime;
 };
 
-  Externo Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
+  Importe Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
 #FimSe
 #FimSe /* __STRICT_ANSI__ */
 

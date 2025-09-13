@@ -9,11 +9,11 @@
 #Defina _INC_TCHAR
 
 #SeDefinido _STRSAFE_H_INCLUDED_
-#Erro Need to include strsafe.h after tchar.h
+#Erro Need to Inclua strsafe.h after tchar.h
 #FimSe
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina _ftcscat _tcscat
@@ -88,7 +88,7 @@ Externo "C" {
 #Inclua <wchar.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _WCTYPE_T_DEFINED
@@ -117,7 +117,7 @@ Externo "C" {
 
 #Defina __T(x) L##x
 
-#Defina _tmain wInício
+#Defina _tmain wmain
 #Defina _tWinMain wWinMain
 #Defina _tenviron _wenviron
 #Defina __targv __wargv
@@ -478,7 +478,7 @@ Externo "C" {
 #Inclua <string.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina _TEOF EOF
@@ -743,7 +743,7 @@ Externo "C" {
 #Inclua <mbstring.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido __TCHAR_DEFINED
@@ -898,11 +898,11 @@ Externo "C" {
 #SeDefinido __cplusplus
 #SeNãoDefinido _CPP_TCHAR_INLINES_DEFINED
 #Defina _CPP_TCHAR_INLINES_DEFINED
-  Externo "C++" {
-    Externo EmLinha Caractere *__cdecl _tcschr(Caractere *_S,Natural Inteiro _C) { Retorne ((Caractere *)_tcschr((Constante Caractere *)_S,_C)); }
-    Externo EmLinha Caractere *__cdecl _tcspbrk(Caractere *_S,Constante Caractere *_P) { Retorne ((Caractere *)_tcspbrk((Constante Caractere *)_S,_P)); }
-    Externo EmLinha Caractere *__cdecl _tcsrchr(Caractere *_S,Natural Inteiro _C) { Retorne ((Caractere *)_tcsrchr((Constante Caractere *)_S,_C)); }
-    Externo EmLinha Caractere *__cdecl _tcsstr(Caractere *_S,Constante Caractere *_P) { Retorne ((Caractere *)_tcsstr((Constante Caractere *)_S,_P)); }
+  Importe "C++" {
+    Importe EmLinha Caractere *__cdecl _tcschr(Caractere *_S,Natural Inteiro _C) { Retorne ((Caractere *)_tcschr((Constante Caractere *)_S,_C)); }
+    Importe EmLinha Caractere *__cdecl _tcspbrk(Caractere *_S,Constante Caractere *_P) { Retorne ((Caractere *)_tcspbrk((Constante Caractere *)_S,_P)); }
+    Importe EmLinha Caractere *__cdecl _tcsrchr(Caractere *_S,Natural Inteiro _C) { Retorne ((Caractere *)_tcsrchr((Constante Caractere *)_S,_C)); }
+    Importe EmLinha Caractere *__cdecl _tcsstr(Caractere *_S,Constante Caractere *_P) { Retorne ((Caractere *)_tcsstr((Constante Caractere *)_S,_P)); }
   }
 #FimSe
 #FimSe

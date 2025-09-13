@@ -10,7 +10,7 @@
 #Defina WINSPOOLAPI DECLSPEC_IMPORT
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido WINVER

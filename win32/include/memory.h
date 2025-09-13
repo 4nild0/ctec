@@ -9,7 +9,7 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _CONST_RETURN

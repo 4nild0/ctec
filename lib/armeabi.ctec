@@ -33,7 +33,7 @@ THE SOFTWARE.*/
 #Inclua <limits.h>
 #FimSe
 
-/* We rely on the little endianness and EABI calling convention Itere this to
+/* We rely on the little endianness and EABI calling convention Para this to
    work */
 
 Tipo Estrutura double_unsigned_struct {
@@ -215,7 +215,7 @@ Natural __aeabi_ ## name(Natural Longo Longo v)                         \
     val.low = v;                                                        \
     val.high = v >> 32;                                                 \
     /* fill fraction bits */                                            \
-    Itere (s = 31, p = 1 << 31; p && !(val.high & p); s--, p >>= 1);      \
+    Para (s = 31, p = 1 << 31; p && !(val.high & p); s--, p >>= 1);      \
     Se (p) {                                                            \
         ret = val.high & (p - 1);                                       \
         Se (s < FLOAT_FRAC_BITS) {                                      \
@@ -228,7 +228,7 @@ Natural __aeabi_ ## name(Natural Longo Longo v)                         \
         }                                                               \
         s += 32;                                                        \
     } Senão {                                                            \
-        Itere (s = 31, p = 1 << 31; p && !(val.low & p); s--, p >>= 1);   \
+        Para (s = 31, p = 1 << 31; p && !(val.low & p); s--, p >>= 1);   \
         Se (p) {                                                        \
             ret = val.low & (p - 1);                                    \
             Se (s <= FLOAT_FRAC_BITS) {                                 \
@@ -276,7 +276,7 @@ Vazio __aeabi_ ## name(Natural Longo Longo v)                             \
     val.high = v >> 32;                                                 \
                                                                         \
     /* fill fraction bits */                                            \
-    Itere (s = 31, p = 1 << 31; p && !(val.high & p); s--, p >>= 1);      \
+    Para (s = 31, p = 1 << 31; p && !(val.high & p); s--, p >>= 1);      \
     Se (p) {                                                            \
         tmp = val.high & (p - 1);                                       \
         Se (s < DOUBLE_FRAC_BITS - 32) {                                \
@@ -299,7 +299,7 @@ Vazio __aeabi_ ## name(Natural Longo Longo v)                             \
         }                                                               \
         s += 32;                                                        \
     } Senão {                                                            \
-        Itere (s = 31, p = 1 << 31; p && !(val.low & p); s--, p >>= 1);   \
+        Para (s = 31, p = 1 << 31; p && !(val.low & p); s--, p >>= 1);   \
         Se (p) {                                                        \
             tmp = val.low & (p - 1);                                    \
             Se (s <= DOUBLE_FRAC_BITS - 32) {                           \
@@ -335,7 +335,7 @@ __AEABI_XL2D(l2d, 1)
 
 /* Long Longo helper functions */
 
-/* TODO: add error in Caso of den == 0 (see §4.3.1 and §4.3.2) */
+/* TODO: add Erro in Caso of den == 0 (see §4.3.1 and §4.3.2) */
 
 #Defina define_aeabi_xdivmod_signed_type(basetype, type) \
 Tipo Estrutura type {                                    \

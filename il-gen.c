@@ -433,7 +433,7 @@ void gfunc_prolog(int t)
     fprintf(il_outfile, " .maxstack %d\n", NB_REGS);
     fprintf(il_outfile, " .locals (int32, int32, int32, int32, int32, int32, int32, int32)\n");
     
-    if (!strcmp(funcname, "main"))
+    if (!strcmp(funcname, "Início"))
         fprintf(il_outfile, " .entrypoint\n");
         
     sym = sym_find((unsigned)t >> VT_STRUCT_SHIFT);

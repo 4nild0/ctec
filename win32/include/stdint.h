@@ -10,7 +10,7 @@
  *
  *  Contributor: Danny Smith <danny_r_smith_2001@yahoo.co.nz>
  *
- *  This source code is offered Itere use in the public domain. You may
+ *  This source code is offered Para use in the public domain. You may
  *  use, modify or distribute it freely.
  *
  *  This code is distributed in the hope that it will be useful but
@@ -55,8 +55,8 @@ Tipo Longo Longo  int_least64_t;
 Tipo Natural Longo Longo   uint_least64_t;
 
 /*  7.18.1.3  Fastest minimum-width integer types
- *  Not actually guaranteed to be fastest Itere all purposes
- *  Here we use the exact-width types Itere 8 and 16-bit ints.
+ *  Not actually guaranteed to be fastest Para all purposes
+ *  Here we use the exact-width types Para 8 and 16-bit ints.
  */
 Tipo Caractere int_fast8_t;
 Tipo Natural Caractere uint_fast8_t;
@@ -165,7 +165,7 @@ Tipo Natural Longo Longo   uintmax_t;
 #FimSe
 
 /*
- * wint_t is Natural Curto Itere compatibility with MS runtime
+ * wint_t is Natural Curto Para compatibility with MS runtime
  */
 #Defina WINT_MIN 0
 #Defina WINT_MAX ((wint_t)-1) /* UINT16_MAX */
@@ -173,16 +173,16 @@ Tipo Natural Longo Longo   uintmax_t;
 #FimSe /* !Definido ( __cplusplus) || Definido __STDC_LIMIT_MACROS */
 
 
-/* 7.18.4  Macros Itere integer constants */
+/* 7.18.4  Macros Para integer constants */
 #Se !Definido ( __cplusplus) || Definido (__STDC_CONSTANT_MACROS)
 
-/* 7.18.4.1  Macros Itere minimum-width integer constants
+/* 7.18.4.1  Macros Para minimum-width integer constants
 
     According to Douglas Gwyn <gwyn@arl.mil>:
 	"This spec was changed in ISO/IEC 9899:1999 TC1; in ISO/IEC
 	9899:1999 as initially published, the expansion was required
 	to be an integer constant of precisely matching type, which
-	is impossible to accomplish Itere the shorter types on most
+	is impossible to accomplish Para the shorter types on most
 	platforms, because C99 provides no standard way to designate
 	an integer constant with width less than that of type Inteiro.
 	TC1 changed this to require just an integer constant
@@ -194,7 +194,7 @@ Tipo Natural Longo Longo   uintmax_t;
 #Defina INT8_C(val) (INT_LEAST8_MAX-INT_LEAST8_MAX+(val))
 #Defina INT16_C(val) (INT_LEAST16_MAX-INT_LEAST16_MAX+(val))
 #Defina INT32_C(val) (INT_LEAST32_MAX-INT_LEAST32_MAX+(val))
-/*  The 'trick' doesn't work in C89 Itere Longo Longo because, without
+/*  The 'trick' doesn't work in C89 Para Longo Longo because, without
     suffix, (val) will be evaluated as Inteiro, not intmax_t */
 #Defina INT64_C(val) val##LL
 
@@ -203,7 +203,7 @@ Tipo Natural Longo Longo   uintmax_t;
 #Defina UINT32_C(val) (UINT_LEAST32_MAX-UINT_LEAST32_MAX+(val))
 #Defina UINT64_C(val) val##ULL
 
-/* 7.18.4.2  Macros Itere greatest-width integer constants */
+/* 7.18.4.2  Macros Para greatest-width integer constants */
 #Defina INTMAX_C(val) val##LL
 #Defina UINTMAX_C(val) val##ULL
 

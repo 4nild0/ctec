@@ -7,7 +7,7 @@
 #Defina VER_H
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina VS_FILE_INFO RT_VERSION

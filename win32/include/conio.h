@@ -9,7 +9,7 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   _CRTIMP Caractere *_cgets(Caractere *_Buffer);
@@ -95,7 +95,7 @@ Externo "C" {
   __CRT_INLINE Natural Caractere __inbyte(Natural Curto Port)
   {
       Natural Caractere value;
-      Montador Volátil ("inb %w1,%b0"
+      __asm__ __volatile__ ("inb %w1,%b0"
           : "=a" (value)
           : "Nd" (Port));
       Retorne value;
@@ -103,7 +103,7 @@ Externo "C" {
   __CRT_INLINE Natural Curto __inword(Natural Curto Port)
   {
       Natural Curto value;
-      Montador Volátil ("inw %w1,%w0"
+      __asm__ __volatile__ ("inw %w1,%w0"
           : "=a" (value)
           : "Nd" (Port));
       Retorne value;
@@ -111,32 +111,32 @@ Externo "C" {
   __CRT_INLINE Natural Longo __indword(Natural Curto Port)
   {
       Natural Longo value;
-      Montador Volátil ("inl %w1,%0"
+      __asm__ __volatile__ ("inl %w1,%0"
           : "=a" (value)
           : "Nd" (Port));
       Retorne value;
   }
   __CRT_INLINE Vazio __outbyte(Natural Curto Port,Natural Caractere Data)
   {
-      Montador Volátil ("outb %b0,%w1"
+      __asm__ __volatile__ ("outb %b0,%w1"
           :
           : "a" (Data), "Nd" (Port));
   }
   __CRT_INLINE Vazio __outword(Natural Curto Port,Natural Curto Data)
   {
-      Montador Volátil ("outw %w0,%w1"
+      __asm__ __volatile__ ("outw %w0,%w1"
           :
           : "a" (Data), "Nd" (Port));
   }
   __CRT_INLINE Vazio __outdword(Natural Curto Port,Natural Longo Data)
   {
-      Montador Volátil ("outl %0,%w1"
+      __asm__ __volatile__ ("outl %0,%w1"
           :
           : "a" (Data), "Nd" (Port));
   }
   __CRT_INLINE Vazio __inbytestring(Natural Curto Port,Natural Caractere *Buffer,Natural Longo Count)
   {
-	Montador Volátil (
+	__asm__ __volatile__ (
 		"cld ; rep ; insb " 
 		: "=D" (Buffer), "=c" (Count)
 		: "d"(Port), "0"(Buffer), "1" (Count)
@@ -144,7 +144,7 @@ Externo "C" {
   }
   __CRT_INLINE Vazio __inwordstring(Natural Curto Port,Natural Curto *Buffer,Natural Longo Count)
   {
-	Montador Volátil (
+	__asm__ __volatile__ (
 		"cld ; rep ; insw " 
 		: "=D" (Buffer), "=c" (Count)
 		: "d"(Port), "0"(Buffer), "1" (Count)
@@ -152,7 +152,7 @@ Externo "C" {
   }
   __CRT_INLINE Vazio __indwordstring(Natural Curto Port,Natural Longo *Buffer,Natural Longo Count)
   {
-	Montador Volátil (
+	__asm__ __volatile__ (
 		"cld ; rep ; insl " 
 		: "=D" (Buffer), "=c" (Count)
 		: "d"(Port), "0"(Buffer), "1" (Count)
@@ -161,7 +161,7 @@ Externo "C" {
 
   __CRT_INLINE Vazio __outbytestring(Natural Curto Port,Natural Caractere *Buffer,Natural Longo Count)
   {
-      Montador Volátil (
+      __asm__ __volatile__ (
           "cld ; rep ; outsb " 
           : "=S" (Buffer), "=c" (Count)
           : "d"(Port), "0"(Buffer), "1" (Count)
@@ -169,7 +169,7 @@ Externo "C" {
   }
   __CRT_INLINE Vazio __outwordstring(Natural Curto Port,Natural Curto *Buffer,Natural Longo Count)
   {
-      Montador Volátil (
+      __asm__ __volatile__ (
           "cld ; rep ; outsw " 
           : "=S" (Buffer), "=c" (Count)
           : "d"(Port), "0"(Buffer), "1" (Count)
@@ -177,7 +177,7 @@ Externo "C" {
   }
   __CRT_INLINE Vazio __outdwordstring(Natural Curto Port,Natural Longo *Buffer,Natural Longo Count)
   {
-      Montador Volátil (
+      __asm__ __volatile__ (
           "cld ; rep ; outsl " 
           : "=S" (Buffer), "=c" (Count)
           : "d"(Port), "0"(Buffer), "1" (Count)
@@ -187,19 +187,19 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readcr0(Vazio)
   {
       Natural __int64 value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr0, %[value]" 
           : [value] "=q" (value));
       Retorne value;
   }
  
-  /* Register sizes are different between 32/64 bit mode. So we have to Faça this Itere _WIN64 and _WIN32
+  /* Register sizes are different between 32/64 bit mode. So we have to Faça this Para _WIN64 and _WIN32
      separately.  */
  
 #SeDefinido _WIN64
   __CRT_INLINE Vazio __writecr0(Natural __int64 Data)
   {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr0"
        :
        : [Data] "q" (Data)
@@ -209,7 +209,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readcr2(Vazio)
   {
       Natural __int64 value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr2, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -217,7 +217,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr2(Natural __int64 Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr2"
        :
        : [Data] "q" (Data)
@@ -227,7 +227,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readcr3(Vazio)
   {
       Natural __int64 value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr3, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -235,7 +235,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr3(Natural __int64 Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr3"
        :
        : [Data] "q" (Data)
@@ -245,7 +245,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readcr4(Vazio)
   {
       Natural __int64 value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr4, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -253,7 +253,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr4(Natural __int64 Data)
  {
-     Montador Volátil (
+     __asm__ __volatile__ (
          "mov %[Data], %%cr4"
          :
          : [Data] "q" (Data)
@@ -263,7 +263,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readcr8(Vazio)
   {
       Natural __int64 value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr8, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -271,7 +271,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr8(Natural __int64 Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr8"
        :
        : [Data] "q" (Data)
@@ -282,7 +282,7 @@ Externo "C" {
 
   __CRT_INLINE Vazio __writecr0(Natural Data)
   {
-    Montador Volátil (
+    __asm__ __volatile__ (
        "mov %[Data], %%cr0"
        :
        : [Data] "q" (Data)
@@ -292,7 +292,7 @@ Externo "C" {
   __CRT_INLINE Natural Longo __readcr2(Vazio)
   {
       Natural Longo value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr2, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -300,7 +300,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr2(Natural Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr2"
        :
        : [Data] "q" (Data)
@@ -310,7 +310,7 @@ Externo "C" {
   __CRT_INLINE Natural Longo __readcr3(Vazio)
   {
       Natural Longo value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr3, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -318,7 +318,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr3(Natural Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr3"
        :
        : [Data] "q" (Data)
@@ -328,7 +328,7 @@ Externo "C" {
   __CRT_INLINE Natural Longo __readcr4(Vazio)
   {
       Natural Longo value;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "mov %%cr4, %[value]" 
           : [value] "=q" (value));
       Retorne value;
@@ -336,7 +336,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr4(Natural Data)
  {
-     Montador Volátil (
+     __asm__ __volatile__ (
          "mov %[Data], %%cr4"
          :
          : [Data] "q" (Data)
@@ -345,7 +345,7 @@ Externo "C" {
  
  __CRT_INLINE Natural Longo __readcr8(Vazio)
  {
-   Natural Longo value;      Montador Volátil (
+   Natural Longo value;      __asm__ __volatile__ (
           "mov %%cr8, %[value]" 
           : [value] "=q" (value));
      Retorne value;
@@ -353,7 +353,7 @@ Externo "C" {
 
  __CRT_INLINE Vazio __writecr8(Natural Data)
  {
-   Montador Volátil (
+   __asm__ __volatile__ (
        "mov %[Data], %%cr8"
        :
        : [Data] "q" (Data)
@@ -365,7 +365,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __readmsr(Natural Longo msr)
   {
       Natural __int64 val1, val2;
-       Montador Volátil(
+       __asm__ __volatile__(
            "rdmsr"
            : "=a" (val1), "=d" (val2)
            : "c" (msr));
@@ -375,7 +375,7 @@ Externo "C" {
  __CRT_INLINE Vazio __writemsr (Natural Longo msr, Natural __int64 Value)
  {
     Natural Longo val1 = Value, val2 = Value >> 32;
-   Montador Volátil (
+   __asm__ __volatile__ (
        "wrmsr"
        :
        : "c" (msr), "a" (val1), "d" (val2));
@@ -384,7 +384,7 @@ Externo "C" {
   __CRT_INLINE Natural __int64 __rdtsc(Vazio)
   {
       Natural __int64 val1, val2;
-      Montador Volátil (
+      __asm__ __volatile__ (
           "rdtsc" 
           : "=a" (val1), "=d" (val2));
       Retorne val1 | (val2 << 32);
@@ -392,7 +392,7 @@ Externo "C" {
 
   __CRT_INLINE Vazio __cpuid(Inteiro CPUInfo[4], Inteiro InfoType)
   {
-      Montador Volátil (
+      __asm__ __volatile__ (
           "cpuid"
           : "=a" (CPUInfo [0]), "=b" (CPUInfo [1]), "=c" (CPUInfo [2]), "=d" (CPUInfo [3])
           : "a" (InfoType));

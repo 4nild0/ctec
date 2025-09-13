@@ -7,7 +7,7 @@
 #Defina _WINNT_
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Inclua <ctype.h>
@@ -49,15 +49,15 @@ Externo "C" {
 
 
 #SeDefinido _WIN64
-#Defina MAX_NATURAL_ALIGNMENT TamanhoDe(ULONGLONG)
+#Defina MAX_NATURAL_ALIGNMENT Meça(ULONGLONG)
 #Defina MEMORY_ALLOCATION_ALIGNMENT 16
 #Senão
-#Defina MAX_NATURAL_ALIGNMENT TamanhoDe(DWORD)
+#Defina MAX_NATURAL_ALIGNMENT Meça(DWORD)
 #Defina MEMORY_ALLOCATION_ALIGNMENT 8
 #FimSe
 
 #SeDefinido __cplusplus
-#Defina TYPE_ALIGNMENT(t) Alinhamento (t)
+#Defina TYPE_ALIGNMENT(t) __alignof__ (t)
 #Senão
 #Defina TYPE_ALIGNMENT(t) FIELD_OFFSET(Estrutura { Caractere x; t test; },test)
 #FimSe
@@ -126,7 +126,7 @@ Externo "C" {
 #FimSe
 
 #SeNãoDefinido FORCEINLINE
-#Defina FORCEINLINE Estático EmLinha
+#Defina FORCEINLINE Estático __inline__
 #FimSe
 
 #SeNãoDefinido DECLSPEC_DEPRECATED
@@ -215,9 +215,9 @@ Externo "C" {
 #FimSe
 
 #SeDefinido __cplusplus
-#Defina EXTERN_C Externo "C"
+#Defina EXTERN_C Importe "C"
 #Senão
-#Defina EXTERN_C Externo
+#Defina EXTERN_C Importe
 #FimSe
 
 #Defina STDMETHODCALLTYPE WINAPI
@@ -326,14 +326,14 @@ Tipo DWORD LCID;
 #Defina UInt32x32To64(a,b) ((ULONGLONG)((DWORD)(a)) *(ULONGLONG)((DWORD)(b)))
 #Defina Int64ShrlMod32(a,b) ((ULONGLONG)(a) >> (b))
 #Senão
-#Erro Must define a target architecture.
+#Erro Must Defina a target architecture.
 #FimSe
 
 #Defina Int64ShraMod32(a,b) ((LONGLONG)(a) >> (b))
 #Defina Int64ShllMod32(a,b) ((ULONGLONG)(a) << (b))
 
 #SeDefinido __cplusplus
-  Externo "C" {
+  Importe "C" {
 #FimSe
 
 #SeDefinido __x86_64
@@ -415,10 +415,10 @@ Tipo DWORD LCID;
 #Defina MAXDWORD 0xffffffff
 
 #Defina FIELD_OFFSET(type,field) ((LONG)(LONG_PTR)&(((type *)0)->field))
-#Defina RTL_FIELD_SIZE(type,field) (TamanhoDe(((type *)0)->field))
+#Defina RTL_FIELD_SIZE(type,field) (Meça(((type *)0)->field))
 #Defina RTL_SIZEOF_THROUGH_FIELD(type,field) (FIELD_OFFSET(type,field) + RTL_FIELD_SIZE(type,field))
-#Defina RTL_CONTAINS_FIELD(Struct,Size,Field) ((((PCHAR)(&(Struct)->Field)) + TamanhoDe((Struct)->Field)) <= (((PCHAR)(Struct))+(Size)))
-#Defina RTL_NUMBER_OF_V1(A) (TamanhoDe(A)/TamanhoDe((A)[0]))
+#Defina RTL_CONTAINS_FIELD(Struct,Size,Field) ((((PCHAR)(&(Struct)->Field)) + Meça((Struct)->Field)) <= (((PCHAR)(Struct))+(Size)))
+#Defina RTL_NUMBER_OF_V1(A) (Meça(A)/Meça((A)[0]))
 #Defina RTL_NUMBER_OF_V2(A) RTL_NUMBER_OF_V1(A)
 
 #SeDefinido ENABLE_RTL_NUMBER_OF_V2
@@ -440,7 +440,7 @@ Tipo DWORD LCID;
 #Defina RTL_CONST_CAST(type) (type)
 #FimSe
 
-#Defina RTL_BITS_OF(sizeOfArg) (TamanhoDe(sizeOfArg) *8)
+#Defina RTL_BITS_OF(sizeOfArg) (Meça(sizeOfArg) *8)
 #Defina RTL_BITS_OF_FIELD(type,field) (RTL_BITS_OF(RTL_FIELD_TYPE(type,field)))
 #Defina CONTAINING_RECORD(address,type,field) ((type *)((PCHAR)(address) - (ULONG_PTR)(&((type *)0)->field)))
 
@@ -834,7 +834,7 @@ Tipo DWORD LCID;
 #Se Definido(__x86_64) && !Definido(RC_INVOKED)
 
 #SeDefinido __cplusplus
-  Externo "C" {
+  Importe "C" {
 #FimSe
 
 #Defina BitTest _bittest
@@ -852,91 +852,91 @@ Tipo DWORD LCID;
 
     __CRT_INLINE BOOLEAN _bittest(LONG Constante *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("btl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandcomplement(LONG *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("btcl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btcl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN InterlockedBitTestAndComplement(LONG *Base,LONG Bit) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btcl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btcl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("btsl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btsl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandreset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("btrl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btrl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btsl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btsl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandreset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btrl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btrl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittest64(LONG64 Constante *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("btq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandcomplement64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("btcq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btcq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("btsq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btsq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandreset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("btrq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("btrq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btsq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btsq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandreset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btrq %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btrq %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
@@ -947,19 +947,19 @@ Tipo DWORD LCID;
 #Defina BitScanReverse64 _BitScanReverse64
 
     __CRT_INLINE BOOLEAN _BitScanForward(DWORD *Index,DWORD Mask) {
-      Montador Volátil("bsfl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
+      __asm__ __volatile__("bsfl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanReverse(DWORD *Index,DWORD Mask) {
-      Montador Volátil("bsrl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
+      __asm__ __volatile__("bsrl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanForward64(DWORD *Index,DWORD64 Mask) {
-      Montador Volátil("bsfq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
+      __asm__ __volatile__("bsfq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanReverse64(DWORD *Index,DWORD64 Mask) {
-      Montador Volátil("bsrq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
+      __asm__ __volatile__("bsrq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
       Retorne Mask!=0;
     }
 
@@ -1010,7 +1010,7 @@ Tipo DWORD LCID;
     __CRT_INLINE SHORT InterlockedIncrement16(SHORT Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; addw $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
@@ -1019,7 +1019,7 @@ Tipo DWORD LCID;
     __CRT_INLINE SHORT InterlockedDecrement16(SHORT Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; subw $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
@@ -1027,48 +1027,48 @@ Tipo DWORD LCID;
     }
     __CRT_INLINE SHORT InterlockedCompareExchange16(SHORT Volátil *Destination,SHORT ExChange,SHORT Comperand) {
       SHORT prev;
-      Montador Volátil("lock ; cmpxchgw %w1,%2"
+      __asm__ __volatile__("lock ; cmpxchgw %w1,%2"
 	:"=a"(prev)
 	:"q"(ExChange), "m"(*Destination), "0"(Comperand)
 	: "memory");
       Retorne prev;
     }
     __CRT_INLINE LONG InterlockedAnd(LONG Volátil *Destination,LONG Value) {
-      Montador Volátil("lock ; andl %0,%1"
+      __asm__ __volatile__("lock ; andl %0,%1"
 	: :"r"(Value),"m"(*Destination)
 	: "memory");
       Retorne *Destination;
     }
     __CRT_INLINE LONG InterlockedOr(LONG Volátil *Destination,LONG Value) {
-      Montador Volátil("lock ; orl %0,%1"
+      __asm__ __volatile__("lock ; orl %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     __CRT_INLINE LONG InterlockedXor(LONG Volátil *Destination,LONG Value) {
-      Montador Volátil("lock ; xorl %0,%1"
+      __asm__ __volatile__("lock ; xorl %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     //		$$$$
     __CRT_INLINE LONG64 InterlockedAnd64(LONG64 Volátil *Destination,LONG64 Value) {
-      Montador Volátil("lock ; andq %0,%1"
+      __asm__ __volatile__("lock ; andq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     __CRT_INLINE LONG64 InterlockedOr64(LONG64 Volátil *Destination,LONG64 Value) {
-      Montador Volátil("lock ; orq %0,%1"
+      __asm__ __volatile__("lock ; orq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     __CRT_INLINE LONG64 InterlockedXor64(LONG64 Volátil *Destination,LONG64 Value) {
-      Montador Volátil("lock ; xorq %0,%1"
+      __asm__ __volatile__("lock ; xorq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     __CRT_INLINE LONG InterlockedIncrement(LONG Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; addl $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
@@ -1077,14 +1077,14 @@ Tipo DWORD LCID;
     __CRT_INLINE LONG InterlockedDecrement(LONG Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; subl $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
     __CRT_INLINE LONG InterlockedExchange(LONG Volátil *Target,LONG Value) {
-      Montador Volátil("lock ; xchgl %0,%1"
+      __asm__ __volatile("lock ; xchgl %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
 	: "memory");
@@ -1097,13 +1097,13 @@ Tipo DWORD LCID;
 #FimSe
     __CRT_INLINE LONG InterlockedCompareExchange(LONG Volátil *Destination,LONG ExChange,LONG Comperand) {
       LONG prev;
-      Montador Volátil("lock ; cmpxchgl %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
+      __asm__ __volatile__("lock ; cmpxchgl %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
     __CRT_INLINE LONG64 InterlockedIncrement64(LONG64 Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; addq $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
@@ -1112,14 +1112,14 @@ Tipo DWORD LCID;
     __CRT_INLINE LONG64 InterlockedDecrement64(LONG64 Volátil *Addend) {
       Natural Caractere c;
       Natural Caractere s;
-      Montador Volátil(
+      __asm__ __volatile__(
 	"lock ; subq $1,%0; sete %1 ; sets %2"
 	:"=m" (*Addend), "=qm" (c), "=qm" (s)
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
     __CRT_INLINE LONG64 InterlockedExchange64(LONG64 Volátil *Target,LONG64 Value) {
-      Montador Volátil("lock ; xchgq %0,%1"
+      __asm__ __volatile("lock ; xchgq %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
 	: "memory");
@@ -1133,16 +1133,16 @@ Tipo DWORD LCID;
 
     __CRT_INLINE LONG64 InterlockedCompareExchange64(LONG64 Volátil *Destination,LONG64 ExChange,LONG64 Comperand) {
       LONG64 prev;
-      Montador Volátil("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
+      __asm__ __volatile__("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
     __CRT_INLINE PVOID InterlockedCompareExchangePointer(PVOID Volátil *Destination,PVOID ExChange,PVOID Comperand) {
       PVOID prev;
-      Montador Volátil("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
+      __asm__ __volatile__("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
     __CRT_INLINE PVOID InterlockedExchangePointer(PVOID Volátil *Target,PVOID Value) {
-      Montador Volátil("lock ; xchgq %0,%1"
+      __asm__ __volatile("lock ; xchgq %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
 	: "memory");
@@ -1240,42 +1240,42 @@ Tipo DWORD LCID;
 
     __CRT_INLINE BYTE __readgsbyte(DWORD Offset) {
       BYTE ret;
-      Montador Volátil ("movb	%%gs:%1,%0"
+      __asm__ Volátil ("movb	%%gs:%1,%0"
 	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE WORD __readgsword(DWORD Offset) {
       WORD ret;
-      Montador Volátil ("movw	%%gs:%1,%0"
+      __asm__ Volátil ("movw	%%gs:%1,%0"
 	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE DWORD __readgsdword(DWORD Offset) {
       DWORD ret;
-      Montador Volátil ("movl	%%gs:%1,%0"
+      __asm__ Volátil ("movl	%%gs:%1,%0"
 	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE DWORD64 __readgsqword(DWORD Offset) {
       Vazio *ret;
-      Montador Volátil ("movq	%%gs:%1,%0"
+      __asm__ Volátil ("movq	%%gs:%1,%0"
 	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
       Retorne (DWORD64) ret;
     }
     __CRT_INLINE VOID __writegsbyte(DWORD Offset,BYTE Data) {
-      Montador Volátil ("movb	%0,%%gs:%1"
+      __asm__ Volátil ("movb	%0,%%gs:%1"
 	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsword(DWORD Offset,WORD Data) {
-      Montador Volátil ("movw	%0,%%gs:%1"
+      __asm__ Volátil ("movw	%0,%%gs:%1"
 	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsdword(DWORD Offset,DWORD Data) {
-      Montador Volátil ("movl	%0,%%gs:%1"
+      __asm__ Volátil ("movl	%0,%%gs:%1"
 	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsqword(DWORD Offset,DWORD64 Data) {
-      Montador Volátil ("movq	%0,%%gs:%1"
+      __asm__ Volátil ("movq	%0,%%gs:%1"
 	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
     }
 
@@ -1334,7 +1334,7 @@ Tipo DWORD LCID;
     BYTE Reserved4[96];
   } XMM_SAVE_AREA32,*PXMM_SAVE_AREA32;
 
-#Defina LEGACY_SAVE_AREA_LENGTH TamanhoDe(XMM_SAVE_AREA32)
+#Defina LEGACY_SAVE_AREA_LENGTH Meça(XMM_SAVE_AREA32)
 
   Tipo DECLSPEC_ALIGN(16) Estrutura _CONTEXT {
     DWORD64 P1Home;
@@ -1430,12 +1430,12 @@ Tipo DWORD LCID;
 #SeDefinido I_X86_
 #Se(Definido(_X86_) && !Definido(__x86_64)) && !Definido(RC_INVOKED)
 #SeDefinido __cplusplus
-  Externo "C" {
+  Importe "C" {
 #FimSe
 
     __CRT_INLINE BOOLEAN InterlockedBitTestAndSet(LONG *Base,LONG Bit) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btsl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btsl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
@@ -1443,7 +1443,7 @@ Tipo DWORD LCID;
 
     __CRT_INLINE BOOLEAN InterlockedBitTestAndReset(LONG *Base,LONG Bit) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btrl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btrl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
@@ -1451,7 +1451,7 @@ Tipo DWORD LCID;
 
     __CRT_INLINE BOOLEAN InterlockedBitTestAndComplement(LONG *Base,LONG Bit) {
       Inteiro old = 0;
-      Montador Volátil("lock ; btcl %2,%1\n\tsbbl %0,%0 "
+      __asm__ __volatile__("lock ; btcl %2,%1\n\tsbbl %0,%0 "
 	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
@@ -1474,10 +1474,10 @@ Tipo DWORD LCID;
 #Se(Definido(_X86_) && !Definido(__x86_64))
   __CRT_INLINE VOID MemoryBarrier(VOID) {
     LONG Barrier;
-    Montador Volátil("xchgl %eax,%0 "
+    __asm__ __volatile__("xchgl %eax,%0 "
       :"=r" (Barrier));
   }
-#Defina YieldProcessor() Montador Volátil("rep nop ");
+#Defina YieldProcessor() __asm__ __volatile__("rep nop ");
 
 #Defina PreFetchCacheLine(l,a)
 #Defina ReadForWriteAccess(p) (*(p))
@@ -1486,13 +1486,13 @@ Tipo DWORD LCID;
 #Defina PF_NON_TEMPORAL_LEVEL_ALL
 
   __CRT_INLINE VOID DbgRaiseAssertionFailure(Vazio) {
-    Montador Volátil("Inteiro 0x2c ");
+    __asm__ __volatile__("Inteiro 0x2c ");
   }
   PVOID GetCurrentFiber(Vazio);
   __CRT_INLINE PVOID GetCurrentFiber(Vazio)
   {
     Vazio *ret;
-    Montador Volátil ("movl	%%fs:0x10,%0"
+    __asm__ Volátil ("movl	%%fs:0x10,%0"
 	: "=r" (ret));
     Retorne ret;
   }
@@ -1500,7 +1500,7 @@ Tipo DWORD LCID;
   __CRT_INLINE PVOID GetFiberData(Vazio)
   {
     Vazio *ret;
-    Montador Volátil ("movl	%%fs:0x10,%0\n"
+    __asm__ Volátil ("movl	%%fs:0x10,%0\n"
 	"movl	(%0),%0"
 	: "=r" (ret));
     Retorne ret;
@@ -1610,7 +1610,7 @@ Tipo DWORD LCID;
 #Se Definido(__ia64__) && !Definido(RC_INVOKED)
 
 #SeDefinido __cplusplus
-    Externo "C" {
+    Importe "C" {
 #FimSe
 
       BOOLEAN BitScanForward64(DWORD *Index,DWORD64 Mask);
@@ -1631,7 +1631,7 @@ Tipo DWORD LCID;
 #Defina GetFiberData() (*(PVOID *)(GetCurrentFiber()))
 
 #SeDefinido __cplusplus
-    Externo "C" {
+    Importe "C" {
 #FimSe
 
       Vazio __break(Inteiro);
@@ -2096,9 +2096,9 @@ Tipo DWORD LCID;
 #Defina SID_MAX_SUB_AUTHORITIES (15)
 #Defina SID_RECOMMENDED_SUB_AUTHORITIES (1)
 
-#Defina SECURITY_MAX_SID_SIZE (TamanhoDe(SID) - TamanhoDe(DWORD) + (SID_MAX_SUB_AUTHORITIES *TamanhoDe(DWORD)))
+#Defina SECURITY_MAX_SID_SIZE (Meça(SID) - Meça(DWORD) + (SID_MAX_SUB_AUTHORITIES *Meça(DWORD)))
 
-    Tipo Enumerador _SID_NAME_USE {
+    Tipo Enumeração _SID_NAME_USE {
       SidTypeUser = 1,SidTypeGroup,SidTypeDomain,SidTypeAlias,SidTypeWellKnownGroup,SidTypeDeletedAccount,SidTypeInvalid,SidTypeUnknown,SidTypeComputer
     } SID_NAME_USE,*PSID_NAME_USE;
 
@@ -2236,7 +2236,7 @@ Tipo DWORD LCID;
 
 #Defina MANDATORY_LEVEL_TO_MANDATORY_RID(IL) (IL * 0x1000)
 
-    Tipo Enumerador {
+    Tipo Enumeração {
       WinNullSid = 0,WinWorldSid = 1,WinLocalSid = 2,WinCreatorOwnerSid = 3,WinCreatorGroupSid = 4,WinCreatorOwnerServerSid = 5,WinCreatorGroupServerSid = 6,WinNtAuthoritySid = 7,WinDialupSid = 8,WinNetworkSid = 9,WinBatchSid = 10,WinInteractiveSid = 11,WinServiceSid = 12,WinAnonymousSid = 13,WinProxySid = 14,WinEnterpriseControllersSid = 15,WinSelfSid = 16,WinAuthenticatedUserSid = 17,WinRestrictedCodeSid = 18,WinTerminalServerSid = 19,WinRemoteLogonIdSid = 20,WinLogonIdsSid = 21,WinLocalSystemSid = 22,WinLocalServiceSid = 23,WinNetworkServiceSid = 24,WinBuiltinDomainSid = 25,WinBuiltinAdministratorsSid = 26,WinBuiltinUsersSid = 27,WinBuiltinGuestsSid = 28,WinBuiltinPowerUsersSid = 29,WinBuiltinAccountOperatorsSid = 30,WinBuiltinSystemOperatorsSid = 31,WinBuiltinPrintOperatorsSid = 32,WinBuiltinBackupOperatorsSid = 33,WinBuiltinReplicatorSid = 34,WinBuiltinPreWindows2000CompatibleAccessSid = 35,WinBuiltinRemoteDesktopUsersSid = 36,WinBuiltinNetworkConfigurationOperatorsSid = 37,WinAccountAdministratorSid = 38,WinAccountGuestSid = 39,WinAccountKrbtgtSid = 40,WinAccountDomainAdminsSid = 41,WinAccountDomainUsersSid = 42,WinAccountDomainGuestsSid = 43,WinAccountComputersSid = 44,WinAccountControllersSid = 45,WinAccountCertAdminsSid = 46,WinAccountSchemaAdminsSid = 47,WinAccountEnterpriseAdminsSid = 48,WinAccountPolicyAdminsSid = 49,WinAccountRasAndIasServersSid = 50,WinNTLMAuthenticationSid = 51,WinDigestAuthenticationSid = 52,WinSChannelAuthenticationSid = 53,WinThisOrganizationSid = 54,WinOtherOrganizationSid = 55,WinBuiltinIncomingForestTrustBuildersSid = 56,WinBuiltinPerfMonitoringUsersSid = 57,WinBuiltinPerfLoggingUsersSid = 58,WinBuiltinAuthorizationAccessSid = 59,WinBuiltinTerminalServerLicenseServersSid = 60,WinBuiltinDCOMUsersSid = 61
     } WELL_KNOWN_SID_TYPE;
 
@@ -2460,7 +2460,7 @@ Tipo DWORD LCID;
 #Defina ACE_OBJECT_TYPE_PRESENT 0x1
 #Defina ACE_INHERITED_OBJECT_TYPE_PRESENT 0x2
 
-    Tipo Enumerador _ACL_INFORMATION_CLASS {
+    Tipo Enumeração _ACL_INFORMATION_CLASS {
       AclRevisionInformation = 1,AclSizeInformation
     } ACL_INFORMATION_CLASS;
 
@@ -2479,7 +2479,7 @@ Tipo DWORD LCID;
 #Defina SECURITY_DESCRIPTOR_REVISION (1)
 #Defina SECURITY_DESCRIPTOR_REVISION1 (1)
 
-#Defina SECURITY_DESCRIPTOR_MIN_LENGTH (TamanhoDe(SECURITY_DESCRIPTOR))
+#Defina SECURITY_DESCRIPTOR_MIN_LENGTH (Meça(SECURITY_DESCRIPTOR))
 
     Tipo WORD SECURITY_DESCRIPTOR_CONTROL,*PSECURITY_DESCRIPTOR_CONTROL;
 
@@ -2531,7 +2531,7 @@ Tipo DWORD LCID;
 
 #Defina ACCESS_MAX_LEVEL 4
 
-    Tipo Enumerador _AUDIT_EVENT_TYPE {
+    Tipo Enumeração _AUDIT_EVENT_TYPE {
       AuditEventObjectAccess,AuditEventDirectoryServiceAccess
     } AUDIT_EVENT_TYPE,*PAUDIT_EVENT_TYPE;
 
@@ -2586,7 +2586,7 @@ Tipo DWORD LCID;
 #Defina SE_IMPERSONATE_NAME TEXT("SeImpersonatePrivilege")
 #Defina SE_CREATE_GLOBAL_NAME TEXT("SeCreateGlobalPrivilege")
 
-    Tipo Enumerador _SECURITY_IMPERSONATION_LEVEL {
+    Tipo Enumeração _SECURITY_IMPERSONATION_LEVEL {
       SecurityAnonymous,SecurityIdentification,SecurityImpersonation,SecurityDelegation
     } SECURITY_IMPERSONATION_LEVEL,*PSECURITY_IMPERSONATION_LEVEL;
 
@@ -2613,12 +2613,12 @@ Tipo DWORD LCID;
 
 #Defina TOKEN_EXECUTE (STANDARD_RIGHTS_EXECUTE)
 
-    Tipo Enumerador _TOKEN_TYPE {
+    Tipo Enumeração _TOKEN_TYPE {
       TokenPrimary = 1,TokenImpersonation
     } TOKEN_TYPE;
     Tipo TOKEN_TYPE *PTOKEN_TYPE;
 
-    Tipo Enumerador _TOKEN_INFORMATION_CLASS {
+    Tipo Enumeração _TOKEN_INFORMATION_CLASS {
       TokenUser = 1,TokenGroups,TokenPrivileges,TokenOwner,TokenPrimaryGroup,TokenDefaultDacl,TokenSource,TokenType,TokenImpersonationLevel,
       TokenStatistics,TokenRestrictedSids,TokenSessionId,TokenGroupsAndPrivileges,TokenSessionReference,TokenSandBoxInert,TokenAuditPolicy,
       TokenOrigin,MaxTokenInfoClass
@@ -2681,8 +2681,8 @@ Tipo DWORD LCID;
       TOKEN_AUDIT_POLICY_ELEMENT Policy[ANYSIZE_ARRAY];
     } TOKEN_AUDIT_POLICY,*PTOKEN_AUDIT_POLICY;
 
-#Defina PER_USER_AUDITING_POLICY_SIZE(p) (TamanhoDe(TOKEN_AUDIT_POLICY) + (((p)->PolicyCount > ANYSIZE_ARRAY) ? (TamanhoDe(TOKEN_AUDIT_POLICY_ELEMENT) *((p)->PolicyCount - ANYSIZE_ARRAY)) : 0))
-#Defina PER_USER_AUDITING_POLICY_SIZE_BY_COUNT(C) (TamanhoDe(TOKEN_AUDIT_POLICY) + (((C) > ANYSIZE_ARRAY) ? (TamanhoDe(TOKEN_AUDIT_POLICY_ELEMENT) *((C) - ANYSIZE_ARRAY)) : 0))
+#Defina PER_USER_AUDITING_POLICY_SIZE(p) (Meça(TOKEN_AUDIT_POLICY) + (((p)->PolicyCount > ANYSIZE_ARRAY) ? (Meça(TOKEN_AUDIT_POLICY_ELEMENT) *((p)->PolicyCount - ANYSIZE_ARRAY)) : 0))
+#Defina PER_USER_AUDITING_POLICY_SIZE_BY_COUNT(C) (Meça(TOKEN_AUDIT_POLICY) + (((C) > ANYSIZE_ARRAY) ? (Meça(TOKEN_AUDIT_POLICY_ELEMENT) *((C) - ANYSIZE_ARRAY)) : 0))
 
 #Defina TOKEN_SOURCE_LENGTH 8
 
@@ -3019,7 +3019,7 @@ Tipo DWORD LCID;
 
 #Defina JOB_OBJECT_SECURITY_VALID_FLAGS 0x0000000f
 
-    Tipo Enumerador _JOBOBJECTINFOCLASS {
+    Tipo Enumeração _JOBOBJECTINFOCLASS {
       JobObjectBasicAccountingInformation = 1,JobObjectBasicLimitInformation,JobObjectBasicProcessIdList,JobObjectBasicUIRestrictions,
       JobObjectSecurityLimitInformation,JobObjectEndOfJobTimeInformation,JobObjectAssociateCompletionPortInformation,
       JobObjectBasicAndIoAccountingInformation,JobObjectExtendedLimitInformation,JobObjectJobSetInformation,MaxJobObjectInfoClass
@@ -3043,13 +3043,13 @@ Tipo DWORD LCID;
 #Defina TIME_ZONE_ID_STANDARD 1
 #Defina TIME_ZONE_ID_DAYLIGHT 2
 
-    Tipo Enumerador _LOGICAL_PROCESSOR_RELATIONSHIP {
+    Tipo Enumeração _LOGICAL_PROCESSOR_RELATIONSHIP {
       RelationProcessorCore,RelationNumaNode,RelationCache
     } LOGICAL_PROCESSOR_RELATIONSHIP;
 
 #Defina LTP_PC_SMT 0x1
 
-    Tipo Enumerador _PROCESSOR_CACHE_TYPE {
+    Tipo Enumeração _PROCESSOR_CACHE_TYPE {
       CacheUnified,CacheInstruction,CacheData,CacheTrace
     } PROCESSOR_CACHE_TYPE;
 
@@ -3322,17 +3322,17 @@ Tipo DWORD LCID;
 #Defina DUPLICATE_CLOSE_SOURCE 0x00000001
 #Defina DUPLICATE_SAME_ACCESS 0x00000002
 
-    Tipo Enumerador _SYSTEM_POWER_STATE {
+    Tipo Enumeração _SYSTEM_POWER_STATE {
       PowerSystemUnspecified = 0,PowerSystemWorking = 1,PowerSystemSleeping1 = 2,PowerSystemSleeping2 = 3,PowerSystemSleeping3 = 4,PowerSystemHibernate = 5,PowerSystemShutdown = 6,PowerSystemMaximum = 7
     } SYSTEM_POWER_STATE,*PSYSTEM_POWER_STATE;
 
 #Defina POWER_SYSTEM_MAXIMUM 7
 
-    Tipo Enumerador {
+    Tipo Enumeração {
       PowerActionNone = 0,PowerActionReserved,PowerActionSleep,PowerActionHibernate,PowerActionShutdown,PowerActionShutdownReset,PowerActionShutdownOff,PowerActionWarmEject
     } POWER_ACTION,*PPOWER_ACTION;
 
-    Tipo Enumerador _DEVICE_POWER_STATE {
+    Tipo Enumeração _DEVICE_POWER_STATE {
       PowerDeviceUnspecified = 0,PowerDeviceD0,PowerDeviceD1,PowerDeviceD2,PowerDeviceD3,PowerDeviceMaximum
     } DEVICE_POWER_STATE,*PDEVICE_POWER_STATE;
 
@@ -3343,7 +3343,7 @@ Tipo DWORD LCID;
 
     Tipo DWORD EXECUTION_STATE;
 
-    Tipo Enumerador {
+    Tipo Enumeração {
       LT_DONT_CARE,LT_LOWEST_LATENCY
     } LATENCY_TIME;
 
@@ -3368,7 +3368,7 @@ Tipo DWORD LCID;
       SYSTEM_POWER_STATE PD_DeepestSystemWake;
     } CM_POWER_DATA,*PCM_POWER_DATA;
 
-    Tipo Enumerador {
+    Tipo Enumeração {
       SystemPowerPolicyAc,SystemPowerPolicyDc,VerifySystemPolicyAc,VerifySystemPolicyDc,SystemPowerCapabilities,SystemBatteryState,SystemPowerStateHandler,ProcessorStateHandler,SystemPowerPolicyCurrent,AdministratorPowerPolicy,SystemReserveHiberFile,ProcessorInformation,SystemPowerInformation,ProcessorStateHandler2,LastWakeTime,LastSleepTime,SystemExecutionState,SystemPowerStateNotifyHandler,ProcessorPowerPolicyAc,ProcessorPowerPolicyDc,VerifyProcessorPowerPolicyAc,VerifyProcessorPowerPolicyDc,ProcessorPowerPolicyCurrent,SystemPowerStateLogging,SystemPowerLoggingEntry
     } POWER_INFORMATION_LEVEL;
 
@@ -4100,7 +4100,7 @@ Tipo DWORD LCID;
 
 #Defina IMAGE_SIZEOF_AUX_SYMBOL 18
 
-    Tipo Enumerador IMAGE_AUX_SYMBOL_TYPE {
+    Tipo Enumeração IMAGE_AUX_SYMBOL_TYPE {
       IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF = 1
     } IMAGE_AUX_SYMBOL_TYPE;
 
@@ -4902,17 +4902,17 @@ Tipo DWORD LCID;
       WORD Reserved : 11;
     } IMPORT_OBJECT_HEADER;
 
-    Tipo Enumerador IMPORT_OBJECT_TYPE {
+    Tipo Enumeração IMPORT_OBJECT_TYPE {
       IMPORT_OBJECT_CODE = 0,IMPORT_OBJECT_DATA = 1,IMPORT_OBJECT_CONST = 2
     } IMPORT_OBJECT_TYPE;
 
-    Tipo Enumerador IMPORT_OBJECT_NAME_TYPE {
+    Tipo Enumeração IMPORT_OBJECT_NAME_TYPE {
       IMPORT_OBJECT_ORDINAL = 0,IMPORT_OBJECT_NAME = 1,IMPORT_OBJECT_NAME_NO_PREFIX = 2,IMPORT_OBJECT_NAME_UNDECORATE = 3
     } IMPORT_OBJECT_NAME_TYPE;
 
 #SeNãoDefinido __IMAGE_COR20_HEADER_DEFINED__
 #Defina __IMAGE_COR20_HEADER_DEFINED__
-    Tipo Enumerador ReplacesCorHdrNumericDefines {
+    Tipo Enumeração ReplacesCorHdrNumericDefines {
       COMIMAGE_FLAGS_ILONLY =0x00000001,COMIMAGE_FLAGS_32BITREQUIRED =0x00000002,COMIMAGE_FLAGS_IL_LIBRARY =0x00000004,
       COMIMAGE_FLAGS_STRONGNAMESIGNED =0x00000008,COMIMAGE_FLAGS_TRACKDEBUGDATA =0x00010000,COR_VERSION_MAJOR_V2 =2,
       COR_VERSION_MAJOR =COR_VERSION_MAJOR_V2,COR_VERSION_MINOR =0,COR_DELETED_NAME_LENGTH =8,COR_VTABLEGAP_NAME_LENGTH =8,
@@ -5352,7 +5352,7 @@ Tipo DWORD LCID;
 #Defina SEF_DEFAULT_OWNER_FROM_PARENT 0x20
 #Defina SEF_DEFAULT_GROUP_FROM_PARENT 0x40
 
-    Tipo Enumerador _HEAP_INFORMATION_CLASS {
+    Tipo Enumeração _HEAP_INFORMATION_CLASS {
       HeapCompatibilityInformation
     } HEAP_INFORMATION_CLASS;
 
@@ -5381,7 +5381,7 @@ Tipo DWORD LCID;
 #Defina WT_EXECUTEINLONGTHREAD 0x00000010
 #Defina WT_EXECUTEDELETEWAIT 0x00000008
 
-    Tipo Enumerador _ACTIVATION_CONTEXT_INFO_CLASS {
+    Tipo Enumeração _ACTIVATION_CONTEXT_INFO_CLASS {
       ActivationContextBasicInformation = 1,ActivationContextDetailedInformation = 2,AssemblyDetailedInformationInActivationContext = 3,FileInformationInAssemblyOfAssemblyInActivationContext = 4,MaxActivationContextInfoClass,AssemblyDetailedInformationInActivationContxt = 3,FileInformationInAssemblyOfAssemblyInActivationContxt = 4
     } ACTIVATION_CONTEXT_INFO_CLASS;
 
@@ -5595,17 +5595,17 @@ Tipo DWORD LCID;
 #Defina SERVICE_ERROR_SEVERE 0x00000002
 #Defina SERVICE_ERROR_CRITICAL 0x00000003
 
-    Tipo Enumerador _CM_SERVICE_NODE_TYPE {
+    Tipo Enumeração _CM_SERVICE_NODE_TYPE {
       DriverType = SERVICE_KERNEL_DRIVER,FileSystemType = SERVICE_FILE_SYSTEM_DRIVER,Win32ServiceOwnProcess = SERVICE_WIN32_OWN_PROCESS,
       Win32ServiceShareProcess = SERVICE_WIN32_SHARE_PROCESS,AdapterType = SERVICE_ADAPTER,RecognizerType = SERVICE_RECOGNIZER_DRIVER
     } SERVICE_NODE_TYPE;
 
-    Tipo Enumerador _CM_SERVICE_LOAD_TYPE {
+    Tipo Enumeração _CM_SERVICE_LOAD_TYPE {
       BootLoad = SERVICE_BOOT_START,SystemLoad = SERVICE_SYSTEM_START,AutoLoad = SERVICE_AUTO_START,DemandLoad = SERVICE_DEMAND_START,
       DisableLoad = SERVICE_DISABLED
     } SERVICE_LOAD_TYPE;
 
-    Tipo Enumerador _CM_ERROR_CONTROL_TYPE {
+    Tipo Enumeração _CM_ERROR_CONTROL_TYPE {
       IgnoreError = SERVICE_ERROR_IGNORE,NormalError = SERVICE_ERROR_NORMAL,SevereError = SERVICE_ERROR_SEVERE,CriticalError = SERVICE_ERROR_CRITICAL
     } SERVICE_ERROR_TYPE;
 
@@ -5796,7 +5796,7 @@ Tipo DWORD LCID;
       PVOID DataBuffer;
     } TAPE_WMI_OPERATIONS,*PTAPE_WMI_OPERATIONS;
 
-    Tipo Enumerador _TAPE_DRIVE_PROBLEM_TYPE {
+    Tipo Enumeração _TAPE_DRIVE_PROBLEM_TYPE {
       TapeDriveProblemNone,TapeDriveReadWriteWarning,TapeDriveReadWriteError,TapeDriveReadWarning,TapeDriveWriteWarning,TapeDriveReadError,TapeDriveWriteError,TapeDriveHardwareError,TapeDriveUnsupportedMedia,TapeDriveScsiConnectionError,TapeDriveTimetoClean,TapeDriveCleanDriveNow,TapeDriveMediaLifeExpired,TapeDriveSnappedTape
     } TAPE_DRIVE_PROBLEM_TYPE;
 
@@ -5812,7 +5812,7 @@ Tipo DWORD LCID;
 #Defina PcTeb 0x18
     __CRT_INLINE Estrutura _TEB *NtCurrentTeb(Vazio) {
       Estrutura _TEB *ret;
-      Montador Volátil ("movl	%%fs:0x18,%0"
+      __asm__ Volátil ("movl	%%fs:0x18,%0"
 	: "=r" (ret));
       Retorne ret;
     }

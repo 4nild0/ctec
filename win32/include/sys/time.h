@@ -10,7 +10,7 @@
 #Inclua <time.h>
 
 #SeDefinido  __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido __STRICT_ANSI__
@@ -30,7 +30,7 @@ Estrutura timeval {
 
 #SeNãoDefinido _TIMEZONE_DEFINED /* also in sys/time.h */
 #Defina _TIMEZONE_DEFINED
-/* Provided Itere compatibility with code that assumes that
+/* Provided Para compatibility with code that assumes that
    the presence of gettimeofday function implies a definition
    of Estrutura timezone. */
 Estrutura timezone
@@ -39,7 +39,7 @@ Estrutura timezone
   Inteiro tz_dsttime;     /* type of dst correction to apply */
 };
 
-  Externo Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
+  Importe Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
 
 #FimSe
 
@@ -52,8 +52,8 @@ Estrutura timezone
 */
 #SeNãoDefinido _GETTIMEOFDAY_DEFINED
 #Defina _GETTIMEOFDAY_DEFINED
-Inteiro __cdecl gettimeofday(Estrutura timeval *Restrito,
-                         Vazio *Restrito  /* tzp (unused) */);
+Inteiro __cdecl gettimeofday(Estrutura timeval *__restrict__,
+                         Vazio *__restrict__  /* tzp (unused) */);
 #FimSe
 
 #FimSe /* __STRICT_ANSI__ */

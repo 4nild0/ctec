@@ -1,6 +1,6 @@
 //+---------------------------------------------------------------------------
 
-// _UNICODE Itere tchar.h, UNICODE Itere API
+// _UNICODE Para tchar.h, UNICODE Para API
 #Inclua <tchar.h>
 
 #Inclua <windows.h>

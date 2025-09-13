@@ -1191,7 +1191,7 @@ ST_FUNC void ctec_add_runtime(CTECState *s1)
     ctec_add_pragma_libs(s1);
     /* add libc */
     if (!s1->nostdlib) {
-        ctec_add_library_err(s1, "c");
+        ctec_add_library_err(s1, "ctec");
 #ifdef CTEC_LIBGCC
         if (!s1->static_link) {
             if (CTEC_LIBGCC[0] == '/')

@@ -11,7 +11,7 @@
 #Defina ZAWPROXYAPI DECLSPEC_IMPORT
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina DefineHandleTable(w) ((w),TRUE)
@@ -900,8 +900,8 @@ Externo "C" {
 
   __CRT_INLINE BOOLEAN InterlockedBitTestAndSet_Inline(LONG *Base,LONG Bit) {
     LONG tBit;
-    tBit = 1<<(Bit & (TamanhoDe (*Base)*8-1));
-    Retorne (BOOLEAN)((InterlockedOr(&Base[Bit/(TamanhoDe(*Base)*8)],tBit)&tBit)!=0);
+    tBit = 1<<(Bit & (Meça (*Base)*8-1));
+    Retorne (BOOLEAN)((InterlockedOr(&Base[Bit/(Meça(*Base)*8)],tBit)&tBit)!=0);
   }
 #FimSe
 
@@ -910,8 +910,8 @@ Externo "C" {
 
   __CRT_INLINE BOOLEAN InterlockedBitTestAndReset_Inline(LONG *Base,LONG Bit) {
     LONG tBit;
-    tBit = 1<<(Bit & (TamanhoDe (*Base)*8-1));
-    Retorne (BOOLEAN)((InterlockedAnd(&Base[Bit/(TamanhoDe(*Base)*8)],~tBit)&tBit)!=0);
+    tBit = 1<<(Bit & (Meça (*Base)*8-1));
+    Retorne (BOOLEAN)((InterlockedAnd(&Base[Bit/(Meça(*Base)*8)],~tBit)&tBit)!=0);
   }
 #FimSe
 
@@ -920,8 +920,8 @@ Externo "C" {
 
   __CRT_INLINE BOOLEAN InterlockedBitTestAndComplement_Inline(LONG *Base,LONG Bit) {
     LONG tBit;
-    tBit = 1<<(Bit & (TamanhoDe (*Base)*8-1));
-    Retorne (BOOLEAN)((InterlockedXor(&Base[Bit/(TamanhoDe(*Base)*8)],tBit)&tBit)!=0);
+    tBit = 1<<(Bit & (Meça (*Base)*8-1));
+    Retorne (BOOLEAN)((InterlockedXor(&Base[Bit/(Meça(*Base)*8)],tBit)&tBit)!=0);
   }
 #FimSe
 #SenãoSe Definido(__x86_64) && !Definido(RC_INVOKED)
@@ -1832,7 +1832,7 @@ Externo "C" {
   WINBASEAPI DWORD WINAPI GetLogicalDriveStringsA(DWORD nBufferLength,LPSTR lpBuffer);
   WINBASEAPI DWORD WINAPI GetLogicalDriveStringsW(DWORD nBufferLength,LPWSTR lpBuffer);
 
-  Tipo Enumerador _MEMORY_RESOURCE_NOTIFICATION_TYPE {
+  Tipo Enumeração _MEMORY_RESOURCE_NOTIFICATION_TYPE {
     LowMemoryResourceNotification,HighMemoryResourceNotification
   } MEMORY_RESOURCE_NOTIFICATION_TYPE;
 
@@ -2191,7 +2191,7 @@ Externo "C" {
   WINBASEAPI DWORD WINAPI GetFileAttributesA(LPCSTR lpFileName);
   WINBASEAPI DWORD WINAPI GetFileAttributesW(LPCWSTR lpFileName);
 
-  Tipo Enumerador _GET_FILEEX_INFO_LEVELS {
+  Tipo Enumeração _GET_FILEEX_INFO_LEVELS {
     GetFileExInfoStandard,GetFileExMaxInfoLevel
   } GET_FILEEX_INFO_LEVELS;
 
@@ -2216,11 +2216,11 @@ Externo "C" {
   WINBASEAPI WINBOOL WINAPI CheckNameLegalDOS8Dot3A(LPCSTR lpName,LPSTR lpOemName,DWORD OemNameSize,PBOOL pbNameContainsSpaces,PBOOL pbNameLegal);
   WINBASEAPI WINBOOL WINAPI CheckNameLegalDOS8Dot3W(LPCWSTR lpName,LPSTR lpOemName,DWORD OemNameSize,PBOOL pbNameContainsSpaces,PBOOL pbNameLegal);
 
-  Tipo Enumerador _FINDEX_INFO_LEVELS {
+  Tipo Enumeração _FINDEX_INFO_LEVELS {
     FindExInfoStandard,FindExInfoMaxInfoLevel
   } FINDEX_INFO_LEVELS;
 
-  Tipo Enumerador _FINDEX_SEARCH_OPS {
+  Tipo Enumeração _FINDEX_SEARCH_OPS {
     FindExSearchNameMatch,FindExSearchLimitToDirectories,FindExSearchLimitToDevices,FindExSearchMaxSearchOp
   } FINDEX_SEARCH_OPS;
 
@@ -2370,7 +2370,7 @@ Externo "C" {
   WINBASEAPI WINBOOL WINAPI CreateHardLinkA(LPCSTR lpFileName,LPCSTR lpExistingFileName,LPSECURITY_ATTRIBUTES lpSecurityAttributes);
   WINBASEAPI WINBOOL WINAPI CreateHardLinkW(LPCWSTR lpFileName,LPCWSTR lpExistingFileName,LPSECURITY_ATTRIBUTES lpSecurityAttributes);
 
-  Tipo Enumerador _STREAM_INFO_LEVELS {
+  Tipo Enumeração _STREAM_INFO_LEVELS {
     FindStreamInfoStandard,FindStreamInfoMaxInfoLevel
   } STREAM_INFO_LEVELS;
 
@@ -2571,7 +2571,7 @@ Externo "C" {
   WINBASEAPI WINBOOL WINAPI SetComputerNameA(LPCSTR lpComputerName);
   WINBASEAPI WINBOOL WINAPI SetComputerNameW(LPCWSTR lpComputerName);
 
-  Tipo Enumerador _COMPUTER_NAME_FORMAT {
+  Tipo Enumeração _COMPUTER_NAME_FORMAT {
     ComputerNameNetBIOS,ComputerNameDnsHostname,ComputerNameDnsDomain,ComputerNameDnsFullyQualified,ComputerNamePhysicalNetBIOS,ComputerNamePhysicalDnsHostname,ComputerNamePhysicalDnsDomain,ComputerNamePhysicalDnsFullyQualified,ComputerNameMax
   } COMPUTER_NAME_FORMAT;
 

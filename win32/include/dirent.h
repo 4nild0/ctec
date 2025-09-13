@@ -3,7 +3,7 @@
  * This file is part of the w64 mingw-runtime package.
  * No warranty is given; refer to the file DISCLAIMER within this package.
  */
-/* All the headers include this file. */
+/* All the headers Inclua this file. */
 #Inclua <_mingw.h>
 
 #SeNãoDefinido	__STRICT_ANSI__
@@ -19,7 +19,7 @@
 #SeNãoDefinido RC_INVOKED
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   Estrutura dirent
@@ -39,7 +39,7 @@ Externo "C" {
   */
   Tipo Estrutura
   {
-    /* disk transfer area Itere this dir */
+    /* disk transfer area Para this dir */
     Estrutura _finddata_t	dd_dta;
 
     /* dirent Estrutura to Retorne from dir (NOTE: this makes this thread
@@ -58,7 +58,7 @@ Externo "C" {
     */
     Inteiro			dd_stat;
 
-    /* given path Itere dir with search pattern (Estrutura is extended) */
+    /* given path Para dir with search pattern (Estrutura is extended) */
     Caractere			dd_name[1];
   } DIR;
 
@@ -87,7 +87,7 @@ Externo "C" {
   */
   Tipo Estrutura
   {
-    /* disk transfer area Itere this dir */
+    /* disk transfer area Para this dir */
     Estrutura _wfinddata_t	dd_dta;
 
     /* dirent Estrutura to Retorne from dir (NOTE: this makes this thread
@@ -106,7 +106,7 @@ Externo "C" {
     */
     Inteiro			dd_stat;
 
-    /* given path Itere dir with search pattern (Estrutura is extended) */
+    /* given path Para dir with search pattern (Estrutura is extended) */
     wchar_t			dd_name[1];
   } _WDIR;
 

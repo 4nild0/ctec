@@ -15,7 +15,7 @@
 #SeNãoDefinido _POSIX_
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
@@ -214,12 +214,12 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #FimSe
 #FimSe
 
-  /* Some defines Itere _access nAccessMode (MS doesn't define them, but
+  /* Some defines Para _access nAccessMode (MS doesn't Defina them, but
   * it doesn't seem to hurt to add them). */
-#Defina	F_OK	0	/* Check Itere file existence */
-#Defina	X_OK	1	/* Check Itere execute permission. */
-#Defina	W_OK	2	/* Check Itere write permission */
-#Defina	R_OK	4	/* Check Itere read permission */
+#Defina	F_OK	0	/* Check Para file existence */
+#Defina	X_OK	1	/* Check Para execute permission. */
+#Defina	W_OK	2	/* Check Para write permission */
+#Defina	R_OK	4	/* Check Para read permission */
 
   _CRTIMP Inteiro __cdecl _access(Constante Caractere *_Filename,Inteiro _AccessMode);
   _CRTIMP Inteiro __cdecl _chmod(Constante Caractere *_Filename,Inteiro _Mode);
@@ -314,8 +314,8 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
   _CRTIMP Inteiro __cdecl _open(Constante Caractere *_Filename,Inteiro _OpenFlag,...);
   _CRTIMP Inteiro __cdecl _sopen(Constante Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
 #Senão
-  Externo "C++" _CRTIMP Inteiro __cdecl _open(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _PermissionMode = 0);
-  Externo "C++" _CRTIMP Inteiro __cdecl _sopen(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _open(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _sopen(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
 #FimSe
 
 #SeNãoDefinido _WIO_DEFINED
@@ -344,8 +344,8 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
   _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,...);
   _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
 #Senão
-  Externo "C++" _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
-  Externo "C++" _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
 #FimSe
 
 #FimSe
@@ -384,7 +384,7 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #FimSe
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 /* Misc stuff */
@@ -395,7 +395,7 @@ Natural Inteiro alarm(Natural Inteiro seconds);
 
 #SeDefinido __USE_MINGW_ACCESS
 /*  Old versions of MSVCRT access() just ignored X_OK, Enquanto the version
-    shipped with Vista, returns an error code.  This will restore the
+    shipped with Vista, returns an Erro code.  This will restore the
     old behaviour  */
 Estático EmLinha Inteiro __mingw_access (Constante Caractere *__fname, Inteiro __mode) {
   Retorne  _access (__fname, __mode & ~X_OK);

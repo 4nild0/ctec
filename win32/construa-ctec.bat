@@ -5,7 +5,7 @@
 @echo off
 setlocal
 if (%1)==(-clean) goto :cleanup
-set CC=clang
+set CC=gcc
 set /p VERSION= < ..\VERSION
 set INST=
 set BIN=
@@ -111,15 +111,15 @@ goto :p3
 :config.h
 echo>..\config.h #define CTEC_VERSION "%VERSION%"
 echo>> ..\config.h #ifdef CTEC_TARGET_X86_64
-echo>> ..\config.h #define CTEC_LIBCTEC1 "libctec1-64.a"
+echo>> ..\config.h #define CTEC_libctec1 "libctec1-64.a"
 echo>> ..\config.h #else
-echo>> ..\config.h #define CTEC_LIBCTEC1 "libctec1-32.a"
+echo>> ..\config.h #define CTEC_libctec1 "libctec1-32.a"
 echo>> ..\config.h #endif
 
 for %%f in (*ctec.exe *ctec.dll) do @del %%f
 
 :compiler
-%CC% -o libctec.dll -shared ..\libctec.c %D% -DLIBCTEC_AS_DLL
+%CC% -o libctec.dll -shared ..\libctec.c %D% -Dlibctec_AS_DLL
 @if errorlevel 1 goto :the_end
 %CC% -o ctec.exe ..\ctec.c libctec.dll %D% -DONE_SOURCE"=0"
 %CC% -o %PX%-ctec.exe ..\ctec.c %DX%
@@ -187,3 +187,5 @@ for %%f in (include examples libctec doc) do @xcopy>nul /s/i/q/y %%f %INST%\%%f
 
 :the_end
 exit /B %ERRORLEVEL%
+
+copy lib\libctec1-64.a lib\libctec1.a

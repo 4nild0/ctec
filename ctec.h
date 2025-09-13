@@ -179,7 +179,7 @@ extern long double strtold (const char *__nptr, char **__endptr);
 # define CONFIG_CTECDIR "/usr/local/lib/ctec"
 #endif
 #ifndef CONFIG_LDDIR
-# define CONFIG_LDDIR "Biblioteca"
+# define CONFIG_LDDIR "lib"
 #endif
 #ifdef CONFIG_TRIPLET
 # define USE_TRIPLET(s) s "/" CONFIG_TRIPLET
@@ -199,10 +199,10 @@ extern long double strtold (const char *__nptr, char **__endptr);
 /* system include paths */
 #ifndef CONFIG_CTEC_SYSINCLUDEPATHS
 # ifdef CTEC_TARGET_PE
-#  define CONFIG_CTEC_SYSINCLUDEPATHS "{B}/Cabecalho"PATHSEP"{B}/Cabecalho/winapi"
+#  define CONFIG_CTEC_SYSINCLUDEPATHS "{B}/include"PATHSEP"{B}/include/winapi"
 # else
 #  define CONFIG_CTEC_SYSINCLUDEPATHS \
-        "{B}/Cabecalho" \
+        "{B}/include" \
     ":" ALSO_TRIPLET(CONFIG_SYSROOT "/usr/local/include") \
     ":" ALSO_TRIPLET(CONFIG_SYSROOT "/usr/include")
 # endif
@@ -211,7 +211,7 @@ extern long double strtold (const char *__nptr, char **__endptr);
 /* library search paths */
 #ifndef CONFIG_CTEC_LIBPATHS
 # ifdef CTEC_TARGET_PE
-#  define CONFIG_CTEC_LIBPATHS "{B}/Biblioteca"
+#  define CONFIG_CTEC_LIBPATHS "{B}/lib"
 # else
 #  define CONFIG_CTEC_LIBPATHS \
         ALSO_TRIPLET(CONFIG_SYSROOT "/usr/" CONFIG_LDDIR) \
@@ -1081,7 +1081,7 @@ enum ctec_token {
 
 /* use GNU C extensions */
 ST_DATA int gnu_ext;
-/* use CTEC extensions */
+/* use Tiny C extensions */
 ST_DATA int ctec_ext;
 /* XXX: get rid of this ASAP */
 ST_DATA struct CTECState *ctec_state;

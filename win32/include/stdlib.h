@@ -12,7 +12,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido NULL
@@ -91,17 +91,17 @@ Externo "C" {
 #Defina MB_CUR_MAX ___mb_cur_max_func()
 #SeNãoDefinido __mb_cur_max
 #SeDefinido _MSVCRT_
-  Externo Inteiro __mb_cur_max;
+  Importe Inteiro __mb_cur_max;
 #Senão
 #Defina __mb_cur_max    (*_imp____mb_cur_max)
-  Externo Inteiro *_imp____mb_cur_max;
+  Importe Inteiro *_imp____mb_cur_max;
 #FimSe
 #FimSe
 #SeDefinido _MSVCRT_
-  Externo Inteiro __mbcur_max;
+  Importe Inteiro __mbcur_max;
 #Defina ___mb_cur_max_func() (__mb_cur_max)
 #Senão
-  Externo Inteiro* _imp____mbcur_max;
+  Importe Inteiro* _imp____mbcur_max;
 #Defina ___mb_cur_max_func() (*_imp____mb_cur_max)
 #FimSe
 #FimSe
@@ -136,7 +136,7 @@ Externo "C" {
 
 #SeNãoDefinido _CRT_ERRNO_DEFINED
 #Defina _CRT_ERRNO_DEFINED
-  _CRTIMP Externo Inteiro *__cdecl _errno(Vazio);
+  _CRTIMP Importe Inteiro *__cdecl _errno(Vazio);
 #Defina errno (*_errno())
   errno_t __cdecl _set_errno(Inteiro _Value);
   errno_t __cdecl _get_errno(Inteiro *_Value);
@@ -146,8 +146,8 @@ Externo "C" {
   errno_t __cdecl _set_doserrno(Natural Longo _Value);
   errno_t __cdecl _get_doserrno(Natural Longo *_Value);
 #SeDefinido _MSVCRT_
-  Externo Caractere *_sys_errlist[];
-  Externo Inteiro _sys_nerr;
+  Importe Caractere *_sys_errlist[];
+  Importe Inteiro _sys_nerr;
 #Senão
   _CRTIMP Caractere *_sys_errlist[1];
   _CRTIMP Inteiro _sys_nerr;
@@ -163,75 +163,75 @@ Externo "C" {
 #FimSe
 #SeNãoDefinido __argc
 #SeDefinido _MSVCRT_
-  Externo Inteiro __argc;
+  Importe Inteiro __argc;
 #Senão
 #Defina __argc (*_imp____argc)
-  Externo Inteiro *_imp____argc;
+  Importe Inteiro *_imp____argc;
 #FimSe
 #FimSe
 #SeNãoDefinido __argv
 #SeDefinido _MSVCRT_
-  Externo Caractere **__argv;
+  Importe Caractere **__argv;
 #Senão
 #Defina __argv  (*_imp____argv)
-  Externo Caractere ***_imp____argv;
+  Importe Caractere ***_imp____argv;
 #FimSe
 #FimSe
 #SeNãoDefinido __wargv
 #SeDefinido _MSVCRT_
-  Externo wchar_t **__wargv;
+  Importe wchar_t **__wargv;
 #Senão
 #Defina __wargv (*_imp____wargv)
-  Externo wchar_t ***_imp____wargv;
+  Importe wchar_t ***_imp____wargv;
 #FimSe
 #FimSe
 
 #SeDefinido _POSIX_
-  Externo Caractere **environ;
+  Importe Caractere **environ;
 #Senão
 #SeNãoDefinido _environ
 #SeDefinido _MSVCRT_
-  Externo Caractere **_environ;
+  Importe Caractere **_environ;
 #Senão
 #Defina _environ (*_imp___environ)
-  Externo Caractere ***_imp___environ;
+  Importe Caractere ***_imp___environ;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _wenviron
 #SeDefinido _MSVCRT_
-  Externo wchar_t **_wenviron;
+  Importe wchar_t **_wenviron;
 #Senão
 #Defina _wenviron       (*_imp___wenviron)
-  Externo wchar_t ***_imp___wenviron;
+  Importe wchar_t ***_imp___wenviron;
 #FimSe
 #FimSe
 #FimSe
 #SeNãoDefinido _pgmptr
 #SeDefinido _MSVCRT_
-  Externo Caractere *_pgmptr;
+  Importe Caractere *_pgmptr;
 #Senão
 #Defina _pgmptr (*_imp___pgmptr)
-  Externo Caractere **_imp___pgmptr;
+  Importe Caractere **_imp___pgmptr;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _wpgmptr
 #SeDefinido _MSVCRT_
-  Externo wchar_t *_wpgmptr;
+  Importe wchar_t *_wpgmptr;
 #Senão
 #Defina _wpgmptr        (*_imp___wpgmptr)
-  Externo wchar_t **_imp___wpgmptr;
+  Importe wchar_t **_imp___wpgmptr;
 #FimSe
 #FimSe
   errno_t __cdecl _get_pgmptr(Caractere **_Value);
   errno_t __cdecl _get_wpgmptr(wchar_t **_Value);
 #SeNãoDefinido _fmode
 #SeDefinido _MSVCRT_
-  Externo Inteiro _fmode;
+  Importe Inteiro _fmode;
 #Senão
 #Defina _fmode  (*_imp___fmode)
-  Externo Inteiro *_imp___fmode;
+  Importe Inteiro *_imp___fmode;
 #FimSe
 #FimSe
   _CRTIMP errno_t __cdecl _set_fmode(Inteiro _Mode);
@@ -239,46 +239,46 @@ Externo "C" {
 
 #SeNãoDefinido _osplatform
 #SeDefinido _MSVCRT_
-  Externo Natural Inteiro _osplatform;
+  Importe Natural Inteiro _osplatform;
 #Senão
 #Defina _osplatform (*_imp___osplatform)
-  Externo Natural Inteiro *_imp___osplatform;
+  Importe Natural Inteiro *_imp___osplatform;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _osver
 #SeDefinido _MSVCRT_
-  Externo Natural Inteiro _osver;
+  Importe Natural Inteiro _osver;
 #Senão
 #Defina _osver  (*_imp___osver)
-  Externo Natural Inteiro *_imp___osver;
+  Importe Natural Inteiro *_imp___osver;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winver
 #SeDefinido _MSVCRT_
-  Externo Natural Inteiro _winver;
+  Importe Natural Inteiro _winver;
 #Senão
 #Defina _winver (*_imp___winver)
-  Externo Natural Inteiro *_imp___winver;
+  Importe Natural Inteiro *_imp___winver;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winmajor
 #SeDefinido _MSVCRT_
-  Externo Natural Inteiro _winmajor;
+  Importe Natural Inteiro _winmajor;
 #Senão
 #Defina _winmajor       (*_imp___winmajor)
-  Externo Natural Inteiro *_imp___winmajor;
+  Importe Natural Inteiro *_imp___winmajor;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winminor
 #SeDefinido _MSVCRT_
-  Externo Natural Inteiro _winminor;
+  Importe Natural Inteiro _winminor;
 #Senão
 #Defina _winminor       (*_imp___winminor)
-  Externo Natural Inteiro *_imp___winminor;
+  Importe Natural Inteiro *_imp___winminor;
 #FimSe
 #FimSe
 
@@ -289,11 +289,11 @@ Externo "C" {
   errno_t __cdecl _get_winminor(Natural Inteiro *_Value);
 #SeNãoDefinido _countof
 #SeNãoDefinido __cplusplus
-#Defina _countof(_Array) (TamanhoDe(_Array) / TamanhoDe(_Array[0]))
+#Defina _countof(_Array) (Meça(_Array) / Meça(_Array[0]))
 #Senão
-  Externo "C++" {
+  Importe "C++" {
     template <typename _CountofType,size_t _SizeOfArray> Caractere (*__countof_helper(UNALIGNED _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
-#Defina _countof(_Array) TamanhoDe(*__countof_helper(_Array))
+#Defina _countof(_Array) Meça(*__countof_helper(_Array))
   }
 #FimSe
 #FimSe
@@ -302,7 +302,7 @@ Externo "C" {
 #Defina _CRT_TERMINATE_DEFINED
   Vazio __cdecl __MINGW_NOTHROW exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
   _CRTIMP Vazio __cdecl __MINGW_NOTHROW _exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
-#Se !Definido __NO_ISOCEXT /* Externo stub in Estático libmingwex.a */
+#Se !Definido __NO_ISOCEXT /* Importe stub in Estático libmingwex.a */
   /* C99 function name */
   Vazio __cdecl _Exit(Inteiro) __MINGW_ATTRIB_NORETURN;
   __CRT_INLINE __MINGW_ATTRIB_NORETURN Vazio  __cdecl _Exit(Inteiro status)
@@ -378,8 +378,8 @@ Externo "C" {
   Duplo __cdecl strtod(Constante Caractere *_Str,Caractere **_EndPtr);
   Real __cdecl strtof(Constante Caractere *nptr, Caractere **endptr);
 #Se !Definido __NO_ISOCEXT  /* in libmingwex.a */
-  Real __cdecl strtof (Constante Caractere * Restrito, Caractere ** Restrito);
-  Longo Duplo __cdecl strtold(Constante Caractere * Restrito, Caractere ** Restrito);
+  Real __cdecl strtof (Constante Caractere * __restrict__, Caractere ** __restrict__);
+  Longo Duplo __cdecl strtold(Constante Caractere * __restrict__, Caractere ** __restrict__);
 #FimSe /* __NO_ISOCEXT */
   _CRTIMP Duplo __cdecl _strtod_l(Constante Caractere *_Str,Caractere **_EndPtr,_locale_t _Locale);
   Longo __cdecl strtol(Constante Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix);
@@ -421,8 +421,8 @@ Externo "C" {
   Duplo __cdecl wcstod(Constante wchar_t *_Str,wchar_t **_EndPtr);
   Real __cdecl wcstof(Constante wchar_t *nptr, wchar_t **endptr);
 #Se !Definido __NO_ISOCEXT /* in libmingwex.a */
-  Real __cdecl wcstof( Constante wchar_t * Restrito, wchar_t ** Restrito);
-  Longo Duplo __cdecl wcstold(Constante wchar_t * Restrito, wchar_t ** Restrito);
+  Real __cdecl wcstof( Constante wchar_t * __restrict__, wchar_t ** __restrict__);
+  Longo Duplo __cdecl wcstold(Constante wchar_t * __restrict__, wchar_t ** __restrict__);
 #FimSe /* __NO_ISOCEXT */
   _CRTIMP Duplo __cdecl _wcstod_l(Constante wchar_t *_Str,wchar_t **_EndPtr,_locale_t _Locale);
   Longo __cdecl wcstol(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
@@ -544,10 +544,10 @@ Externo "C" {
 
   __CRT_INLINE Longo Longo __cdecl llabs(Longo Longo _j) { Retorne (_j >= 0 ? _j : -_j); }
 
-  Longo Longo  __cdecl strtoll(Constante Caractere* Restrito, Caractere** Restrito, Inteiro);
-  Natural Longo Longo  __cdecl strtoull(Constante Caractere* Restrito, Caractere** Restrito, Inteiro);
+  Longo Longo  __cdecl strtoll(Constante Caractere* __restrict__, Caractere** __restrict, Inteiro);
+  Natural Longo Longo  __cdecl strtoull(Constante Caractere* __restrict__, Caractere** __restrict__, Inteiro);
 
-  /* these are stubs Itere MS _i64 versions */
+  /* these are stubs Para MS _i64 versions */
   Longo Longo  __cdecl atoll (Constante Caractere *);
 
 #SeNãoDefinido __STRICT_ANSI__

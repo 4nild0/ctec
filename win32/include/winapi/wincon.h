@@ -7,7 +7,7 @@
 #Defina _WINCON_
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   Tipo Estrutura _COORD {

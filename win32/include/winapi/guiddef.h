@@ -28,9 +28,9 @@ Tipo GUID UUID;
 
 #SeNãoDefinido EXTERN_C
 #SeDefinido __cplusplus
-#Defina EXTERN_C Externo "C"
+#Defina EXTERN_C Importe "C"
 #Senão
-#Defina EXTERN_C Externo
+#Defina EXTERN_C Importe
 #FimSe
 #FimSe
 
@@ -127,14 +127,14 @@ Tipo FMTID *LPFMTID;
 #Inclua <string.h>
 
 #SeDefinido __cplusplus
-EmLinha Inteiro InlineIsEqualGUID(REFGUID rguid1,REFGUID rguid2) {
+__inline Inteiro InlineIsEqualGUID(REFGUID rguid1,REFGUID rguid2) {
   Retorne (((Natural Longo *) &rguid1)[0]==((Natural Longo *) &rguid2)[0] && ((Natural Longo *) &rguid1)[1]==((Natural Longo *) &rguid2)[1] &&
     ((Natural Longo *) &rguid1)[2]==((Natural Longo *) &rguid2)[2] && ((Natural Longo *) &rguid1)[3]==((Natural Longo *) &rguid2)[3]);
 }
-EmLinha Inteiro IsEqualGUID(REFGUID rguid1,REFGUID rguid2) { Retorne !memcmp(&rguid1,&rguid2,TamanhoDe(GUID)); }
+__inline Inteiro IsEqualGUID(REFGUID rguid1,REFGUID rguid2) { Retorne !memcmp(&rguid1,&rguid2,Meça(GUID)); }
 #Senão
 #Defina InlineIsEqualGUID(rguid1,rguid2) (((Natural Longo *) rguid1)[0]==((Natural Longo *) rguid2)[0] && ((Natural Longo *) rguid1)[1]==((Natural Longo *) rguid2)[1] && ((Natural Longo *) rguid1)[2]==((Natural Longo *) rguid2)[2] && ((Natural Longo *) rguid1)[3]==((Natural Longo *) rguid2)[3])
-#Defina IsEqualGUID(rguid1,rguid2) (!memcmp(rguid1,rguid2,TamanhoDe(GUID)))
+#Defina IsEqualGUID(rguid1,rguid2) (!memcmp(rguid1,rguid2,Meça(GUID)))
 #FimSe
 
 #SeDefinido __INLINE_ISEQUAL_GUID
@@ -148,8 +148,8 @@ EmLinha Inteiro IsEqualGUID(REFGUID rguid1,REFGUID rguid2) { Retorne !memcmp(&rg
 #Se !Definido _SYS_GUID_OPERATOR_EQ_ && !Definido _NO_SYS_GUID_OPERATOR_EQ_
 #Defina _SYS_GUID_OPERATOR_EQ_
 #SeDefinido __cplusplus
-EmLinha Inteiro operator==(REFGUID guidOne,REFGUID guidOther) { Retorne IsEqualGUID(guidOne,guidOther); }
-EmLinha Inteiro operator!=(REFGUID guidOne,REFGUID guidOther) { Retorne !(guidOne==guidOther); }
+__inline Inteiro operator==(REFGUID guidOne,REFGUID guidOther) { Retorne IsEqualGUID(guidOne,guidOther); }
+__inline Inteiro operator!=(REFGUID guidOne,REFGUID guidOther) { Retorne !(guidOne==guidOther); }
 #FimSe
 #FimSe
 #FimSe

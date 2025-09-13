@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -52,9 +52,9 @@ Externo "C" {
 
 #SeNãoDefinido _pctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_pctype;
+  Importe Natural Curto *_pctype;
 #Senão
-  Externo Natural Curto **_imp___pctype;
+  Importe Natural Curto **_imp___pctype;
 #Defina _pctype (*_imp___pctype)
 #FimSe
 #FimSe
@@ -67,18 +67,18 @@ Externo "C" {
 #SeNãoDefinido _CTYPE_DISABLE_MACROS
 #SeNãoDefinido _wctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_wctype;
+  Importe Natural Curto *_wctype;
 #Senão
-  Externo Natural Curto **_imp___wctype;
+  Importe Natural Curto **_imp___wctype;
 #Defina _wctype (*_imp___wctype)
 #FimSe
 #FimSe
 
 #SeNãoDefinido _pwctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_pwctype;
+  Importe Natural Curto *_pwctype;
 #Senão
-  Externo Natural Curto **_imp___pwctype;
+  Importe Natural Curto **_imp___pwctype;
 #Defina _pwctype (*_imp___pwctype)
 #Defina __pwctype_func() (*_imp___pwctype)
 #FimSe

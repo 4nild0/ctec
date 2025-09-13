@@ -7,7 +7,7 @@
 #Defina _WINREG_
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido WINVER

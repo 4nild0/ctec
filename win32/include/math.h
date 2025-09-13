@@ -68,7 +68,7 @@ Estrutura exception;
 #FimSe
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _EXCEPTION_DEFINED
@@ -94,9 +94,9 @@ Externo "C" {
 
 #SeNãoDefinido _HUGE
 #SeDefinido _MSVCRT_
-  Externo Duplo *_HUGE;
+  Importe Duplo *_HUGE;
 #Senão
-  Externo Duplo *_imp___HUGE;
+  Importe Duplo *_imp___HUGE;
 #Defina _HUGE	(*_imp___HUGE)
 #FimSe
 #FimSe
@@ -201,7 +201,7 @@ Externo "C" {
   __CRT_INLINE Longo Duplo __cdecl fabsl (Longo Duplo x)
   {
     Longo Duplo res;
-    Montador ("fabs;" : "=t" (res) : "0" (x));
+    __asm__ ("fabs;" : "=t" (res) : "0" (x));
     Retorne res;
   }
 #Defina _hypotl(x,y) ((Longo Duplo)_hypot((Duplo)(x),(Duplo)(y)))
@@ -214,7 +214,7 @@ Externo "C" {
   __CRT_INLINE Real __cdecl fabsf (Real x)
   {
     Real res;
-    Montador ("fabs;" : "=t" (res) : "0" (x));
+    __asm__ ("fabs;" : "=t" (res) : "0" (x));
     Retorne res;
   }
 
@@ -225,7 +225,7 @@ Externo "C" {
   __CRT_INLINE Longo Duplo __cdecl fabsl (Longo Duplo x)
   {
     Longo Duplo res;
-    Montador ("fabs;" : "=t" (res) : "0" (x));
+    __asm__ ("fabs;" : "=t" (res) : "0" (x));
     Retorne res;
   }
   __CRT_INLINE Longo Duplo modfl(Longo Duplo _X,Longo Duplo *_Y) {
@@ -240,7 +240,7 @@ Externo "C" {
   __CRT_INLINE Real __cdecl fabsf (Real x)
   {
     Real res;
-    Montador ("fabs;" : "=t" (res) : "0" (x));
+    __asm__ ("fabs;" : "=t" (res) : "0" (x));
     Retorne res;
   }
   __CRT_INLINE Real __cdecl ldexpf (Real x, Inteiro expn) { Retorne (Real) ldexp (x, expn); }
@@ -311,13 +311,13 @@ Externo "C" {
   converted to Duplo, and zero when converted to Real.)
   */
 
-  Externo Inteiro __cdecl __fpclassifyf (Real);
-  Externo Inteiro __cdecl __fpclassify (Duplo);
-  Externo Inteiro __cdecl __fpclassifyl (Longo Duplo);
+  Importe Inteiro __cdecl __fpclassifyf (Real);
+  Importe Inteiro __cdecl __fpclassify (Duplo);
+  Importe Inteiro __cdecl __fpclassifyl (Longo Duplo);
 
 /* Implemented at ctec/ctec_libm.h */
-#Defina fpclassify(x) (TamanhoDe (x) == TamanhoDe (Real) ? __fpclassifyf (x)	  \
-  : TamanhoDe (x) == TamanhoDe (Duplo) ? __fpclassify (x) \
+#Defina fpclassify(x) (Meça (x) == Meça (Real) ? __fpclassifyf (x)	  \
+  : Meça (x) == Meça (Duplo) ? __fpclassify (x) \
   : __fpclassifyl (x))
 
   /* 7.12.3.2 */
@@ -336,41 +336,41 @@ Externo "C" {
 
   /* 7.12.3.6 The signbit macro */
 
-  Externo Inteiro __cdecl __signbitf (Real);
-  Externo Inteiro __cdecl __signbit (Duplo);
-  Externo Inteiro __cdecl __signbitl (Longo Duplo);
+  Importe Inteiro __cdecl __signbitf (Real);
+  Importe Inteiro __cdecl __signbit (Duplo);
+  Importe Inteiro __cdecl __signbitl (Longo Duplo);
 
 /* Implemented at ctec/ctec_libm.h */
-#Defina signbit(x) (TamanhoDe (x) == TamanhoDe (Real) ? __signbitf (x)	\
-  : TamanhoDe (x) == TamanhoDe (Duplo) ? __signbit (x)	\
+#Defina signbit(x) (Meça (x) == Meça (Real) ? __signbitf (x)	\
+  : Meça (x) == Meça (Duplo) ? __signbit (x)	\
   : __signbitl (x))
 
-  Externo Duplo __cdecl exp2(Duplo);
-  Externo Real __cdecl exp2f(Real);
-  Externo Longo Duplo __cdecl exp2l(Longo Duplo);
+  Importe Duplo __cdecl exp2(Duplo);
+  Importe Real __cdecl exp2f(Real);
+  Importe Longo Duplo __cdecl exp2l(Longo Duplo);
 
 #Defina FP_ILOGB0 ((Inteiro)0x80000000)
 #Defina FP_ILOGBNAN ((Inteiro)0x80000000)
-  Externo Inteiro __cdecl ilogb (Duplo);
-  Externo Inteiro __cdecl ilogbf (Real);
-  Externo Inteiro __cdecl ilogbl (Longo Duplo);
+  Importe Inteiro __cdecl ilogb (Duplo);
+  Importe Inteiro __cdecl ilogbf (Real);
+  Importe Inteiro __cdecl ilogbl (Longo Duplo);
 
-  Externo Duplo __cdecl log1p(Duplo);
-  Externo Real __cdecl log1pf(Real);
-  Externo Longo Duplo __cdecl log1pl(Longo Duplo);
+  Importe Duplo __cdecl log1p(Duplo);
+  Importe Real __cdecl log1pf(Real);
+  Importe Longo Duplo __cdecl log1pl(Longo Duplo);
 
-  Externo Duplo __cdecl log2 (Duplo);
-  Externo Real __cdecl log2f (Real);
-  Externo Longo Duplo __cdecl log2l (Longo Duplo);
+  Importe Duplo __cdecl log2 (Duplo);
+  Importe Real __cdecl log2f (Real);
+  Importe Longo Duplo __cdecl log2l (Longo Duplo);
 
-  Externo Duplo __cdecl logb (Duplo);
-  Externo Real __cdecl logbf (Real);
-  Externo Longo Duplo __cdecl logbl (Longo Duplo);
+  Importe Duplo __cdecl logb (Duplo);
+  Importe Real __cdecl logbf (Real);
+  Importe Longo Duplo __cdecl logbl (Longo Duplo);
 
   __CRT_INLINE Duplo __cdecl logb (Duplo x)
   {
     Duplo res;
-    Montador ("fxtract\n\t"
+    __asm__ ("fxtract\n\t"
       "fstp	%%st" : "=t" (res) : "0" (x));
     Retorne res;
   }
@@ -378,7 +378,7 @@ Externo "C" {
   __CRT_INLINE Real __cdecl logbf (Real x)
   {
     Real res;
-    Montador ("fxtract\n\t"
+    __asm__ ("fxtract\n\t"
       "fstp	%%st" : "=t" (res) : "0" (x));
     Retorne res;
   }
@@ -386,89 +386,89 @@ Externo "C" {
   __CRT_INLINE Longo Duplo __cdecl logbl (Longo Duplo x)
   {
     Longo Duplo res;
-    Montador ("fxtract\n\t"
+    __asm__ ("fxtract\n\t"
       "fstp	%%st" : "=t" (res) : "0" (x));
     Retorne res;
   }
 
-  Externo Longo Duplo __cdecl modfl (Longo Duplo, Longo Duplo*);
+  Importe Longo Duplo __cdecl modfl (Longo Duplo, Longo Duplo*);
 
   /* 7.12.6.13 */
-  Externo Duplo __cdecl scalbn (Duplo, Inteiro);
-  Externo Real __cdecl scalbnf (Real, Inteiro);
-  Externo Longo Duplo __cdecl scalbnl (Longo Duplo, Inteiro);
+  Importe Duplo __cdecl scalbn (Duplo, Inteiro);
+  Importe Real __cdecl scalbnf (Real, Inteiro);
+  Importe Longo Duplo __cdecl scalbnl (Longo Duplo, Inteiro);
 
-  Externo Duplo __cdecl scalbln (Duplo, Longo);
-  Externo Real __cdecl scalblnf (Real, Longo);
-  Externo Longo Duplo __cdecl scalblnl (Longo Duplo, Longo);
+  Importe Duplo __cdecl scalbln (Duplo, Longo);
+  Importe Real __cdecl scalblnf (Real, Longo);
+  Importe Longo Duplo __cdecl scalblnl (Longo Duplo, Longo);
 
   /* 7.12.7.1 */
   /* Implementations adapted from Cephes versions */ 
-  Externo Duplo __cdecl cbrt (Duplo);
-  Externo Real __cdecl cbrtf (Real);
-  Externo Longo Duplo __cdecl cbrtl (Longo Duplo);
+  Importe Duplo __cdecl cbrt (Duplo);
+  Importe Real __cdecl cbrtf (Real);
+  Importe Longo Duplo __cdecl cbrtl (Longo Duplo);
 
   __CRT_INLINE Real __cdecl hypotf (Real x, Real y)
   { Retorne (Real) hypot (x, y);}
-  Externo Longo Duplo __cdecl hypotl (Longo Duplo, Longo Duplo);
+  Importe Longo Duplo __cdecl hypotl (Longo Duplo, Longo Duplo);
 
-  Externo Longo Duplo __cdecl powl (Longo Duplo, Longo Duplo);
-  Externo Longo Duplo __cdecl expl(Longo Duplo);
-  Externo Longo Duplo __cdecl expm1l(Longo Duplo);
-  Externo Longo Duplo __cdecl coshl(Longo Duplo);
-  Externo Longo Duplo __cdecl fabsl (Longo Duplo);
-  Externo Longo Duplo __cdecl acosl(Longo Duplo);
-  Externo Longo Duplo __cdecl asinl(Longo Duplo);
-  Externo Longo Duplo __cdecl atanl(Longo Duplo);
-  Externo Longo Duplo __cdecl atan2l(Longo Duplo,Longo Duplo);
-  Externo Longo Duplo __cdecl sinhl(Longo Duplo);
-  Externo Longo Duplo __cdecl tanhl(Longo Duplo);
+  Importe Longo Duplo __cdecl powl (Longo Duplo, Longo Duplo);
+  Importe Longo Duplo __cdecl expl(Longo Duplo);
+  Importe Longo Duplo __cdecl expm1l(Longo Duplo);
+  Importe Longo Duplo __cdecl coshl(Longo Duplo);
+  Importe Longo Duplo __cdecl fabsl (Longo Duplo);
+  Importe Longo Duplo __cdecl acosl(Longo Duplo);
+  Importe Longo Duplo __cdecl asinl(Longo Duplo);
+  Importe Longo Duplo __cdecl atanl(Longo Duplo);
+  Importe Longo Duplo __cdecl atan2l(Longo Duplo,Longo Duplo);
+  Importe Longo Duplo __cdecl sinhl(Longo Duplo);
+  Importe Longo Duplo __cdecl tanhl(Longo Duplo);
 
   /* 7.12.8.1 The erf functions  */
-  Externo Duplo __cdecl erf (Duplo);
-  Externo Real __cdecl erff (Real);
+  Importe Duplo __cdecl erf (Duplo);
+  Importe Real __cdecl erff (Real);
   /* TODO
-  Externo Longo Duplo __cdecl erfl (Longo Duplo);
+  Importe Longo Duplo __cdecl erfl (Longo Duplo);
   */ 
 
   /* 7.12.8.2 The erfc functions  */
-  Externo Duplo __cdecl erfc (Duplo);
-  Externo Real __cdecl erfcf (Real);
+  Importe Duplo __cdecl erfc (Duplo);
+  Importe Real __cdecl erfcf (Real);
   /* TODO
-  Externo Longo Duplo __cdecl erfcl (Longo Duplo);
+  Importe Longo Duplo __cdecl erfcl (Longo Duplo);
   */ 
 
   /* 7.12.8.3 The lgamma functions */
-  Externo Duplo __cdecl lgamma (Duplo);
-  Externo Real __cdecl lgammaf (Real);
-  Externo Longo Duplo __cdecl lgammal (Longo Duplo);
+  Importe Duplo __cdecl lgamma (Duplo);
+  Importe Real __cdecl lgammaf (Real);
+  Importe Longo Duplo __cdecl lgammal (Longo Duplo);
 
   /* 7.12.8.4 The tgamma functions */
-  Externo Duplo __cdecl tgamma (Duplo);
-  Externo Real __cdecl tgammaf (Real);
-  Externo Longo Duplo __cdecl tgammal (Longo Duplo);
+  Importe Duplo __cdecl tgamma (Duplo);
+  Importe Real __cdecl tgammaf (Real);
+  Importe Longo Duplo __cdecl tgammal (Longo Duplo);
 
-  Externo Longo Duplo __cdecl ceill (Longo Duplo);
-  Externo Longo Duplo __cdecl floorl (Longo Duplo);
-  Externo Longo Duplo __cdecl frexpl(Longo Duplo,Inteiro *);
-  Externo Longo Duplo __cdecl log10l(Longo Duplo);
-  Externo Longo Duplo __cdecl logl(Longo Duplo);
-  Externo Longo Duplo __cdecl cosl(Longo Duplo);
-  Externo Longo Duplo __cdecl sinl(Longo Duplo);
-  Externo Longo Duplo __cdecl tanl(Longo Duplo);
-  Externo Longo Duplo sqrtl(Longo Duplo);
+  Importe Longo Duplo __cdecl ceill (Longo Duplo);
+  Importe Longo Duplo __cdecl floorl (Longo Duplo);
+  Importe Longo Duplo __cdecl frexpl(Longo Duplo,Inteiro *);
+  Importe Longo Duplo __cdecl log10l(Longo Duplo);
+  Importe Longo Duplo __cdecl logl(Longo Duplo);
+  Importe Longo Duplo __cdecl cosl(Longo Duplo);
+  Importe Longo Duplo __cdecl sinl(Longo Duplo);
+  Importe Longo Duplo __cdecl tanl(Longo Duplo);
+  Importe Longo Duplo sqrtl(Longo Duplo);
 
   /* 7.12.9.3 */
-  Externo Duplo __cdecl nearbyint ( Duplo);
-  Externo Real __cdecl nearbyintf (Real);
-  Externo Longo Duplo __cdecl nearbyintl (Longo Duplo);
+  Importe Duplo __cdecl nearbyint ( Duplo);
+  Importe Real __cdecl nearbyintf (Real);
+  Importe Longo Duplo __cdecl nearbyintl (Longo Duplo);
 
   /* 7.12.9.4 */
   /* round, using fpu control word settings */
   __CRT_INLINE Duplo __cdecl rint (Duplo x)
   {
     Duplo retval;
-    Montador (
+    __asm__ (
       "fldl    %1\n"
       "frndint   \n"
       "fstl    %0\n" : "=m" (retval) : "m" (x));
@@ -478,7 +478,7 @@ Externo "C" {
   __CRT_INLINE Real __cdecl rintf (Real x)
   {
     Real retval;
-    Montador (
+    __asm__ (
       "flds    %1\n"
       "frndint   \n"
       "fsts    %0\n" : "=m" (retval) : "m" (x));
@@ -488,7 +488,7 @@ Externo "C" {
   __CRT_INLINE Longo Duplo __cdecl rintl (Longo Duplo x)
   {
     Longo Duplo retval;
-    Montador (
+    __asm__ (
       "fldt    %1\n"
       "frndint   \n"
       "fstt    %0\n" : "=m" (retval) : "m" (x));
@@ -499,7 +499,7 @@ Externo "C" {
   __CRT_INLINE Longo __cdecl lrint (Duplo x) 
   {
     Longo retval;  
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("fldl   %1\n"                             \
        "fistpl %0"  : "=m" (retval) : "m" (x));  \
       Retorne retval;
@@ -508,7 +508,7 @@ Externo "C" {
   __CRT_INLINE Longo __cdecl lrintf (Real x) 
   {
     Longo retval;
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("flds   %1\n"                             \
        "fistpl %0"  : "=m" (retval) : "m" (x));  \
       Retorne retval;
@@ -517,7 +517,7 @@ Externo "C" {
   __CRT_INLINE Longo __cdecl lrintl (Longo Duplo x) 
   {
     Longo retval;
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("fldt   %1\n"                             \
        "fistpl %0"  : "=m" (retval) : "m" (x));  \
       Retorne retval;
@@ -526,7 +526,7 @@ Externo "C" {
   __CRT_INLINE Longo Longo __cdecl llrint (Duplo x) 
   {
     Longo Longo retval;
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("fldl    %1\n"                            \
        "fistpll %0"  : "=m" (retval) : "m" (x)); \
       Retorne retval;
@@ -535,7 +535,7 @@ Externo "C" {
   __CRT_INLINE Longo Longo __cdecl llrintf (Real x) 
   {
     Longo Longo retval;
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("flds   %1\n"                             \
        "fistpll %0"  : "=m" (retval) : "m" (x)); \
       Retorne retval;
@@ -544,7 +544,7 @@ Externo "C" {
   __CRT_INLINE Longo Longo __cdecl llrintl (Longo Duplo x) 
   {
     Longo Longo retval;
-    Montador Volátil                         \
+    __asm__ __volatile__                         \
       ("fldt    %1\n"                            \
        "fistpll %0"  : "=m" (retval) : "m" (x)); \
       Retorne retval;
@@ -560,59 +560,59 @@ Externo "C" {
     Duplo retval;
     Natural Curto saved_cw;
     Natural Curto tmp_cw;
-    Montador ("fnstcw %0;" : "=m" (saved_cw)); /* save FPU control word */
+    __asm__ ("fnstcw %0;" : "=m" (saved_cw)); /* save FPU control word */
     tmp_cw = (saved_cw & ~(FE_TONEAREST | FE_DOWNWARD | FE_UPWARD | FE_TOWARDZERO))
 	    | FE_TOWARDZERO;
-    Montador ("fldcw %0;" : : "m" (tmp_cw));
-    Montador ("fldl  %1;"
+    __asm__ ("fldcw %0;" : : "m" (tmp_cw));
+    __asm__ ("fldl  %1;"
              "frndint;"
              "fstl  %0;" : "=m" (retval)  : "m" (_x)); /* round towards zero */
-    Montador ("fldcw %0;" : : "m" (saved_cw) ); /* restore saved control word */
+    __asm__ ("fldcw %0;" : : "m" (saved_cw) ); /* restore saved control word */
     Retorne retval;
   }
 
   /* 7.12.9.6 */
   /* round away from zero, regardless of fpu control word settings */
-  Externo Duplo __cdecl round (Duplo);
-  Externo Real __cdecl roundf (Real);
-  Externo Longo Duplo __cdecl roundl (Longo Duplo);
+  Importe Duplo __cdecl round (Duplo);
+  Importe Real __cdecl roundf (Real);
+  Importe Longo Duplo __cdecl roundl (Longo Duplo);
 
   /* 7.12.9.7  */
-  Externo Longo __cdecl lround (Duplo);
-  Externo Longo __cdecl lroundf (Real);
-  Externo Longo __cdecl lroundl (Longo Duplo);
+  Importe Longo __cdecl lround (Duplo);
+  Importe Longo __cdecl lroundf (Real);
+  Importe Longo __cdecl lroundl (Longo Duplo);
 
-  Externo Longo Longo __cdecl llround (Duplo);
-  Externo Longo Longo __cdecl llroundf (Real);
-  Externo Longo Longo __cdecl llroundl (Longo Duplo);
+  Importe Longo Longo __cdecl llround (Duplo);
+  Importe Longo Longo __cdecl llroundf (Real);
+  Importe Longo Longo __cdecl llroundl (Longo Duplo);
 
   /* 7.12.9.8 */
   /* round towards zero, regardless of fpu control word settings */
-  Externo Duplo __cdecl trunc (Duplo);
-  Externo Real __cdecl truncf (Real);
-  Externo Longo Duplo __cdecl truncl (Longo Duplo);
+  Importe Duplo __cdecl trunc (Duplo);
+  Importe Real __cdecl truncf (Real);
+  Importe Longo Duplo __cdecl truncl (Longo Duplo);
 
-  Externo Longo Duplo __cdecl fmodl (Longo Duplo, Longo Duplo);
+  Importe Longo Duplo __cdecl fmodl (Longo Duplo, Longo Duplo);
 
   /* 7.12.10.2 */ 
-  Externo Duplo __cdecl remainder (Duplo, Duplo);
-  Externo Real __cdecl remainderf (Real, Real);
-  Externo Longo Duplo __cdecl remainderl (Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl remainder (Duplo, Duplo);
+  Importe Real __cdecl remainderf (Real, Real);
+  Importe Longo Duplo __cdecl remainderl (Longo Duplo, Longo Duplo);
 
   /* 7.12.10.3 */
-  Externo Duplo __cdecl remquo(Duplo, Duplo, Inteiro *);
-  Externo Real __cdecl remquof(Real, Real, Inteiro *);
-  Externo Longo Duplo __cdecl remquol(Longo Duplo, Longo Duplo, Inteiro *);
+  Importe Duplo __cdecl remquo(Duplo, Duplo, Inteiro *);
+  Importe Real __cdecl remquof(Real, Real, Inteiro *);
+  Importe Longo Duplo __cdecl remquol(Longo Duplo, Longo Duplo, Inteiro *);
 
   /* 7.12.11.1 */
-  Externo Duplo __cdecl copysign (Duplo, Duplo); /* in libmoldname.a */
-  Externo Real __cdecl copysignf (Real, Real);
-  Externo Longo Duplo __cdecl copysignl (Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl copysign (Duplo, Duplo); /* in libmoldname.a */
+  Importe Real __cdecl copysignf (Real, Real);
+  Importe Longo Duplo __cdecl copysignl (Longo Duplo, Longo Duplo);
 
   /* 7.12.11.2 Return a NaN */
-  Externo Duplo __cdecl nan(Constante Caractere *tagp);
-  Externo Real __cdecl nanf(Constante Caractere *tagp);
-  Externo Longo Duplo __cdecl nanl(Constante Caractere *tagp);
+  Importe Duplo __cdecl nan(Constante Caractere *tagp);
+  Importe Real __cdecl nanf(Constante Caractere *tagp);
+  Importe Longo Duplo __cdecl nanl(Constante Caractere *tagp);
 
 #SeNãoDefinido __STRICT_ANSI__
 #Defina _nan() nan("")
@@ -621,17 +621,17 @@ Externo "C" {
 #FimSe
 
   /* 7.12.11.3 */
-  Externo Duplo __cdecl nextafter (Duplo, Duplo); /* in libmoldname.a */
-  Externo Real __cdecl nextafterf (Real, Real);
-  Externo Longo Duplo __cdecl nextafterl (Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl nextafter (Duplo, Duplo); /* in libmoldname.a */
+  Importe Real __cdecl nextafterf (Real, Real);
+  Importe Longo Duplo __cdecl nextafterl (Longo Duplo, Longo Duplo);
 
   /* 7.12.11.4 The nexttoward functions: TODO */
 
   /* 7.12.12.1 */
   /*  x > y ? (x - y) : 0.0  */
-  Externo Duplo __cdecl fdim (Duplo x, Duplo y);
-  Externo Real __cdecl fdimf (Real x, Real y);
-  Externo Longo Duplo __cdecl fdiml (Longo Duplo x, Longo Duplo y);
+  Importe Duplo __cdecl fdim (Duplo x, Duplo y);
+  Importe Real __cdecl fdimf (Real x, Real y);
+  Importe Longo Duplo __cdecl fdiml (Longo Duplo x, Longo Duplo y);
 
   /* fmax and fmin.
   NaN arguments are treated as missing data: Se one argument is a NaN
@@ -639,20 +639,20 @@ Externo "C" {
   value. */
 
   /* 7.12.12.2 */
-  Externo Duplo __cdecl fmax  (Duplo, Duplo);
-  Externo Real __cdecl fmaxf (Real, Real);
-  Externo Longo Duplo __cdecl fmaxl (Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl fmax  (Duplo, Duplo);
+  Importe Real __cdecl fmaxf (Real, Real);
+  Importe Longo Duplo __cdecl fmaxl (Longo Duplo, Longo Duplo);
 
   /* 7.12.12.3 */
-  Externo Duplo __cdecl fmin (Duplo, Duplo);
-  Externo Real __cdecl fminf (Real, Real);
-  Externo Longo Duplo __cdecl fminl (Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl fmin (Duplo, Duplo);
+  Importe Real __cdecl fminf (Real, Real);
+  Importe Longo Duplo __cdecl fminl (Longo Duplo, Longo Duplo);
 
   /* 7.12.13.1 */
   /* Retorne x * y + z as a ternary op */ 
-  Externo Duplo __cdecl fma (Duplo, Duplo, Duplo);
-  Externo Real __cdecl fmaf (Real, Real, Real);
-  Externo Longo Duplo __cdecl fmal (Longo Duplo, Longo Duplo, Longo Duplo);
+  Importe Duplo __cdecl fma (Duplo, Duplo, Duplo);
+  Importe Real __cdecl fmaf (Real, Real, Real);
+  Importe Longo Duplo __cdecl fmal (Longo Duplo, Longo Duplo, Longo Duplo);
 
 
 #Se 0 // gr: duplicate, see below
@@ -679,7 +679,7 @@ Externo "C" {
   __CRT_INLINE Inteiro  __cdecl
     __fp_unordered_compare (Longo Duplo x, Longo Duplo y){
       Natural Curto retval;
-      Montador ("fucom %%st(1);"
+      __asm__ ("fucom %%st(1);"
 	"fnstsw;": "=a" (retval) : "t" (x), "u" (y));
       Retorne retval;
   }
@@ -706,12 +706,12 @@ Externo "C" {
 
 #SeDefinido __cplusplus
 }
-Externo "C++" {
+Importe "C++" {
   template<class _Ty> EmLinha _Ty _Pow_int(_Ty _X,Inteiro _Y) {
     Natural Inteiro _N;
     Se(_Y >= 0) _N = (Natural Inteiro)_Y;
     Senão _N = (Natural Inteiro)(-_Y);
-    Itere(_Ty _Z = _Ty(1);;_X *= _X) {
+    Para(_Ty _Z = _Ty(1);;_X *= _X) {
       Se((_N & 1)!=0) _Z *= _X;
       Se((_N >>= 1)==0) Retorne (_Y < 0 ? _Ty(1) / _Z : _Z); 
     }

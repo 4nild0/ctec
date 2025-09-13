@@ -10,7 +10,7 @@
 #Erro Only Win32 target is supported!
 #FimSe
 
-/* All the headers include this file. */
+/* All the headers Inclua this file. */
 #Inclua <_mingw.h>
 
 #Defina _LK_UNLCK 0

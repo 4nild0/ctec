@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   Estrutura _EXCEPTION_POINTERS;
@@ -67,11 +67,11 @@ Externo "C" {
     _PHNDLR XcptAction;
   };
 
-  Externo Estrutura _XCPT_ACTION _XcptActTab[];
-  Externo Inteiro _XcptActTabCount;
-  Externo Inteiro _XcptActTabSize;
-  Externo Inteiro _First_FPE_Indx;
-  Externo Inteiro _Num_FPE;
+  Importe Estrutura _XCPT_ACTION _XcptActTab[];
+  Importe Inteiro _XcptActTabCount;
+  Importe Inteiro _XcptActTabSize;
+  Importe Inteiro _First_FPE_Indx;
+  Importe Inteiro _Num_FPE;
 
   Inteiro __cdecl __CppXcptFilter(Natural Longo _ExceptionNum,Estrutura _EXCEPTION_POINTERS * _ExceptionPtr);
   Inteiro __cdecl _XcptFilter(Natural Longo _ExceptionNum,Estrutura _EXCEPTION_POINTERS * _ExceptionPtr);
@@ -98,17 +98,17 @@ Externo "C" {
 
 #Se (Definido(_X86_) && !Definido(__x86_64))
 #Defina __try1(pHandler) \
-  Montador ("pushl %0;pushl %%fs:0;movl %%esp,%%fs:0;" : : "g" (pHandler));
+  __asm__ ("pushl %0;pushl %%fs:0;movl %%esp,%%fs:0;" : : "g" (pHandler));
 
 #Defina	__except1	\
-  Montador ("movl (%%esp),%%eax;movl %%eax,%%fs:0;addl $8,%%esp;" \
+  __asm__ ("movl (%%esp),%%eax;movl %%eax,%%fs:0;addl $8,%%esp;" \
   : : : "%eax");
 #SenãoSe Definido(__x86_64)
 #Defina __try1(pHandler) \
-  Montador ("pushq %0;pushq %%gs:0;movq %%rsp,%%gs:0;" : : "g" (pHandler));
+  __asm__ ("pushq %0;pushq %%gs:0;movq %%rsp,%%gs:0;" : : "g" (pHandler));
 
 #Defina	__except1	\
-  Montador ("movq (%%rsp),%%rax;movq %%rax,%%gs:0;addq $16,%%rsp;" \
+  __asm__ ("movq (%%rsp),%%rax;movq %%rax,%%gs:0;addq $16,%%rsp;" \
   : : : "%rax");
 #Senão
 #Defina __try1(pHandler)

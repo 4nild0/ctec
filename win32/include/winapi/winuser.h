@@ -9,7 +9,7 @@
 #Defina WINUSERAPI DECLSPEC_IMPORT
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -4034,8 +4034,8 @@ Externo "C" {
 #FimSe
 
 #Defina DWLP_MSGRESULT 0
-#Defina DWLP_DLGPROC DWLP_MSGRESULT + TamanhoDe(LRESULT)
-#Defina DWLP_USER DWLP_DLGPROC + TamanhoDe(DLGPROC)
+#Defina DWLP_DLGPROC DWLP_MSGRESULT + Meça(LRESULT)
+#Defina DWLP_USER DWLP_DLGPROC + Meça(DLGPROC)
 
 #SeNãoDefinido NOMSG
 
@@ -5553,9 +5553,9 @@ Externo "C" {
   } RAWINPUT,*PRAWINPUT,*LPRAWINPUT;
 
 #SeDefinido _WIN64
-#Defina RAWINPUT_ALIGN(x) (((x) + TamanhoDe(QWORD) - 1) & ~(TamanhoDe(QWORD) - 1))
+#Defina RAWINPUT_ALIGN(x) (((x) + Meça(QWORD) - 1) & ~(Meça(QWORD) - 1))
 #Senão
-#Defina RAWINPUT_ALIGN(x) (((x) + TamanhoDe(DWORD) - 1) & ~(TamanhoDe(DWORD) - 1))
+#Defina RAWINPUT_ALIGN(x) (((x) + Meça(DWORD) - 1) & ~(Meça(DWORD) - 1))
 #FimSe
 
 #Defina NEXTRAWINPUTBLOCK(ptr) ((PRAWINPUT)RAWINPUT_ALIGN((ULONG_PTR)((PBYTE)(ptr) + (ptr)->header.dwSize)))

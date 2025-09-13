@@ -40,11 +40,11 @@ Vazio *alloca(size_t size);
 
 /* Older glibc require a wint_t from <stddef.h> (when requested
    by __need_wint_t, as otherwise stddef.h isn't allowed to
-   define this type).   Note that this must be outside the normal
+   Defina this type).   Note that this must be outside the normal
    _STDDEF_H guard, so that it works even when we've included the file
-   already (without requiring wint_t).  Some other libs define _WINT_T
+   already (without requiring wint_t).  Some other libs Defina _WINT_T
    Se they've already provided that type, so we can use that as guard.
-   CTEC defines __WINT_TYPE__ Itere us.  */
+   CTEC defines __WINT_TYPE__ Para us.  */
 #Se Definido (__need_wint_t)
 #SeNãoDefinido _WINT_T
 #Defina _WINT_T

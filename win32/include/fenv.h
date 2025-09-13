@@ -34,7 +34,7 @@
 
 #SeNãoDefinido RC_INVOKED
 /*
-  For now, support only Itere the basic abstraction of flags that are
+  For now, support only Para the basic abstraction of flags that are
   either set or clear. fexcept_t could be  structure that holds more
   info about the fp environment.
 */
@@ -62,7 +62,7 @@ Tipo Estrutura
 } fenv_t;
 
 
-/*The C99 standard (7.6.9) allows us to define implementation-specific macros Itere
+/*The C99 standard (7.6.9) allows us to Defina implementation-specific macros Para
   different fp environments */
   
 /* The Padrão Intel x87 floating point environment (64-bit mantissa) */
@@ -76,29 +76,29 @@ Tipo Estrutura
 #Defina FE_DFL_ENV ((Constante fenv_t *) 0)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 /*TODO: Some of these could be inlined */
 /* 7.6.2 Exception */
 
-Externo Inteiro __cdecl feclearexcept (Inteiro);
-Externo Inteiro __cdecl fegetexceptflag (fexcept_t * flagp, Inteiro excepts);
-Externo Inteiro __cdecl feraiseexcept (Inteiro excepts );
-Externo Inteiro __cdecl fesetexceptflag (Constante fexcept_t *, Inteiro);
-Externo Inteiro __cdecl fetestexcept (Inteiro excepts);
+Importe Inteiro __cdecl feclearexcept (Inteiro);
+Importe Inteiro __cdecl fegetexceptflag (fexcept_t * flagp, Inteiro excepts);
+Importe Inteiro __cdecl feraiseexcept (Inteiro excepts );
+Importe Inteiro __cdecl fesetexceptflag (Constante fexcept_t *, Inteiro);
+Importe Inteiro __cdecl fetestexcept (Inteiro excepts);
 
 /* 7.6.3 Rounding */
 
-Externo Inteiro __cdecl fegetround (Vazio);
-Externo Inteiro __cdecl fesetround (Inteiro mode);
+Importe Inteiro __cdecl fegetround (Vazio);
+Importe Inteiro __cdecl fesetround (Inteiro mode);
 
 /* 7.6.4 Environment */
 
-Externo Inteiro __cdecl fegetenv(fenv_t * envp);
-Externo Inteiro __cdecl fesetenv(Constante fenv_t * );
-Externo Inteiro __cdecl feupdateenv(Constante fenv_t *);
-Externo Inteiro __cdecl feholdexcept(fenv_t *);
+Importe Inteiro __cdecl fegetenv(fenv_t * envp);
+Importe Inteiro __cdecl fesetenv(Constante fenv_t * );
+Importe Inteiro __cdecl feupdateenv(Constante fenv_t *);
+Importe Inteiro __cdecl feholdexcept(fenv_t *);
 
 #SeDefinido __cplusplus
 }

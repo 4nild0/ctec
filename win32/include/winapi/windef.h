@@ -11,7 +11,7 @@
 #FimSe
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -110,7 +110,7 @@ Externo "C" {
   Tipo DWORD *PDWORD;
   Tipo DWORD *LPDWORD;
   Tipo Vazio *LPVOID;
-#SeNãoDefinido _LPCVOID_DEFINED
+# SeNãoDefinido _LPCVOID_DEFINED
 #Defina _LPCVOID_DEFINED
 Tipo CONST Vazio *LPCVOID;
 #FimSe

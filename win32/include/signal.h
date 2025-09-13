@@ -9,7 +9,7 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido _SIG_ATOMIC_T_DEFINED
@@ -29,7 +29,7 @@ Externo "C" {
 #Defina	SIGEMT	7	/* EMT instruction */
 #Defina SIGFPE 8
 #Defina	SIGKILL	9	/* kill (cannot be caught or ignored) */
-#Defina	SIGBUS	10	/* bus error */
+#Defina	SIGBUS	10	/* bus Erro */
 #Defina SIGSEGV 11
 #Defina	SIGSYS	12	/* bad argument to system call */
 #Defina	SIGPIPE	13	/* write on a pipe with no one to read it */
@@ -51,7 +51,7 @@ Externo "C" {
 #Defina SIG_ACK (__p_sig_fn_t)4
 #Defina SIG_ERR (__p_sig_fn_t)-1
 
-  Externo Vazio **__cdecl __pxcptinfoptrs(Vazio);
+  Importe Vazio **__cdecl __pxcptinfoptrs(Vazio);
 #Defina _pxcptinfoptrs (*__pxcptinfoptrs())
 
   __p_sig_fn_t __cdecl signal(Inteiro _SigNum,__p_sig_fn_t _Func);

@@ -23,17 +23,17 @@ Vazio *__va_arg(__va_list_struct *ap, Inteiro arg_type, Inteiro size, Inteiro al
 
 #Defina va_start(ap, last) __va_start(ap, __builtin_frame_address(0))
 #Defina va_arg(ap, type)                                                \
-    (*(type *)(__va_arg(ap, __builtin_va_arg_types(type), TamanhoDe(type), Alinhamento(type))))
+    (*(type *)(__va_arg(ap, __builtin_va_arg_types(type), Meça(type), __alignof__(type))))
 #Defina va_copy(dest, src) (*(dest) = *(src))
 #Defina va_end(ap)
 
-/* avoid conflicting definition Itere va_list on Macs. */
+/* avoid conflicting definition Para va_list on Macs. */
 #Defina _VA_LIST_T
 
 #Senão /* _WIN64 */
 Tipo Caractere *va_list;
 #Defina va_start(ap,last) __builtin_va_start(ap,last)
-#Defina va_arg(ap, t) ((TamanhoDe(t) > 8 || (TamanhoDe(t) & (TamanhoDe(t) - 1))) \
+#Defina va_arg(ap, t) ((Meça(t) > 8 || (Meça(t) & (Meça(t) - 1))) \
 	? **(t **)((ap += 8) - 8) : *(t  *)((ap += 8) - 8))
 #Defina va_copy(dest, src) ((dest) = (src))
 #Defina va_end(ap)
@@ -44,9 +44,9 @@ Tipo Caractere *va_list;
 #Defina _ctec_alignof(type) ((Inteiro)&((Estrutura {Caractere c;type x;} *)0)->x)
 #Defina _ctec_align(addr,type) (((Natural)addr + _ctec_alignof(type) - 1) \
                                & ~(_ctec_alignof(type) - 1))
-#Defina va_start(ap,last) ap = ((Caractere *)&(last)) + ((TamanhoDe(last)+3)&~3)
-#Defina va_arg(ap,type) (ap = (Vazio *) ((_ctec_align(ap,type)+TamanhoDe(type)+3) \
-                        &~3), *(type *)(ap - ((TamanhoDe(type)+3)&~3)))
+#Defina va_start(ap,last) ap = ((Caractere *)&(last)) + ((Meça(last)+3)&~3)
+#Defina va_arg(ap,type) (ap = (Vazio *) ((_ctec_align(ap,type)+Meça(type)+3) \
+                        &~3), *(type *)(ap - ((Meça(type)+3)&~3)))
 #Defina va_copy(dest, src) (dest) = (src)
 #Defina va_end(ap)
 
@@ -65,9 +65,9 @@ Tipo Estrutura {
 
 #Senão /* __i386__ */
 Tipo Caractere *va_list;
-/* only correct Itere i386 */
-#Defina va_start(ap,last) ap = ((Caractere *)&(last)) + ((TamanhoDe(last)+3)&~3)
-#Defina va_arg(ap,type) (ap += (TamanhoDe(type)+3)&~3, *(type *)(ap - ((TamanhoDe(type)+3)&~3)))
+/* only correct Para i386 */
+#Defina va_start(ap,last) ap = ((Caractere *)&(last)) + ((Meça(last)+3)&~3)
+#Defina va_arg(ap,type) (ap += (Meça(type)+3)&~3, *(type *)(ap - ((Meça(type)+3)&~3)))
 #Defina va_copy(dest, src) (dest) = (src)
 #Defina va_end(ap)
 #FimSe

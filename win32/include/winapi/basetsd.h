@@ -17,7 +17,7 @@ Tipo Natural Longo POINTER_64_INT;
 #Defina FIRMWARE_PTR
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   Tipo Bilateral Caractere INT8,*PINT8;
@@ -57,29 +57,29 @@ Externo "C" {
   Tipo Natural Inteiro UHALF_PTR,*PUHALF_PTR;
   Tipo Inteiro HALF_PTR,*PHALF_PTR;
 
-  Estático EmLinha Natural Longo HandleToULong(Constante Vazio *h) { Retorne((Natural Longo) (ULONG_PTR) h); }
-  Estático EmLinha Longo HandleToLong(Constante Vazio *h) { Retorne((Longo) (LONG_PTR) h); }
-  Estático EmLinha Vazio *ULongToHandle(Constante Natural Longo h) { Retorne((Vazio *) (UINT_PTR) h); }
-  Estático EmLinha Vazio *LongToHandle(Constante Longo h) { Retorne((Vazio *) (INT_PTR) h); }
-  Estático EmLinha Natural Longo PtrToUlong(Constante Vazio *p) { Retorne((Natural Longo) (ULONG_PTR) p); }
-  Estático EmLinha Natural Inteiro PtrToUint(Constante Vazio *p) { Retorne((Natural Inteiro) (UINT_PTR) p); }
-  Estático EmLinha Natural Curto PtrToUshort(Constante Vazio *p) { Retorne((Natural Curto) (Natural Longo) (ULONG_PTR) p); }
-  Estático EmLinha Longo PtrToLong(Constante Vazio *p) { Retorne((Longo) (LONG_PTR) p); }
-  Estático EmLinha Inteiro PtrToInt(Constante Vazio *p) { Retorne((Inteiro) (INT_PTR) p); }
-  Estático EmLinha Curto PtrToShort(Constante Vazio *p) { Retorne((Curto) (Longo) (LONG_PTR) p); }
-  Estático EmLinha Vazio *IntToPtr(Constante Inteiro i) { Retorne((Vazio *)(INT_PTR)i); }
-  Estático EmLinha Vazio *UIntToPtr(Constante Natural Inteiro ui) { Retorne((Vazio *)(UINT_PTR)ui); }
-  Estático EmLinha Vazio *LongToPtr(Constante Longo l) { Retorne((Vazio *)(LONG_PTR)l); }
-  Estático EmLinha Vazio *ULongToPtr(Constante Natural Longo ul) { Retorne((Vazio *)(ULONG_PTR)ul); }
+  Estático __inline Natural Longo HandleToULong(Constante Vazio *h) { Retorne((Natural Longo) (ULONG_PTR) h); }
+  Estático __inline Longo HandleToLong(Constante Vazio *h) { Retorne((Longo) (LONG_PTR) h); }
+  Estático __inline Vazio *ULongToHandle(Constante Natural Longo h) { Retorne((Vazio *) (UINT_PTR) h); }
+  Estático __inline Vazio *LongToHandle(Constante Longo h) { Retorne((Vazio *) (INT_PTR) h); }
+  Estático __inline Natural Longo PtrToUlong(Constante Vazio *p) { Retorne((Natural Longo) (ULONG_PTR) p); }
+  Estático __inline Natural Inteiro PtrToUint(Constante Vazio *p) { Retorne((Natural Inteiro) (UINT_PTR) p); }
+  Estático __inline Natural Curto PtrToUshort(Constante Vazio *p) { Retorne((Natural Curto) (Natural Longo) (ULONG_PTR) p); }
+  Estático __inline Longo PtrToLong(Constante Vazio *p) { Retorne((Longo) (LONG_PTR) p); }
+  Estático __inline Inteiro PtrToInt(Constante Vazio *p) { Retorne((Inteiro) (INT_PTR) p); }
+  Estático __inline Curto PtrToShort(Constante Vazio *p) { Retorne((Curto) (Longo) (LONG_PTR) p); }
+  Estático __inline Vazio *IntToPtr(Constante Inteiro i) { Retorne((Vazio *)(INT_PTR)i); }
+  Estático __inline Vazio *UIntToPtr(Constante Natural Inteiro ui) { Retorne((Vazio *)(UINT_PTR)ui); }
+  Estático __inline Vazio *LongToPtr(Constante Longo l) { Retorne((Vazio *)(LONG_PTR)l); }
+  Estático __inline Vazio *ULongToPtr(Constante Natural Longo ul) { Retorne((Vazio *)(ULONG_PTR)ul); }
 
 #Defina PtrToPtr64(p) ((Vazio *) p)
 #Defina Ptr64ToPtr(p) ((Vazio *) p)
 #Defina HandleToHandle64(h) (PtrToPtr64(h))
 #Defina Handle64ToHandle(h) (Ptr64ToPtr(h))
 
-  Estático EmLinha Vazio *Ptr32ToPtr(Constante Vazio *p) { Retorne (Vazio *)p; }
-  Estático EmLinha Vazio *Handle32ToHandle(Constante Vazio *h) { Retorne((Vazio *) h); }
-  Estático EmLinha Vazio *PtrToPtr32(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR) p); }
+  Estático __inline Vazio *Ptr32ToPtr(Constante Vazio *p) { Retorne (Vazio *)p; }
+  Estático __inline Vazio *Handle32ToHandle(Constante Vazio *h) { Retorne((Vazio *) h); }
+  Estático __inline Vazio *PtrToPtr32(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR) p); }
 
 #Defina HandleToHandle32(h) (PtrToPtr32(h))
 #Senão
@@ -106,10 +106,10 @@ Externo "C" {
 #Defina LongToPtr(l) ((VOID *)(LONG_PTR)((Longo)l))
 #Defina ULongToPtr(ul) ((VOID *)(ULONG_PTR)((Natural Longo)ul))
 
-  Estático EmLinha Vazio *PtrToPtr64(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR)p); }
-  Estático EmLinha Vazio *Ptr64ToPtr(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR) p); }
-  Estático EmLinha Vazio *HandleToHandle64(Constante Vazio *h) { Retorne((Vazio *) h); }
-  Estático EmLinha Vazio *Handle64ToHandle(Constante Vazio *h) { Retorne((Vazio *) (ULONG_PTR) h); }
+  Estático __inline Vazio *PtrToPtr64(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR)p); }
+  Estático __inline Vazio *Ptr64ToPtr(Constante Vazio *p) { Retorne((Vazio *) (ULONG_PTR) p); }
+  Estático __inline Vazio *HandleToHandle64(Constante Vazio *h) { Retorne((Vazio *) h); }
+  Estático __inline Vazio *Handle64ToHandle(Constante Vazio *h) { Retorne((Vazio *) (ULONG_PTR) h); }
 
 #Defina Ptr32ToPtr(p) ((Vazio *) p)
 #Defina Handle32ToHandle(h) (Ptr32ToPtr(h))

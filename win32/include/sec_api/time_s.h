@@ -11,7 +11,7 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   _CRTIMP errno_t __cdecl _ctime32_s(Caractere *_Buf,size_t _SizeInBytes,Constante __time32_t *_Time);

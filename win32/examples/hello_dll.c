@@ -6,7 +6,7 @@
 #Inclua <windows.h>
 
 Vazio hello_func (Vazio);
-__declspec(dllimport) Externo Constante Caractere *hello_data;
+__declspec(dllimport) Importe Constante Caractere *hello_data;
 
 Inteiro WINAPI WinMain(
     HINSTANCE hInstance,

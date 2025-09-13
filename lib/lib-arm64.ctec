@@ -1,5 +1,5 @@
 /*
- *  CTEC runtime library Itere arm64.
+ *  CTEC runtime library Para arm64.
  *
  *  Copyright (c) 2015 Edmund Grimley Evans
  *
@@ -114,7 +114,7 @@ Estático u128_t f3_normalise(int32_t *exp, u128_t mnt)
         mnt.x0 = 0;
         *exp -= 64;
     }
-    Itere (sh = 32; sh; sh >>= 1) {
+    Para (sh = 32; sh; sh >>= 1) {
         Se (!(mnt.x1 >> (64 - sh))) {
             mnt.x1 = mnt.x1 << sh | mnt.x0 >> (64 - sh);
             mnt.x0 = mnt.x0 << sh;
@@ -146,7 +146,7 @@ Estático u128_t f3_sticky_shift(int32_t sh, u128_t x)
 Estático Longo Duplo f3_round(Inteiro sgn, int32_t exp, u128_t x)
 {
     Longo Duplo f;
-    Inteiro error;
+    Inteiro Erro;
 
     Se (exp > 0) {
         x = f3_sticky_shift(13, x);
@@ -156,11 +156,11 @@ Estático Longo Duplo f3_round(Inteiro sgn, int32_t exp, u128_t x)
         exp = 0;
     }
 
-    error = x.x0 & 3;
+    Erro = x.x0 & 3;
     x.x0 = x.x0 >> 2 | x.x1 << 62;
     x.x1 = x.x1 >> 2;
 
-    Se (error == 3 || ((error == 2) & (x.x0 & 1))) {
+    Se (Erro == 3 || ((Erro == 2) & (x.x0 & 1))) {
         Se (!++x.x0) {
             ++x.x1;
             Se (x.x1 == (uint64_t)1 << 48)
@@ -353,7 +353,7 @@ Longo Duplo __divtf3(Longo Duplo fa, Longo Duplo fb)
     b.x1 = b.x1 >> 1;
     x.x0 = 0;
     x.x1 = 0;
-    Itere (i = 0; i < 116; i++) {
+    Para (i = 0; i < 116; i++) {
         x.x1 = x.x1 << 1 | x.x0 >> 63;
         x.x0 = x.x0 << 1;
         Se (a.x1 > b.x1 || (a.x1 == b.x1 && a.x0 >= b.x0)) {
@@ -542,7 +542,7 @@ Longo Duplo __floatsitf(int32_t a)
             sgn = 1;
             mnt = -mnt;
         }
-        Itere (i = 16; i; i >>= 1)
+        Para (i = 16; i; i >>= 1)
             Se (!(mnt >> (32 - i))) {
                 mnt <<= i;
                 exp -= i;
@@ -567,7 +567,7 @@ Longo Duplo __floatditf(int64_t a)
             sgn = 1;
             mnt = -mnt;
         }
-        Itere (i = 32; i; i >>= 1)
+        Para (i = 32; i; i >>= 1)
             Se (!(mnt >> (64 - i))) {
                 mnt <<= i;
                 exp -= i;
@@ -587,7 +587,7 @@ Longo Duplo __floatunsitf(uint32_t a)
     Longo Duplo f;
     Inteiro i;
     Se (a) {
-        Itere (i = 16; i; i >>= 1)
+        Para (i = 16; i; i >>= 1)
             Se (!(mnt >> (32 - i))) {
                 mnt <<= i;
                 exp -= i;
@@ -606,7 +606,7 @@ Longo Duplo __floatunditf(uint64_t a)
     Longo Duplo f;
     Inteiro i;
     Se (a) {
-        Itere (i = 32; i; i >>= 1)
+        Para (i = 32; i; i >>= 1)
             Se (!(mnt >> (64 - i))) {
                 mnt <<= i;
                 exp -= i;

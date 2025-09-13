@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #SeNãoDefinido WCHAR_MIN  /* also at stdint.h */
@@ -53,10 +53,10 @@ Externo "C" {
   _CRTIMP FILE *__cdecl __iob_func(Vazio);
 #Senão
 #SeDefinido _MSVCRT_
-Externo FILE _iob[];	/* A pointer to an array of FILE */
+Importe FILE _iob[];	/* A pointer to an array of FILE */
 #Defina __iob_func()	(_iob)
 #Senão
-Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
+Importe FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
 #Defina __iob_func()	(*_imp___iob)
 #Defina _iob __iob_func()
 #FimSe
@@ -167,9 +167,9 @@ Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
 
 #SeNãoDefinido _pctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_pctype;
+  Importe Natural Curto *_pctype;
 #Senão
-  Externo Natural Curto **_imp___pctype;
+  Importe Natural Curto **_imp___pctype;
 #Defina _pctype (*_imp___pctype)
 #FimSe
 #FimSe
@@ -181,9 +181,9 @@ Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
 #SeNãoDefinido _CTYPE_DISABLE_MACROS
 #SeNãoDefinido _wctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_wctype;
+  Importe Natural Curto *_wctype;
 #Senão
-  Externo Natural Curto **_imp___wctype;
+  Importe Natural Curto **_imp___wctype;
 #Defina _wctype (*_imp___wctype)
 #FimSe
 #FimSe
@@ -196,9 +196,9 @@ Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
 
 #SeNãoDefinido _pwctype
 #SeDefinido _MSVCRT_
-  Externo Natural Curto *_pwctype;
+  Importe Natural Curto *_pwctype;
 #Senão
-  Externo Natural Curto **_imp___pwctype;
+  Importe Natural Curto **_imp___pwctype;
 #Defina _pwctype (*_imp___pwctype)
 #FimSe
 #FimSe
@@ -295,8 +295,8 @@ Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
   _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,...);
   _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
 #Senão
-  Externo "C++" _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
-  Externo "C++" _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
+  Importe "C++" _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
 #FimSe
 #FimSe
 
@@ -687,8 +687,8 @@ Externo FILE (*_imp___iob)[];	/* A pointer to an array of FILE */
   _CRTIMP Duplo __cdecl _wcstod_l(Constante wchar_t *_Str,wchar_t **_EndPtr,_locale_t _Locale);
   Real __cdecl wcstof( Constante wchar_t *nptr, wchar_t **endptr);
 #Se !Definido __NO_ISOCEXT /* in libmingwex.a */
-  Real __cdecl wcstof (Constante wchar_t * Restrito, wchar_t ** Restrito);
-  Longo Duplo __cdecl wcstold (Constante wchar_t * Restrito, wchar_t ** Restrito);
+  Real __cdecl wcstof (Constante wchar_t * __restrict__, wchar_t ** __restrict__);
+  Longo Duplo __cdecl wcstold (Constante wchar_t * __restrict__, wchar_t ** __restrict__);
 #FimSe /* __NO_ISOCEXT */
   Longo __cdecl wcstol(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
   _CRTIMP Longo __cdecl _wcstol_l(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
@@ -852,13 +852,13 @@ __CRT_INLINE wchar_t *__cdecl _wctime(Constante time_t *_Time) { Retorne _wctime
   Vazio *__cdecl memcpy(Vazio *_Dst,Constante Vazio *_Src,size_t _MaxCount);
   __CRT_INLINE Inteiro __cdecl fwide(FILE *_F,Inteiro _M) { (Vazio)_F; Retorne (_M); }
   __CRT_INLINE Inteiro __cdecl mbsinit(Constante mbstate_t *_P) { Retorne (!_P || *_P==0); }
-  __CRT_INLINE _CONST_RETURN wchar_t *__cdecl wmemchr(Constante wchar_t *_S,wchar_t _C,size_t _N) { Itere (;0<_N;++_S,--_N) Se (*_S==_C) Retorne (_CONST_RETURN wchar_t *)(_S); Retorne (0); }
-  __CRT_INLINE Inteiro __cdecl wmemcmp(Constante wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Itere (; 0 < _N; ++_S1,++_S2,--_N) Se (*_S1!=*_S2) Retorne (*_S1 < *_S2 ? -1 : +1); Retorne (0); }
-  __CRT_INLINE wchar_t *__cdecl wmemcpy(wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Retorne (wchar_t *)memcpy(_S1,_S2,_N*TamanhoDe(wchar_t)); }
-  __CRT_INLINE wchar_t *__cdecl wmemmove(wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Retorne (wchar_t *)memmove(_S1,_S2,_N*TamanhoDe(wchar_t)); }
+  __CRT_INLINE _CONST_RETURN wchar_t *__cdecl wmemchr(Constante wchar_t *_S,wchar_t _C,size_t _N) { Para (;0<_N;++_S,--_N) Se (*_S==_C) Retorne (_CONST_RETURN wchar_t *)(_S); Retorne (0); }
+  __CRT_INLINE Inteiro __cdecl wmemcmp(Constante wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Para (; 0 < _N; ++_S1,++_S2,--_N) Se (*_S1!=*_S2) Retorne (*_S1 < *_S2 ? -1 : +1); Retorne (0); }
+  __CRT_INLINE wchar_t *__cdecl wmemcpy(wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Retorne (wchar_t *)memcpy(_S1,_S2,_N*Meça(wchar_t)); }
+  __CRT_INLINE wchar_t *__cdecl wmemmove(wchar_t *_S1,Constante wchar_t *_S2,size_t _N) { Retorne (wchar_t *)memmove(_S1,_S2,_N*Meça(wchar_t)); }
   __CRT_INLINE wchar_t *__cdecl wmemset(wchar_t *_S,wchar_t _C,size_t _N) {
     wchar_t *_Su = _S;
-    Itere (;0<_N;++_Su,--_N) {
+    Para (;0<_N;++_Su,--_N) {
       *_Su = _C;
     }
     Retorne (_S);

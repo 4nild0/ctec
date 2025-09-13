@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina BUFSIZ 512
@@ -43,7 +43,7 @@ Externo "C" {
 #Defina _wP_tmpdir L"\\"
 #FimSe
 
-#Defina L_tmpnam (TamanhoDe(_P_tmpdir) + 12)
+#Defina L_tmpnam (Meça(_P_tmpdir) + 12)
 
 #SeDefinido _POSIX_
 #Defina L_ctermid 9
@@ -95,10 +95,10 @@ Externo "C" {
   _CRTIMP FILE *__cdecl __iob_func(Vazio);
 #Senão
 #SeDefinido _MSVCRT_
-Externo FILE _iob[];     /* A pointer to an array of FILE */
+Importe FILE _iob[];     /* A pointer to an array of FILE */
 #Defina __iob_func()    (_iob)
 #Senão
-Externo FILE (*_imp___iob)[];    /* A pointer to an array of FILE */
+Importe FILE (*_imp___iob)[];    /* A pointer to an array of FILE */
 #Defina __iob_func()    (*_imp___iob)
 #Defina _iob __iob_func()
 #FimSe
@@ -241,12 +241,12 @@ Externo FILE (*_imp___iob)[];    /* A pointer to an array of FILE */
   /* Make sure macros are not Definido.  */
 #Diretiva push_macro("vsnprintf")
 #Diretiva push_macro("snprintf")
-#Esqueça vsnprintf
-#Esqueça snprintf
-  Externo
+# Esqueça vsnprintf
+# Esqueça snprintf
+  Importe
   __attribute__((format(gnu_printf, 3, 0))) __attribute__((nonnull (3)))
   Inteiro __mingw_vsnprintf(Caractere *_DstBuf,size_t _MaxCount,Constante Caractere *_Format,va_list _ArgList);
-  Externo
+  Importe
   __attribute__((format(gnu_printf, 3, 4))) __attribute__((nonnull (3)))
   Inteiro __mingw_snprintf(Caractere* s, size_t n, Constante Caractere*  format, ...);
   Inteiro __cdecl vsnprintf(Caractere *_DstBuf,size_t _MaxCount,Constante Caractere *_Format,va_list _ArgList);
@@ -268,13 +268,13 @@ Externo FILE (*_imp___iob)[];    /* A pointer to an array of FILE */
 #Diretiva pop_macro("vsnprintf")
 /* Check Se vsnprintf and snprintf are defaulting to gnu-style.  */
 # Se Definido(USE_MINGW_GNU_SNPRINTF) && USE_MINGW_GNU_SNPRINTF
-#SeNãoDefinido vsnprint
-#Defina vsnprintf __mingw_vsnprintf
-#FimSe
-#SeNãoDefinido snprintf
-#Defina snprintf __mingw_snprintf
-#FimSe
-#FimSe
+# SeNãoDefinido vsnprint
+# Defina vsnprintf __mingw_vsnprintf
+# FimSe
+# SeNãoDefinido snprintf
+# Defina snprintf __mingw_snprintf
+# FimSe
+# FimSe
   _CRTIMP Inteiro __cdecl _vscprintf(Constante Caractere *_Format,va_list _ArgList);
   _CRTIMP Inteiro __cdecl _set_printf_count_output(Inteiro _Value);
   _CRTIMP Inteiro __cdecl _get_printf_count_output(Vazio);

@@ -11,7 +11,7 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   _CRTIMP errno_t __cdecl _dupenv_s(Caractere **_PBuffer,size_t *_PBufferSizeInBytes,Constante Caractere *_VarName);

@@ -11,7 +11,7 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   _CRTIMP Vazio *__cdecl _lfind_s(Constante Vazio *_Key,Constante Vazio *_Base,Natural Inteiro *_NumOfElements,size_t _SizeOfElements,Inteiro (__cdecl *_PtFuncCompare)(Vazio *,Constante Vazio *,Constante Vazio *),Vazio *_Context);

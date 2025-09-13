@@ -1,5 +1,5 @@
 /*
- *  CTEC Memory and bounds checker
+ *  Tiny C Memory and bounds checker
  * 
  *  Copyright (c) 2002 Fabrice Bellard
  *
@@ -11,7 +11,7 @@
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License Itere more details.
+ * Lesser General Public License Para more details.
  *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; Se not, write to the Free Software
@@ -42,7 +42,7 @@
  #Defina dprintf(a...)
 #FimSe
 
-/* define so that bound array is Estático (faster, but use memory Se
+/* Defina so that bound array is Estático (faster, but use memory Se
    bound checking not used) */
 /* #Defina BOUND_STATIC */
 
@@ -64,8 +64,8 @@
 
 #Defina BOUND_T1_BITS 13
 #Defina BOUND_T2_BITS 11
-#Defina BOUND_T3_BITS (TamanhoDe(size_t)*8 - BOUND_T1_BITS - BOUND_T2_BITS)
-#Defina BOUND_E_BITS  (TamanhoDe(size_t))
+#Defina BOUND_T3_BITS (Meça(size_t)*8 - BOUND_T1_BITS - BOUND_T2_BITS)
+#Defina BOUND_E_BITS  (Meça(size_t))
 
 #Defina BOUND_T1_SIZE ((size_t)1 << BOUND_T1_BITS)
 #Defina BOUND_T2_SIZE ((size_t)1 << BOUND_T2_BITS)
@@ -117,20 +117,20 @@ Estático Vazio *saved_memalign_hook;
 #FimSe
 
 /* CTEC definitions */
-Externo Caractere __bounds_start; /* start of Estático bounds table */
-/* error message, just Itere CTEC */
+Importe Caractere __bounds_start; /* start of Estático bounds table */
+/* Erro message, just Para CTEC */
 Constante Caractere *__bound_error_msg;
 
-/* runtime error output */
-Externo Vazio rt_error(size_t pc, Constante Caractere *fmt, ...);
+/* runtime Erro output */
+Importe Vazio rt_error(size_t pc, Constante Caractere *fmt, ...);
 
 #SeDefinido BOUND_STATIC
 Estático BoundEntry *__bound_t1[BOUND_T1_SIZE]; /* page table */
 #Senão
 Estático BoundEntry **__bound_t1; /* page table */
 #FimSe
-Estático BoundEntry *__bound_empty_t2;   /* empty page, Itere unused pages */
-Estático BoundEntry *__bound_invalid_t2; /* invalid page, Itere invalid pointers */
+Estático BoundEntry *__bound_empty_t2;   /* empty page, Para unused pages */
+Estático BoundEntry *__bound_invalid_t2; /* invalid page, Para invalid pointers */
 
 Estático BoundEntry *__bound_find_region(BoundEntry *e1, Vazio *p)
 {
@@ -160,20 +160,20 @@ Estático BoundEntry *__bound_find_region(BoundEntry *e1, Vazio *p)
         Retorne __bound_empty_t2;
 }
 
-/* print a bound error message */
+/* print a bound Erro message */
 Estático Vazio bound_error(Constante Caractere *fmt, ...)
 {
     __bound_error_msg = fmt;
-    fprintf(stderr,"%s %s: %s\n", __ARQUIVO__, __FUNÇÃO__, fmt);
-    *(Vazio **)0 = 0; /* force a runtime error */
+    fprintf(stderr,"%s %s: %s\n", __FILE__, __FUNCTION__, fmt);
+    *(Vazio **)0 = 0; /* force a runtime Erro */
 }
 
 Estático Vazio bound_alloc_error(Vazio)
 {
-    bound_error("not enough memory Itere bound checking code");
+    bound_error("not enough memory Para bound checking code");
 }
 
-/* Retorne '(p + offset)' Itere pointer arithmetic (a pointer can reach
+/* Retorne '(p + offset)' Para pointer arithmetic (a pointer can reach
    the end of a region in this Caso */
 Vazio * FASTCALL __bound_ptr_add(Vazio *p, size_t offset)
 {
@@ -181,7 +181,7 @@ Vazio * FASTCALL __bound_ptr_add(Vazio *p, size_t offset)
     BoundEntry *e;
 
     dprintf(stderr, "%s %s: %p %x\n",
-        __ARQUIVO__, __FUNÇÃO__, p, (Natural)offset);
+        __FILE__, __FUNCTION__, p, (Natural)offset);
 
     __bound_init();
 
@@ -197,13 +197,13 @@ Vazio * FASTCALL __bound_ptr_add(Vazio *p, size_t offset)
     addr += offset;
     Se (addr >= e->size) {
 	fprintf(stderr,"%s %s: %p is outside of the region\n",
-            __ARQUIVO__, __FUNÇÃO__, p + offset);
+            __FILE__, __FUNCTION__, p + offset);
         Retorne INVALID_POINTER; /* Retorne an invalid pointer */
     }
     Retorne p + offset;
 }
 
-/* Retorne '(p + offset)' Itere pointer indirection (the resulting must
+/* Retorne '(p + offset)' Para pointer indirection (the resulting must
    be strictly inside the region */
 #Defina BOUND_PTR_INDIR(dsize)                                          \
 Vazio * FASTCALL __bound_ptr_indir ## dsize (Vazio *p, size_t offset)     \
@@ -212,7 +212,7 @@ Vazio * FASTCALL __bound_ptr_indir ## dsize (Vazio *p, size_t offset)     \
     BoundEntry *e;                                                      \
                                                                         \
     dprintf(stderr, "%s %s: %p %x start\n",                             \
-        __ARQUIVO__, __FUNÇÃO__, p, (Natural)offset);	                \
+        __FILE__, __FUNCTION__, p, (Natural)offset);	                \
 									\
     __bound_init();							\
     e = __bound_t1[addr >> (BOUND_T2_BITS + BOUND_T3_BITS)];            \
@@ -227,11 +227,11 @@ Vazio * FASTCALL __bound_ptr_indir ## dsize (Vazio *p, size_t offset)     \
     addr += offset + dsize;                                             \
     Se (addr > e->size) {                                               \
 	fprintf(stderr,"%s %s: %p is outside of the region\n",          \
-            __ARQUIVO__, __FUNÇÃO__, p + offset);                        \
+            __FILE__, __FUNCTION__, p + offset);                        \
         Retorne INVALID_POINTER; /* Retorne an invalid pointer */         \
     }									\
     dprintf(stderr, "%s %s: Retorne p+offset = %p\n",                    \
-        __ARQUIVO__, __FUNÇÃO__, p + offset);                            \
+        __FILE__, __FUNCTION__, p + offset);                            \
     Retorne p + offset;                                                  \
 }
 
@@ -262,9 +262,9 @@ Vazio FASTCALL __bound_local_new(Vazio *p1)
 {
     size_t addr, size, fp, *p = p1;
 
-    dprintf(stderr, "%s, %s start p1=%p\n", __ARQUIVO__, __FUNÇÃO__, p);
+    dprintf(stderr, "%s, %s start p1=%p\n", __FILE__, __FUNCTION__, p);
     GET_CALLER_FP(fp);
-    Itere(;;) {
+    Para(;;) {
         addr = p[0];
         Se (addr == 0)
             Interrompa;
@@ -273,7 +273,7 @@ Vazio FASTCALL __bound_local_new(Vazio *p1)
         p += 2;
         __bound_new_region((Vazio *)addr, size);
     }
-    dprintf(stderr, "%s, %s end\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s, %s end\n", __FILE__, __FUNCTION__);
 }
 
 /* called when leaving a function to delete all the local regions */
@@ -281,7 +281,7 @@ Vazio FASTCALL __bound_local_delete(Vazio *p1)
 {
     size_t addr, fp, *p = p1;
     GET_CALLER_FP(fp);
-    Itere(;;) {
+    Para(;;) {
         addr = p[0];
         Se (addr == 0)
             Interrompa;
@@ -300,10 +300,10 @@ Estático BoundEntry *__bound_new_page(Vazio)
     BoundEntry *page;
     size_t i;
 
-    page = libc_malloc(TamanhoDe(BoundEntry) * BOUND_T2_SIZE);
+    page = libc_malloc(Meça(BoundEntry) * BOUND_T2_SIZE);
     Se (!page)
         bound_alloc_error();
-    Itere(i=0;i<BOUND_T2_SIZE;i++) {
+    Para(i=0;i<BOUND_T2_SIZE;i++) {
         /* put empty entries */
         page[i].start = 0;
         page[i].size = EMPTY_SIZE;
@@ -317,7 +317,7 @@ Estático BoundEntry *__bound_new_page(Vazio)
 Estático BoundEntry *bound_new_entry(Vazio)
 {
     BoundEntry *e;
-    e = libc_malloc(TamanhoDe(BoundEntry));
+    e = libc_malloc(Meça(BoundEntry));
     Retorne e;
 }
 
@@ -367,24 +367,24 @@ Estático Vazio mark_invalid(size_t addr, size_t size)
     
     Se (t1_start == t1_end) {
         page = get_page(t2_start >> BOUND_T2_BITS);
-        Itere(; i < j; i++) {
+        Para(; i < j; i++) {
             page[i].size = INVALID_SIZE;
             page[i].is_invalid = 1;
         }
     } Senão {
         Se (i > 0) {
             page = get_page(t2_start >> BOUND_T2_BITS);
-            Itere(; i < BOUND_T2_SIZE; i++) {
+            Para(; i < BOUND_T2_SIZE; i++) {
                 page[i].size = INVALID_SIZE;
                 page[i].is_invalid = 1;
             }
         }
-        Itere(i = t1_start; i < t1_end; i++) {
+        Para(i = t1_start; i < t1_end; i++) {
             __bound_t1[i] = __bound_invalid_t2;
         }
         Se (j != 0) {
             page = get_page(t1_end);
-            Itere(i = 0; i < j; i++) {
+            Para(i = 0; i < j; i++) {
                 page[i].size = INVALID_SIZE;
                 page[i].is_invalid = 1;
             }
@@ -405,23 +405,23 @@ Vazio __bound_init(Vazio)
 
     inited = 1;
 
-    dprintf(stderr, "%s, %s() start\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s, %s() start\n", __FILE__, __FUNCTION__);
 
     /* save malloc hooks and install bound check hooks */
     install_malloc_hooks();
 
 #SeNãoDefinido BOUND_STATIC
-    __bound_t1 = libc_malloc(BOUND_T1_SIZE * TamanhoDe(BoundEntry *));
+    __bound_t1 = libc_malloc(BOUND_T1_SIZE * Meça(BoundEntry *));
     Se (!__bound_t1)
         bound_alloc_error();
 #FimSe
     __bound_empty_t2 = __bound_new_page();
-    Itere(i=0;i<BOUND_T1_SIZE;i++) {
+    Para(i=0;i<BOUND_T1_SIZE;i++) {
         __bound_t1[i] = __bound_empty_t2;
     }
 
     page = __bound_new_page();
-    Itere(i=0;i<BOUND_T2_SIZE;i++) {
+    Para(i=0;i<BOUND_T2_SIZE;i++) {
         /* put invalid entries */
         page[i].start = 0;
         page[i].size = INVALID_SIZE;
@@ -438,14 +438,14 @@ Vazio __bound_init(Vazio)
 #Se Definido(CONFIG_CTEC_MALLOC_HOOKS)
     /* malloc zone is also marked invalid. can only use that with
      * hooks because all libs should use the same malloc. The solution
-     * would be to build a new malloc Itere ctec.
+     * would be to build a new malloc Para ctec.
      *
      * usually heap (= malloc zone) comes right after bss, i.e. after _end, but
      * not always - either Se we are running from under `ctec -b -run`, or Se
      * address space randomization is turned on(a), heap start will be separated
      * from bss end.
      *
-     * So sbrk(0) will be a good approximation Itere start_brk:
+     * So sbrk(0) will be a good approximation Para start_brk:
      *
      *   - Se we are a separately compiled program, __bound_init() runs early,
      *     and sbrk(0) should be equal or very near to start_brk(b) (in Caso other
@@ -474,7 +474,7 @@ Vazio __bound_init(Vazio)
         p += 2;
     }
 
-    dprintf(stderr, "%s, %s() end\n\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s, %s() end\n\n", __FILE__, __FUNCTION__);
 }
 
 Vazio __bound_main_arg(Vazio **p)
@@ -483,14 +483,14 @@ Vazio __bound_main_arg(Vazio **p)
     Enquanto (*p++);
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p %x)\n",
-            __ARQUIVO__, __FUNÇÃO__, start, (Natural)((Vazio *)p - start));
+            __FILE__, __FUNCTION__, start, (Natural)((Vazio *)p - start));
 
     __bound_new_region(start, (Vazio *) p - start);
 }
 
 Vazio __bound_exit(Vazio)
 {
-    dprintf(stderr, "%s, %s()\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s, %s()\n", __FILE__, __FUNCTION__);
     restore_malloc_hooks();
 }
 
@@ -522,7 +522,7 @@ Vazio __bound_new_region(Vazio *p, size_t size)
     size_t t1_start, t1_end, i, t2_start, t2_end;
 
     dprintf(stderr, "%s, %s(%p, %x) start\n",
-        __ARQUIVO__, __FUNÇÃO__, p, (Natural)size);
+        __FILE__, __FUNCTION__, p, (Natural)size);
 
     __bound_init();
 
@@ -547,7 +547,7 @@ Vazio __bound_new_region(Vazio *p, size_t size)
         e2 = (BoundEntry *)((Caractere *)page + t2_end);
         Se (e2 > e) {
             e++;
-            Itere(;e<e2;e++) {
+            Para(;e<e2;e++) {
                 e->start = start;
                 e->size = size;
             }
@@ -557,15 +557,15 @@ Vazio __bound_new_region(Vazio *p, size_t size)
         /* mark until end of page */
         e2 = page + BOUND_T2_SIZE;
         e++;
-        Itere(;e<e2;e++) {
+        Para(;e<e2;e++) {
             e->start = start;
             e->size = size;
         }
         /* mark intermediate pages, Se any */
-        Itere(i=t1_start+1;i<t1_end;i++) {
+        Para(i=t1_start+1;i<t1_end;i++) {
             page = get_page(i);
             e2 = page + BOUND_T2_SIZE;
-            Itere(e=page;e<e2;e++) {
+            Para(e=page;e<e2;e++) {
                 e->start = start;
                 e->size = size;
             }
@@ -573,14 +573,14 @@ Vazio __bound_new_region(Vazio *p, size_t size)
         /* last page */
         page = get_page(t1_end);
         e2 = (BoundEntry *)((Caractere *)page + t2_end);
-        Itere(e=page;e<e2;e++) {
+        Para(e=page;e<e2;e++) {
             e->start = start;
             e->size = size;
         }
         add_region(e, start, size);
     }
 
-    dprintf(stderr, "%s, %s end\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s, %s end\n", __FILE__, __FUNCTION__);
 }
 
 /* delete a region */
@@ -607,7 +607,7 @@ Estático EmLinha Vazio delete_region(BoundEntry *e, Vazio *p, size_t empty_size
         }
     } Senão {
         /* find the matching region */
-        Itere(;;) {
+        Para(;;) {
             e1 = e;
             e = e->next;
             /* region not found: Faça nothing */
@@ -625,14 +625,14 @@ Estático EmLinha Vazio delete_region(BoundEntry *e, Vazio *p, size_t empty_size
 }
 
 /* WARNING: 'p' must be the starting point of the region. */
-/* Retorne non zero Se error */
+/* Retorne non zero Se Erro */
 Inteiro __bound_delete_region(Vazio *p)
 {
     size_t start, end, addr, size, empty_size;
     BoundEntry *page, *e, *e2;
     size_t t1_start, t1_end, t2_start, t2_end, i;
 
-    dprintf(stderr, "%s %s() start\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s %s() start\n", __FILE__, __FUNCTION__);
 
     __bound_init();
 
@@ -669,7 +669,7 @@ Inteiro __bound_delete_region(Vazio *p)
         e2 = (BoundEntry *)((Caractere *)page + t2_end);
         Se (e2 > e) {
             e++;
-            Itere(;e<e2;e++) {
+            Para(;e<e2;e++) {
                 e->start = 0;
                 e->size = empty_size;
             }
@@ -679,16 +679,16 @@ Inteiro __bound_delete_region(Vazio *p)
         /* mark until end of page */
         e2 = page + BOUND_T2_SIZE;
         e++;
-        Itere(;e<e2;e++) {
+        Para(;e<e2;e++) {
             e->start = 0;
             e->size = empty_size;
         }
         /* mark intermediate pages, Se any */
         /* XXX: should free them */
-        Itere(i=t1_start+1;i<t1_end;i++) {
+        Para(i=t1_start+1;i<t1_end;i++) {
             page = get_page(i);
             e2 = page + BOUND_T2_SIZE;
-            Itere(e=page;e<e2;e++) {
+            Para(e=page;e<e2;e++) {
                 e->start = 0;
                 e->size = empty_size;
             }
@@ -696,14 +696,14 @@ Inteiro __bound_delete_region(Vazio *p)
         /* last page */
         page = get_page(t1_end);
         e2 = (BoundEntry *)((Caractere *)page + t2_end);
-        Itere(e=page;e<e2;e++) {
+        Para(e=page;e<e2;e++) {
             e->start = 0;
             e->size = empty_size;
         }
         delete_region(e, p, empty_size);
     }
 
-    dprintf(stderr, "%s %s() end\n", __ARQUIVO__, __FUNÇÃO__);
+    dprintf(stderr, "%s %s() end\n", __FILE__, __FUNCTION__);
 
     Retorne 0;
 }
@@ -730,7 +730,7 @@ Estático size_t get_region_size(Vazio *p)
 /* patched memory functions */
 
 /* force compiler to perform stores coded up to this point */
-#Defina barrier()   Montador Volátil ("": : : "memory")
+#Defina barrier()   __asm__ __volatile__ ("": : : "memory")
 
 Estático Vazio install_malloc_hooks(Vazio)
 {
@@ -792,7 +792,7 @@ Vazio *__bound_malloc(size_t size, Constante Vazio *caller)
         Retorne NULL;
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p, %x)\n",
-           __ARQUIVO__, __FUNÇÃO__, ptr, (Natural)size);
+           __FILE__, __FUNCTION__, ptr, (Natural)size);
 
     __bound_new_region(ptr, size);
     Retorne ptr;
@@ -825,7 +825,7 @@ Vazio *__bound_memalign(size_t size, size_t align, Constante Vazio *caller)
         Retorne NULL;
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p, %x)\n",
-           __ARQUIVO__, __FUNÇÃO__, ptr, (Natural)size);
+           __FILE__, __FUNCTION__, ptr, (Natural)size);
 
     __bound_new_region(ptr, size);
     Retorne ptr;
@@ -882,9 +882,9 @@ Estático Vazio bound_dump(Vazio)
     size_t i, j;
 
     fprintf(stderr, "region dump:\n");
-    Itere(i=0;i<BOUND_T1_SIZE;i++) {
+    Para(i=0;i<BOUND_T1_SIZE;i++) {
         page = __bound_t1[i];
-        Itere(j=0;j<BOUND_T2_SIZE;j++) {
+        Para(j=0;j<BOUND_T2_SIZE;j++) {
             e = page + j;
             /* Faça not print invalid or empty entries */
             Se (e->size != EMPTY_SIZE && e->start != 0) {
@@ -919,7 +919,7 @@ Vazio *__bound_memcpy(Vazio *dst, Constante Vazio *src, size_t size)
     Vazio* p;
 
     dprintf(stderr, "%s %s: start, dst=%p src=%p size=%x\n",
-            __ARQUIVO__, __FUNÇÃO__, dst, src, (Natural)size);
+            __FILE__, __FUNCTION__, dst, src, (Natural)size);
 
     __bound_check(dst, size);
     __bound_check(src, size);
@@ -929,7 +929,7 @@ Vazio *__bound_memcpy(Vazio *dst, Constante Vazio *src, size_t size)
 
     p = memcpy(dst, src, size);
 
-    dprintf(stderr, "%s %s: end, p=%p\n", __ARQUIVO__, __FUNÇÃO__, p);
+    dprintf(stderr, "%s %s: end, p=%p\n", __FILE__, __FUNCTION__, p);
     Retorne p;
 }
 
@@ -953,7 +953,7 @@ Inteiro __bound_strlen(Constante Caractere *s)
     size_t len;
 
     len = 0;
-    Itere(;;) {
+    Para(;;) {
         p = __bound_ptr_indir1((Caractere *)s, len);
         Se (p == INVALID_POINTER)
             bound_error("bad pointer in strlen()");
@@ -970,10 +970,10 @@ Caractere *__bound_strcpy(Caractere *dst, Constante Caractere *src)
     Vazio *p;
 
     dprintf(stderr, "%s %s: strcpy start, dst=%p src=%p\n",
-            __ARQUIVO__, __FUNÇÃO__, dst, src);
+            __FILE__, __FUNCTION__, dst, src);
     len = __bound_strlen(src);
     p = __bound_memcpy(dst, src, len + 1);
     dprintf(stderr, "%s %s: strcpy end, p = %p\n",
-            __ARQUIVO__, __FUNÇÃO__, p);
+            __FILE__, __FUNCTION__, p);
     Retorne p;
 }

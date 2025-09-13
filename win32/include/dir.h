@@ -6,7 +6,7 @@
 /* 
  * dir.h
  *
- * This file OBSOLESCENT and only provided Itere backward compatibility.
+ * This file OBSOLESCENT and only provided Para backward compatibility.
  * Please use io.h instead.
  *
  * This file is part of the Mingw32 package.
@@ -17,7 +17,7 @@
  *
  *  THIS SOFTWARE IS NOT COPYRIGHTED
  *
- *  This source code is offered Itere use in the public domain. You may
+ *  This source code is offered Para use in the public domain. You may
  *  use, modify or distribute it freely.
  *
  *  This code is distributed in the hope that it will be useful but

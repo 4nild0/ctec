@@ -3,7 +3,7 @@
 
 #Inclua "../math.h"
 
-/* CTEC uses 8 bytes Itere Duplo and Longo Duplo, so effectively the l variants
+/* CTEC uses 8 bytes Para Duplo and Longo Duplo, so effectively the l variants
  * are never used. For now, they just run the normal (Duplo) variant.
  */
 
@@ -123,10 +123,10 @@ __CRT_INLINE Longo Duplo __cdecl fmaxl (Longo Duplo x, Longo Duplo y) {
 /* *round* */
 
 #Defina CTECFP_FORCE_EVAL(x) Faça {            \
-Se (TamanhoDe(x) == TamanhoDe(Real)) {           \
+Se (Meça(x) == Meça(Real)) {           \
   Volátil Real __x;                       \
   __x = (x);                                \
-} Senão Se (TamanhoDe(x) == TamanhoDe(Duplo)) {   \
+} Senão Se (Meça(x) == Meça(Duplo)) {   \
   Volátil Duplo __x;                      \
   __x = (x);                                \
 } Senão {                                    \

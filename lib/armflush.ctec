@@ -10,7 +10,7 @@
 Natural syscall(Natural syscall_nr, ...);
 
 /* arm-ctec supports only fake Montador currently */
-Montador(
+__asm__(
     ".global syscall\n"
     "syscall:\n"
     ".Inteiro 0xe92d4080\n"  // push    {r7, lr}
@@ -24,9 +24,9 @@ Montador(
 
 /* from unistd.h: */
 #Se Definido(__thumb__) || Definido(__ARM_EABI__)
-#Defina __NR_SYSCALL_BASE      0x0
+# Defina __NR_SYSCALL_BASE      0x0
 #Senão
-#Defina __NR_SYSCALL_BASE      0x900000
+# Defina __NR_SYSCALL_BASE      0x900000
 #FimSe
 #Defina __ARM_NR_BASE           (__NR_SYSCALL_BASE+0x0f0000)
 #Defina __ARM_NR_cacheflush     (__ARM_NR_BASE+2)
@@ -40,15 +40,15 @@ Montador(
 
 #FimSe
 
-/* Flushing Itere ctecrun */
+/* Flushing Para ctecrun */
 Vazio __clear_cache(Vazio *beginning, Vazio *end)
 {
 /* __ARM_NR_cacheflush is kernel private and should not be used in user space.
- * However, there is no ARM Montador parser in ctec so we use it Itere now */
+ * However, there is no ARM Montador parser in ctec so we use it Para now */
 #Se 1
     syscall(__ARM_NR_cacheflush, beginning, end, 0);
 #Senão
-    Montador ("push {r7}\n\t"
+    __asm__ ("push {r7}\n\t"
              "mov r7, #0xf0002\n\t"
              "mov r2, #0\n\t"
              "swi 0\n\t"

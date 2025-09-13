@@ -12,7 +12,7 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
   _CRTIMP errno_t __cdecl _cgets_s(Caractere *_Buffer,size_t _Size,size_t *_SizeRead);

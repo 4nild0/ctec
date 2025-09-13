@@ -13,7 +13,7 @@
 
 #SeNãoDefinido _POSIX_
 #SeDefinido __cplusplus
-Externo "C" {
+Importe "C" {
 #FimSe
 
 #Defina _P_WAIT 0
@@ -101,7 +101,7 @@ Externo "C" {
   Vazio __cdecl __security_check_cookie(uintptr_t _StackCookie);
   __declspec(noreturn) Vazio __cdecl __report_gsfailure(uintptr_t _StackCookie);
 #FimSe
-  Externo uintptr_t __security_cookie;
+  Importe uintptr_t __security_cookie;
 
   intptr_t __cdecl _loaddll(Caractere *_Filename);
   Inteiro __cdecl _unloaddll(intptr_t _Handle);
@@ -112,12 +112,12 @@ Externo "C" {
   WINBOOL WINAPI DllMain(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
   WINBOOL WINAPI _CRT_INIT(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
   WINBOOL WINAPI _wCRT_INIT(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
-  Externo WINBOOL (WINAPI *Constante _pRawDllMain)(HANDLE,DWORD,LPVOID);
+  Importe WINBOOL (WINAPI *Constante _pRawDllMain)(HANDLE,DWORD,LPVOID);
 #Senão
   Inteiro __stdcall DllMain(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
   Inteiro __stdcall _CRT_INIT(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
   Inteiro __stdcall _wCRT_INIT(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
-  Externo Inteiro (__stdcall *Constante _pRawDllMain)(Vazio *,Natural,Vazio *);
+  Importe Inteiro (__stdcall *Constante _pRawDllMain)(Vazio *,Natural,Vazio *);
 #FimSe
 #FimSe
 
@@ -150,7 +150,7 @@ Externo "C" {
   Inteiro __cdecl getpid(Vazio);
 #SeDefinido __GNUC__
   /* Those methods are predefined by gcc builtins to Retorne Inteiro. So to prevent
-     stupid warnings, define them in POSIX way.  This is save, because those
+     stupid warnings, Defina them in POSIX way.  This is save, because those
      methods Faça not Retorne in success Caso, so that the Retorne value is not
      really dependent to its scalar width.  */
   Inteiro __cdecl execv(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);

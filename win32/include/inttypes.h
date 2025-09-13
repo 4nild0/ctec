@@ -14,7 +14,7 @@
 #Inclua <stddef.h>
 
 #SeDefinido	__cplusplus
-Externo	"C"	{
+Importe	"C"	{
 #FimSe
 
 Tipo Estrutura {
@@ -24,15 +24,15 @@ Tipo Estrutura {
 
 #Se !Definido(__cplusplus) || Definido(__STDC_FORMAT_MACROS)
 
-/* 7.8.1 Macros Itere format specifiers
+/* 7.8.1 Macros Para format specifiers
  * 
  * MS runtime does not yet understand C9x standard "ll"
  * length specifier. It appears to treat "ll" as "l".
- * The non-standard I64 length specifier causes warning in GCC,
+ * The non-standard I64 length specifier causes Aviso in GCC,
  * but understood by MS runtime functions.
  */
 
-/* fprintf macros Itere Bilateral types */
+/* fprintf macros Para Bilateral types */
 #Defina PRId8 "d"
 #Defina PRId16 "d"
 #Defina PRId32 "d"
@@ -84,7 +84,7 @@ Tipo Estrutura {
 
 #Defina PRIoMAX "I64o"
 
-/* fprintf macros Itere Natural types */
+/* fprintf macros Para Natural types */
 #Defina PRIu8 "u"
 #Defina PRIu16 "u"
 #Defina PRIu32 "u"
@@ -138,8 +138,8 @@ Tipo Estrutura {
 #Defina PRIXMAX "I64X"
 
 /*
- *   fscanf macros Itere Bilateral Inteiro types
- *   NOTE: Se 32-bit Inteiro is used Itere int_fast8_t and int_fast16_t
+ *   fscanf macros Para Bilateral Inteiro types
+ *   NOTE: Se 32-bit Inteiro is used Para int_fast8_t and int_fast16_t
  *   (see stdint.h, 7.18.1.3), FAST8 and FAST16 should have
  *   no length identifiers
  */
@@ -200,7 +200,7 @@ Tipo Estrutura {
 
 #Defina SCNxMAX "I64x"
 
-/* fscanf macros Itere Natural Inteiro types */
+/* fscanf macros Para Natural Inteiro types */
 
 #Defina SCNu16 "hu"
 #Defina SCNu32 "u"
@@ -244,7 +244,7 @@ Tipo Estrutura {
 
 #Se Definido (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 /*
- * no length modifier Itere Caractere types prior to C9x
+ * no length modifier Para Caractere types prior to C9x
  * MS runtime  scanf appears to treat "hh" as "h" 
  */
 
@@ -278,17 +278,17 @@ __CRT_INLINE intmax_t __cdecl imaxabs (intmax_t j)
 	{Retorne	(j >= 0 ? j : -j);}
 imaxdiv_t __cdecl imaxdiv (intmax_t numer, intmax_t denom);
 
-/* 7.8.2 Conversion functions Itere greatest-width integer types */
+/* 7.8.2 Conversion functions Para greatest-width integer types */
 
-intmax_t __cdecl strtoimax (Constante Caractere* Restrito nptr,
-                            Caractere** Restrito endptr, Inteiro base);
-uintmax_t __cdecl strtoumax (Constante Caractere* Restrito nptr,
-			     Caractere** Restrito endptr, Inteiro base);
+intmax_t __cdecl strtoimax (Constante Caractere* __restrict__ nptr,
+                            Caractere** __restrict__ endptr, Inteiro base);
+uintmax_t __cdecl strtoumax (Constante Caractere* __restrict__ nptr,
+			     Caractere** __restrict__ endptr, Inteiro base);
 
-intmax_t __cdecl wcstoimax (Constante wchar_t* Restrito nptr,
-                            wchar_t** Restrito endptr, Inteiro base);
-uintmax_t __cdecl wcstoumax (Constante wchar_t* Restrito nptr,
-			     wchar_t** Restrito endptr, Inteiro base);
+intmax_t __cdecl wcstoimax (Constante wchar_t* __restrict__ nptr,
+                            wchar_t** __restrict__ endptr, Inteiro base);
+uintmax_t __cdecl wcstoumax (Constante wchar_t* __restrict__ nptr,
+			     wchar_t** __restrict__ endptr, Inteiro base);
 
 #SeDefinido	__cplusplus
 }

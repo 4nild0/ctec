@@ -77,11 +77,11 @@ static int nb_states;
 #ifndef CONFIG_CTEC_ASM
 ST_FUNC void asm_instr(void)
 {
-    ctec_error("Montador() EmLinha não é suportado");
+    ctec_error("inline asm() not supported");
 }
 ST_FUNC void asm_global_instr(void)
 {
-    ctec_error("Montador() EmLinha não é suportado");
+    ctec_error("inline asm() not supported");
 }
 #endif
 
@@ -206,7 +206,7 @@ PUB_FUNC void *ctec_malloc(unsigned long size)
     void *ptr;
     ptr = malloc(size);
     if (!ptr && size)
-        ctec_error("(Aloque) memória cheia");
+        ctec_error("memory full (malloc)");
     return ptr;
 }
 
@@ -292,7 +292,7 @@ PUB_FUNC void *ctec_malloc_debug(unsigned long size, const char *file, int line)
 
     header = malloc(sizeof(mem_debug_header_t) + size);
     if (!header)
-        ctec_error("(Aloque) memória cheia");
+        ctec_error("memory full (malloc)");
 
     header->magic1 = MEM_DEBUG_MAGIC1;
     header->magic2 = MEM_DEBUG_MAGIC2;
@@ -840,26 +840,26 @@ LIBCTECAPI CTECState *ctec_new(void)
     /* TinyCC & gcc defines */
 #if PTR_SIZE == 4
     /* 32bit systems. */
-    ctec_define_symbol(s, "TIPO_TAMANHO", "Natural Inteiro");
-    ctec_define_symbol(s, "DIFERENÇA_ENTRE_PONTEIROS", "Inteiro");
+    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Inteiro");
+    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Inteiro");
     ctec_define_symbol(s, "__ILP32__", NULL);
 #elif LONG_SIZE == 4
     /* 64bit Windows. */
-    ctec_define_symbol(s, "TIPO_TAMANHO", "Natural Longo Longo");
-    ctec_define_symbol(s, "DIFERENÇA_ENTRE_PONTEIROS", "Longo Longo");
+    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Longo Longo");
+    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Longo Longo");
     ctec_define_symbol(s, "__LLP64__", NULL);
 #else
     /* Other 64bit systems. */
-    ctec_define_symbol(s, "TIPO_TAMANHO", "Natural Longo");
-    ctec_define_symbol(s, "DIFERENÇA_ENTRE_PONTEIROS", "Longo");
+    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Longo");
+    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Longo");
     ctec_define_symbol(s, "__LP64__", NULL);
 #endif
 
 #ifdef CTEC_TARGET_PE
-    ctec_define_symbol(s, "CARACTERE_UNICODE", "Natural Curto");
+    ctec_define_symbol(s, "__WCHAR_TYPE__", "Natural Curto");
     ctec_define_symbol(s, "__WINT_TYPE__", "Natural Curto");
 #else
-    ctec_define_symbol(s, "CARACTERE_UNICODE", "Inteiro");
+    ctec_define_symbol(s, "__WCHAR_TYPE__", "Inteiro");
     /* wint_t is unsigned int by default, but (signed) int on BSDs
        and unsigned short on windows.  Other OSes might have still
        other conventions, sigh.  */
@@ -884,7 +884,7 @@ LIBCTECAPI CTECState *ctec_new(void)
 # if defined(CTEC_MUSL)
     ctec_define_symbol(s, "__DEFINED_va_list", "");
     ctec_define_symbol(s, "__DEFINED___isoc_va_list", "");
-    ctec_define_symbol(s, "__isoc_va_list", "void *");
+    ctec_define_symbol(s, "__isoc_va_list", "Vazio *");
 # endif /* CTEC_MUSL */
     /* Some GCC builtins that are simple to express as macros.  */
     ctec_define_symbol(s, "__builtin_extract_return_addr(x)", "x");
@@ -1564,7 +1564,7 @@ static const FlagDef options_W[] = {
 };
 
 static const FlagDef options_f[] = {
-    { offsetof(CTECState, char_is_unsigned), 0, "Natural-char" },
+    { offsetof(CTECState, char_is_unsigned), 0, "unsigned-char" },
     { offsetof(CTECState, char_is_unsigned), FD_INVERT, "signed-char" },
     { offsetof(CTECState, nocommon), FD_INVERT, "common" },
     { offsetof(CTECState, leading_underscore), 0, "leading-underscore" },
