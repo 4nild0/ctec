@@ -23,10 +23,10 @@ Inteiro APIENTRY wWinMain(HINSTANCE, HINSTANCE, LPWSTR, Inteiro);
 #Defina _runtwinmain _runwinmain
 #FimSe
 
-Tipo Estrutura { Inteiro newmode; } _startupinfo;
+Pseudônimo Estrutura { Inteiro newmode; } _startupinfo;
 Inteiro __cdecl __tgetmainargs(Inteiro *pargc, _TCHAR ***pargv, _TCHAR ***penv, Inteiro globb, _startupinfo*);
 
-Estático Inteiro go_winmain(TCHAR *arg1)
+Fixo Inteiro go_winmain(TCHAR *arg1)
 {
     STARTUPINFO si;
     _TCHAR *szCmd, *p;

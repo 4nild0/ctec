@@ -38,13 +38,13 @@
   either set or clear. fexcept_t could be  structure that holds more
   info about the fp environment.
 */
-Tipo Natural Curto fexcept_t;
+Pseudônimo Natural Curto fexcept_t;
 
 /* This 32-byte Estrutura represents the entire floating point
    environment as stored by fnstenv or fstenv, augmented by
-   the  contents of the MXCSR Registrador, as stored by stmxcsr
+   the  contents of the MXCSR Prioridade, as stored by stmxcsr
    (Se CPU supports it). */
-Tipo Estrutura
+Pseudônimo Estrutura
 {
   Natural Curto __control_word;
   Natural Curto __unused0;
@@ -58,7 +58,7 @@ Tipo Estrutura
   Natural Inteiro	 __data_offset;
   Natural Curto __data_selector;  
   Natural Curto __unused3;
-  Natural Inteiro   __mxcsr; /* contents of the MXCSR Registrador  */
+  Natural Inteiro   __mxcsr; /* contents of the MXCSR Prioridade  */
 } fenv_t;
 
 
@@ -66,39 +66,39 @@ Tipo Estrutura
   different fp environments */
   
 /* The Padrão Intel x87 floating point environment (64-bit mantissa) */
-#Defina FE_PC64_ENV ((Constante fenv_t *)-1)
+#Defina FE_PC64_ENV ((Imutável fenv_t *)-1)
 
 /* The floating point environment set by MSVCRT _fpreset (53-bit mantissa) */
-#Defina FE_PC53_ENV ((Constante fenv_t *)-2)
+#Defina FE_PC53_ENV ((Imutável fenv_t *)-2)
 
 /* The FE_DFL_ENV macro is required by standard.
   fesetenv will use the environment set at app startup.*/
-#Defina FE_DFL_ENV ((Constante fenv_t *) 0)
+#Defina FE_DFL_ENV ((Imutável fenv_t *) 0)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 /*TODO: Some of these could be inlined */
 /* 7.6.2 Exception */
 
-Importe Inteiro __cdecl feclearexcept (Inteiro);
-Importe Inteiro __cdecl fegetexceptflag (fexcept_t * flagp, Inteiro excepts);
-Importe Inteiro __cdecl feraiseexcept (Inteiro excepts );
-Importe Inteiro __cdecl fesetexceptflag (Constante fexcept_t *, Inteiro);
-Importe Inteiro __cdecl fetestexcept (Inteiro excepts);
+Externo Inteiro __cdecl feclearexcept (Inteiro);
+Externo Inteiro __cdecl fegetexceptflag (fexcept_t * flagp, Inteiro excepts);
+Externo Inteiro __cdecl feraiseexcept (Inteiro excepts );
+Externo Inteiro __cdecl fesetexceptflag (Imutável fexcept_t *, Inteiro);
+Externo Inteiro __cdecl fetestexcept (Inteiro excepts);
 
 /* 7.6.3 Rounding */
 
-Importe Inteiro __cdecl fegetround (Vazio);
-Importe Inteiro __cdecl fesetround (Inteiro mode);
+Externo Inteiro __cdecl fegetround (Vazio);
+Externo Inteiro __cdecl fesetround (Inteiro mode);
 
 /* 7.6.4 Environment */
 
-Importe Inteiro __cdecl fegetenv(fenv_t * envp);
-Importe Inteiro __cdecl fesetenv(Constante fenv_t * );
-Importe Inteiro __cdecl feupdateenv(Constante fenv_t *);
-Importe Inteiro __cdecl feholdexcept(fenv_t *);
+Externo Inteiro __cdecl fegetenv(fenv_t * envp);
+Externo Inteiro __cdecl fesetenv(Imutável fenv_t * );
+Externo Inteiro __cdecl feupdateenv(Imutável fenv_t *);
+Externo Inteiro __cdecl feholdexcept(fenv_t *);
 
 #SeDefinido __cplusplus
 }

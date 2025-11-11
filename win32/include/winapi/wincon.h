@@ -7,22 +7,22 @@
 #Defina _WINCON_
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
-  Tipo Estrutura _COORD {
+  Pseudônimo Estrutura _COORD {
     SHORT X;
     SHORT Y;
   } COORD,*PCOORD;
 
-  Tipo Estrutura _SMALL_RECT {
+  Pseudônimo Estrutura _SMALL_RECT {
     SHORT Left;
     SHORT Top;
     SHORT Right;
     SHORT Bottom;
   } SMALL_RECT,*PSMALL_RECT;
 
-  Tipo Estrutura _KEY_EVENT_RECORD {
+  Pseudônimo Estrutura _KEY_EVENT_RECORD {
     WINBOOL bKeyDown;
     WORD wRepeatCount;
     WORD wVirtualKeyCode;
@@ -51,7 +51,7 @@ Importe "C" {
 #Defina NLS_IME_CONVERSION 0x800000
 #Defina NLS_IME_DISABLE 0x20000000
 
-  Tipo Estrutura _MOUSE_EVENT_RECORD {
+  Pseudônimo Estrutura _MOUSE_EVENT_RECORD {
     COORD dwMousePosition;
     DWORD dwButtonState;
     DWORD dwControlKeyState;
@@ -68,19 +68,19 @@ Importe "C" {
 #Defina DOUBLE_CLICK 0x2
 #Defina MOUSE_WHEELED 0x4
 
-  Tipo Estrutura _WINDOW_BUFFER_SIZE_RECORD {
+  Pseudônimo Estrutura _WINDOW_BUFFER_SIZE_RECORD {
     COORD dwSize;
   } WINDOW_BUFFER_SIZE_RECORD,*PWINDOW_BUFFER_SIZE_RECORD;
 
-  Tipo Estrutura _MENU_EVENT_RECORD {
+  Pseudônimo Estrutura _MENU_EVENT_RECORD {
     UINT dwCommandId;
   } MENU_EVENT_RECORD,*PMENU_EVENT_RECORD;
 
-  Tipo Estrutura _FOCUS_EVENT_RECORD {
+  Pseudônimo Estrutura _FOCUS_EVENT_RECORD {
     WINBOOL bSetFocus;
   } FOCUS_EVENT_RECORD,*PFOCUS_EVENT_RECORD;
 
-  Tipo Estrutura _INPUT_RECORD {
+  Pseudônimo Estrutura _INPUT_RECORD {
     WORD EventType;
     União {
       KEY_EVENT_RECORD KeyEvent;
@@ -97,7 +97,7 @@ Importe "C" {
 #Defina MENU_EVENT 0x8
 #Defina FOCUS_EVENT 0x10
 
-  Tipo Estrutura _CHAR_INFO {
+  Pseudônimo Estrutura _CHAR_INFO {
     União {
       WCHAR UnicodeChar;
       CHAR AsciiChar;
@@ -123,7 +123,7 @@ Importe "C" {
 
 #Defina COMMON_LVB_SBCSDBCS 0x300
 
-  Tipo Estrutura _CONSOLE_SCREEN_BUFFER_INFO {
+  Pseudônimo Estrutura _CONSOLE_SCREEN_BUFFER_INFO {
     COORD dwSize;
     COORD dwCursorPosition;
     WORD wAttributes;
@@ -131,17 +131,17 @@ Importe "C" {
     COORD dwMaximumWindowSize;
   } CONSOLE_SCREEN_BUFFER_INFO,*PCONSOLE_SCREEN_BUFFER_INFO;
 
-  Tipo Estrutura _CONSOLE_CURSOR_INFO {
+  Pseudônimo Estrutura _CONSOLE_CURSOR_INFO {
     DWORD dwSize;
     WINBOOL bVisible;
   } CONSOLE_CURSOR_INFO,*PCONSOLE_CURSOR_INFO;
 
-  Tipo Estrutura _CONSOLE_FONT_INFO {
+  Pseudônimo Estrutura _CONSOLE_FONT_INFO {
     DWORD nFont;
     COORD dwFontSize;
   } CONSOLE_FONT_INFO,*PCONSOLE_FONT_INFO;
 
-  Tipo Estrutura _CONSOLE_SELECTION_INFO {
+  Pseudônimo Estrutura _CONSOLE_SELECTION_INFO {
     DWORD dwFlags;
     COORD dwSelectionAnchor;
     SMALL_RECT srSelection;
@@ -153,7 +153,7 @@ Importe "C" {
 #Defina CONSOLE_MOUSE_SELECTION 0x4
 #Defina CONSOLE_MOUSE_DOWN 0x8
 
-  Tipo WINBOOL (WINAPI *PHANDLER_ROUTINE)(DWORD CtrlType);
+  Pseudônimo WINBOOL (WINAPI *PHANDLER_ROUTINE)(DWORD CtrlType);
 
 #Defina CTRL_C_EVENT 0
 #Defina CTRL_BREAK_EVENT 1

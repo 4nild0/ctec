@@ -1,8 +1,8 @@
 #define M_RETI_ARG27(x,y,z,aa, ...)    aa
-#define M_RET_ARG27(...)        M_RETI_ARG27(__VA_ARGS__)
-#define M_COMMA_P(...)          M_RET_ARG27(__VA_ARGS__, 1, 1, 0, useless)
+#define M_RET_ARG27(...)        M_RETI_ARG27(ARGUMENTOS_VARIÁVEIS)
+#define M_COMMA_P(...)          M_RET_ARG27(ARGUMENTOS_VARIÁVEIS, 1, 1, 0, useless)
 #define M_EMPTYI_DETECT(...)    0, 1,
-#define M_EMPTYI_P_C1(...)      M_COMMA_P(M_EMPTYI_DETECT __VA_ARGS__ () )
+#define M_EMPTYI_P_C1(...)      M_COMMA_P(M_EMPTYI_DETECT ARGUMENTOS_VARIÁVEIS () )
 #define EX
 #define empty(x)
 #define fnlike(x) yeah x

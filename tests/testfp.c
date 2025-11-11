@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define check(x) ((x) ? (void)0 : check_fail(#x, __FILE__, __LINE__))
+#define check(x) ((x) ? (void)0 : check_fail(#x, ARQUIVO, LINHA))
 
 void check_fail(const char *assertion, const char *file, unsigned int line)
 {

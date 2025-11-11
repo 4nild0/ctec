@@ -11,17 +11,17 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
-  _CRTIMP errno_t __cdecl _access_s(Constante Caractere *_Filename,Inteiro _AccessMode);
+  _CRTIMP errno_t __cdecl _access_s(Imutável Caractere *_Filename,Inteiro _AccessMode);
   _CRTIMP errno_t __cdecl _chsize_s(Inteiro _FileHandle,__int64 _Size);
   _CRTIMP errno_t __cdecl _mktemp_s(Caractere *_TemplateName,size_t _Size);
   _CRTIMP errno_t __cdecl _umask_s(Inteiro _NewMode,Inteiro *_OldMode);
 
 #SeNãoDefinido _WIO_S_DEFINED
 #Defina _WIO_S_DEFINED
-  _CRTIMP errno_t __cdecl _waccess_s(Constante wchar_t *_Filename,Inteiro _AccessMode);
+  _CRTIMP errno_t __cdecl _waccess_s(Imutável wchar_t *_Filename,Inteiro _AccessMode);
   _CRTIMP errno_t __cdecl _wmktemp_s(wchar_t *_TemplateName,size_t _SizeInWords);
 #FimSe
 

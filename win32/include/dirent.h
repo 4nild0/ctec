@@ -19,7 +19,7 @@
 #SeNãoDefinido RC_INVOKED
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
   Estrutura dirent
@@ -37,7 +37,7 @@ Importe "C" {
   * except as an argument to one of the functions below.
   * dd_stat field is now Inteiro (was Curto in older versions).
   */
-  Tipo Estrutura
+  Pseudônimo Estrutura
   {
     /* disk transfer area Para this dir */
     Estrutura _finddata_t	dd_dta;
@@ -62,7 +62,7 @@ Importe "C" {
     Caractere			dd_name[1];
   } DIR;
 
-  DIR* __cdecl opendir (Constante Caractere*);
+  DIR* __cdecl opendir (Imutável Caractere*);
   Estrutura dirent* __cdecl readdir (DIR*);
   Inteiro __cdecl closedir (DIR*);
   Vazio __cdecl rewinddir (DIR*);
@@ -85,7 +85,7 @@ Importe "C" {
   * This is an internal data structure. Good programmers will not use it
   * except as an argument to one of the functions below.
   */
-  Tipo Estrutura
+  Pseudônimo Estrutura
   {
     /* disk transfer area Para this dir */
     Estrutura _wfinddata_t	dd_dta;
@@ -112,7 +112,7 @@ Importe "C" {
 
 
 
-  _WDIR* __cdecl _wopendir (Constante wchar_t*);
+  _WDIR* __cdecl _wopendir (Imutável wchar_t*);
   Estrutura _wdirent*  __cdecl _wreaddir (_WDIR*);
   Inteiro __cdecl _wclosedir (_WDIR*);
   Vazio __cdecl _wrewinddir (_WDIR*);

@@ -28,11 +28,11 @@
 #Defina _runtmain _runmain
 #FimSe
 
-Tipo Estrutura { Inteiro newmode; } _startupinfo;
+Pseudônimo Estrutura { Inteiro newmode; } _startupinfo;
 Inteiro __cdecl __tgetmainargs(Inteiro *pargc, _TCHAR ***pargv, _TCHAR ***penv, Inteiro globb, _startupinfo*);
 Vazio __cdecl __set_app_type(Inteiro apptype);
 Natural Inteiro __cdecl _controlfp(Natural Inteiro new_value, Natural Inteiro mask);
-Importe Inteiro _tmain(Inteiro argc, _TCHAR * argv[], _TCHAR * env[]);
+Externo Inteiro _tmain(Inteiro argc, _TCHAR * argv[], _TCHAR * env[]);
 
 /* Allow command-Linha globbing with "Inteiro _dowildcard = 1;" in the user source */
 Inteiro _dowildcard;

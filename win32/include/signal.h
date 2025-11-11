@@ -9,12 +9,12 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _SIG_ATOMIC_T_DEFINED
 #Defina _SIG_ATOMIC_T_DEFINED
-  Tipo Inteiro sig_atomic_t;
+  Pseudônimo Inteiro sig_atomic_t;
 #FimSe
 
 #Defina NSIG 23
@@ -42,7 +42,7 @@ Importe "C" {
 
 #Defina SIGABRT_COMPAT 6
 
-  Tipo	Vazio (*__p_sig_fn_t)(Inteiro);
+  Pseudônimo	Vazio (*__p_sig_fn_t)(Inteiro);
 
 #Defina SIG_DFL (__p_sig_fn_t)0
 #Defina SIG_IGN (__p_sig_fn_t)1
@@ -51,7 +51,7 @@ Importe "C" {
 #Defina SIG_ACK (__p_sig_fn_t)4
 #Defina SIG_ERR (__p_sig_fn_t)-1
 
-  Importe Vazio **__cdecl __pxcptinfoptrs(Vazio);
+  Externo Vazio **__cdecl __pxcptinfoptrs(Vazio);
 #Defina _pxcptinfoptrs (*__pxcptinfoptrs())
 
   __p_sig_fn_t __cdecl signal(Inteiro _SigNum,__p_sig_fn_t _Func);

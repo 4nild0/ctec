@@ -10,7 +10,7 @@
 
 Caractere szAppName[] = APPNAME; // The name of this application
 Caractere szTitle[]   = APPNAME; // The title bar text
-Constante Caractere *pWindowText;
+Imutável Caractere *pWindowText;
 
 Vazio CenterWindow(HWND hWnd);
 

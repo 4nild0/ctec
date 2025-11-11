@@ -1,7 +1,7 @@
 #define D1(s, ...) s
-#define D2(s, ...) s D1(__VA_ARGS__)
-#define D3(s, ...) s D2(__VA_ARGS__)
-#define D4(s, ...) s D3(__VA_ARGS__)
+#define D2(s, ...) s D1(ARGUMENTOS_VARIÁVEIS)
+#define D3(s, ...) s D2(ARGUMENTOS_VARIÁVEIS)
+#define D4(s, ...) s D3(ARGUMENTOS_VARIÁVEIS)
 
 D1(a)
 D2(a, b)
@@ -27,5 +27,5 @@ x GNU_COMMA() y
 #define __NORETURN __sun_attr__((__noreturn__))
 __NORETURN
 #define X(...)
-#define Y(...)  1 __VA_ARGS__ 2
+#define Y(...)  1 ARGUMENTOS_VARIÁVEIS 2
 Y(X X() ())

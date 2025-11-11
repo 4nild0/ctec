@@ -40,7 +40,7 @@
 
 #Defina __MSVCRT__ 1
 #Esqueça _MSVCRT_
-#Defina __MINGW_IMPORT Importe __declspec(dllimport)
+#Defina __MINGW_IMPORT Externo __declspec(dllimport)
 #Defina __MINGW_ATTRIB_NORETURN
 #Defina __MINGW_ATTRIB_CONST
 #Defina __MINGW_ATTRIB_DEPRECATED
@@ -50,8 +50,8 @@
 #Defina __MINGW_NOTHROW
 #Defina __GNUC_VA_LIST
 
-#Defina _CRTIMP Importe
-#Defina __CRT_INLINE Importe __inline__
+#Defina _CRTIMP Externo
+#Defina __CRT_INLINE Externo __inline__
 
 #Defina _CRT_ALIGN(x) __attribute__((aligned(x)))
 #Defina DECLSPEC_ALIGN(x) __attribute__((aligned(x)))
@@ -101,39 +101,39 @@
 
 #SeNãoDefinido _TIME32_T_DEFINED
 #Defina _TIME32_T_DEFINED
-Tipo Longo __time32_t;
+Pseudônimo Longo __time32_t;
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Defina _TIME64_T_DEFINED
-Tipo Longo Longo __time64_t;
+Pseudônimo Longo Longo __time64_t;
 #FimSe
 
 #SeNãoDefinido _TIME_T_DEFINED
 #Defina _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-Tipo __time32_t time_t;
+Pseudônimo __time32_t time_t;
 #Senão
-Tipo __time64_t time_t;
+Pseudônimo __time64_t time_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _WCTYPE_T_DEFINED
 #Defina _WCTYPE_T_DEFINED
-Tipo wchar_t wctype_t;
+Pseudônimo wchar_t wctype_t;
 #FimSe
 
 #SeNãoDefinido _WINT_T
 #Defina _WINT_T
-Tipo __WINT_TYPE__ wint_t;
+Pseudônimo INTEIRO wint_t;
 #FimSe
 
-Tipo Inteiro errno_t;
+Pseudônimo Inteiro errno_t;
 #Defina _ERRCODE_DEFINED
 
-Tipo Estrutura threadlocaleinfostruct *pthreadlocinfo;
-Tipo Estrutura threadmbcinfostruct *pthreadmbcinfo;
-Tipo Estrutura localeinfo_struct _locale_tstruct,*_locale_t;
+Pseudônimo Estrutura threadlocaleinfostruct *pthreadlocinfo;
+Pseudônimo Estrutura threadmbcinfostruct *pthreadmbcinfo;
+Pseudônimo Estrutura localeinfo_struct _locale_tstruct,*_locale_t;
 
 /* Para winapi */
 #Defina _ANONYMOUS_UNION

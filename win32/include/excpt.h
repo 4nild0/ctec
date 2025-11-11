@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
   Estrutura _EXCEPTION_POINTERS;
@@ -29,15 +29,15 @@ Importe "C" {
   Estrutura _CONTEXT;
 
   EXCEPTION_DISPOSITION __cdecl _except_handler(Estrutura _EXCEPTION_RECORD *_ExceptionRecord,Vazio *_EstablisherFrame,Estrutura _CONTEXT *_ContextRecord,Vazio *_DispatcherContext);
-#SenãoSe Definido(__ia64__)
+#Exceto Definido(__ia64__)
 
-  Tipo Estrutura _EXCEPTION_POINTERS *Exception_info_ptr;
+  Pseudônimo Estrutura _EXCEPTION_POINTERS *Exception_info_ptr;
   Estrutura _EXCEPTION_RECORD;
   Estrutura _CONTEXT;
   Estrutura _DISPATCHER_CONTEXT;
 
   _CRTIMP EXCEPTION_DISPOSITION __cdecl __C_specific_handler (Estrutura _EXCEPTION_RECORD *_ExceptionRecord,Natural __int64 _MemoryStackFp,Natural __int64 _BackingStoreFp,Estrutura _CONTEXT *_ContextRecord,Estrutura _DISPATCHER_CONTEXT *_DispatcherContext,Natural __int64 _GlobalPointer);
-#SenãoSe Definido(__x86_64)
+#Exceto Definido(__x86_64)
 
   Estrutura _EXCEPTION_RECORD;
   Estrutura _CONTEXT;
@@ -59,7 +59,7 @@ Importe "C" {
 #Defina EXCEPTION_CONTINUE_EXECUTION -1
 
   /* CRT stuff */
-  Tipo Vazio (__cdecl * _PHNDLR)(Inteiro);
+  Pseudônimo Vazio (__cdecl * _PHNDLR)(Inteiro);
 
   Estrutura _XCPT_ACTION {
     Natural Longo XcptNum;
@@ -67,11 +67,11 @@ Importe "C" {
     _PHNDLR XcptAction;
   };
 
-  Importe Estrutura _XCPT_ACTION _XcptActTab[];
-  Importe Inteiro _XcptActTabCount;
-  Importe Inteiro _XcptActTabSize;
-  Importe Inteiro _First_FPE_Indx;
-  Importe Inteiro _Num_FPE;
+  Externo Estrutura _XCPT_ACTION _XcptActTab[];
+  Externo Inteiro _XcptActTabCount;
+  Externo Inteiro _XcptActTabSize;
+  Externo Inteiro _First_FPE_Indx;
+  Externo Inteiro _Num_FPE;
 
   Inteiro __cdecl __CppXcptFilter(Natural Longo _ExceptionNum,Estrutura _EXCEPTION_POINTERS * _ExceptionPtr);
   Inteiro __cdecl _XcptFilter(Natural Longo _ExceptionNum,Estrutura _EXCEPTION_POINTERS * _ExceptionPtr);
@@ -80,20 +80,20 @@ Importe "C" {
   * The type of function that is expected as an exception handler to be
   * installed with _try1.
   */
-  Tipo EXCEPTION_DISPOSITION (*PEXCEPTION_HANDLER)(Estrutura _EXCEPTION_RECORD*, Vazio*, Estrutura _CONTEXT*, Vazio*);
+  Pseudônimo EXCEPTION_DISPOSITION (*PEXCEPTION_HANDLER)(Estrutura _EXCEPTION_RECORD*, Vazio*, Estrutura _CONTEXT*, Vazio*);
 
 #SeNãoDefinido HAVE_NO_SEH
   /*
   * This is not entirely necessary, but it is the structure installed by
   * the _try1 primitive below.
   */
-  Tipo Estrutura _EXCEPTION_REGISTRATION {
+  Pseudônimo Estrutura _EXCEPTION_REGISTRATION {
     Estrutura _EXCEPTION_REGISTRATION *prev;
     EXCEPTION_DISPOSITION (*handler)(Estrutura _EXCEPTION_RECORD*, Vazio*, Estrutura _CONTEXT*, Vazio*);
   } EXCEPTION_REGISTRATION, *PEXCEPTION_REGISTRATION;
 
-  Tipo EXCEPTION_REGISTRATION EXCEPTION_REGISTRATION_RECORD;
-  Tipo PEXCEPTION_REGISTRATION PEXCEPTION_REGISTRATION_RECORD;
+  Pseudônimo EXCEPTION_REGISTRATION EXCEPTION_REGISTRATION_RECORD;
+  Pseudônimo PEXCEPTION_REGISTRATION PEXCEPTION_REGISTRATION_RECORD;
 #FimSe
 
 #Se (Definido(_X86_) && !Definido(__x86_64))
@@ -103,7 +103,7 @@ Importe "C" {
 #Defina	__except1	\
   __asm__ ("movl (%%esp),%%eax;movl %%eax,%%fs:0;addl $8,%%esp;" \
   : : : "%eax");
-#SenãoSe Definido(__x86_64)
+#Exceto Definido(__x86_64)
 #Defina __try1(pHandler) \
   __asm__ ("pushq %0;pushq %%gs:0;movq %%rsp,%%gs:0;" : : "g" (pHandler));
 

@@ -15,12 +15,12 @@
 #SeNãoDefinido _POSIX_
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #SeNãoDefinido _FSIZE_T_DEFINED
-  Tipo Natural Longo _fsize_t;
+  Pseudônimo Natural Longo _fsize_t;
 #Defina _FSIZE_T_DEFINED
 #FimSe
 
@@ -165,12 +165,12 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #Esqueça size_t
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Natural Inteiro size_t __attribute__ ((mode (DI)));
+  Pseudônimo Natural Inteiro size_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo Natural __int64 size_t;
+  Pseudônimo Natural __int64 size_t;
 #FimSe
 #Senão
-  Tipo Natural Inteiro size_t;
+  Pseudônimo Natural Inteiro size_t;
 #FimSe
 #FimSe
 
@@ -179,12 +179,12 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #Esqueça ssize_t
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Inteiro ssize_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro ssize_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo __int64 ssize_t;
+  Pseudônimo __int64 ssize_t;
 #FimSe
 #Senão
-  Tipo Inteiro ssize_t;
+  Pseudônimo Inteiro ssize_t;
 #FimSe
 #FimSe
 
@@ -192,9 +192,9 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #Defina _OFF_T_DEFINED
 #SeNãoDefinido _OFF_T_
 #Defina _OFF_T_
-  Tipo Longo _off_t;
+  Pseudônimo Longo _off_t;
 #Se !Definido(NO_OLDNAMES) || Definido(_POSIX)
-  Tipo Longo off_t;
+  Pseudônimo Longo off_t;
 #FimSe
 #FimSe
 #FimSe
@@ -202,14 +202,14 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #SeNãoDefinido _OFF64_T_DEFINED
 #Defina _OFF64_T_DEFINED
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Inteiro _off64_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro _off64_t __attribute__ ((mode (DI)));
 #Se !Definido(NO_OLDNAMES) || Definido(_POSIX)
-  Tipo Inteiro off64_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro off64_t __attribute__ ((mode (DI)));
 #FimSe
 #Senão
-  Tipo Longo Longo _off64_t;
+  Pseudônimo Longo Longo _off64_t;
 #Se !Definido(NO_OLDNAMES) || Definido(_POSIX)
-  Tipo Longo Longo off64_t;
+  Pseudônimo Longo Longo off64_t;
 #FimSe
 #FimSe
 #FimSe
@@ -221,17 +221,17 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #Defina	W_OK	2	/* Check Para write permission */
 #Defina	R_OK	4	/* Check Para read permission */
 
-  _CRTIMP Inteiro __cdecl _access(Constante Caractere *_Filename,Inteiro _AccessMode);
-  _CRTIMP Inteiro __cdecl _chmod(Constante Caractere *_Filename,Inteiro _Mode);
+  _CRTIMP Inteiro __cdecl _access(Imutável Caractere *_Filename,Inteiro _AccessMode);
+  _CRTIMP Inteiro __cdecl _chmod(Imutável Caractere *_Filename,Inteiro _Mode);
   _CRTIMP Inteiro __cdecl _chsize(Inteiro _FileHandle,Longo _Size);
   _CRTIMP Inteiro __cdecl _close(Inteiro _FileHandle);
   _CRTIMP Inteiro __cdecl _commit(Inteiro _FileHandle);
-  _CRTIMP Inteiro __cdecl _creat(Constante Caractere *_Filename,Inteiro _PermissionMode);
+  _CRTIMP Inteiro __cdecl _creat(Imutável Caractere *_Filename,Inteiro _PermissionMode);
   _CRTIMP Inteiro __cdecl _dup(Inteiro _FileHandle);
   _CRTIMP Inteiro __cdecl _dup2(Inteiro _FileHandleSrc,Inteiro _FileHandleDst);
   _CRTIMP Inteiro __cdecl _eof(Inteiro _FileHandle);
   _CRTIMP Longo __cdecl _filelength(Inteiro _FileHandle);
-  _CRTIMP intptr_t __cdecl _findfirst32(Constante Caractere *_Filename,Estrutura _finddata32_t *_FindData);
+  _CRTIMP intptr_t __cdecl _findfirst32(Imutável Caractere *_Filename,Estrutura _finddata32_t *_FindData);
   _CRTIMP Inteiro __cdecl _findnext32(intptr_t _FindHandle,Estrutura _finddata32_t *_FindData);
   _CRTIMP Inteiro __cdecl _findclose(intptr_t _FindHandle);
   _CRTIMP Inteiro __cdecl _isatty(Inteiro _FileHandle);
@@ -244,28 +244,28 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 
 #SeNãoDefinido _CRT_DIRECTORY_DEFINED
 #Defina _CRT_DIRECTORY_DEFINED
-  Inteiro __cdecl remove(Constante Caractere *_Filename);
-  Inteiro __cdecl rename(Constante Caractere *_OldFilename,Constante Caractere *_NewFilename);
-  _CRTIMP Inteiro __cdecl _unlink(Constante Caractere *_Filename);
+  Inteiro __cdecl remove(Imutável Caractere *_Filename);
+  Inteiro __cdecl rename(Imutável Caractere *_OldFilename,Imutável Caractere *_NewFilename);
+  _CRTIMP Inteiro __cdecl _unlink(Imutável Caractere *_Filename);
 #SeNãoDefinido	NO_OLDNAMES
-  Inteiro __cdecl unlink(Constante Caractere *_Filename);
+  Inteiro __cdecl unlink(Imutável Caractere *_Filename);
 #FimSe
 #FimSe
 
   _CRTIMP Inteiro __cdecl _setmode(Inteiro _FileHandle,Inteiro _Mode);
   _CRTIMP Longo __cdecl _tell(Inteiro _FileHandle);
   _CRTIMP Inteiro __cdecl _umask(Inteiro _Mode);
-  _CRTIMP Inteiro __cdecl _write(Inteiro _FileHandle,Constante Vazio *_Buf,Natural Inteiro _MaxCharCount);
+  _CRTIMP Inteiro __cdecl _write(Inteiro _FileHandle,Imutável Vazio *_Buf,Natural Inteiro _MaxCharCount);
 
 #Se _INTEGRAL_MAX_BITS >= 64
   _CRTIMP __int64 __cdecl _filelengthi64(Inteiro _FileHandle);
-  _CRTIMP intptr_t __cdecl _findfirst32i64(Constante Caractere *_Filename,Estrutura _finddata32i64_t *_FindData);
-  _CRTIMP intptr_t __cdecl _findfirst64(Constante Caractere *_Filename,Estrutura __finddata64_t *_FindData);
+  _CRTIMP intptr_t __cdecl _findfirst32i64(Imutável Caractere *_Filename,Estrutura _finddata32i64_t *_FindData);
+  _CRTIMP intptr_t __cdecl _findfirst64(Imutável Caractere *_Filename,Estrutura __finddata64_t *_FindData);
 #SeDefinido __cplusplus
 #Inclua <string.h>
 #FimSe
-  intptr_t __cdecl _findfirst64i32(Constante Caractere *_Filename,Estrutura _finddata64i32_t *_FindData);
-  __CRT_INLINE intptr_t __cdecl _findfirst64i32(Constante Caractere *_Filename,Estrutura _finddata64i32_t *_FindData)
+  intptr_t __cdecl _findfirst64i32(Imutável Caractere *_Filename,Estrutura _finddata64i32_t *_FindData);
+  __CRT_INLINE intptr_t __cdecl _findfirst64i32(Imutável Caractere *_Filename,Estrutura _finddata64i32_t *_FindData)
   {
     Estrutura __finddata64_t fd;
     intptr_t ret = _findfirst64(_Filename,&fd);
@@ -298,54 +298,54 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #SeNãoDefinido NO_OLDNAMES
 
 #SeNãoDefinido _UWIN
-  Inteiro __cdecl chdir (Constante Caractere *);
+  Inteiro __cdecl chdir (Imutável Caractere *);
   Caractere *__cdecl getcwd (Caractere *, Inteiro);
-  Inteiro __cdecl mkdir (Constante Caractere *);
+  Inteiro __cdecl mkdir (Imutável Caractere *);
   Caractere *__cdecl mktemp(Caractere *);
-  Inteiro __cdecl rmdir (Constante Caractere*);
-  Inteiro __cdecl chmod (Constante Caractere *, Inteiro);
+  Inteiro __cdecl rmdir (Imutável Caractere*);
+  Inteiro __cdecl chmod (Imutável Caractere *, Inteiro);
 #FimSe /* _UWIN */
 
 #FimSe /* Not NO_OLDNAMES */
 
-  _CRTIMP errno_t __cdecl _sopen_s(Inteiro *_FileHandle,Constante Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode);
+  _CRTIMP errno_t __cdecl _sopen_s(Inteiro *_FileHandle,Imutável Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode);
 
 #SeNãoDefinido __cplusplus
-  _CRTIMP Inteiro __cdecl _open(Constante Caractere *_Filename,Inteiro _OpenFlag,...);
-  _CRTIMP Inteiro __cdecl _sopen(Constante Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
+  _CRTIMP Inteiro __cdecl _open(Imutável Caractere *_Filename,Inteiro _OpenFlag,...);
+  _CRTIMP Inteiro __cdecl _sopen(Imutável Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
 #Senão
-  Importe "C++" _CRTIMP Inteiro __cdecl _open(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _PermissionMode = 0);
-  Importe "C++" _CRTIMP Inteiro __cdecl _sopen(Constante Caractere *_Filename,Inteiro _Openflag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
+  Externo "C++" _CRTIMP Inteiro __cdecl _open(Imutável Caractere *_Filename,Inteiro _Openflag,Inteiro _PermissionMode = 0);
+  Externo "C++" _CRTIMP Inteiro __cdecl _sopen(Imutável Caractere *_Filename,Inteiro _Openflag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
 #FimSe
 
 #SeNãoDefinido _WIO_DEFINED
 #Defina _WIO_DEFINED
-  _CRTIMP Inteiro __cdecl _waccess(Constante wchar_t *_Filename,Inteiro _AccessMode);
-  _CRTIMP Inteiro __cdecl _wchmod(Constante wchar_t *_Filename,Inteiro _Mode);
-  _CRTIMP Inteiro __cdecl _wcreat(Constante wchar_t *_Filename,Inteiro _PermissionMode);
-  _CRTIMP intptr_t __cdecl _wfindfirst32(Constante wchar_t *_Filename,Estrutura _wfinddata32_t *_FindData);
+  _CRTIMP Inteiro __cdecl _waccess(Imutável wchar_t *_Filename,Inteiro _AccessMode);
+  _CRTIMP Inteiro __cdecl _wchmod(Imutável wchar_t *_Filename,Inteiro _Mode);
+  _CRTIMP Inteiro __cdecl _wcreat(Imutável wchar_t *_Filename,Inteiro _PermissionMode);
+  _CRTIMP intptr_t __cdecl _wfindfirst32(Imutável wchar_t *_Filename,Estrutura _wfinddata32_t *_FindData);
   _CRTIMP Inteiro __cdecl _wfindnext32(intptr_t _FindHandle,Estrutura _wfinddata32_t *_FindData);
-  _CRTIMP Inteiro __cdecl _wunlink(Constante wchar_t *_Filename);
-  _CRTIMP Inteiro __cdecl _wrename(Constante wchar_t *_NewFilename,Constante wchar_t *_OldFilename);
+  _CRTIMP Inteiro __cdecl _wunlink(Imutável wchar_t *_Filename);
+  _CRTIMP Inteiro __cdecl _wrename(Imutável wchar_t *_NewFilename,Imutável wchar_t *_OldFilename);
   _CRTIMP wchar_t *__cdecl _wmktemp(wchar_t *_TemplateName);
 
 #Se _INTEGRAL_MAX_BITS >= 64
-  _CRTIMP intptr_t __cdecl _wfindfirst32i64(Constante wchar_t *_Filename,Estrutura _wfinddata32i64_t *_FindData);
-  intptr_t __cdecl _wfindfirst64i32(Constante wchar_t *_Filename,Estrutura _wfinddata64i32_t *_FindData);
-  _CRTIMP intptr_t __cdecl _wfindfirst64(Constante wchar_t *_Filename,Estrutura _wfinddata64_t *_FindData);
+  _CRTIMP intptr_t __cdecl _wfindfirst32i64(Imutável wchar_t *_Filename,Estrutura _wfinddata32i64_t *_FindData);
+  intptr_t __cdecl _wfindfirst64i32(Imutável wchar_t *_Filename,Estrutura _wfinddata64i32_t *_FindData);
+  _CRTIMP intptr_t __cdecl _wfindfirst64(Imutável wchar_t *_Filename,Estrutura _wfinddata64_t *_FindData);
   _CRTIMP Inteiro __cdecl _wfindnext32i64(intptr_t _FindHandle,Estrutura _wfinddata32i64_t *_FindData);
   Inteiro __cdecl _wfindnext64i32(intptr_t _FindHandle,Estrutura _wfinddata64i32_t *_FindData);
   _CRTIMP Inteiro __cdecl _wfindnext64(intptr_t _FindHandle,Estrutura _wfinddata64_t *_FindData);
 #FimSe
 
-  _CRTIMP errno_t __cdecl _wsopen_s(Inteiro *_FileHandle,Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionFlag);
+  _CRTIMP errno_t __cdecl _wsopen_s(Inteiro *_FileHandle,Imutável wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionFlag);
 
 #Se !Definido(__cplusplus) || !(Definido(_X86_) && !Definido(__x86_64))
-  _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,...);
-  _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
+  _CRTIMP Inteiro __cdecl _wopen(Imutável wchar_t *_Filename,Inteiro _OpenFlag,...);
+  _CRTIMP Inteiro __cdecl _wsopen(Imutável wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
 #Senão
-  Importe "C++" _CRTIMP Inteiro __cdecl _wopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
-  Importe "C++" _CRTIMP Inteiro __cdecl _wsopen(Constante wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
+  Externo "C++" _CRTIMP Inteiro __cdecl _wopen(Imutável wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _PermissionMode = 0);
+  Externo "C++" _CRTIMP Inteiro __cdecl _wsopen(Imutável wchar_t *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,Inteiro _PermissionMode = 0);
 #FimSe
 
 #FimSe
@@ -356,11 +356,11 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
   _CRTIMP Inteiro __cdecl _open_osfhandle(intptr_t _OSFileHandle,Inteiro _Flags);
 
 #SeNãoDefinido	NO_OLDNAMES
-  Inteiro __cdecl access(Constante Caractere *_Filename,Inteiro _AccessMode);
-  Inteiro __cdecl chmod(Constante Caractere *_Filename,Inteiro _AccessMode);
+  Inteiro __cdecl access(Imutável Caractere *_Filename,Inteiro _AccessMode);
+  Inteiro __cdecl chmod(Imutável Caractere *_Filename,Inteiro _AccessMode);
   Inteiro __cdecl chsize(Inteiro _FileHandle,Longo _Size);
   Inteiro __cdecl close(Inteiro _FileHandle);
-  Inteiro __cdecl creat(Constante Caractere *_Filename,Inteiro _PermissionMode);
+  Inteiro __cdecl creat(Imutável Caractere *_Filename,Inteiro _PermissionMode);
   Inteiro __cdecl dup(Inteiro _FileHandle);
   Inteiro __cdecl dup2(Inteiro _FileHandleSrc,Inteiro _FileHandleDst);
   Inteiro __cdecl eof(Inteiro _FileHandle);
@@ -369,13 +369,13 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
   Inteiro __cdecl locking(Inteiro _FileHandle,Inteiro _LockMode,Longo _NumOfBytes);
   Longo __cdecl lseek(Inteiro _FileHandle,Longo _Offset,Inteiro _Origin);
   Caractere *__cdecl mktemp(Caractere *_TemplateName);
-  Inteiro __cdecl open(Constante Caractere *_Filename,Inteiro _OpenFlag,...);
+  Inteiro __cdecl open(Imutável Caractere *_Filename,Inteiro _OpenFlag,...);
   Inteiro __cdecl read(Inteiro _FileHandle,Vazio *_DstBuf,Natural Inteiro _MaxCharCount);
   Inteiro __cdecl setmode(Inteiro _FileHandle,Inteiro _Mode);
-  Inteiro __cdecl sopen(Constante Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
+  Inteiro __cdecl sopen(Imutável Caractere *_Filename,Inteiro _OpenFlag,Inteiro _ShareFlag,...);
   Longo __cdecl tell(Inteiro _FileHandle);
   Inteiro __cdecl umask(Inteiro _Mode);
-  Inteiro __cdecl write(Inteiro _Filehandle,Constante Vazio *_Buf,Natural Inteiro _MaxCharCount);
+  Inteiro __cdecl write(Inteiro _Filehandle,Imutável Vazio *_Buf,Natural Inteiro _MaxCharCount);
 #FimSe
 
 #SeDefinido __cplusplus
@@ -384,7 +384,7 @@ _CRTIMP Caractere* __cdecl _getcwd (Caractere*, Inteiro);
 #FimSe
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 /* Misc stuff */
@@ -397,7 +397,7 @@ Natural Inteiro alarm(Natural Inteiro seconds);
 /*  Old versions of MSVCRT access() just ignored X_OK, Enquanto the version
     shipped with Vista, returns an Erro code.  This will restore the
     old behaviour  */
-Estático EmLinha Inteiro __mingw_access (Constante Caractere *__fname, Inteiro __mode) {
+Fixo Integrado Inteiro __mingw_access (Imutável Caractere *__fname, Inteiro __mode) {
   Retorne  _access (__fname, __mode & ~X_OK);
 }
 

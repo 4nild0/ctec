@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -24,21 +24,21 @@ Importe "C" {
 
 #SeNãoDefinido _WCHAR_T_DEFINED
 #Defina _WCHAR_T_DEFINED
-  Tipo Natural Curto wchar_t;
+  Pseudônimo Natural Curto wchar_t;
 #FimSe
 
 #SeNãoDefinido _TIME32_T_DEFINED
 #Defina _TIME32_T_DEFINED
-  Tipo Longo __time32_t;
+  Pseudônimo Longo __time32_t;
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Defina _TIME64_T_DEFINED
 #Se _INTEGRAL_MAX_BITS >= 64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Inteiro _time64_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro _time64_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo __int64 __time64_t;
+  Pseudônimo __int64 __time64_t;
 #FimSe
 #FimSe
 #FimSe
@@ -46,15 +46,15 @@ Importe "C" {
 #SeNãoDefinido _TIME_T_DEFINED
 #Defina _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-  Tipo __time32_t time_t;
+  Pseudônimo __time32_t time_t;
 #Senão
-  Tipo __time64_t time_t;
+  Pseudônimo __time64_t time_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _CLOCK_T_DEFINED
 #Defina _CLOCK_T_DEFINED
-  Tipo Longo clock_t;
+  Pseudônimo Longo clock_t;
 #FimSe
 
 #SeNãoDefinido _SIZE_T_DEFINED
@@ -62,12 +62,12 @@ Importe "C" {
 #Esqueça size_t
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Natural Inteiro size_t __attribute__ ((mode (DI)));
+  Pseudônimo Natural Inteiro size_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo Natural __int64 size_t;
+  Pseudônimo Natural __int64 size_t;
 #FimSe
 #Senão
-  Tipo Natural Inteiro size_t;
+  Pseudônimo Natural Inteiro size_t;
 #FimSe
 #FimSe
 
@@ -76,12 +76,12 @@ Importe "C" {
 #Esqueça ssize_t
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Inteiro ssize_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro ssize_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo __int64 ssize_t;
+  Pseudônimo __int64 ssize_t;
 #FimSe
 #Senão
-  Tipo Inteiro ssize_t;
+  Pseudônimo Inteiro ssize_t;
 #FimSe
 #FimSe
 
@@ -127,14 +127,14 @@ Importe "C" {
   _CRTIMP errno_t __cdecl _get_dstbias(Longo *_Daylight_savings_bias);
   _CRTIMP errno_t __cdecl _get_timezone(Longo *_Timezone);
   _CRTIMP errno_t __cdecl _get_tzname(size_t *_ReturnValue,Caractere *_Buffer,size_t _SizeInBytes,Inteiro _Index);
-  Caractere *__cdecl asctime(Constante Estrutura tm *_Tm);
-  _CRTIMP Caractere *__cdecl _ctime32(Constante __time32_t *_Time);
+  Caractere *__cdecl asctime(Imutável Estrutura tm *_Tm);
+  _CRTIMP Caractere *__cdecl _ctime32(Imutável __time32_t *_Time);
   clock_t __cdecl clock(Vazio);
   _CRTIMP Duplo __cdecl _difftime32(__time32_t _Time1,__time32_t _Time2);
-  _CRTIMP Estrutura tm *__cdecl _gmtime32(Constante __time32_t *_Time);
-  _CRTIMP Estrutura tm *__cdecl _localtime32(Constante __time32_t *_Time);
-  size_t __cdecl strftime(Caractere *_Buf,size_t _SizeInBytes,Constante Caractere *_Format,Constante Estrutura tm *_Tm);
-  _CRTIMP size_t __cdecl _strftime_l(Caractere *_Buf,size_t _Max_size,Constante Caractere *_Format,Constante Estrutura tm *_Tm,_locale_t _Locale);
+  _CRTIMP Estrutura tm *__cdecl _gmtime32(Imutável __time32_t *_Time);
+  _CRTIMP Estrutura tm *__cdecl _localtime32(Imutável __time32_t *_Time);
+  size_t __cdecl strftime(Caractere *_Buf,size_t _SizeInBytes,Imutável Caractere *_Format,Imutável Estrutura tm *_Tm);
+  _CRTIMP size_t __cdecl _strftime_l(Caractere *_Buf,size_t _Max_size,Imutável Caractere *_Format,Imutável Estrutura tm *_Tm,_locale_t _Locale);
   _CRTIMP Caractere *__cdecl _strdate(Caractere *_Buffer);
   _CRTIMP Caractere *__cdecl _strtime(Caractere *_Buffer);
   _CRTIMP __time32_t __cdecl _time32(__time32_t *_Time);
@@ -148,9 +148,9 @@ Importe "C" {
 
 #Se _INTEGRAL_MAX_BITS >= 64
   Duplo __cdecl _difftime64(__time64_t _Time1,__time64_t _Time2);
-  _CRTIMP Caractere *__cdecl _ctime64(Constante __time64_t *_Time);
-  _CRTIMP Estrutura tm *__cdecl _gmtime64(Constante __time64_t *_Time);
-  _CRTIMP Estrutura tm *__cdecl _localtime64(Constante __time64_t *_Time);
+  _CRTIMP Caractere *__cdecl _ctime64(Imutável __time64_t *_Time);
+  _CRTIMP Estrutura tm *__cdecl _gmtime64(Imutável __time64_t *_Time);
+  _CRTIMP Estrutura tm *__cdecl _localtime64(Imutável __time64_t *_Time);
   _CRTIMP __time64_t __cdecl _mktime64(Estrutura tm *_Tm);
   _CRTIMP __time64_t __cdecl _mkgmtime64(Estrutura tm *_Tm);
   _CRTIMP __time64_t __cdecl _time64(__time64_t *_Time);
@@ -162,12 +162,12 @@ Importe "C" {
 #Defina _SIZE_T_DEFINED
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Natural Inteiro size_t __attribute__ ((mode (DI)));
+  Pseudônimo Natural Inteiro size_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo Natural __int64 size_t;
+  Pseudônimo Natural __int64 size_t;
 #FimSe
 #Senão
-  Tipo Natural Longo size_t;
+  Pseudônimo Natural Longo size_t;
 #FimSe
 #FimSe
 
@@ -175,32 +175,32 @@ Importe "C" {
 #Defina _SSIZE_T_DEFINED
 #SeDefinido _WIN64
 #Se Definido(__GNUC__) && Definido(__STRICT_ANSI__)
-  Tipo Inteiro ssize_t __attribute__ ((mode (DI)));
+  Pseudônimo Inteiro ssize_t __attribute__ ((mode (DI)));
 #Senão
-  Tipo __int64 ssize_t;
+  Pseudônimo __int64 ssize_t;
 #FimSe
 #Senão
-  Tipo Longo ssize_t;
+  Pseudônimo Longo ssize_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _WTIME_DEFINED
-  _CRTIMP wchar_t *__cdecl _wasctime(Constante Estrutura tm *_Tm);
-  _CRTIMP wchar_t *__cdecl _wctime32(Constante __time32_t *_Time);
-  size_t __cdecl wcsftime(wchar_t *_Buf,size_t _SizeInWords,Constante wchar_t *_Format,Constante Estrutura tm *_Tm);
-  _CRTIMP size_t __cdecl _wcsftime_l(wchar_t *_Buf,size_t _SizeInWords,Constante wchar_t *_Format,Constante Estrutura tm *_Tm,_locale_t _Locale);
+  _CRTIMP wchar_t *__cdecl _wasctime(Imutável Estrutura tm *_Tm);
+  _CRTIMP wchar_t *__cdecl _wctime32(Imutável __time32_t *_Time);
+  size_t __cdecl wcsftime(wchar_t *_Buf,size_t _SizeInWords,Imutável wchar_t *_Format,Imutável Estrutura tm *_Tm);
+  _CRTIMP size_t __cdecl _wcsftime_l(wchar_t *_Buf,size_t _SizeInWords,Imutável wchar_t *_Format,Imutável Estrutura tm *_Tm,_locale_t _Locale);
   _CRTIMP wchar_t *__cdecl _wstrdate(wchar_t *_Buffer);
   _CRTIMP wchar_t *__cdecl _wstrtime(wchar_t *_Buffer);
 #Se _INTEGRAL_MAX_BITS >= 64
-  _CRTIMP wchar_t *__cdecl _wctime64(Constante __time64_t *_Time);
+  _CRTIMP wchar_t *__cdecl _wctime64(Imutável __time64_t *_Time);
 #FimSe
 
 #Se !Definido (RC_INVOKED) && !Definido (_INC_WTIME_INL)
 #Defina _INC_WTIME_INL
 #SeDefinido _USE_32BIT_TIME_T
-__CRT_INLINE wchar_t *__cdecl _wctime(Constante time_t *_Time) { Retorne _wctime32(_Time); }
+__CRT_INLINE wchar_t *__cdecl _wctime(Imutável time_t *_Time) { Retorne _wctime32(_Time); }
 #Senão
-__CRT_INLINE wchar_t *__cdecl _wctime(Constante time_t *_Time) { Retorne _wctime64(_Time); }
+__CRT_INLINE wchar_t *__cdecl _wctime(Imutável time_t *_Time) { Retorne _wctime64(_Time); }
 #FimSe
 #FimSe
 
@@ -209,10 +209,10 @@ __CRT_INLINE wchar_t *__cdecl _wctime(Constante time_t *_Time) { Retorne _wctime
 
 #SeNãoDefinido RC_INVOKED
 Duplo __cdecl difftime(time_t _Time1,time_t _Time2);
-Caractere *__cdecl ctime(Constante time_t *_Time);
-Estrutura tm *__cdecl gmtime(Constante time_t *_Time);
-Estrutura tm *__cdecl localtime(Constante time_t *_Time);
-Estrutura tm *__cdecl localtime_r(Constante time_t *_Time,Estrutura tm *);
+Caractere *__cdecl ctime(Imutável time_t *_Time);
+Estrutura tm *__cdecl gmtime(Imutável time_t *_Time);
+Estrutura tm *__cdecl localtime(Imutável time_t *_Time);
+Estrutura tm *__cdecl localtime_r(Imutável time_t *_Time,Estrutura tm *);
 
 time_t __cdecl mktime(Estrutura tm *_Tm);
 time_t __cdecl _mkgmtime(Estrutura tm *_Tm);
@@ -221,18 +221,18 @@ time_t __cdecl time(time_t *_Time);
 #SeDefinido _USE_32BIT_TIME_T
 #Se 0
 __CRT_INLINE Duplo __cdecl difftime(time_t _Time1,time_t _Time2) { Retorne _difftime32(_Time1,_Time2); }
-__CRT_INLINE Caractere *__cdecl ctime(Constante time_t *_Time) { Retorne _ctime32(_Time); }
-__CRT_INLINE Estrutura tm *__cdecl gmtime(Constante time_t *_Time) { Retorne _gmtime32(_Time); }
-__CRT_INLINE Estrutura tm *__cdecl localtime(Constante time_t *_Time) { Retorne _localtime32(_Time); }
+__CRT_INLINE Caractere *__cdecl ctime(Imutável time_t *_Time) { Retorne _ctime32(_Time); }
+__CRT_INLINE Estrutura tm *__cdecl gmtime(Imutável time_t *_Time) { Retorne _gmtime32(_Time); }
+__CRT_INLINE Estrutura tm *__cdecl localtime(Imutável time_t *_Time) { Retorne _localtime32(_Time); }
 __CRT_INLINE time_t __cdecl mktime(Estrutura tm *_Tm) { Retorne _mktime32(_Tm); }
 __CRT_INLINE time_t __cdecl _mkgmtime(Estrutura tm *_Tm) { Retorne _mkgmtime32(_Tm); }
 __CRT_INLINE time_t __cdecl time(time_t *_Time) { Retorne _time32(_Time); }
 #FimSe
 #Senão
 __CRT_INLINE Duplo __cdecl difftime(time_t _Time1,time_t _Time2) { Retorne _difftime64(_Time1,_Time2); }
-__CRT_INLINE Caractere *__cdecl ctime(Constante time_t *_Time) { Retorne _ctime64(_Time); }
-__CRT_INLINE Estrutura tm *__cdecl gmtime(Constante time_t *_Time) { Retorne _gmtime64(_Time); }
-__CRT_INLINE Estrutura tm *__cdecl localtime(Constante time_t *_Time) { Retorne _localtime64(_Time); }
+__CRT_INLINE Caractere *__cdecl ctime(Imutável time_t *_Time) { Retorne _ctime64(_Time); }
+__CRT_INLINE Estrutura tm *__cdecl gmtime(Imutável time_t *_Time) { Retorne _gmtime64(_Time); }
+__CRT_INLINE Estrutura tm *__cdecl localtime(Imutável time_t *_Time) { Retorne _localtime64(_Time); }
 __CRT_INLINE time_t __cdecl mktime(Estrutura tm *_Tm) { Retorne _mktime64(_Tm); }
 __CRT_INLINE time_t __cdecl _mkgmtime(Estrutura tm *_Tm) { Retorne _mkgmtime64(_Tm); }
 __CRT_INLINE time_t __cdecl time(time_t *_Time) { Retorne _time64(_Time); }
@@ -268,7 +268,7 @@ Estrutura timezone {
   Inteiro tz_dsttime;
 };
 
-  Importe Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
+  Externo Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
 #FimSe
 #FimSe /* __STRICT_ANSI__ */
 

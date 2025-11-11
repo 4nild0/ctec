@@ -459,10 +459,10 @@ Currently implemented ISOC99 features:
 @item @code{__func__} is a string variable containing the current
 function name.
 
-@item Variadic macros: @code{__VA_ARGS__} can be used for
+@item Variadic macros: @code{ARGUMENTOS_VARIÁVEIS} can be used for
    function-like macros:
 @example
-    #define dprintf(level, __VA_ARGS__) printf(__VA_ARGS__)
+    #define dprintf(level, ARGUMENTOS_VARIÁVEIS) printf(ARGUMENTOS_VARIÁVEIS)
 @end example
 
 @noindent
@@ -598,7 +598,7 @@ generate function @code{my_add} in section @code{.mycodesection}.
     dprintf("one arg %d\n", 1);
 @end example
 
-@item @code{__FUNCTION__} is interpreted as C99 @code{__func__} 
+@item @code{FUNÇÃO} is interpreted as C99 @code{__func__} 
 (so it has not exactly the same semantics as string literal GNUC
 where it is a string literal).
 

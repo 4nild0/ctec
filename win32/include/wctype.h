@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -23,13 +23,13 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido _WCHAR_T_DEFINED
-  Tipo Natural Curto wchar_t;
+  Pseudônimo Natural Curto wchar_t;
 #Defina _WCHAR_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _WCTYPE_T_DEFINED
-  Tipo Natural Curto wint_t;
-  Tipo Natural Curto wctype_t;
+  Pseudônimo Natural Curto wint_t;
+  Pseudônimo Natural Curto wctype_t;
 #Defina _WCTYPE_T_DEFINED
 #FimSe
 
@@ -52,9 +52,9 @@ Importe "C" {
 
 #SeNãoDefinido _pctype
 #SeDefinido _MSVCRT_
-  Importe Natural Curto *_pctype;
+  Externo Natural Curto *_pctype;
 #Senão
-  Importe Natural Curto **_imp___pctype;
+  Externo Natural Curto **_imp___pctype;
 #Defina _pctype (*_imp___pctype)
 #FimSe
 #FimSe
@@ -67,18 +67,18 @@ Importe "C" {
 #SeNãoDefinido _CTYPE_DISABLE_MACROS
 #SeNãoDefinido _wctype
 #SeDefinido _MSVCRT_
-  Importe Natural Curto *_wctype;
+  Externo Natural Curto *_wctype;
 #Senão
-  Importe Natural Curto **_imp___wctype;
+  Externo Natural Curto **_imp___wctype;
 #Defina _wctype (*_imp___wctype)
 #FimSe
 #FimSe
 
 #SeNãoDefinido _pwctype
 #SeDefinido _MSVCRT_
-  Importe Natural Curto *_pwctype;
+  Externo Natural Curto *_pwctype;
 #Senão
-  Importe Natural Curto **_imp___pwctype;
+  Externo Natural Curto **_imp___pwctype;
 #Defina _pwctype (*_imp___pwctype)
 #Defina __pwctype_func() (*_imp___pwctype)
 #FimSe
@@ -159,10 +159,10 @@ Inteiro __cdecl isblank(Inteiro _C);
 #FimSe
 #FimSe
 
-  Tipo wchar_t wctrans_t;
+  Pseudônimo wchar_t wctrans_t;
   wint_t __cdecl towctrans(wint_t,wctrans_t);
-  wctrans_t __cdecl wctrans(Constante Caractere *);
-  wctype_t __cdecl wctype(Constante Caractere *);
+  wctrans_t __cdecl wctrans(Imutável Caractere *);
+  wctype_t __cdecl wctype(Imutável Caractere *);
 
 #SeDefinido __cplusplus
 }

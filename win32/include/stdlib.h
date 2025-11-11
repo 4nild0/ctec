@@ -12,7 +12,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido NULL
@@ -29,7 +29,7 @@ Importe "C" {
 #SeNãoDefinido _ONEXIT_T_DEFINED
 #Defina _ONEXIT_T_DEFINED
 
-  Tipo Inteiro (__cdecl *_onexit_t)(Vazio);
+  Pseudônimo Inteiro (__cdecl *_onexit_t)(Vazio);
 
 #SeNãoDefinido NO_OLDNAMES
 #Defina onexit_t _onexit_t
@@ -39,12 +39,12 @@ Importe "C" {
 #SeNãoDefinido _DIV_T_DEFINED
 #Defina _DIV_T_DEFINED
 
-  Tipo Estrutura _div_t {
+  Pseudônimo Estrutura _div_t {
     Inteiro quot;
     Inteiro rem;
   } div_t;
 
-  Tipo Estrutura _ldiv_t {
+  Pseudônimo Estrutura _ldiv_t {
     Longo quot;
     Longo rem;
   } ldiv_t;
@@ -54,32 +54,32 @@ Importe "C" {
 #Defina _CRT_DOUBLE_DEC
 
 #Diretiva pack(4)
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     Natural Caractere ld[10];
   } _LDOUBLE;
 #Diretiva pack()
 
 #Defina _PTR_LD(x) ((Natural Caractere *)(&(x)->ld))
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     Duplo x;
   } _CRT_DOUBLE;
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     Real f;
   } _CRT_FLOAT;
 
 #Diretiva push_macro("Longo")
 #Esqueça Longo
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     Longo Duplo x;
   } _LONGDOUBLE;
 
 #Diretiva pop_macro("Longo")
 
 #Diretiva pack(4)
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     Natural Caractere ld12[12];
   } _LDBL12;
 #Diretiva pack()
@@ -91,17 +91,17 @@ Importe "C" {
 #Defina MB_CUR_MAX ___mb_cur_max_func()
 #SeNãoDefinido __mb_cur_max
 #SeDefinido _MSVCRT_
-  Importe Inteiro __mb_cur_max;
+  Externo Inteiro __mb_cur_max;
 #Senão
 #Defina __mb_cur_max    (*_imp____mb_cur_max)
-  Importe Inteiro *_imp____mb_cur_max;
+  Externo Inteiro *_imp____mb_cur_max;
 #FimSe
 #FimSe
 #SeDefinido _MSVCRT_
-  Importe Inteiro __mbcur_max;
+  Externo Inteiro __mbcur_max;
 #Defina ___mb_cur_max_func() (__mb_cur_max)
 #Senão
-  Importe Inteiro* _imp____mbcur_max;
+  Externo Inteiro* _imp____mbcur_max;
 #Defina ___mb_cur_max_func() (*_imp____mb_cur_max)
 #FimSe
 #FimSe
@@ -125,18 +125,18 @@ Importe "C" {
 
 #Defina _MAX_ENV 32767
 
-  Tipo Vazio (__cdecl *_purecall_handler)(Vazio);
+  Pseudônimo Vazio (__cdecl *_purecall_handler)(Vazio);
 
   _CRTIMP _purecall_handler __cdecl _set_purecall_handler(_purecall_handler _Handler);
   _CRTIMP _purecall_handler __cdecl _get_purecall_handler(Vazio);
 
-  Tipo Vazio (__cdecl *_invalid_parameter_handler)(Constante wchar_t *,Constante wchar_t *,Constante wchar_t *,Natural Inteiro,uintptr_t);
+  Pseudônimo Vazio (__cdecl *_invalid_parameter_handler)(Imutável wchar_t *,Imutável wchar_t *,Imutável wchar_t *,Natural Inteiro,uintptr_t);
   _invalid_parameter_handler __cdecl _set_invalid_parameter_handler(_invalid_parameter_handler _Handler);
   _invalid_parameter_handler __cdecl _get_invalid_parameter_handler(Vazio);
 
 #SeNãoDefinido _CRT_ERRNO_DEFINED
 #Defina _CRT_ERRNO_DEFINED
-  _CRTIMP Importe Inteiro *__cdecl _errno(Vazio);
+  _CRTIMP Externo Inteiro *__cdecl _errno(Vazio);
 #Defina errno (*_errno())
   errno_t __cdecl _set_errno(Inteiro _Value);
   errno_t __cdecl _get_errno(Inteiro *_Value);
@@ -146,8 +146,8 @@ Importe "C" {
   errno_t __cdecl _set_doserrno(Natural Longo _Value);
   errno_t __cdecl _get_doserrno(Natural Longo *_Value);
 #SeDefinido _MSVCRT_
-  Importe Caractere *_sys_errlist[];
-  Importe Inteiro _sys_nerr;
+  Externo Caractere *_sys_errlist[];
+  Externo Inteiro _sys_nerr;
 #Senão
   _CRTIMP Caractere *_sys_errlist[1];
   _CRTIMP Inteiro _sys_nerr;
@@ -163,75 +163,75 @@ Importe "C" {
 #FimSe
 #SeNãoDefinido __argc
 #SeDefinido _MSVCRT_
-  Importe Inteiro __argc;
+  Externo Inteiro __argc;
 #Senão
 #Defina __argc (*_imp____argc)
-  Importe Inteiro *_imp____argc;
+  Externo Inteiro *_imp____argc;
 #FimSe
 #FimSe
 #SeNãoDefinido __argv
 #SeDefinido _MSVCRT_
-  Importe Caractere **__argv;
+  Externo Caractere **__argv;
 #Senão
 #Defina __argv  (*_imp____argv)
-  Importe Caractere ***_imp____argv;
+  Externo Caractere ***_imp____argv;
 #FimSe
 #FimSe
 #SeNãoDefinido __wargv
 #SeDefinido _MSVCRT_
-  Importe wchar_t **__wargv;
+  Externo wchar_t **__wargv;
 #Senão
 #Defina __wargv (*_imp____wargv)
-  Importe wchar_t ***_imp____wargv;
+  Externo wchar_t ***_imp____wargv;
 #FimSe
 #FimSe
 
 #SeDefinido _POSIX_
-  Importe Caractere **environ;
+  Externo Caractere **environ;
 #Senão
 #SeNãoDefinido _environ
 #SeDefinido _MSVCRT_
-  Importe Caractere **_environ;
+  Externo Caractere **_environ;
 #Senão
 #Defina _environ (*_imp___environ)
-  Importe Caractere ***_imp___environ;
+  Externo Caractere ***_imp___environ;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _wenviron
 #SeDefinido _MSVCRT_
-  Importe wchar_t **_wenviron;
+  Externo wchar_t **_wenviron;
 #Senão
 #Defina _wenviron       (*_imp___wenviron)
-  Importe wchar_t ***_imp___wenviron;
+  Externo wchar_t ***_imp___wenviron;
 #FimSe
 #FimSe
 #FimSe
 #SeNãoDefinido _pgmptr
 #SeDefinido _MSVCRT_
-  Importe Caractere *_pgmptr;
+  Externo Caractere *_pgmptr;
 #Senão
 #Defina _pgmptr (*_imp___pgmptr)
-  Importe Caractere **_imp___pgmptr;
+  Externo Caractere **_imp___pgmptr;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _wpgmptr
 #SeDefinido _MSVCRT_
-  Importe wchar_t *_wpgmptr;
+  Externo wchar_t *_wpgmptr;
 #Senão
 #Defina _wpgmptr        (*_imp___wpgmptr)
-  Importe wchar_t **_imp___wpgmptr;
+  Externo wchar_t **_imp___wpgmptr;
 #FimSe
 #FimSe
   errno_t __cdecl _get_pgmptr(Caractere **_Value);
   errno_t __cdecl _get_wpgmptr(wchar_t **_Value);
 #SeNãoDefinido _fmode
 #SeDefinido _MSVCRT_
-  Importe Inteiro _fmode;
+  Externo Inteiro _fmode;
 #Senão
 #Defina _fmode  (*_imp___fmode)
-  Importe Inteiro *_imp___fmode;
+  Externo Inteiro *_imp___fmode;
 #FimSe
 #FimSe
   _CRTIMP errno_t __cdecl _set_fmode(Inteiro _Mode);
@@ -239,46 +239,46 @@ Importe "C" {
 
 #SeNãoDefinido _osplatform
 #SeDefinido _MSVCRT_
-  Importe Natural Inteiro _osplatform;
+  Externo Natural Inteiro _osplatform;
 #Senão
 #Defina _osplatform (*_imp___osplatform)
-  Importe Natural Inteiro *_imp___osplatform;
+  Externo Natural Inteiro *_imp___osplatform;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _osver
 #SeDefinido _MSVCRT_
-  Importe Natural Inteiro _osver;
+  Externo Natural Inteiro _osver;
 #Senão
 #Defina _osver  (*_imp___osver)
-  Importe Natural Inteiro *_imp___osver;
+  Externo Natural Inteiro *_imp___osver;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winver
 #SeDefinido _MSVCRT_
-  Importe Natural Inteiro _winver;
+  Externo Natural Inteiro _winver;
 #Senão
 #Defina _winver (*_imp___winver)
-  Importe Natural Inteiro *_imp___winver;
+  Externo Natural Inteiro *_imp___winver;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winmajor
 #SeDefinido _MSVCRT_
-  Importe Natural Inteiro _winmajor;
+  Externo Natural Inteiro _winmajor;
 #Senão
 #Defina _winmajor       (*_imp___winmajor)
-  Importe Natural Inteiro *_imp___winmajor;
+  Externo Natural Inteiro *_imp___winmajor;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _winminor
 #SeDefinido _MSVCRT_
-  Importe Natural Inteiro _winminor;
+  Externo Natural Inteiro _winminor;
 #Senão
 #Defina _winminor       (*_imp___winminor)
-  Importe Natural Inteiro *_imp___winminor;
+  Externo Natural Inteiro *_imp___winminor;
 #FimSe
 #FimSe
 
@@ -291,7 +291,7 @@ Importe "C" {
 #SeNãoDefinido __cplusplus
 #Defina _countof(_Array) (Meça(_Array) / Meça(_Array[0]))
 #Senão
-  Importe "C++" {
+  Externo "C++" {
     template <typename _CountofType,size_t _SizeOfArray> Caractere (*__countof_helper(UNALIGNED _CountofType (&_Array)[_SizeOfArray]))[_SizeOfArray];
 #Defina _countof(_Array) Meça(*__countof_helper(_Array))
   }
@@ -302,7 +302,7 @@ Importe "C" {
 #Defina _CRT_TERMINATE_DEFINED
   Vazio __cdecl __MINGW_NOTHROW exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
   _CRTIMP Vazio __cdecl __MINGW_NOTHROW _exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
-#Se !Definido __NO_ISOCEXT /* Importe stub in Estático libmingwex.a */
+#Se !Definido __NO_ISOCEXT /* Externo stub in Fixo libmingwex.a */
   /* C99 function name */
   Vazio __cdecl _Exit(Inteiro) __MINGW_ATTRIB_NORETURN;
   __CRT_INLINE __MINGW_ATTRIB_NORETURN Vazio  __cdecl _Exit(Inteiro status)
@@ -330,17 +330,17 @@ Importe "C" {
   Inteiro __cdecl atexit(Vazio (__cdecl *)(Vazio));
 #SeNãoDefinido _CRT_ATOF_DEFINED
 #Defina _CRT_ATOF_DEFINED
-  Duplo __cdecl atof(Constante Caractere *_String);
-  Duplo __cdecl _atof_l(Constante Caractere *_String,_locale_t _Locale);
+  Duplo __cdecl atof(Imutável Caractere *_String);
+  Duplo __cdecl _atof_l(Imutável Caractere *_String,_locale_t _Locale);
 #FimSe
-  Inteiro __cdecl atoi(Constante Caractere *_Str);
-  _CRTIMP Inteiro __cdecl _atoi_l(Constante Caractere *_Str,_locale_t _Locale);
-  Longo __cdecl atol(Constante Caractere *_Str);
-  _CRTIMP Longo __cdecl _atol_l(Constante Caractere *_Str,_locale_t _Locale);
+  Inteiro __cdecl atoi(Imutável Caractere *_Str);
+  _CRTIMP Inteiro __cdecl _atoi_l(Imutável Caractere *_Str,_locale_t _Locale);
+  Longo __cdecl atol(Imutável Caractere *_Str);
+  _CRTIMP Longo __cdecl _atol_l(Imutável Caractere *_Str,_locale_t _Locale);
 #SeNãoDefinido _CRT_ALGO_DEFINED
 #Defina _CRT_ALGO_DEFINED
-  Vazio *__cdecl bsearch(Constante Vazio *_Key,Constante Vazio *_Base,size_t _NumOfElements,size_t _SizeOfElements,Inteiro (__cdecl *_PtFuncCompare)(Constante Vazio *,Constante Vazio *));
-  Vazio __cdecl qsort(Vazio *_Base,size_t _NumOfElements,size_t _SizeOfElements,Inteiro (__cdecl *_PtFuncCompare)(Constante Vazio *,Constante Vazio *));
+  Vazio *__cdecl bsearch(Imutável Vazio *_Key,Imutável Vazio *_Base,size_t _NumOfElements,size_t _SizeOfElements,Inteiro (__cdecl *_PtFuncCompare)(Imutável Vazio *,Imutável Vazio *));
+  Vazio __cdecl qsort(Vazio *_Base,size_t _NumOfElements,size_t _SizeOfElements,Inteiro (__cdecl *_PtFuncCompare)(Imutável Vazio *,Imutável Vazio *));
 #FimSe
   Natural Curto __cdecl _byteswap_ushort(Natural Curto _Short);
   /*Natural Longo __cdecl _byteswap_ulong (Natural Longo _Long); */
@@ -348,53 +348,53 @@ Importe "C" {
   Natural __int64 __cdecl _byteswap_uint64(Natural __int64 _Int64);
 #FimSe
   div_t __cdecl div(Inteiro _Numerator,Inteiro _Denominator);
-  Caractere *__cdecl getenv(Constante Caractere *_VarName);
+  Caractere *__cdecl getenv(Imutável Caractere *_VarName);
   _CRTIMP Caractere *__cdecl _itoa(Inteiro _Value,Caractere *_Dest,Inteiro _Radix);
 #Se _INTEGRAL_MAX_BITS >= 64
   _CRTIMP Caractere *__cdecl _i64toa(__int64 _Val,Caractere *_DstBuf,Inteiro _Radix);
   _CRTIMP Caractere *__cdecl _ui64toa(Natural __int64 _Val,Caractere *_DstBuf,Inteiro _Radix);
-  _CRTIMP __int64 __cdecl _atoi64(Constante Caractere *_String);
-  _CRTIMP __int64 __cdecl _atoi64_l(Constante Caractere *_String,_locale_t _Locale);
-  _CRTIMP __int64 __cdecl _strtoi64(Constante Caractere *_String,Caractere **_EndPtr,Inteiro _Radix);
-  _CRTIMP __int64 __cdecl _strtoi64_l(Constante Caractere *_String,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
-  _CRTIMP Natural __int64 __cdecl _strtoui64(Constante Caractere *_String,Caractere **_EndPtr,Inteiro _Radix);
-  _CRTIMP Natural __int64 __cdecl _strtoui64_l(Constante Caractere *_String,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP __int64 __cdecl _atoi64(Imutável Caractere *_String);
+  _CRTIMP __int64 __cdecl _atoi64_l(Imutável Caractere *_String,_locale_t _Locale);
+  _CRTIMP __int64 __cdecl _strtoi64(Imutável Caractere *_String,Caractere **_EndPtr,Inteiro _Radix);
+  _CRTIMP __int64 __cdecl _strtoi64_l(Imutável Caractere *_String,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP Natural __int64 __cdecl _strtoui64(Imutável Caractere *_String,Caractere **_EndPtr,Inteiro _Radix);
+  _CRTIMP Natural __int64 __cdecl _strtoui64_l(Imutável Caractere *_String,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
 #FimSe
   ldiv_t __cdecl ldiv(Longo _Numerator,Longo _Denominator);
   _CRTIMP Caractere *__cdecl _ltoa(Longo _Value,Caractere *_Dest,Inteiro _Radix);
-  Inteiro __cdecl mblen(Constante Caractere *_Ch,size_t _MaxCount);
-  _CRTIMP Inteiro __cdecl _mblen_l(Constante Caractere *_Ch,size_t _MaxCount,_locale_t _Locale);
-  _CRTIMP size_t __cdecl _mbstrlen(Constante Caractere *_Str);
-  _CRTIMP size_t __cdecl _mbstrlen_l(Constante Caractere *_Str,_locale_t _Locale);
-  _CRTIMP size_t __cdecl _mbstrnlen(Constante Caractere *_Str,size_t _MaxCount);
-  _CRTIMP size_t __cdecl _mbstrnlen_l(Constante Caractere *_Str,size_t _MaxCount,_locale_t _Locale);
-  Inteiro __cdecl mbtowc(wchar_t *_DstCh,Constante Caractere *_SrcCh,size_t _SrcSizeInBytes);
-  _CRTIMP Inteiro __cdecl _mbtowc_l(wchar_t *_DstCh,Constante Caractere *_SrcCh,size_t _SrcSizeInBytes,_locale_t _Locale);
-  size_t __cdecl mbstowcs(wchar_t *_Dest,Constante Caractere *_Source,size_t _MaxCount);
-  _CRTIMP size_t __cdecl _mbstowcs_l(wchar_t *_Dest,Constante Caractere *_Source,size_t _MaxCount,_locale_t _Locale);
+  Inteiro __cdecl mblen(Imutável Caractere *_Ch,size_t _MaxCount);
+  _CRTIMP Inteiro __cdecl _mblen_l(Imutável Caractere *_Ch,size_t _MaxCount,_locale_t _Locale);
+  _CRTIMP size_t __cdecl _mbstrlen(Imutável Caractere *_Str);
+  _CRTIMP size_t __cdecl _mbstrlen_l(Imutável Caractere *_Str,_locale_t _Locale);
+  _CRTIMP size_t __cdecl _mbstrnlen(Imutável Caractere *_Str,size_t _MaxCount);
+  _CRTIMP size_t __cdecl _mbstrnlen_l(Imutável Caractere *_Str,size_t _MaxCount,_locale_t _Locale);
+  Inteiro __cdecl mbtowc(wchar_t *_DstCh,Imutável Caractere *_SrcCh,size_t _SrcSizeInBytes);
+  _CRTIMP Inteiro __cdecl _mbtowc_l(wchar_t *_DstCh,Imutável Caractere *_SrcCh,size_t _SrcSizeInBytes,_locale_t _Locale);
+  size_t __cdecl mbstowcs(wchar_t *_Dest,Imutável Caractere *_Source,size_t _MaxCount);
+  _CRTIMP size_t __cdecl _mbstowcs_l(wchar_t *_Dest,Imutável Caractere *_Source,size_t _MaxCount,_locale_t _Locale);
   Inteiro __cdecl rand(Vazio);
   _CRTIMP Inteiro __cdecl _set_error_mode(Inteiro _Mode);
   Vazio __cdecl srand(Natural Inteiro _Seed);
-  Duplo __cdecl strtod(Constante Caractere *_Str,Caractere **_EndPtr);
-  Real __cdecl strtof(Constante Caractere *nptr, Caractere **endptr);
+  Duplo __cdecl strtod(Imutável Caractere *_Str,Caractere **_EndPtr);
+  Real __cdecl strtof(Imutável Caractere *nptr, Caractere **endptr);
 #Se !Definido __NO_ISOCEXT  /* in libmingwex.a */
-  Real __cdecl strtof (Constante Caractere * __restrict__, Caractere ** __restrict__);
-  Longo Duplo __cdecl strtold(Constante Caractere * __restrict__, Caractere ** __restrict__);
+  Real __cdecl strtof (Imutável Caractere * __restrict__, Caractere ** __restrict__);
+  Longo Duplo __cdecl strtold(Imutável Caractere * __restrict__, Caractere ** __restrict__);
 #FimSe /* __NO_ISOCEXT */
-  _CRTIMP Duplo __cdecl _strtod_l(Constante Caractere *_Str,Caractere **_EndPtr,_locale_t _Locale);
-  Longo __cdecl strtol(Constante Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix);
-  _CRTIMP Longo __cdecl _strtol_l(Constante Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
-  Natural Longo __cdecl strtoul(Constante Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix);
-  _CRTIMP Natural Longo __cdecl _strtoul_l(Constante Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP Duplo __cdecl _strtod_l(Imutável Caractere *_Str,Caractere **_EndPtr,_locale_t _Locale);
+  Longo __cdecl strtol(Imutável Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix);
+  _CRTIMP Longo __cdecl _strtol_l(Imutável Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  Natural Longo __cdecl strtoul(Imutável Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix);
+  _CRTIMP Natural Longo __cdecl _strtoul_l(Imutável Caractere *_Str,Caractere **_EndPtr,Inteiro _Radix,_locale_t _Locale);
 #SeNãoDefinido _CRT_SYSTEM_DEFINED
 #Defina _CRT_SYSTEM_DEFINED
-  Inteiro __cdecl system(Constante Caractere *_Command);
+  Inteiro __cdecl system(Imutável Caractere *_Command);
 #FimSe
   _CRTIMP Caractere *__cdecl _ultoa(Natural Longo _Value,Caractere *_Dest,Inteiro _Radix);
   Inteiro __cdecl wctomb(Caractere *_MbCh,wchar_t _WCh);
   _CRTIMP Inteiro __cdecl _wctomb_l(Caractere *_MbCh,wchar_t _WCh,_locale_t _Locale);
-  size_t __cdecl wcstombs(Caractere *_Dest,Constante wchar_t *_Source,size_t _MaxCount);
-  _CRTIMP size_t __cdecl _wcstombs_l(Caractere *_Dest,Constante wchar_t *_Source,size_t _MaxCount,_locale_t _Locale);
+  size_t __cdecl wcstombs(Caractere *_Dest,Imutável wchar_t *_Source,size_t _MaxCount);
+  _CRTIMP size_t __cdecl _wcstombs_l(Caractere *_Dest,Imutável wchar_t *_Source,size_t _MaxCount,_locale_t _Locale);
 
 #SeNãoDefinido _CRT_ALLOCATION_DEFINED
 #Defina _CRT_ALLOCATION_DEFINED
@@ -418,44 +418,44 @@ Importe "C" {
   _CRTIMP wchar_t *__cdecl _itow(Inteiro _Value,wchar_t *_Dest,Inteiro _Radix);
   _CRTIMP wchar_t *__cdecl _ltow(Longo _Value,wchar_t *_Dest,Inteiro _Radix);
   _CRTIMP wchar_t *__cdecl _ultow(Natural Longo _Value,wchar_t *_Dest,Inteiro _Radix);
-  Duplo __cdecl wcstod(Constante wchar_t *_Str,wchar_t **_EndPtr);
-  Real __cdecl wcstof(Constante wchar_t *nptr, wchar_t **endptr);
+  Duplo __cdecl wcstod(Imutável wchar_t *_Str,wchar_t **_EndPtr);
+  Real __cdecl wcstof(Imutável wchar_t *nptr, wchar_t **endptr);
 #Se !Definido __NO_ISOCEXT /* in libmingwex.a */
-  Real __cdecl wcstof( Constante wchar_t * __restrict__, wchar_t ** __restrict__);
-  Longo Duplo __cdecl wcstold(Constante wchar_t * __restrict__, wchar_t ** __restrict__);
+  Real __cdecl wcstof( Imutável wchar_t * __restrict__, wchar_t ** __restrict__);
+  Longo Duplo __cdecl wcstold(Imutável wchar_t * __restrict__, wchar_t ** __restrict__);
 #FimSe /* __NO_ISOCEXT */
-  _CRTIMP Duplo __cdecl _wcstod_l(Constante wchar_t *_Str,wchar_t **_EndPtr,_locale_t _Locale);
-  Longo __cdecl wcstol(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
-  _CRTIMP Longo __cdecl _wcstol_l(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
-  Natural Longo __cdecl wcstoul(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
-  _CRTIMP Natural Longo __cdecl _wcstoul_l(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
-  _CRTIMP wchar_t *__cdecl _wgetenv(Constante wchar_t *_VarName);
+  _CRTIMP Duplo __cdecl _wcstod_l(Imutável wchar_t *_Str,wchar_t **_EndPtr,_locale_t _Locale);
+  Longo __cdecl wcstol(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
+  _CRTIMP Longo __cdecl _wcstol_l(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  Natural Longo __cdecl wcstoul(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
+  _CRTIMP Natural Longo __cdecl _wcstoul_l(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP wchar_t *__cdecl _wgetenv(Imutável wchar_t *_VarName);
 #SeNãoDefinido _CRT_WSYSTEM_DEFINED
 #Defina _CRT_WSYSTEM_DEFINED
-  _CRTIMP Inteiro __cdecl _wsystem(Constante wchar_t *_Command);
+  _CRTIMP Inteiro __cdecl _wsystem(Imutável wchar_t *_Command);
 #FimSe
-  _CRTIMP Duplo __cdecl _wtof(Constante wchar_t *_Str);
-  _CRTIMP Duplo __cdecl _wtof_l(Constante wchar_t *_Str,_locale_t _Locale);
-  _CRTIMP Inteiro __cdecl _wtoi(Constante wchar_t *_Str);
-  _CRTIMP Inteiro __cdecl _wtoi_l(Constante wchar_t *_Str,_locale_t _Locale);
-  _CRTIMP Longo __cdecl _wtol(Constante wchar_t *_Str);
-  _CRTIMP Longo __cdecl _wtol_l(Constante wchar_t *_Str,_locale_t _Locale);
+  _CRTIMP Duplo __cdecl _wtof(Imutável wchar_t *_Str);
+  _CRTIMP Duplo __cdecl _wtof_l(Imutável wchar_t *_Str,_locale_t _Locale);
+  _CRTIMP Inteiro __cdecl _wtoi(Imutável wchar_t *_Str);
+  _CRTIMP Inteiro __cdecl _wtoi_l(Imutável wchar_t *_Str,_locale_t _Locale);
+  _CRTIMP Longo __cdecl _wtol(Imutável wchar_t *_Str);
+  _CRTIMP Longo __cdecl _wtol_l(Imutável wchar_t *_Str,_locale_t _Locale);
 
 #Se _INTEGRAL_MAX_BITS >= 64
   _CRTIMP wchar_t *__cdecl _i64tow(__int64 _Val,wchar_t *_DstBuf,Inteiro _Radix);
   _CRTIMP wchar_t *__cdecl _ui64tow(Natural __int64 _Val,wchar_t *_DstBuf,Inteiro _Radix);
-  _CRTIMP __int64 __cdecl _wtoi64(Constante wchar_t *_Str);
-  _CRTIMP __int64 __cdecl _wtoi64_l(Constante wchar_t *_Str,_locale_t _Locale);
-  _CRTIMP __int64 __cdecl _wcstoi64(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
-  _CRTIMP __int64 __cdecl _wcstoi64_l(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
-  _CRTIMP Natural __int64 __cdecl _wcstoui64(Constante wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
-  _CRTIMP Natural __int64 __cdecl _wcstoui64_l(Constante wchar_t *_Str ,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP __int64 __cdecl _wtoi64(Imutável wchar_t *_Str);
+  _CRTIMP __int64 __cdecl _wtoi64_l(Imutável wchar_t *_Str,_locale_t _Locale);
+  _CRTIMP __int64 __cdecl _wcstoi64(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
+  _CRTIMP __int64 __cdecl _wcstoi64_l(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
+  _CRTIMP Natural __int64 __cdecl _wcstoui64(Imutável wchar_t *_Str,wchar_t **_EndPtr,Inteiro _Radix);
+  _CRTIMP Natural __int64 __cdecl _wcstoui64_l(Imutável wchar_t *_Str ,wchar_t **_EndPtr,Inteiro _Radix,_locale_t _Locale);
 #FimSe
 #FimSe
 
 #SeNãoDefinido _POSIX_
 #Defina _CVTBUFSIZE (309+40)
-  _CRTIMP Caractere *__cdecl _fullpath(Caractere *_FullPath,Constante Caractere *_Path,size_t _SizeInBytes);
+  _CRTIMP Caractere *__cdecl _fullpath(Caractere *_FullPath,Imutável Caractere *_Path,size_t _SizeInBytes);
   _CRTIMP Caractere *__cdecl _ecvt(Duplo _Val,Inteiro _NumOfDigits,Inteiro *_PtDec,Inteiro *_PtSign);
   _CRTIMP Caractere *__cdecl _fcvt(Duplo _Val,Inteiro _NumOfDec,Inteiro *_PtDec,Inteiro *_PtSign);
   _CRTIMP Caractere *__cdecl _gcvt(Duplo _Val,Inteiro _NumOfDigits,Caractere *_DstBuf);
@@ -467,14 +467,14 @@ Importe "C" {
   _CRTIMP Inteiro __cdecl _atoflt_l(_CRT_FLOAT *_Result,Caractere *_Str,_locale_t _Locale);
   Natural Longo __cdecl _lrotl(Natural Longo _Val,Inteiro _Shift);
   Natural Longo __cdecl _lrotr(Natural Longo _Val,Inteiro _Shift);
-  _CRTIMP Vazio __cdecl _makepath(Caractere *_Path,Constante Caractere *_Drive,Constante Caractere *_Dir,Constante Caractere *_Filename,Constante Caractere *_Ext);
+  _CRTIMP Vazio __cdecl _makepath(Caractere *_Path,Imutável Caractere *_Drive,Imutável Caractere *_Dir,Imutável Caractere *_Filename,Imutável Caractere *_Ext);
   _onexit_t __cdecl _onexit(_onexit_t _Func);
 
 #SeNãoDefinido _CRT_PERROR_DEFINED
 #Defina _CRT_PERROR_DEFINED
-  Vazio __cdecl perror(Constante Caractere *_ErrMsg);
+  Vazio __cdecl perror(Imutável Caractere *_ErrMsg);
 #FimSe
-  _CRTIMP Inteiro __cdecl _putenv(Constante Caractere *_EnvString);
+  _CRTIMP Inteiro __cdecl _putenv(Imutável Caractere *_EnvString);
   Natural Inteiro __cdecl _rotl(Natural Inteiro _Val,Inteiro _Shift);
 #Se _INTEGRAL_MAX_BITS >= 64
   Natural __int64 __cdecl _rotl64(Natural __int64 _Val,Inteiro _Shift);
@@ -483,21 +483,21 @@ Importe "C" {
 #Se _INTEGRAL_MAX_BITS >= 64
   Natural __int64 __cdecl _rotr64(Natural __int64 _Val,Inteiro _Shift);
 #FimSe
-  _CRTIMP Vazio __cdecl _searchenv(Constante Caractere *_Filename,Constante Caractere *_EnvVar,Caractere *_ResultPath);
-  _CRTIMP Vazio __cdecl _splitpath(Constante Caractere *_FullPath,Caractere *_Drive,Caractere *_Dir,Caractere *_Filename,Caractere *_Ext);
+  _CRTIMP Vazio __cdecl _searchenv(Imutável Caractere *_Filename,Imutável Caractere *_EnvVar,Caractere *_ResultPath);
+  _CRTIMP Vazio __cdecl _splitpath(Imutável Caractere *_FullPath,Caractere *_Drive,Caractere *_Dir,Caractere *_Filename,Caractere *_Ext);
   _CRTIMP Vazio __cdecl _swab(Caractere *_Buf1,Caractere *_Buf2,Inteiro _SizeInBytes);
 
 #SeNãoDefinido _WSTDLIBP_DEFINED
 #Defina _WSTDLIBP_DEFINED
-  _CRTIMP wchar_t *__cdecl _wfullpath(wchar_t *_FullPath,Constante wchar_t *_Path,size_t _SizeInWords);
-  _CRTIMP Vazio __cdecl _wmakepath(wchar_t *_ResultPath,Constante wchar_t *_Drive,Constante wchar_t *_Dir,Constante wchar_t *_Filename,Constante wchar_t *_Ext);
+  _CRTIMP wchar_t *__cdecl _wfullpath(wchar_t *_FullPath,Imutável wchar_t *_Path,size_t _SizeInWords);
+  _CRTIMP Vazio __cdecl _wmakepath(wchar_t *_ResultPath,Imutável wchar_t *_Drive,Imutável wchar_t *_Dir,Imutável wchar_t *_Filename,Imutável wchar_t *_Ext);
 #SeNãoDefinido _CRT_WPERROR_DEFINED
 #Defina _CRT_WPERROR_DEFINED
-  _CRTIMP Vazio __cdecl _wperror(Constante wchar_t *_ErrMsg);
+  _CRTIMP Vazio __cdecl _wperror(Imutável wchar_t *_ErrMsg);
 #FimSe
-  _CRTIMP Inteiro __cdecl _wputenv(Constante wchar_t *_EnvString);
-  _CRTIMP Vazio __cdecl _wsearchenv(Constante wchar_t *_Filename,Constante wchar_t *_EnvVar,wchar_t *_ResultPath);
-  _CRTIMP Vazio __cdecl _wsplitpath(Constante wchar_t *_FullPath,wchar_t *_Drive,wchar_t *_Dir,wchar_t *_Filename,wchar_t *_Ext);
+  _CRTIMP Inteiro __cdecl _wputenv(Imutável wchar_t *_EnvString);
+  _CRTIMP Vazio __cdecl _wsearchenv(Imutável wchar_t *_Filename,Imutável wchar_t *_EnvVar,wchar_t *_ResultPath);
+  _CRTIMP Vazio __cdecl _wsplitpath(Imutável wchar_t *_FullPath,wchar_t *_Drive,wchar_t *_Dir,wchar_t *_Filename,wchar_t *_Ext);
 #FimSe
 
   _CRTIMP Vazio __cdecl _beep(Natural _Frequency,Natural _Duration) __MINGW_ATTRIB_DEPRECATED;
@@ -529,39 +529,39 @@ Importe "C" {
   Caractere *__cdecl gcvt(Duplo _Val,Inteiro _NumOfDigits,Caractere *_DstBuf);
   Caractere *__cdecl itoa(Inteiro _Val,Caractere *_DstBuf,Inteiro _Radix);
   Caractere *__cdecl ltoa(Longo _Val,Caractere *_DstBuf,Inteiro _Radix);
-  Inteiro __cdecl putenv(Constante Caractere *_EnvString);
+  Inteiro __cdecl putenv(Imutável Caractere *_EnvString);
   Vazio __cdecl swab(Caractere *_Buf1,Caractere *_Buf2,Inteiro _SizeInBytes);
   Caractere *__cdecl ultoa(Natural Longo _Val,Caractere *_Dstbuf,Inteiro _Radix);
   onexit_t __cdecl onexit(onexit_t _Func);
 #FimSe
 #FimSe
 
-#Se !Definido __NO_ISOCEXT /* externs in Estático libmingwex.a */
+#Se !Definido __NO_ISOCEXT /* externs in Fixo libmingwex.a */
 
-  Tipo Estrutura { Longo Longo quot, rem; } lldiv_t;
+  Pseudônimo Estrutura { Longo Longo quot, rem; } lldiv_t;
 
   lldiv_t __cdecl lldiv(Longo Longo, Longo Longo);
 
   __CRT_INLINE Longo Longo __cdecl llabs(Longo Longo _j) { Retorne (_j >= 0 ? _j : -_j); }
 
-  Longo Longo  __cdecl strtoll(Constante Caractere* __restrict__, Caractere** __restrict, Inteiro);
-  Natural Longo Longo  __cdecl strtoull(Constante Caractere* __restrict__, Caractere** __restrict__, Inteiro);
+  Longo Longo  __cdecl strtoll(Imutável Caractere* __restrict__, Caractere** __restrict, Inteiro);
+  Natural Longo Longo  __cdecl strtoull(Imutável Caractere* __restrict__, Caractere** __restrict__, Inteiro);
 
   /* these are stubs Para MS _i64 versions */
-  Longo Longo  __cdecl atoll (Constante Caractere *);
+  Longo Longo  __cdecl atoll (Imutável Caractere *);
 
 #SeNãoDefinido __STRICT_ANSI__
-  Longo Longo  __cdecl wtoll (Constante wchar_t *);
+  Longo Longo  __cdecl wtoll (Imutável wchar_t *);
   Caractere *__cdecl lltoa (Longo Longo, Caractere *, Inteiro);
   Caractere *__cdecl ulltoa (Natural Longo Longo , Caractere *, Inteiro);
   wchar_t *__cdecl lltow (Longo Longo, wchar_t *, Inteiro);
   wchar_t *__cdecl ulltow (Natural Longo Longo, wchar_t *, Inteiro);
 
   /* __CRT_INLINE using non-ansi functions */
-  __CRT_INLINE Longo Longo  __cdecl atoll (Constante Caractere * _c) { Retorne _atoi64 (_c); }
+  __CRT_INLINE Longo Longo  __cdecl atoll (Imutável Caractere * _c) { Retorne _atoi64 (_c); }
   __CRT_INLINE Caractere *__cdecl lltoa (Longo Longo _n, Caractere * _c, Inteiro _i) { Retorne _i64toa (_n, _c, _i); }
   __CRT_INLINE Caractere *__cdecl ulltoa (Natural Longo Longo _n, Caractere * _c, Inteiro _i) { Retorne _ui64toa (_n, _c, _i); }
-  __CRT_INLINE Longo Longo  __cdecl wtoll (Constante wchar_t * _w) { Retorne _wtoi64 (_w); }
+  __CRT_INLINE Longo Longo  __cdecl wtoll (Imutável wchar_t * _w) { Retorne _wtoi64 (_w); }
   __CRT_INLINE wchar_t *__cdecl lltow (Longo Longo _n, wchar_t * _w, Inteiro _i) { Retorne _i64tow (_n, _w, _i); }
   __CRT_INLINE wchar_t *__cdecl ulltow (Natural Longo Longo _n, wchar_t * _w, Inteiro _i) { Retorne _ui64tow (_n, _w, _i); }
 #FimSe /* (__STRICT_ANSI__)  */

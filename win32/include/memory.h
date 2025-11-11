@@ -9,7 +9,7 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CONST_RETURN
@@ -20,17 +20,17 @@ Importe "C" {
 
 #SeNãoDefinido _CRT_MEMORY_DEFINED
 #Defina _CRT_MEMORY_DEFINED
-  _CRTIMP Vazio *__cdecl _memccpy(Vazio *_Dst,Constante Vazio *_Src,Inteiro _Val,size_t _MaxCount);
-  _CONST_RETURN Vazio *__cdecl memchr(Constante Vazio *_Buf ,Inteiro _Val,size_t _MaxCount);
-  _CRTIMP Inteiro __cdecl _memicmp(Constante Vazio *_Buf1,Constante Vazio *_Buf2,size_t _Size);
-  _CRTIMP Inteiro __cdecl _memicmp_l(Constante Vazio *_Buf1,Constante Vazio *_Buf2,size_t _Size,_locale_t _Locale);
-  Inteiro __cdecl memcmp(Constante Vazio *_Buf1,Constante Vazio *_Buf2,size_t _Size);
-  Vazio *__cdecl memcpy(Vazio *_Dst,Constante Vazio *_Src,size_t _Size);
+  _CRTIMP Vazio *__cdecl _memccpy(Vazio *_Dst,Imutável Vazio *_Src,Inteiro _Val,size_t _MaxCount);
+  _CONST_RETURN Vazio *__cdecl memchr(Imutável Vazio *_Buf ,Inteiro _Val,size_t _MaxCount);
+  _CRTIMP Inteiro __cdecl _memicmp(Imutável Vazio *_Buf1,Imutável Vazio *_Buf2,size_t _Size);
+  _CRTIMP Inteiro __cdecl _memicmp_l(Imutável Vazio *_Buf1,Imutável Vazio *_Buf2,size_t _Size,_locale_t _Locale);
+  Inteiro __cdecl memcmp(Imutável Vazio *_Buf1,Imutável Vazio *_Buf2,size_t _Size);
+  Vazio *__cdecl memcpy(Vazio *_Dst,Imutável Vazio *_Src,size_t _Size);
   Vazio *__cdecl memset(Vazio *_Dst,Inteiro _Val,size_t _Size);
 
 #SeNãoDefinido	NO_OLDNAMES
-  Vazio *__cdecl memccpy(Vazio *_Dst,Constante Vazio *_Src,Inteiro _Val,size_t _Size);
-  Inteiro __cdecl memicmp(Constante Vazio *_Buf1,Constante Vazio *_Buf2,size_t _Size);
+  Vazio *__cdecl memccpy(Vazio *_Dst,Imutável Vazio *_Src,Inteiro _Val,size_t _Size);
+  Inteiro __cdecl memicmp(Imutável Vazio *_Buf1,Imutável Vazio *_Buf2,size_t _Size);
 #FimSe
 #FimSe
 

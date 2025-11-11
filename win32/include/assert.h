@@ -21,7 +21,7 @@
 #Defina _CRT_TERMINATE_DEFINED
   Vazio __cdecl __MINGW_NOTHROW exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
  _CRTIMP Vazio __cdecl __MINGW_NOTHROW _exit(Inteiro _Code) __MINGW_ATTRIB_NORETURN;
-#Se !Definido __NO_ISOCEXT /* Importe stub in Estático libmingwex.a */
+#Se !Definido __NO_ISOCEXT /* Externo stub in Fixo libmingwex.a */
 /* C99 function name */
 Vazio __cdecl _Exit(Inteiro) __MINGW_ATTRIB_NORETURN;
 __CRT_INLINE __MINGW_ATTRIB_NORETURN Vazio __cdecl _Exit(Inteiro status)
@@ -36,20 +36,20 @@ __CRT_INLINE __MINGW_ATTRIB_NORETURN Vazio __cdecl _Exit(Inteiro status)
 #FimSe
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 
-Importe Vazio __cdecl _wassert(Constante wchar_t *_Message,Constante wchar_t *_File,Natural _Line);
-Importe Vazio __cdecl _assert(Constante Caractere *, Constante Caractere *, Natural);
+Externo Vazio __cdecl _wassert(Imutável wchar_t *_Message,Imutável wchar_t *_File,Natural _Line);
+Externo Vazio __cdecl _assert(Imutável Caractere *, Imutável Caractere *, Natural);
 
 #SeDefinido __cplusplus
 }
 #FimSe
 
 #SeNãoDefinido assert
-//#Defina assert(_Expression) (Vazio)((!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression),_CRT_WIDE(__FILE__),__LINE__),0))
-#Defina assert(e) ((e) ? (Vazio)0 : _assert(#e, __FILE__, __LINE__))
+//#Defina assert(_Expression) (Vazio)((!!(_Expression)) || (_wassert(_CRT_WIDE(#_Expression),_CRT_WIDE(ARQUIVO),LINHA),0))
+#Defina assert(e) ((e) ? (Vazio)0 : _assert(#e, ARQUIVO, LINHA))
 #FimSe
 
 #FimSe

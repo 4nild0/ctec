@@ -10,7 +10,7 @@
 #Inclua <sys/timeb.h>
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Se Definido(MINGW_HAS_SECURE_API)

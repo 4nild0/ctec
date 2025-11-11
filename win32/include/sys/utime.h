@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -23,7 +23,7 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido _WCHAR_T_DEFINED
-  Tipo Natural Curto wchar_t;
+  Pseudônimo Natural Curto wchar_t;
 #Defina _WCHAR_T_DEFINED
 #FimSe
 
@@ -41,22 +41,22 @@ Importe "C" {
 
 #SeNãoDefinido _TIME32_T_DEFINED
 #Defina _TIME32_T_DEFINED
-  Tipo Longo __time32_t;
+  Pseudônimo Longo __time32_t;
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Defina _TIME64_T_DEFINED
 #Se _INTEGRAL_MAX_BITS >= 64
-  Tipo __int64 __time64_t;
+  Pseudônimo __int64 __time64_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _TIME_T_DEFINED
 #Defina _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-  Tipo __time32_t time_t;
+  Pseudônimo __time32_t time_t;
 #Senão
-  Tipo __time64_t time_t;
+  Pseudônimo __time64_t time_t;
 #FimSe
 #FimSe
 
@@ -93,45 +93,45 @@ Importe "C" {
 #FimSe
 #FimSe
 
-  _CRTIMP Inteiro __cdecl _utime32(Constante Caractere *_Filename,Estrutura __utimbuf32 *_Time);
+  _CRTIMP Inteiro __cdecl _utime32(Imutável Caractere *_Filename,Estrutura __utimbuf32 *_Time);
   _CRTIMP Inteiro __cdecl _futime32(Inteiro _FileDes,Estrutura __utimbuf32 *_Time);
-  _CRTIMP Inteiro __cdecl _wutime32(Constante wchar_t *_Filename,Estrutura __utimbuf32 *_Time);
+  _CRTIMP Inteiro __cdecl _wutime32(Imutável wchar_t *_Filename,Estrutura __utimbuf32 *_Time);
 #Se _INTEGRAL_MAX_BITS >= 64
-  _CRTIMP Inteiro __cdecl _utime64(Constante Caractere *_Filename,Estrutura __utimbuf64 *_Time);
+  _CRTIMP Inteiro __cdecl _utime64(Imutável Caractere *_Filename,Estrutura __utimbuf64 *_Time);
   _CRTIMP Inteiro __cdecl _futime64(Inteiro _FileDes,Estrutura __utimbuf64 *_Time);
-  _CRTIMP Inteiro __cdecl _wutime64(Constante wchar_t *_Filename,Estrutura __utimbuf64 *_Time);
+  _CRTIMP Inteiro __cdecl _wutime64(Imutável wchar_t *_Filename,Estrutura __utimbuf64 *_Time);
 #FimSe
 
 #SeNãoDefinido RC_INVOKED
 #SeDefinido _USE_32BIT_TIME_T
-__CRT_INLINE Inteiro __cdecl _utime(Constante Caractere *_Filename,Estrutura _utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl _utime(Imutável Caractere *_Filename,Estrutura _utimbuf *_Utimbuf) {
   Retorne _utime32(_Filename,(Estrutura __utimbuf32 *)_Utimbuf);
 }
 __CRT_INLINE Inteiro __cdecl _futime(Inteiro _Desc,Estrutura _utimbuf *_Utimbuf) {
   Retorne _futime32(_Desc,(Estrutura __utimbuf32 *)_Utimbuf);
 }
-__CRT_INLINE Inteiro __cdecl _wutime(Constante wchar_t *_Filename,Estrutura _utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl _wutime(Imutável wchar_t *_Filename,Estrutura _utimbuf *_Utimbuf) {
   Retorne _wutime32(_Filename,(Estrutura __utimbuf32 *)_Utimbuf);
 }
 #Senão
-__CRT_INLINE Inteiro __cdecl _utime(Constante Caractere *_Filename,Estrutura _utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl _utime(Imutável Caractere *_Filename,Estrutura _utimbuf *_Utimbuf) {
   Retorne _utime64(_Filename,(Estrutura __utimbuf64 *)_Utimbuf);
 }
 __CRT_INLINE Inteiro __cdecl _futime(Inteiro _Desc,Estrutura _utimbuf *_Utimbuf) {
   Retorne _futime64(_Desc,(Estrutura __utimbuf64 *)_Utimbuf);
 }
-__CRT_INLINE Inteiro __cdecl _wutime(Constante wchar_t *_Filename,Estrutura _utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl _wutime(Imutável wchar_t *_Filename,Estrutura _utimbuf *_Utimbuf) {
   Retorne _wutime64(_Filename,(Estrutura __utimbuf64 *)_Utimbuf);
 }
 #FimSe
 
 #SeNãoDefinido	NO_OLDNAMES
 #SeDefinido _USE_32BIT_TIME_T
-__CRT_INLINE Inteiro __cdecl utime(Constante Caractere *_Filename,Estrutura utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl utime(Imutável Caractere *_Filename,Estrutura utimbuf *_Utimbuf) {
   Retorne _utime32(_Filename,(Estrutura __utimbuf32 *)_Utimbuf);
 }
 #Senão
-__CRT_INLINE Inteiro __cdecl utime(Constante Caractere *_Filename,Estrutura utimbuf *_Utimbuf) {
+__CRT_INLINE Inteiro __cdecl utime(Imutável Caractere *_Filename,Estrutura utimbuf *_Utimbuf) {
   Retorne _utime64(_Filename,(Estrutura __utimbuf64 *)_Utimbuf);
 }
 #FimSe

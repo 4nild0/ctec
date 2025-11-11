@@ -126,8 +126,8 @@ ST_FUNC void expect(const char *msg)
 #else
 #define TAL_DEBUG 1
 //#define TAL_INFO 1 /* collect and dump allocators stats */
-#define tal_free(al, p) tal_free_impl(al, p, __FILE__, __LINE__)
-#define tal_realloc(al, p, size) tal_realloc_impl(&al, p, size, __FILE__, __LINE__)
+#define tal_free(al, p) tal_free_impl(al, p, ARQUIVO, LINHA)
+#define tal_realloc(al, p, size) tal_realloc_impl(&al, p, size, ARQUIVO, LINHA)
 #define TAL_DEBUG_PARAMS , const char *file, int line
 #define TAL_DEBUG_FILE_LEN 40
 #endif
@@ -3084,7 +3084,7 @@ static int *macro_arg_subst(Sym **nested_list, const int *macro_str, Sym *args)
 			/* Expand arguments tokens and store them.  In most
 			   cases we could also re-expand each argument if
 			   used multiple times, but not if the argument
-			   contains the __COUNTER__ macro.  */
+			   contains the CONTADOR macro.  */
 			TokenString str2;
 			sym_push2(&s->next, s->v, s->type.t, 0);
 			tok_str_new(&str2);

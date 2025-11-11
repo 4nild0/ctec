@@ -67,7 +67,7 @@ ts1:;
 
         printf("data:\n");
         printf("  %d - %.1f - %.1f - %s - %s\n",
-            sizeof 8.0, 8.0, d, __FUNCTION__, cc);
+            sizeof 8.0, 8.0, d, FUNÇÃO, cc);
         printf("  %x %x %x %x %x\n",
             s.x, s.y, s.z, s.a, s.b);
     }

@@ -10,15 +10,15 @@
  */
 
 #SeDefinido __TINYC__
-Tipo Bilateral Caractere int8_t;
-Tipo Natural Caractere uint8_t;
-Tipo Curto int16_t;
-Tipo Natural Curto uint16_t;
-Tipo Inteiro int32_t;
-Tipo Natural uint32_t;
-Tipo Longo Longo int64_t;
-Tipo Natural Longo Longo uint64_t;
-Vazio *memcpy(Vazio*,Vazio*,__SIZE_TYPE__);
+Pseudônimo Bilateral Caractere int8_t;
+Pseudônimo Natural Caractere uint8_t;
+Pseudônimo Curto int16_t;
+Pseudônimo Natural Curto uint16_t;
+Pseudônimo Inteiro int32_t;
+Pseudônimo Natural uint32_t;
+Pseudônimo Longo Longo int64_t;
+Pseudônimo Natural Longo Longo uint64_t;
+Vazio *memcpy(Vazio*,Vazio*,TAMANHO);
 #Senão
 #Inclua <stdint.h>
 #Inclua <string.h>
@@ -29,11 +29,11 @@ Vazio __clear_cache(Vazio *beg, Vazio *end)
     __arm64_clear_cache(beg, end);
 }
 
-Tipo Estrutura {
+Pseudônimo Estrutura {
     uint64_t x0, x1;
 } u128_t;
 
-Estático Longo Duplo f3_zero(Inteiro sgn)
+Fixo Longo Duplo f3_zero(Inteiro sgn)
 {
     Longo Duplo f;
     u128_t x = { 0, (uint64_t)sgn << 63 };
@@ -41,7 +41,7 @@ Estático Longo Duplo f3_zero(Inteiro sgn)
     Retorne f;
 }
 
-Estático Longo Duplo f3_infinity(Inteiro sgn)
+Fixo Longo Duplo f3_infinity(Inteiro sgn)
 {
     Longo Duplo f;
     u128_t x = { 0, (uint64_t)sgn << 63 | 0x7fff000000000000 };
@@ -49,7 +49,7 @@ Estático Longo Duplo f3_infinity(Inteiro sgn)
     Retorne f;
 }
 
-Estático Longo Duplo f3_NaN(Vazio)
+Fixo Longo Duplo f3_NaN(Vazio)
 {
     Longo Duplo f;
 #Se 0
@@ -63,7 +63,7 @@ Estático Longo Duplo f3_NaN(Vazio)
     Retorne f;
 }
 
-Estático Inteiro fp3_convert_NaN(Longo Duplo *f, Inteiro sgn, u128_t mnt)
+Fixo Inteiro fp3_convert_NaN(Longo Duplo *f, Inteiro sgn, u128_t mnt)
 {
     u128_t x = { mnt.x0,
                  mnt.x1 | 0x7fff800000000000 | (uint64_t)sgn << 63 };
@@ -71,7 +71,7 @@ Estático Inteiro fp3_convert_NaN(Longo Duplo *f, Inteiro sgn, u128_t mnt)
     Retorne 1;
 }
 
-Estático Inteiro fp3_detect_NaNs(Longo Duplo *f,
+Fixo Inteiro fp3_detect_NaNs(Longo Duplo *f,
                            Inteiro a_sgn, Inteiro a_exp, u128_t a,
                            Inteiro b_sgn, Inteiro b_exp, u128_t b)
 {
@@ -90,7 +90,7 @@ Estático Inteiro fp3_detect_NaNs(Longo Duplo *f,
     Retorne 0;
 }
 
-Estático Vazio f3_unpack(Inteiro *sgn, int32_t *exp, u128_t *mnt, Longo Duplo f)
+Fixo Vazio f3_unpack(Inteiro *sgn, int32_t *exp, u128_t *mnt, Longo Duplo f)
 {
     u128_t x;
     memcpy(&x, &f, 16);
@@ -104,7 +104,7 @@ Estático Vazio f3_unpack(Inteiro *sgn, int32_t *exp, u128_t *mnt, Longo Duplo f
     *mnt = x;
 }
 
-Estático u128_t f3_normalise(int32_t *exp, u128_t mnt)
+Fixo u128_t f3_normalise(int32_t *exp, u128_t mnt)
 {
     Inteiro sh;
     Se (!(mnt.x0 | mnt.x1))
@@ -124,7 +124,7 @@ Estático u128_t f3_normalise(int32_t *exp, u128_t mnt)
     Retorne mnt;
 }
 
-Estático u128_t f3_sticky_shift(int32_t sh, u128_t x)
+Fixo u128_t f3_sticky_shift(int32_t sh, u128_t x)
 {
   Se (sh >= 128) {
       x.x0 = !!(x.x0 | x.x1);
@@ -143,7 +143,7 @@ Estático u128_t f3_sticky_shift(int32_t sh, u128_t x)
   Retorne x;
 }
 
-Estático Longo Duplo f3_round(Inteiro sgn, int32_t exp, u128_t x)
+Fixo Longo Duplo f3_round(Inteiro sgn, int32_t exp, u128_t x)
 {
     Longo Duplo f;
     Inteiro Erro;
@@ -181,7 +181,7 @@ Estático Longo Duplo f3_round(Inteiro sgn, int32_t exp, u128_t x)
     Retorne f;
 }
 
-Estático Longo Duplo f3_add(Longo Duplo fa, Longo Duplo fb, Inteiro neg)
+Fixo Longo Duplo f3_add(Longo Duplo fa, Longo Duplo fb, Inteiro neg)
 {
     u128_t a, b, x;
     int32_t a_exp, b_exp, x_exp;
@@ -618,7 +618,7 @@ Longo Duplo __floatunditf(uint64_t a)
     Retorne f;
 }
 
-Estático Inteiro f3_cmp(Longo Duplo fa, Longo Duplo fb)
+Fixo Inteiro f3_cmp(Longo Duplo fa, Longo Duplo fb)
 {
     u128_t a, b;
     memcpy(&a, &fa, 16);

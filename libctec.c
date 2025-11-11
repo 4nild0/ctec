@@ -840,32 +840,32 @@ LIBCTECAPI CTECState *ctec_new(void)
     /* TinyCC & gcc defines */
 #if PTR_SIZE == 4
     /* 32bit systems. */
-    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Inteiro");
-    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Inteiro");
+    ctec_define_symbol(s, "TAMANHO", "Natural Inteiro");
+    ctec_define_symbol(s, "DIFERENÇA", "Inteiro");
     ctec_define_symbol(s, "__ILP32__", NULL);
 #elif LONG_SIZE == 4
     /* 64bit Windows. */
-    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Longo Longo");
-    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Longo Longo");
+    ctec_define_symbol(s, "TAMANHO", "Natural Longo Longo");
+    ctec_define_symbol(s, "DIFERENÇA", "Longo Longo");
     ctec_define_symbol(s, "__LLP64__", NULL);
 #else
     /* Other 64bit systems. */
-    ctec_define_symbol(s, "__SIZE_TYPE__", "Natural Longo");
-    ctec_define_symbol(s, "__PTRDIFF_TYPE__", "Longo");
+    ctec_define_symbol(s, "TAMANHO", "Natural Longo");
+    ctec_define_symbol(s, "DIFERENÇA", "Longo");
     ctec_define_symbol(s, "__LP64__", NULL);
 #endif
 
 #ifdef CTEC_TARGET_PE
-    ctec_define_symbol(s, "__WCHAR_TYPE__", "Natural Curto");
-    ctec_define_symbol(s, "__WINT_TYPE__", "Natural Curto");
+    ctec_define_symbol(s, "CARACTERE_MAIOR", "Natural Curto");
+    ctec_define_symbol(s, "INTEIRO", "Natural Curto");
 #else
-    ctec_define_symbol(s, "__WCHAR_TYPE__", "Inteiro");
+    ctec_define_symbol(s, "CARACTERE_MAIOR", "Inteiro");
     /* wint_t is unsigned int by default, but (signed) int on BSDs
        and unsigned short on windows.  Other OSes might have still
        other conventions, sigh.  */
 # if defined(__FreeBSD__) || defined (__FreeBSD_kernel__) \
   || defined(__NetBSD__) || defined(__OpenBSD__)
-    ctec_define_symbol(s, "__WINT_TYPE__", "Inteiro");
+    ctec_define_symbol(s, "INTEIRO", "Inteiro");
 #  ifdef __FreeBSD__
     /* define __GNUC__ to have some useful stuff from sys/cdefs.h
        that are unconditionally used in FreeBSDs other system headers :/ */
@@ -874,7 +874,7 @@ LIBCTECAPI CTECState *ctec_new(void)
     ctec_define_symbol(s, "__builtin_alloca", "alloca");
 #  endif
 # else
-    ctec_define_symbol(s, "__WINT_TYPE__", "Natural Inteiro");
+    ctec_define_symbol(s, "INTEIRO", "Natural Inteiro");
     /* glibc defines */
     ctec_define_symbol(s, "__REDIRECT(name, proto, alias)",
         "name proto __asm__ (#alias)");

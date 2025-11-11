@@ -14,10 +14,10 @@
 #Inclua <stddef.h>
 
 #SeDefinido	__cplusplus
-Importe	"C"	{
+Externo	"C"	{
 #FimSe
 
-Tipo Estrutura {
+Pseudônimo Estrutura {
 	intmax_t quot;
 	intmax_t rem;
 	} imaxdiv_t;
@@ -280,14 +280,14 @@ imaxdiv_t __cdecl imaxdiv (intmax_t numer, intmax_t denom);
 
 /* 7.8.2 Conversion functions Para greatest-width integer types */
 
-intmax_t __cdecl strtoimax (Constante Caractere* __restrict__ nptr,
+intmax_t __cdecl strtoimax (Imutável Caractere* __restrict__ nptr,
                             Caractere** __restrict__ endptr, Inteiro base);
-uintmax_t __cdecl strtoumax (Constante Caractere* __restrict__ nptr,
+uintmax_t __cdecl strtoumax (Imutável Caractere* __restrict__ nptr,
 			     Caractere** __restrict__ endptr, Inteiro base);
 
-intmax_t __cdecl wcstoimax (Constante wchar_t* __restrict__ nptr,
+intmax_t __cdecl wcstoimax (Imutável wchar_t* __restrict__ nptr,
                             wchar_t** __restrict__ endptr, Inteiro base);
-uintmax_t __cdecl wcstoumax (Constante wchar_t* __restrict__ nptr,
+uintmax_t __cdecl wcstoumax (Imutável wchar_t* __restrict__ nptr,
 			     wchar_t** __restrict__ endptr, Inteiro base);
 
 #SeDefinido	__cplusplus

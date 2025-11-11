@@ -7,9 +7,9 @@
 #Defina _BASETYPS_H_
 
 #SeDefinido __cplusplus
-#Defina EXTERN_C Importe "C"
+#Defina EXTERN_C Externo "C"
 #Senão
-#Defina EXTERN_C Importe
+#Defina EXTERN_C Externo
 #FimSe
 
 #Defina STDMETHODCALLTYPE WINAPI
@@ -57,15 +57,15 @@
 #Defina THIS_ INTERFACE *This,
 #Defina THIS INTERFACE *This
 #SeDefinido CONST_VTABLE
-#Defina DECLARE_INTERFACE(iface) Tipo Estrutura iface { \
-  Constante Estrutura iface##Vtbl *lpVtbl; } iface; \
-  Tipo Constante Estrutura iface##Vtbl iface##Vtbl; \
-  Constante Estrutura iface##Vtbl
+#Defina DECLARE_INTERFACE(iface) Pseudônimo Estrutura iface { \
+  Imutável Estrutura iface##Vtbl *lpVtbl; } iface; \
+  Pseudônimo Imutável Estrutura iface##Vtbl iface##Vtbl; \
+  Imutável Estrutura iface##Vtbl
 #Senão
-#Defina DECLARE_INTERFACE(iface) Tipo Estrutura iface { \
+#Defina DECLARE_INTERFACE(iface) Pseudônimo Estrutura iface { \
     Estrutura iface##Vtbl *lpVtbl; \
   } iface; \
-  Tipo Estrutura iface##Vtbl iface##Vtbl; \
+  Pseudônimo Estrutura iface##Vtbl iface##Vtbl; \
   Estrutura iface##Vtbl
 #FimSe
 #Defina DECLARE_INTERFACE_(iface,baseiface) DECLARE_INTERFACE(iface)
@@ -75,11 +75,11 @@
 
 #SeNãoDefinido _ERROR_STATUS_T_DEFINED
 #Defina _ERROR_STATUS_T_DEFINED
-Tipo Natural Longo error_status_t;
+Pseudônimo Natural Longo error_status_t;
 #FimSe
 
 #SeNãoDefinido _WCHAR_T_DEFINED
-Tipo Natural Curto wchar_t;
+Pseudônimo Natural Curto wchar_t;
 #Defina _WCHAR_T_DEFINED
 #FimSe
 #FimSe

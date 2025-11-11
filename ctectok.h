@@ -8,31 +8,31 @@
      DEF(TOK_BREAK, "Interrompa")
      DEF(TOK_RETURN, "Retorne")
      DEF(TOK_FOR, "Para")
-     DEF(TOK_EXTERN, "Importe")
-     DEF(TOK_STATIC, "Estático")
+     DEF(TOK_EXTERN, "Externo")
+     DEF(TOK_STATIC, "Fixo")
      DEF(TOK_UNSIGNED, "Natural")
-     DEF(TOK_GOTO, "VáPara")
+     DEF(TOK_GOTO, "Execute")
      DEF(TOK_DO, "Faça")
      DEF(TOK_CONTINUE, "Continue")
      DEF(TOK_SWITCH, "Troque")
      DEF(TOK_CASE, "Caso")
 
-     DEF(TOK_CONST1, "Constante")
+     DEF(TOK_CONST1, "Imutável")
      DEF(TOK_CONST2, "__const") /* gcc keyword */
      DEF(TOK_CONST3, "__const__") /* gcc keyword */
-     DEF(TOK_VOLATILE1, "Volátil")
+     DEF(TOK_VOLATILE1, "Instável")
      DEF(TOK_VOLATILE2, "__volatile") /* gcc keyword */
      DEF(TOK_VOLATILE3, "__volatile__") /* gcc keyword */
      DEF(TOK_LONG, "Longo")
-     DEF(TOK_REGISTER, "Registrador")
+     DEF(TOK_REGISTER, "Prioridade")
      DEF(TOK_SIGNED1, "Bilateral")
      DEF(TOK_SIGNED2, "__signed") /* gcc keyword */
      DEF(TOK_SIGNED3, "__signed__") /* gcc keyword */
-     DEF(TOK_AUTO, "Automático")
-     DEF(TOK_INLINE1, "EmLinha")
+     DEF(TOK_AUTO, "Local")
+     DEF(TOK_INLINE1, "Integrado")
      DEF(TOK_INLINE2, "__inline") /* gcc keyword */
      DEF(TOK_INLINE3, "__inline__") /* gcc keyword */
-     DEF(TOK_RESTRICT1, "Restrito")
+     DEF(TOK_RESTRICT1, "Exclusivo")
      DEF(TOK_RESTRICT2, "__restrict")
      DEF(TOK_RESTRICT3, "__restrict__")
      DEF(TOK_EXTENSION, "__extension__") /* gcc keyword */
@@ -45,7 +45,7 @@
      DEF(TOK_SHORT, "Curto")
      DEF(TOK_STRUCT, "Estrutura")
      DEF(TOK_UNION, "União")
-     DEF(TOK_TYPEDEF, "Tipo")
+     DEF(TOK_TYPEDEF, "Pseudônimo")
      DEF(TOK_DEFAULT, "Padrão")
      DEF(TOK_ENUM, "Enumeração")
      DEF(TOK_SIZEOF, "Meça")
@@ -73,7 +73,7 @@
      DEF(TOK_INCLUDE_NEXT, "Inclua_Próximo")
      DEF(TOK_IFDEF, "SeDefinido")
      DEF(TOK_IFNDEF, "SeNãoDefinido")
-     DEF(TOK_ELIF, "SenãoSe")
+     DEF(TOK_ELIF, "Exceto")
      DEF(TOK_ENDIF, "FimSe")
      DEF(TOK_DEFINED, "Definido")
      DEF(TOK_UNDEF, "Esqueça")
@@ -81,13 +81,13 @@
      DEF(TOK_WARNING, "Aviso")
      DEF(TOK_LINE, "Linha")
      DEF(TOK_PRAGMA, "Diretiva")
-     DEF(TOK___LINE__, "__LINE__")
-     DEF(TOK___FILE__, "__FILE__")
-     DEF(TOK___DATE__, "__DATE__")
-     DEF(TOK___TIME__, "__TIME__")
-     DEF(TOK___FUNCTION__, "__FUNCTION__")
-     DEF(TOK___VA_ARGS__, "__VA_ARGS__")
-     DEF(TOK___COUNTER__, "__COUNTER__")
+     DEF(TOK___LINE__, "LINHA")
+     DEF(TOK___FILE__, "ARQUIVO")
+     DEF(TOK___DATE__, "DATA")
+     DEF(TOK___TIME__, "HORA")
+     DEF(TOK___FUNCTION__, "FUNÇÃO")
+     DEF(TOK___VA_ARGS__, "ARGUMENTOS_VARIÁVEIS")
+     DEF(TOK___COUNTER__, "CONTADOR")
 
 /* special identifiers */
      DEF(TOK___FUNC__, "__func__")

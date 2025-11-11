@@ -26,60 +26,60 @@
 
 #SeNãoDefinido _TIME32_T_DEFINED
 #Defina _TIME32_T_DEFINED
-Tipo Longo __time32_t;
+Pseudônimo Longo __time32_t;
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Defina _TIME64_T_DEFINED
 #Se _INTEGRAL_MAX_BITS >= 64
-Tipo __int64 __time64_t;
+Pseudônimo __int64 __time64_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _TIME_T_DEFINED
 #Defina _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-Tipo __time32_t time_t;
+Pseudônimo __time32_t time_t;
 #Senão
-Tipo __time64_t time_t;
+Pseudônimo __time64_t time_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _INO_T_DEFINED
 #Defina _INO_T_DEFINED
-Tipo Natural Curto _ino_t;
+Pseudônimo Natural Curto _ino_t;
 #SeNãoDefinido	NO_OLDNAMES
-Tipo Natural Curto ino_t;
+Pseudônimo Natural Curto ino_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _DEV_T_DEFINED
 #Defina _DEV_T_DEFINED
-Tipo Natural Inteiro _dev_t;
+Pseudônimo Natural Inteiro _dev_t;
 #SeNãoDefinido	NO_OLDNAMES
-Tipo Natural Inteiro dev_t;
+Pseudônimo Natural Inteiro dev_t;
 #FimSe
 #FimSe
 
 #SeNãoDefinido _PID_T_
 #Defina	_PID_T_
 #SeNãoDefinido _WIN64
-Tipo Inteiro	_pid_t;
+Pseudônimo Inteiro	_pid_t;
 #Senão
-Tipo __int64	_pid_t;
+Pseudônimo __int64	_pid_t;
 #FimSe
 
 #SeNãoDefinido	NO_OLDNAMES
-Tipo _pid_t	pid_t;
+Pseudônimo _pid_t	pid_t;
 #FimSe
 #FimSe	/* Not _PID_T_ */
 
 #SeNãoDefinido _MODE_T_
 #Defina	_MODE_T_
-Tipo Natural Curto _mode_t;
+Pseudônimo Natural Curto _mode_t;
 
 #SeNãoDefinido	NO_OLDNAMES
-Tipo _mode_t	mode_t;
+Pseudônimo _mode_t	mode_t;
 #FimSe
 #FimSe	/* Not _MODE_T_ */
 
@@ -87,18 +87,18 @@ Tipo _mode_t	mode_t;
 #Defina _OFF_T_DEFINED
 #SeNãoDefinido _OFF_T_
 #Defina _OFF_T_
-  Tipo Longo _off_t;
+  Pseudônimo Longo _off_t;
 #Se !Definido(NO_OLDNAMES) || Definido(_POSIX)
-  Tipo Longo off_t;
+  Pseudônimo Longo off_t;
 #FimSe
 #FimSe
 #FimSe
 
 #SeNãoDefinido _OFF64_T_DEFINED
 #Defina _OFF64_T_DEFINED
-  Tipo Longo Longo _off64_t;
+  Pseudônimo Longo Longo _off64_t;
 #Se !Definido(NO_OLDNAMES) || Definido(_POSIX)
-  Tipo Longo Longo off64_t;
+  Pseudônimo Longo Longo off64_t;
 #FimSe
 #FimSe
 

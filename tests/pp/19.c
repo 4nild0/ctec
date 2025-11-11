@@ -1,21 +1,21 @@
-#define M_C2I(a, ...)       a ## __VA_ARGS__
-#define M_C(a, ...)         M_C2I(a, __VA_ARGS__)
-#define M_C3I(a, b, ...)    a ## b ## __VA_ARGS__
-#define M_C3(a, b, ...)     M_C3I(a ,b, __VA_ARGS__)
+#define M_C2I(a, ...)       a ## ARGUMENTOS_VARIÁVEIS
+#define M_C(a, ...)         M_C2I(a, ARGUMENTOS_VARIÁVEIS)
+#define M_C3I(a, b, ...)    a ## b ## ARGUMENTOS_VARIÁVEIS
+#define M_C3(a, b, ...)     M_C3I(a ,b, ARGUMENTOS_VARIÁVEIS)
 
 #define M_RETI_ARG2(a, b, ...)  b
-#define M_RET_ARG2(...)         M_RETI_ARG2(__VA_ARGS__)
+#define M_RET_ARG2(...)         M_RETI_ARG2(ARGUMENTOS_VARIÁVEIS)
 #define M_RETI_ARG27(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,aa, ...)    aa
-#define M_RET_ARG27(...)        M_RETI_ARG27(__VA_ARGS__)
+#define M_RET_ARG27(...)        M_RETI_ARG27(ARGUMENTOS_VARIÁVEIS)
 
 #define M_TOBOOLI_0                 1, 0,
 #define M_BOOL(x)                   M_RET_ARG2(M_C(M_TOBOOLI_, x), 1, useless)
 
-#define M_IFI_0(true_macro, ...)    __VA_ARGS__
+#define M_IFI_0(true_macro, ...)    ARGUMENTOS_VARIÁVEIS
 #define M_IFI_1(true_macro, ...)    true_macro
 #define M_IF(c)                     M_C(M_IFI_, M_BOOL(c))
 
-#define M_FLAT(...)                 __VA_ARGS__
+#define M_FLAT(...)                 ARGUMENTOS_VARIÁVEIS
 #define M_INVI_0                    1
 #define M_INVI_1                    0
 #define M_INV(x)                    M_C(M_INVI_, x)
@@ -32,13 +32,13 @@
 #define M_ORI_11                    1
 #define M_OR(x,y)                   M_C3(M_ORI_, x, y)
 
-#define M_COMMA_P(...)              M_RET_ARG27(__VA_ARGS__, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, useless)
+#define M_COMMA_P(...)              M_RET_ARG27(ARGUMENTOS_VARIÁVEIS, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, useless)
 
 #define M_EMPTYI_DETECT(...)        0, 1,
-#define M_EMPTYI_P_C1(...)          M_COMMA_P(M_EMPTYI_DETECT __VA_ARGS__ ())
-#define M_EMPTYI_P_C2(...)          M_COMMA_P(M_EMPTYI_DETECT __VA_ARGS__)
-#define M_EMPTYI_P_C3(...)          M_COMMA_P(__VA_ARGS__ () )
-#define M_EMPTY_P(...)              M_AND(M_EMPTYI_P_C1(__VA_ARGS__), M_INV(M_OR(M_OR(M_EMPTYI_P_C2(__VA_ARGS__), M_COMMA_P(__VA_ARGS__)),M_EMPTYI_P_C3(__VA_ARGS__))))
+#define M_EMPTYI_P_C1(...)          M_COMMA_P(M_EMPTYI_DETECT ARGUMENTOS_VARIÁVEIS ())
+#define M_EMPTYI_P_C2(...)          M_COMMA_P(M_EMPTYI_DETECT ARGUMENTOS_VARIÁVEIS)
+#define M_EMPTYI_P_C3(...)          M_COMMA_P(ARGUMENTOS_VARIÁVEIS () )
+#define M_EMPTY_P(...)              M_AND(M_EMPTYI_P_C1(ARGUMENTOS_VARIÁVEIS), M_INV(M_OR(M_OR(M_EMPTYI_P_C2(ARGUMENTOS_VARIÁVEIS), M_COMMA_P(ARGUMENTOS_VARIÁVEIS)),M_EMPTYI_P_C3(ARGUMENTOS_VARIÁVEIS))))
 #define M_APPLY_FUNC2B(func, arg1, arg2)        \
   M_IF(M_EMPTY_P(arg2))(,func(arg1, arg2))
 #define M_MAP2B_0(func, data, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z,...) \
@@ -51,11 +51,11 @@
   M_APPLY_FUNC2B(func, data, s) M_APPLY_FUNC2B(func, data, t) M_APPLY_FUNC2B(func, data, u) \
   M_APPLY_FUNC2B(func, data, v) M_APPLY_FUNC2B(func, data, w) M_APPLY_FUNC2B(func, data, x) \
   M_APPLY_FUNC2B(func, data, y) M_APPLY_FUNC2B(func, data, z)
-#define M_MAP2B(f, ...) M_MAP2B_0(f, __VA_ARGS__, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , )
+#define M_MAP2B(f, ...) M_MAP2B_0(f, ARGUMENTOS_VARIÁVEIS, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , )
 #define M_INIT_INIT(a)           ,a,
 
 #define M_GET_METHOD(method, method_default, ...)                       \
-  M_RET_ARG2 (M_MAP2B(M_C, M_C3(M_, method, _), __VA_ARGS__), method_default,)
+  M_RET_ARG2 (M_MAP2B(M_C, M_C3(M_, method, _), ARGUMENTOS_VARIÁVEIS), method_default,)
 
 #define M_TEST_METHOD_P(method, oplist)                         \
   M_BOOL(M_GET_METHOD (method, 0, M_FLAT oplist))

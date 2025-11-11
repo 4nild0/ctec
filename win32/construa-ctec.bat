@@ -164,8 +164,6 @@ copy>nul ctec-win32.txt doc
 .\ctec -m64 -c ../lib/alloca86_64.S
 .\ctec -m64 -c ../lib/alloca86_64-bt.S
 .\ctec -m64 -ar lib/libctec1-64.a %O1% alloca86_64.o alloca86_64-bt.o
-
-copy lib\libctec1-64.a lib\libctec1.a
 @if errorlevel 1 goto :the_end
 
 :ctec-doc.html
@@ -189,3 +187,5 @@ for %%f in (include examples libctec doc) do @xcopy>nul /s/i/q/y %%f %INST%\%%f
 
 :the_end
 exit /B %ERRORLEVEL%
+
+copy lib\libctec1-64.a lib\libctec1.a

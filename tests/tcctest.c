@@ -36,7 +36,7 @@
 /* deprecated and no longer supported in gcc 3.3 */
 //#define ACCEPT_CR_IN_STRINGS
 
-/* __VA_ARGS__ and __func__ support */
+/* ARGUMENTOS_VARIÁVEIS and __func__ support */
 #define C99_MACROS
 
 /* test various include syntaxes */
@@ -154,7 +154,7 @@ static int onetwothree = 123;
 #define min(a, b) ((a) < (b) ? (a) : (b))
 
 #ifdef C99_MACROS
-#define dprintf(level,...) printf(__VA_ARGS__)
+#define dprintf(level,...) printf(ARGUMENTOS_VARIÁVEIS)
 #endif
 
 /* gcc vararg macros */
@@ -336,19 +336,19 @@ void macro_test(void)
 
     MACRO_NOARGS();
 
-#ifdef __LINE__
-    printf("__LINE__ defined\n");
+#ifdef LINHA
+    printf("LINHA defined\n");
 #endif
 
-    printf("__LINE__=%d __FILE__=%s\n",
-           __LINE__, __FILE__);
+    printf("LINHA=%d ARQUIVO=%s\n",
+           LINHA, ARQUIVO);
 #if 0
 #line 200
-    printf("__LINE__=%d __FILE__=%s\n",
-           __LINE__, __FILE__);
+    printf("LINHA=%d ARQUIVO=%s\n",
+           LINHA, ARQUIVO);
 #line 203 "test" 
-    printf("__LINE__=%d __FILE__=%s\n",
-           __LINE__, __FILE__);
+    printf("LINHA=%d ARQUIVO=%s\n",
+           LINHA, ARQUIVO);
 #line 227 "ctectest.c"
 #endif
 
@@ -362,7 +362,7 @@ void macro_test(void)
     dprintf1(1, "vaarg1=%d %d\n", 1, 2);
 
     /* gcc extension */
-    printf("func='%s'\n", __FUNCTION__);
+    printf("func='%s'\n", FUNÇÃO);
 
     /* complicated macros in glibc */
     printf("INT64_MIN=" LONG_LONG_FORMAT "\n", INT64_MIN);
@@ -411,7 +411,7 @@ comment
     printf("%s\n", get_basefile_from_header());
     printf("%s\n", __BASE_FILE__);
     printf("%s\n", get_file_from_header());
-    printf("%s\n", __FILE__);
+    printf("%s\n", ARQUIVO);
 
     /* Check that funnily named include was in fact included */
     have_included_42test_h = 1;
@@ -435,7 +435,7 @@ void recursive_macro_test(void)
 
 #define WRAP(x) x
     
-#define print_num(x) print_num(__FILE__,__LINE__,x)
+#define print_num(x) print_num(ARQUIVO,LINHA,x)
     print_num(123);
     WRAP(print_num(123));
     WRAP(WRAP(print_num(123)));
@@ -2819,7 +2819,7 @@ void c99_vla_test(int size1, int size2)
 }
 
 #ifndef __TINYC__
-typedef __SIZE_TYPE__ uintptr_t;
+typedef TAMANHO uintptr_t;
 #endif
 
 void sizeof_test(void)

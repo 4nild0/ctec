@@ -165,7 +165,7 @@ int TotalBytesPushedOnStack;
 #define ALWAYS_ASSERT(x) \
 do {\
    if (!(x))\
-       ctec_error("internal compiler error file at %s:%d", __FILE__, __LINE__);\
+       ctec_error("internal compiler error file at %s:%d", ARQUIVO, LINHA);\
 } while (0)
 
 /******************************************************/

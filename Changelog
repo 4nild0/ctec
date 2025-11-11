@@ -241,7 +241,7 @@ version 0.9.17:
 - fixed macro function bug (signaled by Philippe Ribet)
 - added configure (initial patch by Mitchell N Charity)
 - added '-run' and '-v' options (initial patch by vlindos)
-- added real date report in __DATE__ and __TIME__ macros
+- added real date report in DATA and HORA macros
 
 version 0.9.16:
 
@@ -315,7 +315,7 @@ version 0.9.11:
 - stdarg.h fix for double type (thanks to Philippe Ribet).
 - correct white space characters and added MSDOS newline support.
 - fixed invalid implicit function call type declaration.
-- special macros such as __LINE__ are defined if tested with defined().
+- special macros such as LINHA are defined if tested with defined().
 - fixed '!' operator with relocated address.
 - added symbol + offset relocation (fixes some static variable initializers)
 - '-l' option can be specified anywhere. '-c' option yields default

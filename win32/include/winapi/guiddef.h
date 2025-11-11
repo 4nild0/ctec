@@ -5,7 +5,7 @@
  */
 #SeNãoDefinido GUID_DEFINED
 #Defina GUID_DEFINED
-Tipo Estrutura _GUID {
+Pseudônimo Estrutura _GUID {
   Natural Longo Data1;
   Natural Curto Data2;
   Natural Curto Data3;
@@ -15,7 +15,7 @@ Tipo Estrutura _GUID {
 
 #SeNãoDefinido UUID_DEFINED
 #Defina UUID_DEFINED
-Tipo GUID UUID;
+Pseudônimo GUID UUID;
 #FimSe
 
 #SeNãoDefinido FAR
@@ -28,9 +28,9 @@ Tipo GUID UUID;
 
 #SeNãoDefinido EXTERN_C
 #SeDefinido __cplusplus
-#Defina EXTERN_C Importe "C"
+#Defina EXTERN_C Externo "C"
 #Senão
-#Defina EXTERN_C Importe
+#Defina EXTERN_C Externo
 #FimSe
 #FimSe
 
@@ -40,12 +40,12 @@ Tipo GUID UUID;
 
 #SeDefinido INITGUID
 #SeDefinido __cplusplus
-#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) EXTERN_C Constante GUID DECLSPEC_SELECTANY name = { l,w1,w2,{ b1,b2,b3,b4,b5,b6,b7,b8 } }
+#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) EXTERN_C Imutável GUID DECLSPEC_SELECTANY name = { l,w1,w2,{ b1,b2,b3,b4,b5,b6,b7,b8 } }
 #Senão
-#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) Constante GUID DECLSPEC_SELECTANY name = { l,w1,w2,{ b1,b2,b3,b4,b5,b6,b7,b8 } }
+#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) Imutável GUID DECLSPEC_SELECTANY name = { l,w1,w2,{ b1,b2,b3,b4,b5,b6,b7,b8 } }
 #FimSe
 #Senão
-#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) EXTERN_C Constante GUID name
+#Defina DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) EXTERN_C Imutável GUID name
 #FimSe
 
 #Defina DEFINE_OLEGUID(name,l,w1,w2) DEFINE_GUID(name,l,w1,w2,0xC0,0,0,0,0,0,0,0x46)
@@ -55,69 +55,69 @@ Tipo GUID UUID;
 
 #SeNãoDefinido __LPGUID_DEFINED__
 #Defina __LPGUID_DEFINED__
-Tipo GUID *LPGUID;
+Pseudônimo GUID *LPGUID;
 #FimSe
 
 #SeNãoDefinido __LPCGUID_DEFINED__
 #Defina __LPCGUID_DEFINED__
-Tipo Constante GUID *LPCGUID;
+Pseudônimo Imutável GUID *LPCGUID;
 #FimSe
 
 #SeNãoDefinido __IID_DEFINED__
 #Defina __IID_DEFINED__
 
-Tipo GUID IID;
-Tipo IID *LPIID;
+Pseudônimo GUID IID;
+Pseudônimo IID *LPIID;
 #Defina IID_NULL GUID_NULL
 #Defina IsEqualIID(riid1,riid2) IsEqualGUID(riid1,riid2)
-Tipo GUID CLSID;
-Tipo CLSID *LPCLSID;
+Pseudônimo GUID CLSID;
+Pseudônimo CLSID *LPCLSID;
 #Defina CLSID_NULL GUID_NULL
 #Defina IsEqualCLSID(rclsid1,rclsid2) IsEqualGUID(rclsid1,rclsid2)
-Tipo GUID FMTID;
-Tipo FMTID *LPFMTID;
+Pseudônimo GUID FMTID;
+Pseudônimo FMTID *LPFMTID;
 #Defina FMTID_NULL GUID_NULL
 #Defina IsEqualFMTID(rfmtid1,rfmtid2) IsEqualGUID(rfmtid1,rfmtid2)
 
 #SeDefinido __midl_proxy
 #Defina __MIDL_CONST
 #Senão
-#Defina __MIDL_CONST Constante
+#Defina __MIDL_CONST Imutável
 #FimSe
 
 #SeNãoDefinido _REFGUID_DEFINED
 #Defina _REFGUID_DEFINED
 #SeDefinido __cplusplus
-#Defina REFGUID Constante GUID &
+#Defina REFGUID Imutável GUID &
 #Senão
-#Defina REFGUID Constante GUID *__MIDL_CONST
+#Defina REFGUID Imutável GUID *__MIDL_CONST
 #FimSe
 #FimSe
 
 #SeNãoDefinido _REFIID_DEFINED
 #Defina _REFIID_DEFINED
 #SeDefinido __cplusplus
-#Defina REFIID Constante IID &
+#Defina REFIID Imutável IID &
 #Senão
-#Defina REFIID Constante IID *__MIDL_CONST
+#Defina REFIID Imutável IID *__MIDL_CONST
 #FimSe
 #FimSe
 
 #SeNãoDefinido _REFCLSID_DEFINED
 #Defina _REFCLSID_DEFINED
 #SeDefinido __cplusplus
-#Defina REFCLSID Constante IID &
+#Defina REFCLSID Imutável IID &
 #Senão
-#Defina REFCLSID Constante IID *__MIDL_CONST
+#Defina REFCLSID Imutável IID *__MIDL_CONST
 #FimSe
 #FimSe
 
 #SeNãoDefinido _REFFMTID_DEFINED
 #Defina _REFFMTID_DEFINED
 #SeDefinido __cplusplus
-#Defina REFFMTID Constante IID &
+#Defina REFFMTID Imutável IID &
 #Senão
-#Defina REFFMTID Constante IID *__MIDL_CONST
+#Defina REFFMTID Imutável IID *__MIDL_CONST
 #FimSe
 #FimSe
 #FimSe

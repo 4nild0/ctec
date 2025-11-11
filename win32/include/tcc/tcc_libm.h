@@ -124,13 +124,13 @@ __CRT_INLINE Longo Duplo __cdecl fmaxl (Longo Duplo x, Longo Duplo y) {
 
 #Defina CTECFP_FORCE_EVAL(x) Faça {            \
 Se (Meça(x) == Meça(Real)) {           \
-  Volátil Real __x;                       \
+  Instável Real __x;                       \
   __x = (x);                                \
 } Senão Se (Meça(x) == Meça(Duplo)) {   \
-  Volátil Duplo __x;                      \
+  Instável Duplo __x;                      \
   __x = (x);                                \
 } Senão {                                    \
-  Volátil Longo Duplo __x;                 \
+  Instável Longo Duplo __x;                 \
   __x = (x);                                \
 }                                           \
 } Enquanto(0)

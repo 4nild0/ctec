@@ -34,42 +34,42 @@
 #SeNãoDefinido __int8_t_defined
 #Defina __int8_t_defined
 /* 7.18.1.1  Exact-width integer types */
-Tipo Bilateral Caractere int8_t;
-Tipo Natural Caractere   uint8_t;
-Tipo Curto  int16_t;
-Tipo Natural Curto  uint16_t;
-Tipo Inteiro  int32_t;
-Tipo Natural   uint32_t;
-Tipo Longo Longo  int64_t;
-Tipo Natural Longo Longo   uint64_t;
+Pseudônimo Bilateral Caractere int8_t;
+Pseudônimo Natural Caractere   uint8_t;
+Pseudônimo Curto  int16_t;
+Pseudônimo Natural Curto  uint16_t;
+Pseudônimo Inteiro  int32_t;
+Pseudônimo Natural   uint32_t;
+Pseudônimo Longo Longo  int64_t;
+Pseudônimo Natural Longo Longo   uint64_t;
 #FimSe
 
 /* 7.18.1.2  Minimum-width integer types */
-Tipo Bilateral Caractere int_least8_t;
-Tipo Natural Caractere   uint_least8_t;
-Tipo Curto  int_least16_t;
-Tipo Natural Curto  uint_least16_t;
-Tipo Inteiro  int_least32_t;
-Tipo Natural   uint_least32_t;
-Tipo Longo Longo  int_least64_t;
-Tipo Natural Longo Longo   uint_least64_t;
+Pseudônimo Bilateral Caractere int_least8_t;
+Pseudônimo Natural Caractere   uint_least8_t;
+Pseudônimo Curto  int_least16_t;
+Pseudônimo Natural Curto  uint_least16_t;
+Pseudônimo Inteiro  int_least32_t;
+Pseudônimo Natural   uint_least32_t;
+Pseudônimo Longo Longo  int_least64_t;
+Pseudônimo Natural Longo Longo   uint_least64_t;
 
 /*  7.18.1.3  Fastest minimum-width integer types
  *  Not actually guaranteed to be fastest Para all purposes
  *  Here we use the exact-width types Para 8 and 16-bit ints.
  */
-Tipo Caractere int_fast8_t;
-Tipo Natural Caractere uint_fast8_t;
-Tipo Curto  int_fast16_t;
-Tipo Natural Curto  uint_fast16_t;
-Tipo Inteiro  int_fast32_t;
-Tipo Natural  Inteiro  uint_fast32_t;
-Tipo Longo Longo  int_fast64_t;
-Tipo Natural Longo Longo   uint_fast64_t;
+Pseudônimo Caractere int_fast8_t;
+Pseudônimo Natural Caractere uint_fast8_t;
+Pseudônimo Curto  int_fast16_t;
+Pseudônimo Natural Curto  uint_fast16_t;
+Pseudônimo Inteiro  int_fast32_t;
+Pseudônimo Natural  Inteiro  uint_fast32_t;
+Pseudônimo Longo Longo  int_fast64_t;
+Pseudônimo Natural Longo Longo   uint_fast64_t;
 
 /* 7.18.1.5  Greatest-width integer types */
-Tipo Longo Longo  intmax_t;
-Tipo Natural Longo Longo   uintmax_t;
+Pseudônimo Longo Longo  intmax_t;
+Pseudônimo Natural Longo Longo   uintmax_t;
 
 /* 7.18.2  Limits of specified-width integer types */
 #Se !Definido ( __cplusplus) || Definido (__STDC_LIMIT_MACROS)

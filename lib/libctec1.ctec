@@ -31,23 +31,23 @@ Boston, MA 02111-1307, USA.
 #Defina W_TYPE_SIZE   32
 #Defina BITS_PER_UNIT 8
 
-Tipo Inteiro Wtype;
-Tipo Natural Inteiro UWtype;
-Tipo Natural Inteiro USItype;
-Tipo Longo Longo DWtype;
-Tipo Natural Longo Longo UDWtype;
+Pseudônimo Inteiro Wtype;
+Pseudônimo Natural Inteiro UWtype;
+Pseudônimo Natural Inteiro USItype;
+Pseudônimo Longo Longo DWtype;
+Pseudônimo Natural Longo Longo UDWtype;
 
 Estrutura DWstruct {
     Wtype low, high;
 };
 
-Tipo União
+Pseudônimo União
 {
   Estrutura DWstruct s;
   DWtype ll;
 } DWunion;
 
-Tipo Longo Duplo XFtype;
+Pseudônimo Longo Duplo XFtype;
 #Defina WORD_SIZE (Meça (Wtype) * BITS_PER_UNIT)
 #Defina HIGH_WORD_COEFF (((UDWtype) 1) << WORD_SIZE)
 
@@ -145,7 +145,7 @@ União float_long {
 
 /* most of this code is taken from libgcc2.c from gcc */
 
-Estático UDWtype __udivmoddi4 (UDWtype n, UDWtype d, UDWtype *rp)
+Fixo UDWtype __udivmoddi4 (UDWtype n, UDWtype d, UDWtype *rp)
 {
   DWunion ww;
   DWunion nn, dd;
@@ -528,9 +528,9 @@ Longo Duplo __floatundixf(Natural Longo Longo a)
 
 Natural Longo Longo __fixunssfdi (Real a1)
 {
-    Registrador União float_long fl1;
-    Registrador Inteiro exp;
-    Registrador Natural Longo l;
+    Prioridade União float_long fl1;
+    Prioridade Inteiro exp;
+    Prioridade Natural Longo l;
 
     fl1.f = a1;
 
@@ -559,9 +559,9 @@ Longo Longo __fixsfdi (Real a1)
 
 Natural Longo Longo __fixunsdfdi (Duplo a1)
 {
-    Registrador União double_long dl1;
-    Registrador Inteiro exp;
-    Registrador Natural Longo Longo l;
+    Prioridade União double_long dl1;
+    Prioridade Inteiro exp;
+    Prioridade Natural Longo Longo l;
 
     dl1.d = a1;
 
@@ -592,9 +592,9 @@ Longo Longo __fixdfdi (Duplo a1)
 #SeNãoDefinido __arm__
 Natural Longo Longo __fixunsxfdi (Longo Duplo a1)
 {
-    Registrador União ldouble_long dl1;
-    Registrador Inteiro exp;
-    Registrador Natural Longo Longo l;
+    Prioridade União ldouble_long dl1;
+    Prioridade Inteiro exp;
+    Prioridade Natural Longo Longo l;
 
     dl1.ld = a1;
 

@@ -50,7 +50,7 @@ int test4(void)
     int i, sum = 0;
     int *tab4;
 
-    fprintf(stderr, "%s start\n", __FUNCTION__);
+    fprintf(stderr, "%s start\n", FUNÇÃO);
 
     tab4 = malloc(20 * sizeof(int));
     for(i=0;i<20;i++) {
@@ -58,7 +58,7 @@ int test4(void)
     }
     free(tab4);
 
-    fprintf(stderr, "%s end\n", __FUNCTION__);
+    fprintf(stderr, "%s end\n", FUNÇÃO);
     return sum;
 }
 
@@ -68,7 +68,7 @@ int test5(void)
     int i, sum = 0;
     int *tab4;
 
-    fprintf(stderr, "%s start\n", __FUNCTION__);
+    fprintf(stderr, "%s start\n", FUNÇÃO);
 
     tab4 = malloc(20 * sizeof(int));
     for(i=0;i<21;i++) {
@@ -76,7 +76,7 @@ int test5(void)
     }
     free(tab4);
 
-    fprintf(stderr, "%s end\n", __FUNCTION__);
+    fprintf(stderr, "%s end\n", FUNÇÃO);
     return sum;
 }
 
@@ -199,7 +199,7 @@ int test16()
     char *demo = "This is only a test.";
     char *p;
 
-    fprintf(stderr, "%s start\n", __FUNCTION__);
+    fprintf(stderr, "%s start\n", FUNÇÃO);
 
     p = alloca(16);
     strcpy(p,"12345678901234");
@@ -208,7 +208,7 @@ int test16()
     /* Test alloca embedded in a larger expression */
     printf("alloca: %s\n", strcpy(alloca(strlen(demo)+1),demo) );
 
-    fprintf(stderr, "%s end\n", __FUNCTION__);
+    fprintf(stderr, "%s end\n", FUNÇÃO);
 }
 
 /* error */
@@ -217,7 +217,7 @@ int test17()
     char *demo = "This is only a test.";
     char *p;
 
-    fprintf(stderr, "%s start\n", __FUNCTION__);
+    fprintf(stderr, "%s start\n", FUNÇÃO);
 
     p = alloca(16);
     strcpy(p,"12345678901234");
@@ -226,7 +226,7 @@ int test17()
     /* Test alloca embedded in a larger expression */
     printf("alloca: %s\n", strcpy(alloca(strlen(demo)),demo) );
 
-    fprintf(stderr, "%s end\n", __FUNCTION__);
+    fprintf(stderr, "%s end\n", FUNÇÃO);
 }
 
 int (*table_test[])(void) = {

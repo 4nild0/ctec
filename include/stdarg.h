@@ -6,7 +6,7 @@
 
 //This should be in sync with the declaration on our lib/libctec1.c
 /* GCC compatible definition of va_list. */
-Tipo Estrutura {
+Pseudônimo Estrutura {
     Natural Inteiro gp_offset;
     Natural Inteiro fp_offset;
     União {
@@ -16,7 +16,7 @@ Tipo Estrutura {
     Caractere *reg_save_area;
 } __va_list_struct;
 
-Tipo __va_list_struct va_list[1];
+Pseudônimo __va_list_struct va_list[1];
 
 Vazio __va_start(__va_list_struct *ap, Vazio *fp);
 Vazio *__va_arg(__va_list_struct *ap, Inteiro arg_type, Inteiro size, Inteiro align);
@@ -31,7 +31,7 @@ Vazio *__va_arg(__va_list_struct *ap, Inteiro arg_type, Inteiro size, Inteiro al
 #Defina _VA_LIST_T
 
 #Senão /* _WIN64 */
-Tipo Caractere *va_list;
+Pseudônimo Caractere *va_list;
 #Defina va_start(ap,last) __builtin_va_start(ap,last)
 #Defina va_arg(ap, t) ((Meça(t) > 8 || (Meça(t) & (Meça(t) - 1))) \
 	? **(t **)((ap += 8) - 8) : *(t  *)((ap += 8) - 8))
@@ -39,8 +39,8 @@ Tipo Caractere *va_list;
 #Defina va_end(ap)
 #FimSe
 
-#SenãoSe __arm__
-Tipo Caractere *va_list;
+#Exceto __arm__
+Pseudônimo Caractere *va_list;
 #Defina _ctec_alignof(type) ((Inteiro)&((Estrutura {Caractere c;type x;} *)0)->x)
 #Defina _ctec_align(addr,type) (((Natural)addr + _ctec_alignof(type) - 1) \
                                & ~(_ctec_alignof(type) - 1))
@@ -50,8 +50,8 @@ Tipo Caractere *va_list;
 #Defina va_copy(dest, src) (dest) = (src)
 #Defina va_end(ap)
 
-#SenãoSe Definido(__aarch64__)
-Tipo Estrutura {
+#Exceto Definido(__aarch64__)
+Pseudônimo Estrutura {
     Vazio *__stack;
     Vazio *__gr_top;
     Vazio *__vr_top;
@@ -64,7 +64,7 @@ Tipo Estrutura {
 #Defina va_copy(dest, src) ((dest) = (src))
 
 #Senão /* __i386__ */
-Tipo Caractere *va_list;
+Pseudônimo Caractere *va_list;
 /* only correct Para i386 */
 #Defina va_start(ap,last) ap = ((Caractere *)&(last)) + ((Meça(last)+3)&~3)
 #Defina va_arg(ap,type) (ap += (Meça(type)+3)&~3, *(type *)(ap - ((Meça(type)+3)&~3)))
@@ -73,7 +73,7 @@ Tipo Caractere *va_list;
 #FimSe
 
 /* fix a buggy dependency on GCC in libio.h */
-Tipo va_list __gnuc_va_list;
+Pseudônimo va_list __gnuc_va_list;
 #Defina _VA_LIST_DEFINED
 
 #FimSe /* _STDARG_H */

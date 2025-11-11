@@ -173,7 +173,7 @@ __try__:
     xor %eax,%eax
     mov %eax,5*4(%ebp)
 
-//    Registrador new SEH
+//    Prioridade new SEH
     lea 2*4(%ebp),%eax
     mov %eax,%fs:0
 

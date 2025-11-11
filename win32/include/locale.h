@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido NULL
@@ -69,18 +69,18 @@ Importe "C" {
 #FimSe
 
   Inteiro __cdecl _configthreadlocale(Inteiro _Flag);
-  Caractere *__cdecl setlocale(Inteiro _Category,Constante Caractere *_Locale);
+  Caractere *__cdecl setlocale(Inteiro _Category,Imutável Caractere *_Locale);
   _CRTIMP Estrutura lconv *__cdecl localeconv(Vazio);
   _locale_t __cdecl _get_current_locale(Vazio);
-  _locale_t __cdecl _create_locale(Inteiro _Category,Constante Caractere *_Locale);
+  _locale_t __cdecl _create_locale(Inteiro _Category,Imutável Caractere *_Locale);
   Vazio __cdecl _free_locale(_locale_t _Locale);
   _locale_t __cdecl __get_current_locale(Vazio);
-  _locale_t __cdecl __create_locale(Inteiro _Category,Constante Caractere *_Locale);
+  _locale_t __cdecl __create_locale(Inteiro _Category,Imutável Caractere *_Locale);
   Vazio __cdecl __free_locale(_locale_t _Locale);
 
 #SeNãoDefinido _WLOCALE_DEFINED
 #Defina _WLOCALE_DEFINED
-  _CRTIMP wchar_t *__cdecl _wsetlocale(Inteiro _Category,Constante wchar_t *_Locale);
+  _CRTIMP wchar_t *__cdecl _wsetlocale(Inteiro _Category,Imutável wchar_t *_Locale);
 #FimSe
 
 #SeDefinido __cplusplus

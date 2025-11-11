@@ -3,8 +3,8 @@
 #Se Definido __x86_64__
 
 /* Avoid Inclua files, they may not be available when cross compiling */
-Importe Vazio *memset(Vazio *s, Inteiro c, __SIZE_TYPE__ n);
-Importe Vazio abort(Vazio);
+Externo Vazio *memset(Vazio *s, Inteiro c, TAMANHO n);
+Externo Vazio abort(Vazio);
 
 /* This should be in sync with our Inclua/stdarg.h */
 Enumeração __va_arg_type {
@@ -12,7 +12,7 @@ Enumeração __va_arg_type {
 };
 
 /* GCC compatible definition of va_list. */
-Tipo Estrutura {
+Pseudônimo Estrutura {
     Natural Inteiro gp_offset;
     Natural Inteiro fp_offset;
     União {

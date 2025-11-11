@@ -10,7 +10,7 @@
 #Defina WINSPOOLAPI DECLSPEC_IMPORT
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -205,7 +205,7 @@ Importe "C" {
 #Defina META_CREATEBRUSHINDIRECT 0x02FC
 #Defina META_CREATEREGION 0x06FF
 
-  Tipo Estrutura _DRAWPATRECT {
+  Pseudônimo Estrutura _DRAWPATRECT {
     POINT ptPosition;
     POINT ptSize;
     WORD wStyle;
@@ -306,7 +306,7 @@ Importe "C" {
 #Defina PSIDENT_GDICENTRIC 0
 #Defina PSIDENT_PSCENTRIC 1
 
-  Tipo Estrutura _PSINJECTDATA {
+  Pseudônimo Estrutura _PSINJECTDATA {
     DWORD DataBytes;
     WORD InjectionPoint;
     WORD PageNumber;
@@ -360,12 +360,12 @@ Importe "C" {
 #Defina FEATURESETTING_PRIVATE_BEGIN 0x1000
 #Defina FEATURESETTING_PRIVATE_END 0x1FFF
 
-  Tipo Estrutura _PSFEATURE_OUTPUT {
+  Pseudônimo Estrutura _PSFEATURE_OUTPUT {
     WINBOOL bPageIndependent;
     WINBOOL bSetPageDevice;
   } PSFEATURE_OUTPUT,*PPSFEATURE_OUTPUT;
 
-  Tipo Estrutura _PSFEATURE_CUSTPAPER {
+  Pseudônimo Estrutura _PSFEATURE_CUSTPAPER {
     LONG lOrientation;
     LONG lWidth;
     LONG lHeight;
@@ -415,7 +415,7 @@ Importe "C" {
 #Defina MWT_MAX MWT_RIGHTMULTIPLY
 
 #Defina _XFORM_
-  Tipo Estrutura tagXFORM {
+  Pseudônimo Estrutura tagXFORM {
     FLOAT eM11;
     FLOAT eM12;
     FLOAT eM21;
@@ -424,7 +424,7 @@ Importe "C" {
     FLOAT eDy;
   } XFORM,*PXFORM,*LPXFORM;
 
-  Tipo Estrutura tagBITMAP {
+  Pseudônimo Estrutura tagBITMAP {
     LONG bmType;
     LONG bmWidth;
     LONG bmHeight;
@@ -435,20 +435,20 @@ Importe "C" {
   } BITMAP,*PBITMAP,*NPBITMAP,*LPBITMAP;
 
 #Inclua <pshpack1.h>
-  Tipo Estrutura tagRGBTRIPLE {
+  Pseudônimo Estrutura tagRGBTRIPLE {
     BYTE rgbtBlue;
     BYTE rgbtGreen;
     BYTE rgbtRed;
   } RGBTRIPLE;
 #Inclua <poppack.h>
 
-  Tipo Estrutura tagRGBQUAD {
+  Pseudônimo Estrutura tagRGBQUAD {
     BYTE rgbBlue;
     BYTE rgbGreen;
     BYTE rgbRed;
     BYTE rgbReserved;
   } RGBQUAD;
-  Tipo RGBQUAD *LPRGBQUAD;
+  Pseudônimo RGBQUAD *LPRGBQUAD;
 
 #Defina CS_ENABLE 0x00000001L
 #Defina CS_DISABLE 0x00000002L
@@ -458,10 +458,10 @@ Importe "C" {
 //!__TINYC__: #Defina LCS_sRGB 'sRGB'
 //!__TINYC__: #Defina LCS_WINDOWS_COLOR_SPACE 'Win '
 
-  Tipo LONG LCSCSTYPE;
+  Pseudônimo LONG LCSCSTYPE;
 #Defina LCS_CALIBRATED_RGB 0x00000000L
 
-  Tipo LONG LCSGAMUTMATCH;
+  Pseudônimo LONG LCSGAMUTMATCH;
 #Defina LCS_GM_BUSINESS 0x00000001L
 #Defina LCS_GM_GRAPHICS 0x00000002L
 #Defina LCS_GM_IMAGES 0x00000004L
@@ -485,25 +485,25 @@ Importe "C" {
 
 #Defina CMYK(c,m,y,k) ((COLORREF)((((BYTE)(k)|((WORD)((BYTE)(y))<<8))|(((DWORD)(BYTE)(m))<<16))|(((DWORD)(BYTE)(c))<<24)))
 
-  Tipo Longo FXPT16DOT16,*LPFXPT16DOT16;
-  Tipo Longo FXPT2DOT30,*LPFXPT2DOT30;
+  Pseudônimo Longo FXPT16DOT16,*LPFXPT16DOT16;
+  Pseudônimo Longo FXPT2DOT30,*LPFXPT2DOT30;
 
-  Tipo Estrutura tagCIEXYZ {
+  Pseudônimo Estrutura tagCIEXYZ {
     FXPT2DOT30 ciexyzX;
     FXPT2DOT30 ciexyzY;
     FXPT2DOT30 ciexyzZ;
   } CIEXYZ;
-  Tipo CIEXYZ *LPCIEXYZ;
+  Pseudônimo CIEXYZ *LPCIEXYZ;
 
-  Tipo Estrutura tagICEXYZTRIPLE {
+  Pseudônimo Estrutura tagICEXYZTRIPLE {
     CIEXYZ ciexyzRed;
     CIEXYZ ciexyzGreen;
     CIEXYZ ciexyzBlue;
   } CIEXYZTRIPLE;
 
-  Tipo CIEXYZTRIPLE *LPCIEXYZTRIPLE;
+  Pseudônimo CIEXYZTRIPLE *LPCIEXYZTRIPLE;
 
-  Tipo Estrutura tagLOGCOLORSPACEA {
+  Pseudônimo Estrutura tagLOGCOLORSPACEA {
     DWORD lcsSignature;
     DWORD lcsVersion;
     DWORD lcsSize;
@@ -516,7 +516,7 @@ Importe "C" {
     CHAR lcsFilename[MAX_PATH];
   } LOGCOLORSPACEA,*LPLOGCOLORSPACEA;
 
-  Tipo Estrutura tagLOGCOLORSPACEW {
+  Pseudônimo Estrutura tagLOGCOLORSPACEW {
     DWORD lcsSignature;
     DWORD lcsVersion;
     DWORD lcsSize;
@@ -530,14 +530,14 @@ Importe "C" {
   } LOGCOLORSPACEW,*LPLOGCOLORSPACEW;
 
 #SeDefinido UNICODE
-  Tipo LOGCOLORSPACEW LOGCOLORSPACE;
-  Tipo LPLOGCOLORSPACEW LPLOGCOLORSPACE;
+  Pseudônimo LOGCOLORSPACEW LOGCOLORSPACE;
+  Pseudônimo LPLOGCOLORSPACEW LPLOGCOLORSPACE;
 #Senão
-  Tipo LOGCOLORSPACEA LOGCOLORSPACE;
-  Tipo LPLOGCOLORSPACEA LPLOGCOLORSPACE;
+  Pseudônimo LOGCOLORSPACEA LOGCOLORSPACE;
+  Pseudônimo LPLOGCOLORSPACEA LPLOGCOLORSPACE;
 #FimSe
 
-  Tipo Estrutura tagBITMAPCOREHEADER {
+  Pseudônimo Estrutura tagBITMAPCOREHEADER {
     DWORD bcSize;
     WORD bcWidth;
     WORD bcHeight;
@@ -545,7 +545,7 @@ Importe "C" {
     WORD bcBitCount;
   } BITMAPCOREHEADER,*LPBITMAPCOREHEADER,*PBITMAPCOREHEADER;
 
-  Tipo Estrutura tagBITMAPINFOHEADER {
+  Pseudônimo Estrutura tagBITMAPINFOHEADER {
     DWORD biSize;
     LONG biWidth;
     LONG biHeight;
@@ -559,7 +559,7 @@ Importe "C" {
     DWORD biClrImportant;
   } BITMAPINFOHEADER,*LPBITMAPINFOHEADER,*PBITMAPINFOHEADER;
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     DWORD bV4Size;
     LONG bV4Width;
     LONG bV4Height;
@@ -582,7 +582,7 @@ Importe "C" {
     DWORD bV4GammaBlue;
   } BITMAPV4HEADER,*LPBITMAPV4HEADER,*PBITMAPV4HEADER;
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     DWORD bV5Size;
     LONG bV5Width;
     LONG bV5Height;
@@ -619,18 +619,18 @@ Importe "C" {
 #Defina BI_JPEG 4L
 #Defina BI_PNG 5L
 
-  Tipo Estrutura tagBITMAPINFO {
+  Pseudônimo Estrutura tagBITMAPINFO {
     BITMAPINFOHEADER bmiHeader;
     RGBQUAD bmiColors[1];
   } BITMAPINFO,*LPBITMAPINFO,*PBITMAPINFO;
 
-  Tipo Estrutura tagBITMAPCOREINFO {
+  Pseudônimo Estrutura tagBITMAPCOREINFO {
     BITMAPCOREHEADER bmciHeader;
     RGBTRIPLE bmciColors[1];
   } BITMAPCOREINFO,*LPBITMAPCOREINFO,*PBITMAPCOREINFO;
 
 #Inclua <pshpack2.h>
-  Tipo Estrutura tagBITMAPFILEHEADER {
+  Pseudônimo Estrutura tagBITMAPFILEHEADER {
     WORD bfType;
     DWORD bfSize;
     WORD bfReserved1;
@@ -642,12 +642,12 @@ Importe "C" {
 #Defina MAKEPOINTS(l) (*((POINTS *)&(l)))
 
 #SeNãoDefinido NOFONTSIG
-  Tipo Estrutura tagFONTSIGNATURE {
+  Pseudônimo Estrutura tagFONTSIGNATURE {
     DWORD fsUsb[4];
     DWORD fsCsb[2];
   } FONTSIGNATURE,*PFONTSIGNATURE,*LPFONTSIGNATURE;
 
-  Tipo Estrutura tagCHARSETINFO {
+  Pseudônimo Estrutura tagCHARSETINFO {
     UINT ciCharset;
     UINT ciACP;
     FONTSIGNATURE fs;
@@ -658,7 +658,7 @@ Importe "C" {
 #Defina TCI_SRCFONTSIG 3
 #Defina TCI_SRCLOCALE 0x1000
 
-  Tipo Estrutura tagLOCALESIGNATURE {
+  Pseudônimo Estrutura tagLOCALESIGNATURE {
     DWORD lsUsb[4];
     DWORD lsCsbDefault[2];
     DWORD lsCsbSupported[2];
@@ -667,19 +667,19 @@ Importe "C" {
 
 
 #SeNãoDefinido NOMETAFILE
-  Tipo Estrutura tagHANDLETABLE {
+  Pseudônimo Estrutura tagHANDLETABLE {
     HGDIOBJ objectHandle[1];
   } HANDLETABLE,*PHANDLETABLE,*LPHANDLETABLE;
 
-  Tipo Estrutura tagMETARECORD {
+  Pseudônimo Estrutura tagMETARECORD {
     DWORD rdSize;
     WORD rdFunction;
     WORD rdParm[1];
   } METARECORD;
-  Tipo Estrutura tagMETARECORD UNALIGNED *PMETARECORD;
-  Tipo Estrutura tagMETARECORD UNALIGNED *LPMETARECORD;
+  Pseudônimo Estrutura tagMETARECORD UNALIGNED *PMETARECORD;
+  Pseudônimo Estrutura tagMETARECORD UNALIGNED *LPMETARECORD;
 
-  Tipo Estrutura tagMETAFILEPICT {
+  Pseudônimo Estrutura tagMETAFILEPICT {
     LONG mm;
     LONG xExt;
     LONG yExt;
@@ -687,7 +687,7 @@ Importe "C" {
   } METAFILEPICT,*LPMETAFILEPICT;
 
 #Inclua <pshpack2.h>
-  Tipo Estrutura tagMETAHEADER {
+  Pseudônimo Estrutura tagMETAHEADER {
     WORD mtType;
     WORD mtHeaderSize;
     WORD mtVersion;
@@ -696,18 +696,18 @@ Importe "C" {
     DWORD mtMaxRecord;
     WORD mtNoParameters;
   } METAHEADER;
-  Tipo Estrutura tagMETAHEADER UNALIGNED *PMETAHEADER;
-  Tipo Estrutura tagMETAHEADER UNALIGNED *LPMETAHEADER;
+  Pseudônimo Estrutura tagMETAHEADER UNALIGNED *PMETAHEADER;
+  Pseudônimo Estrutura tagMETAHEADER UNALIGNED *LPMETAHEADER;
 
 #Inclua <poppack.h>
 
-  Tipo Estrutura tagENHMETARECORD {
+  Pseudônimo Estrutura tagENHMETARECORD {
     DWORD iType;
     DWORD nSize;
     DWORD dParm[1];
   } ENHMETARECORD,*PENHMETARECORD,*LPENHMETARECORD;
 
-  Tipo Estrutura tagENHMETAHEADER {
+  Pseudônimo Estrutura tagENHMETAHEADER {
     DWORD iType;
     DWORD nSize;
     RECTL rclBounds;
@@ -737,14 +737,14 @@ Importe "C" {
 #Defina TMPF_TRUETYPE 0x04
 
 #SeDefinido UNICODE
-  Tipo WCHAR BCHAR;
+  Pseudônimo WCHAR BCHAR;
 #Senão
-  Tipo BYTE BCHAR;
+  Pseudônimo BYTE BCHAR;
 #FimSe
 
 #SeNãoDefinido _TEXTMETRIC_DEFINED
 #Defina _TEXTMETRIC_DEFINED
-  Tipo Estrutura tagTEXTMETRICA {
+  Pseudônimo Estrutura tagTEXTMETRICA {
     LONG tmHeight;
     LONG tmAscent;
     LONG tmDescent;
@@ -767,7 +767,7 @@ Importe "C" {
     BYTE tmCharSet;
   } TEXTMETRICA,*PTEXTMETRICA,*NPTEXTMETRICA,*LPTEXTMETRICA;
 
-  Tipo Estrutura tagTEXTMETRICW {
+  Pseudônimo Estrutura tagTEXTMETRICW {
     LONG tmHeight;
     LONG tmAscent;
     LONG tmDescent;
@@ -790,15 +790,15 @@ Importe "C" {
     BYTE tmCharSet;
   } TEXTMETRICW,*PTEXTMETRICW,*NPTEXTMETRICW,*LPTEXTMETRICW;
 #SeDefinido UNICODE
-  Tipo TEXTMETRICW TEXTMETRIC;
-  Tipo PTEXTMETRICW PTEXTMETRIC;
-  Tipo NPTEXTMETRICW NPTEXTMETRIC;
-  Tipo LPTEXTMETRICW LPTEXTMETRIC;
+  Pseudônimo TEXTMETRICW TEXTMETRIC;
+  Pseudônimo PTEXTMETRICW PTEXTMETRIC;
+  Pseudônimo NPTEXTMETRICW NPTEXTMETRIC;
+  Pseudônimo LPTEXTMETRICW LPTEXTMETRIC;
 #Senão
-  Tipo TEXTMETRICA TEXTMETRIC;
-  Tipo PTEXTMETRICA PTEXTMETRIC;
-  Tipo NPTEXTMETRICA NPTEXTMETRIC;
-  Tipo LPTEXTMETRICA LPTEXTMETRIC;
+  Pseudônimo TEXTMETRICA TEXTMETRIC;
+  Pseudônimo PTEXTMETRICA PTEXTMETRIC;
+  Pseudônimo NPTEXTMETRICA NPTEXTMETRIC;
+  Pseudônimo LPTEXTMETRICA LPTEXTMETRIC;
 #FimSe
 #FimSe
 
@@ -814,7 +814,7 @@ Importe "C" {
 #Defina NTM_DSIG 0x00200000
 
 #Inclua <pshpack4.h>
-  Tipo Estrutura tagNEWTEXTMETRICA {
+  Pseudônimo Estrutura tagNEWTEXTMETRICA {
     LONG tmHeight;
     LONG tmAscent;
     LONG tmDescent;
@@ -841,7 +841,7 @@ Importe "C" {
     UINT ntmAvgWidth;
   } NEWTEXTMETRICA,*PNEWTEXTMETRICA,*NPNEWTEXTMETRICA,*LPNEWTEXTMETRICA;
 
-  Tipo Estrutura tagNEWTEXTMETRICW {
+  Pseudônimo Estrutura tagNEWTEXTMETRICW {
     LONG tmHeight;
     LONG tmAscent;
     LONG tmDescent;
@@ -868,35 +868,35 @@ Importe "C" {
     UINT ntmAvgWidth;
   } NEWTEXTMETRICW,*PNEWTEXTMETRICW,*NPNEWTEXTMETRICW,*LPNEWTEXTMETRICW;
 #SeDefinido UNICODE
-  Tipo NEWTEXTMETRICW NEWTEXTMETRIC;
-  Tipo PNEWTEXTMETRICW PNEWTEXTMETRIC;
-  Tipo NPNEWTEXTMETRICW NPNEWTEXTMETRIC;
-  Tipo LPNEWTEXTMETRICW LPNEWTEXTMETRIC;
+  Pseudônimo NEWTEXTMETRICW NEWTEXTMETRIC;
+  Pseudônimo PNEWTEXTMETRICW PNEWTEXTMETRIC;
+  Pseudônimo NPNEWTEXTMETRICW NPNEWTEXTMETRIC;
+  Pseudônimo LPNEWTEXTMETRICW LPNEWTEXTMETRIC;
 #Senão
-  Tipo NEWTEXTMETRICA NEWTEXTMETRIC;
-  Tipo PNEWTEXTMETRICA PNEWTEXTMETRIC;
-  Tipo NPNEWTEXTMETRICA NPNEWTEXTMETRIC;
-  Tipo LPNEWTEXTMETRICA LPNEWTEXTMETRIC;
+  Pseudônimo NEWTEXTMETRICA NEWTEXTMETRIC;
+  Pseudônimo PNEWTEXTMETRICA PNEWTEXTMETRIC;
+  Pseudônimo NPNEWTEXTMETRICA NPNEWTEXTMETRIC;
+  Pseudônimo LPNEWTEXTMETRICA LPNEWTEXTMETRIC;
 #FimSe
 #Inclua <poppack.h>
 
-  Tipo Estrutura tagNEWTEXTMETRICEXA {
+  Pseudônimo Estrutura tagNEWTEXTMETRICEXA {
     NEWTEXTMETRICA ntmTm;
     FONTSIGNATURE ntmFontSig;
   } NEWTEXTMETRICEXA;
 
-  Tipo Estrutura tagNEWTEXTMETRICEXW {
+  Pseudônimo Estrutura tagNEWTEXTMETRICEXW {
     NEWTEXTMETRICW ntmTm;
     FONTSIGNATURE ntmFontSig;
   } NEWTEXTMETRICEXW;
 #SeDefinido UNICODE
-  Tipo NEWTEXTMETRICEXW NEWTEXTMETRICEX;
+  Pseudônimo NEWTEXTMETRICEXW NEWTEXTMETRICEX;
 #Senão
-  Tipo NEWTEXTMETRICEXA NEWTEXTMETRICEX;
+  Pseudônimo NEWTEXTMETRICEXA NEWTEXTMETRICEX;
 #FimSe
 #FimSe
 
-  Tipo Estrutura tagPELARRAY {
+  Pseudônimo Estrutura tagPELARRAY {
     LONG paXCount;
     LONG paYCount;
     LONG paXExt;
@@ -904,30 +904,30 @@ Importe "C" {
     BYTE paRGBs;
   } PELARRAY,*PPELARRAY,*NPPELARRAY,*LPPELARRAY;
 
-  Tipo Estrutura tagLOGBRUSH {
+  Pseudônimo Estrutura tagLOGBRUSH {
     UINT lbStyle;
     COLORREF lbColor;
     ULONG_PTR lbHatch;
   } LOGBRUSH,*PLOGBRUSH,*NPLOGBRUSH,*LPLOGBRUSH;
 
-  Tipo Estrutura tagLOGBRUSH32 {
+  Pseudônimo Estrutura tagLOGBRUSH32 {
     UINT lbStyle;
     COLORREF lbColor;
     ULONG lbHatch;
   } LOGBRUSH32,*PLOGBRUSH32,*NPLOGBRUSH32,*LPLOGBRUSH32;
 
-  Tipo LOGBRUSH PATTERN;
-  Tipo PATTERN *PPATTERN;
-  Tipo PATTERN *NPPATTERN;
-  Tipo PATTERN *LPPATTERN;
+  Pseudônimo LOGBRUSH PATTERN;
+  Pseudônimo PATTERN *PPATTERN;
+  Pseudônimo PATTERN *NPPATTERN;
+  Pseudônimo PATTERN *LPPATTERN;
 
-  Tipo Estrutura tagLOGPEN {
+  Pseudônimo Estrutura tagLOGPEN {
     UINT lopnStyle;
     POINT lopnWidth;
     COLORREF lopnColor;
   } LOGPEN,*PLOGPEN,*NPLOGPEN,*LPLOGPEN;
 
-  Tipo Estrutura tagEXTLOGPEN {
+  Pseudônimo Estrutura tagEXTLOGPEN {
     DWORD elpPenStyle;
     DWORD elpWidth;
     UINT elpBrushStyle;
@@ -939,7 +939,7 @@ Importe "C" {
 
 #SeNãoDefinido _PALETTEENTRY_DEFINED
 #Defina _PALETTEENTRY_DEFINED
-  Tipo Estrutura tagPALETTEENTRY {
+  Pseudônimo Estrutura tagPALETTEENTRY {
     BYTE peRed;
     BYTE peGreen;
     BYTE peBlue;
@@ -950,7 +950,7 @@ Importe "C" {
 #SeNãoDefinido _LOGPALETTE_DEFINED
 #Defina _LOGPALETTE_DEFINED
 
-  Tipo Estrutura tagLOGPALETTE {
+  Pseudônimo Estrutura tagLOGPALETTE {
     WORD palVersion;
     WORD palNumEntries;
     PALETTEENTRY palPalEntry[1];
@@ -959,7 +959,7 @@ Importe "C" {
 
 #Defina LF_FACESIZE 32
 
-  Tipo Estrutura tagLOGFONTA {
+  Pseudônimo Estrutura tagLOGFONTA {
     LONG lfHeight;
     LONG lfWidth;
     LONG lfEscapement;
@@ -976,7 +976,7 @@ Importe "C" {
     CHAR lfFaceName[LF_FACESIZE];
   } LOGFONTA,*PLOGFONTA,*NPLOGFONTA,*LPLOGFONTA;
 
-  Tipo Estrutura tagLOGFONTW {
+  Pseudônimo Estrutura tagLOGFONTW {
     LONG lfHeight;
     LONG lfWidth;
     LONG lfEscapement;
@@ -993,57 +993,57 @@ Importe "C" {
     WCHAR lfFaceName[LF_FACESIZE];
   } LOGFONTW,*PLOGFONTW,*NPLOGFONTW,*LPLOGFONTW;
 #SeDefinido UNICODE
-  Tipo LOGFONTW LOGFONT;
-  Tipo PLOGFONTW PLOGFONT;
-  Tipo NPLOGFONTW NPLOGFONT;
-  Tipo LPLOGFONTW LPLOGFONT;
+  Pseudônimo LOGFONTW LOGFONT;
+  Pseudônimo PLOGFONTW PLOGFONT;
+  Pseudônimo NPLOGFONTW NPLOGFONT;
+  Pseudônimo LPLOGFONTW LPLOGFONT;
 #Senão
-  Tipo LOGFONTA LOGFONT;
-  Tipo PLOGFONTA PLOGFONT;
-  Tipo NPLOGFONTA NPLOGFONT;
-  Tipo LPLOGFONTA LPLOGFONT;
+  Pseudônimo LOGFONTA LOGFONT;
+  Pseudônimo PLOGFONTA PLOGFONT;
+  Pseudônimo NPLOGFONTA NPLOGFONT;
+  Pseudônimo LPLOGFONTA LPLOGFONT;
 #FimSe
 
 #Defina LF_FULLFACESIZE 64
 
-  Tipo Estrutura tagENUMLOGFONTA {
+  Pseudônimo Estrutura tagENUMLOGFONTA {
     LOGFONTA elfLogFont;
     BYTE elfFullName[LF_FULLFACESIZE];
     BYTE elfStyle[LF_FACESIZE];
   } ENUMLOGFONTA,*LPENUMLOGFONTA;
 
-  Tipo Estrutura tagENUMLOGFONTW {
+  Pseudônimo Estrutura tagENUMLOGFONTW {
     LOGFONTW elfLogFont;
     WCHAR elfFullName[LF_FULLFACESIZE];
     WCHAR elfStyle[LF_FACESIZE];
   } ENUMLOGFONTW,*LPENUMLOGFONTW;
 #SeDefinido UNICODE
-  Tipo ENUMLOGFONTW ENUMLOGFONT;
-  Tipo LPENUMLOGFONTW LPENUMLOGFONT;
+  Pseudônimo ENUMLOGFONTW ENUMLOGFONT;
+  Pseudônimo LPENUMLOGFONTW LPENUMLOGFONT;
 #Senão
-  Tipo ENUMLOGFONTA ENUMLOGFONT;
-  Tipo LPENUMLOGFONTA LPENUMLOGFONT;
+  Pseudônimo ENUMLOGFONTA ENUMLOGFONT;
+  Pseudônimo LPENUMLOGFONTA LPENUMLOGFONT;
 #FimSe
 
-  Tipo Estrutura tagENUMLOGFONTEXA {
+  Pseudônimo Estrutura tagENUMLOGFONTEXA {
     LOGFONTA elfLogFont;
     BYTE elfFullName[LF_FULLFACESIZE];
     BYTE elfStyle[LF_FACESIZE];
     BYTE elfScript[LF_FACESIZE];
   } ENUMLOGFONTEXA,*LPENUMLOGFONTEXA;
 
-  Tipo Estrutura tagENUMLOGFONTEXW {
+  Pseudônimo Estrutura tagENUMLOGFONTEXW {
     LOGFONTW elfLogFont;
     WCHAR elfFullName[LF_FULLFACESIZE];
     WCHAR elfStyle[LF_FACESIZE];
     WCHAR elfScript[LF_FACESIZE];
   } ENUMLOGFONTEXW,*LPENUMLOGFONTEXW;
 #SeDefinido UNICODE
-  Tipo ENUMLOGFONTEXW ENUMLOGFONTEX;
-  Tipo LPENUMLOGFONTEXW LPENUMLOGFONTEX;
+  Pseudônimo ENUMLOGFONTEXW ENUMLOGFONTEX;
+  Pseudônimo LPENUMLOGFONTEXW LPENUMLOGFONTEX;
 #Senão
-  Tipo ENUMLOGFONTEXA ENUMLOGFONTEX;
-  Tipo LPENUMLOGFONTEXA LPENUMLOGFONTEX;
+  Pseudônimo ENUMLOGFONTEXA ENUMLOGFONTEX;
+  Pseudônimo LPENUMLOGFONTEXA LPENUMLOGFONTEX;
 #FimSe
 
 #Defina OUT_DEFAULT_PRECIS 0
@@ -1161,7 +1161,7 @@ Importe "C" {
 
 #Defina PAN_CULTURE_LATIN 0
 
-  Tipo Estrutura tagPANOSE {
+  Pseudônimo Estrutura tagPANOSE {
     BYTE bFamilyType;
     BYTE bSerifStyle;
     BYTE bWeight;
@@ -1282,7 +1282,7 @@ Importe "C" {
 
 #Defina ELF_VENDOR_SIZE 4
 
-  Tipo Estrutura tagEXTLOGFONTA {
+  Pseudônimo Estrutura tagEXTLOGFONTA {
     LOGFONTA elfLogFont;
     BYTE elfFullName[LF_FULLFACESIZE];
     BYTE elfStyle[LF_FACESIZE];
@@ -1295,7 +1295,7 @@ Importe "C" {
     PANOSE elfPanose;
   } EXTLOGFONTA,*PEXTLOGFONTA,*NPEXTLOGFONTA,*LPEXTLOGFONTA;
 
-  Tipo Estrutura tagEXTLOGFONTW {
+  Pseudônimo Estrutura tagEXTLOGFONTW {
     LOGFONTW elfLogFont;
     WCHAR elfFullName[LF_FULLFACESIZE];
     WCHAR elfStyle[LF_FACESIZE];
@@ -1308,15 +1308,15 @@ Importe "C" {
     PANOSE elfPanose;
   } EXTLOGFONTW,*PEXTLOGFONTW,*NPEXTLOGFONTW,*LPEXTLOGFONTW;
 #SeDefinido UNICODE
-  Tipo EXTLOGFONTW EXTLOGFONT;
-  Tipo PEXTLOGFONTW PEXTLOGFONT;
-  Tipo NPEXTLOGFONTW NPEXTLOGFONT;
-  Tipo LPEXTLOGFONTW LPEXTLOGFONT;
+  Pseudônimo EXTLOGFONTW EXTLOGFONT;
+  Pseudônimo PEXTLOGFONTW PEXTLOGFONT;
+  Pseudônimo NPEXTLOGFONTW NPEXTLOGFONT;
+  Pseudônimo LPEXTLOGFONTW LPEXTLOGFONT;
 #Senão
-  Tipo EXTLOGFONTA EXTLOGFONT;
-  Tipo PEXTLOGFONTA PEXTLOGFONT;
-  Tipo NPEXTLOGFONTA NPEXTLOGFONT;
-  Tipo LPEXTLOGFONTA LPEXTLOGFONT;
+  Pseudônimo EXTLOGFONTA EXTLOGFONT;
+  Pseudônimo PEXTLOGFONTA PEXTLOGFONT;
+  Pseudônimo NPEXTLOGFONTA NPEXTLOGFONT;
+  Pseudônimo LPEXTLOGFONTA LPEXTLOGFONT;
 #FimSe
 
 #Defina ELF_VERSION 0
@@ -1603,7 +1603,7 @@ Importe "C" {
 
 #Defina CCHFORMNAME 32
 
-  Tipo Estrutura _devicemodeA {
+  Pseudônimo Estrutura _devicemodeA {
     BYTE dmDeviceName[CCHDEVICENAME];
     WORD dmSpecVersion;
     WORD dmDriverVersion;
@@ -1652,7 +1652,7 @@ Importe "C" {
     DWORD dmPanningHeight;
   } DEVMODEA,*PDEVMODEA,*NPDEVMODEA,*LPDEVMODEA;
 
-  Tipo Estrutura _devicemodeW {
+  Pseudônimo Estrutura _devicemodeW {
     WCHAR dmDeviceName[CCHDEVICENAME];
     WORD dmSpecVersion;
     WORD dmDriverVersion;
@@ -1701,15 +1701,15 @@ Importe "C" {
     DWORD dmPanningHeight;
   } DEVMODEW,*PDEVMODEW,*NPDEVMODEW,*LPDEVMODEW;
 #SeDefinido UNICODE
-  Tipo DEVMODEW DEVMODE;
-  Tipo PDEVMODEW PDEVMODE;
-  Tipo NPDEVMODEW NPDEVMODE;
-  Tipo LPDEVMODEW LPDEVMODE;
+  Pseudônimo DEVMODEW DEVMODE;
+  Pseudônimo PDEVMODEW PDEVMODE;
+  Pseudônimo NPDEVMODEW NPDEVMODE;
+  Pseudônimo LPDEVMODEW LPDEVMODE;
 #Senão
-  Tipo DEVMODEA DEVMODE;
-  Tipo PDEVMODEA PDEVMODE;
-  Tipo NPDEVMODEA NPDEVMODE;
-  Tipo LPDEVMODEA LPDEVMODE;
+  Pseudônimo DEVMODEA DEVMODE;
+  Pseudônimo PDEVMODEA PDEVMODE;
+  Pseudônimo NPDEVMODEA NPDEVMODE;
+  Pseudônimo LPDEVMODEA LPDEVMODE;
 #FimSe
 
 #Defina DM_SPECVERSION 0x0401
@@ -1958,7 +1958,7 @@ Importe "C" {
 
 #Defina DMDITHER_USER 256
 
-  Tipo Estrutura _DISPLAY_DEVICEA {
+  Pseudônimo Estrutura _DISPLAY_DEVICEA {
     DWORD cb;
     CHAR DeviceName[32];
     CHAR DeviceString[128];
@@ -1966,7 +1966,7 @@ Importe "C" {
     CHAR DeviceID[128];
     CHAR DeviceKey[128];
   } DISPLAY_DEVICEA,*PDISPLAY_DEVICEA,*LPDISPLAY_DEVICEA;
-  Tipo Estrutura _DISPLAY_DEVICEW {
+  Pseudônimo Estrutura _DISPLAY_DEVICEW {
     DWORD cb;
     WCHAR DeviceName[32];
     WCHAR DeviceString[128];
@@ -1975,13 +1975,13 @@ Importe "C" {
     WCHAR DeviceKey[128];
   } DISPLAY_DEVICEW,*PDISPLAY_DEVICEW,*LPDISPLAY_DEVICEW;
 #SeDefinido UNICODE
-  Tipo DISPLAY_DEVICEW DISPLAY_DEVICE;
-  Tipo PDISPLAY_DEVICEW PDISPLAY_DEVICE;
-  Tipo LPDISPLAY_DEVICEW LPDISPLAY_DEVICE;
+  Pseudônimo DISPLAY_DEVICEW DISPLAY_DEVICE;
+  Pseudônimo PDISPLAY_DEVICEW PDISPLAY_DEVICE;
+  Pseudônimo LPDISPLAY_DEVICEW LPDISPLAY_DEVICE;
 #Senão
-  Tipo DISPLAY_DEVICEA DISPLAY_DEVICE;
-  Tipo PDISPLAY_DEVICEA PDISPLAY_DEVICE;
-  Tipo LPDISPLAY_DEVICEA LPDISPLAY_DEVICE;
+  Pseudônimo DISPLAY_DEVICEA DISPLAY_DEVICE;
+  Pseudônimo PDISPLAY_DEVICEA PDISPLAY_DEVICE;
+  Pseudônimo LPDISPLAY_DEVICEA LPDISPLAY_DEVICE;
 #FimSe
 
 #Defina DISPLAY_DEVICE_ATTACHED_TO_DESKTOP 0x00000001
@@ -1999,7 +1999,7 @@ Importe "C" {
 
 #Defina RDH_RECTANGLES 1
 
-  Tipo Estrutura _RGNDATAHEADER {
+  Pseudônimo Estrutura _RGNDATAHEADER {
     DWORD dwSize;
     DWORD iType;
     DWORD nCount;
@@ -2007,20 +2007,20 @@ Importe "C" {
     RECT rcBound;
   } RGNDATAHEADER,*PRGNDATAHEADER;
 
-  Tipo Estrutura _RGNDATA {
+  Pseudônimo Estrutura _RGNDATA {
     RGNDATAHEADER rdh;
     Caractere Buffer[1];
   } RGNDATA,*PRGNDATA,*NPRGNDATA,*LPRGNDATA;
 
 #Defina SYSRGN 4
 
-  Tipo Estrutura _ABC {
+  Pseudônimo Estrutura _ABC {
     Inteiro abcA;
     UINT abcB;
     Inteiro abcC;
   } ABC,*PABC,*NPABC,*LPABC;
 
-  Tipo Estrutura _ABCFLOAT {
+  Pseudônimo Estrutura _ABCFLOAT {
     FLOAT abcfA;
     FLOAT abcfB;
     FLOAT abcfC;
@@ -2028,7 +2028,7 @@ Importe "C" {
 
 #SeNãoDefinido NOTEXTMETRIC
 
-  Tipo Estrutura _OUTLINETEXTMETRICA {
+  Pseudônimo Estrutura _OUTLINETEXTMETRICA {
     UINT otmSize;
     TEXTMETRICA otmTextMetrics;
     BYTE otmFiller;
@@ -2063,7 +2063,7 @@ Importe "C" {
     PSTR otmpFullName;
   } OUTLINETEXTMETRICA,*POUTLINETEXTMETRICA,*NPOUTLINETEXTMETRICA,*LPOUTLINETEXTMETRICA;
 
-  Tipo Estrutura _OUTLINETEXTMETRICW {
+  Pseudônimo Estrutura _OUTLINETEXTMETRICW {
     UINT otmSize;
     TEXTMETRICW otmTextMetrics;
     BYTE otmFiller;
@@ -2098,19 +2098,19 @@ Importe "C" {
     PSTR otmpFullName;
   } OUTLINETEXTMETRICW,*POUTLINETEXTMETRICW,*NPOUTLINETEXTMETRICW,*LPOUTLINETEXTMETRICW;
 #SeDefinido UNICODE
-  Tipo OUTLINETEXTMETRICW OUTLINETEXTMETRIC;
-  Tipo POUTLINETEXTMETRICW POUTLINETEXTMETRIC;
-  Tipo NPOUTLINETEXTMETRICW NPOUTLINETEXTMETRIC;
-  Tipo LPOUTLINETEXTMETRICW LPOUTLINETEXTMETRIC;
+  Pseudônimo OUTLINETEXTMETRICW OUTLINETEXTMETRIC;
+  Pseudônimo POUTLINETEXTMETRICW POUTLINETEXTMETRIC;
+  Pseudônimo NPOUTLINETEXTMETRICW NPOUTLINETEXTMETRIC;
+  Pseudônimo LPOUTLINETEXTMETRICW LPOUTLINETEXTMETRIC;
 #Senão
-  Tipo OUTLINETEXTMETRICA OUTLINETEXTMETRIC;
-  Tipo POUTLINETEXTMETRICA POUTLINETEXTMETRIC;
-  Tipo NPOUTLINETEXTMETRICA NPOUTLINETEXTMETRIC;
-  Tipo LPOUTLINETEXTMETRICA LPOUTLINETEXTMETRIC;
+  Pseudônimo OUTLINETEXTMETRICA OUTLINETEXTMETRIC;
+  Pseudônimo POUTLINETEXTMETRICA POUTLINETEXTMETRIC;
+  Pseudônimo NPOUTLINETEXTMETRICA NPOUTLINETEXTMETRIC;
+  Pseudônimo LPOUTLINETEXTMETRICA LPOUTLINETEXTMETRIC;
 #FimSe
 #FimSe
 
-  Tipo Estrutura tagPOLYTEXTA {
+  Pseudônimo Estrutura tagPOLYTEXTA {
     Inteiro x;
     Inteiro y;
     UINT n;
@@ -2120,7 +2120,7 @@ Importe "C" {
     Inteiro *pdx;
   } POLYTEXTA,*PPOLYTEXTA,*NPPOLYTEXTA,*LPPOLYTEXTA;
 
-  Tipo Estrutura tagPOLYTEXTW {
+  Pseudônimo Estrutura tagPOLYTEXTW {
     Inteiro x;
     Inteiro y;
     UINT n;
@@ -2130,30 +2130,30 @@ Importe "C" {
     Inteiro *pdx;
   } POLYTEXTW,*PPOLYTEXTW,*NPPOLYTEXTW,*LPPOLYTEXTW;
 #SeDefinido UNICODE
-  Tipo POLYTEXTW POLYTEXT;
-  Tipo PPOLYTEXTW PPOLYTEXT;
-  Tipo NPPOLYTEXTW NPPOLYTEXT;
-  Tipo LPPOLYTEXTW LPPOLYTEXT;
+  Pseudônimo POLYTEXTW POLYTEXT;
+  Pseudônimo PPOLYTEXTW PPOLYTEXT;
+  Pseudônimo NPPOLYTEXTW NPPOLYTEXT;
+  Pseudônimo LPPOLYTEXTW LPPOLYTEXT;
 #Senão
-  Tipo POLYTEXTA POLYTEXT;
-  Tipo PPOLYTEXTA PPOLYTEXT;
-  Tipo NPPOLYTEXTA NPPOLYTEXT;
-  Tipo LPPOLYTEXTA LPPOLYTEXT;
+  Pseudônimo POLYTEXTA POLYTEXT;
+  Pseudônimo PPOLYTEXTA PPOLYTEXT;
+  Pseudônimo NPPOLYTEXTA NPPOLYTEXT;
+  Pseudônimo LPPOLYTEXTA LPPOLYTEXT;
 #FimSe
 
-  Tipo Estrutura _FIXED {
+  Pseudônimo Estrutura _FIXED {
     WORD fract;
     Curto value;
   } FIXED;
 
-  Tipo Estrutura _MAT2 {
+  Pseudônimo Estrutura _MAT2 {
     FIXED eM11;
     FIXED eM12;
     FIXED eM21;
     FIXED eM22;
   } MAT2,*LPMAT2;
 
-  Tipo Estrutura _GLYPHMETRICS {
+  Pseudônimo Estrutura _GLYPHMETRICS {
     UINT gmBlackBoxX;
     UINT gmBlackBoxY;
     POINT gmptGlyphOrigin;
@@ -2178,18 +2178,18 @@ Importe "C" {
 #Defina TT_PRIM_QSPLINE 2
 #Defina TT_PRIM_CSPLINE 3
 
-  Tipo Estrutura tagPOINTFX {
+  Pseudônimo Estrutura tagPOINTFX {
     FIXED x;
     FIXED y;
   } POINTFX,*LPPOINTFX;
 
-  Tipo Estrutura tagTTPOLYCURVE {
+  Pseudônimo Estrutura tagTTPOLYCURVE {
     WORD wType;
     WORD cpfx;
     POINTFX apfx[1];
   } TTPOLYCURVE,*LPTTPOLYCURVE;
 
-  Tipo Estrutura tagTTPOLYGONHEADER {
+  Pseudônimo Estrutura tagTTPOLYGONHEADER {
     DWORD cb;
     DWORD dwType;
     POINTFX pfxStart;
@@ -2236,7 +2236,7 @@ Importe "C" {
 #Defina GCPGLYPH_LINKBEFORE 0x8000
 #Defina GCPGLYPH_LINKAFTER 0x4000
 
-  Tipo Estrutura tagGCP_RESULTSA {
+  Pseudônimo Estrutura tagGCP_RESULTSA {
     DWORD lStructSize;
     LPSTR lpOutString;
     UINT *lpOrder;
@@ -2247,7 +2247,7 @@ Importe "C" {
     UINT nGlyphs;
     Inteiro nMaxFit;
   } GCP_RESULTSA,*LPGCP_RESULTSA;
-  Tipo Estrutura tagGCP_RESULTSW {
+  Pseudônimo Estrutura tagGCP_RESULTSW {
     DWORD lStructSize;
     LPWSTR lpOutString;
     UINT *lpOrder;
@@ -2259,14 +2259,14 @@ Importe "C" {
     Inteiro nMaxFit;
   } GCP_RESULTSW,*LPGCP_RESULTSW;
 #SeDefinido UNICODE
-  Tipo GCP_RESULTSW GCP_RESULTS;
-  Tipo LPGCP_RESULTSW LPGCP_RESULTS;
+  Pseudônimo GCP_RESULTSW GCP_RESULTS;
+  Pseudônimo LPGCP_RESULTSW LPGCP_RESULTS;
 #Senão
-  Tipo GCP_RESULTSA GCP_RESULTS;
-  Tipo LPGCP_RESULTSA LPGCP_RESULTS;
+  Pseudônimo GCP_RESULTSA GCP_RESULTS;
+  Pseudônimo LPGCP_RESULTSA LPGCP_RESULTS;
 #FimSe
 
-  Tipo Estrutura _RASTERIZER_STATUS {
+  Pseudônimo Estrutura _RASTERIZER_STATUS {
     Curto nSize;
     Curto wFlags;
     Curto nLanguageID;
@@ -2275,7 +2275,7 @@ Importe "C" {
 #Defina TT_AVAILABLE 0x0001
 #Defina TT_ENABLED 0x0002
 
-  Tipo Estrutura tagPIXELFORMATDESCRIPTOR {
+  Pseudônimo Estrutura tagPIXELFORMATDESCRIPTOR {
     WORD nSize;
     WORD nVersion;
     DWORD dwFlags;
@@ -2331,16 +2331,16 @@ Importe "C" {
 #Defina PFD_STEREO_DONTCARE 0x80000000
 
 #SeNãoDefinido NOTEXTMETRIC
-  Tipo Inteiro (CALLBACK *OLDFONTENUMPROCA)(CONST LOGFONTA *,CONST TEXTMETRICA *,DWORD,LPARAM);
-  Tipo Inteiro (CALLBACK *OLDFONTENUMPROCW)(CONST LOGFONTW *,CONST TEXTMETRICW *,DWORD,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *OLDFONTENUMPROCA)(CONST LOGFONTA *,CONST TEXTMETRICA *,DWORD,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *OLDFONTENUMPROCW)(CONST LOGFONTW *,CONST TEXTMETRICW *,DWORD,LPARAM);
 #SeDefinido UNICODE
 #Defina OLDFONTENUMPROC OLDFONTENUMPROCW
 #Senão
 #Defina OLDFONTENUMPROC OLDFONTENUMPROCA
 #FimSe
 #Senão
-  Tipo Inteiro (CALLBACK *OLDFONTENUMPROCA)(CONST LOGFONTA *,CONST VOID *,DWORD,LPARAM);
-  Tipo Inteiro (CALLBACK *OLDFONTENUMPROCW)(CONST LOGFONTW *,CONST VOID *,DWORD,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *OLDFONTENUMPROCA)(CONST LOGFONTA *,CONST VOID *,DWORD,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *OLDFONTENUMPROCW)(CONST LOGFONTW *,CONST VOID *,DWORD,LPARAM);
 #SeDefinido UNICODE
 #Defina OLDFONTENUMPROC OLDFONTENUMPROCW
 #Senão
@@ -2348,16 +2348,16 @@ Importe "C" {
 #FimSe
 #FimSe
 
-  Tipo OLDFONTENUMPROCA FONTENUMPROCA;
-  Tipo OLDFONTENUMPROCW FONTENUMPROCW;
+  Pseudônimo OLDFONTENUMPROCA FONTENUMPROCA;
+  Pseudônimo OLDFONTENUMPROCW FONTENUMPROCW;
 #SeDefinido UNICODE
-  Tipo FONTENUMPROCW FONTENUMPROC;
+  Pseudônimo FONTENUMPROCW FONTENUMPROC;
 #Senão
-  Tipo FONTENUMPROCA FONTENUMPROC;
+  Pseudônimo FONTENUMPROCA FONTENUMPROC;
 #FimSe
 
-  Tipo Inteiro (CALLBACK *GOBJENUMPROC)(LPVOID,LPARAM);
-  Tipo VOID (CALLBACK *LINEDDAPROC)(Inteiro,Inteiro,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *GOBJENUMPROC)(LPVOID,LPARAM);
+  Pseudônimo VOID (CALLBACK *LINEDDAPROC)(Inteiro,Inteiro,LPARAM);
 
 #SeDefinido UNICODE
 #Defina AddFontResource AddFontResourceW
@@ -2429,8 +2429,8 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI DeleteObject(HGDIOBJ ho);
   WINGDIAPI Inteiro WINAPI DescribePixelFormat(HDC hdc,Inteiro iPixelFormat,UINT nBytes,LPPIXELFORMATDESCRIPTOR ppfd);
 
-  Tipo UINT (CALLBACK *LPFNDEVMODE)(HWND,HMODULE,LPDEVMODE,LPSTR,LPSTR,LPDEVMODE,LPSTR,UINT);
-  Tipo DWORD (CALLBACK *LPFNDEVCAPS)(LPSTR,LPSTR,UINT,LPSTR,LPDEVMODE);
+  Pseudônimo UINT (CALLBACK *LPFNDEVMODE)(HWND,HMODULE,LPDEVMODE,LPSTR,LPSTR,LPDEVMODE,LPSTR,UINT);
+  Pseudônimo DWORD (CALLBACK *LPFNDEVCAPS)(LPSTR,LPSTR,UINT,LPSTR,LPDEVMODE);
 
 #Defina DM_UPDATE 1
 #Defina DM_COPY 2
@@ -2632,12 +2632,12 @@ Importe "C" {
   WINGDIAPI DWORD WINAPI GetCharacterPlacementA(HDC hdc,LPCSTR lpString,Inteiro nCount,Inteiro nMexExtent,LPGCP_RESULTSA lpResults,DWORD dwFlags);
   WINGDIAPI DWORD WINAPI GetCharacterPlacementW(HDC hdc,LPCWSTR lpString,Inteiro nCount,Inteiro nMexExtent,LPGCP_RESULTSW lpResults,DWORD dwFlags);
 
-  Tipo Estrutura tagWCRANGE {
+  Pseudônimo Estrutura tagWCRANGE {
     WCHAR wcLow;
     USHORT cGlyphs;
   } WCRANGE,*PWCRANGE,*LPWCRANGE;
 
-  Tipo Estrutura tagGLYPHSET {
+  Pseudônimo Estrutura tagGLYPHSET {
     DWORD cbThis;
     DWORD flAccel;
     DWORD cGlyphsSupported;
@@ -2667,7 +2667,7 @@ Importe "C" {
 #Defina STAMP_AXESLIST (0x8000000 + 'a' + ('l' << 8))
 #Defina MM_MAX_NUMAXES 16
 
-  Tipo Estrutura tagDESIGNVECTOR {
+  Pseudônimo Estrutura tagDESIGNVECTOR {
     DWORD dvReserved;
     DWORD dvNumAxes;
     LONG dvValues[MM_MAX_NUMAXES];
@@ -2693,65 +2693,65 @@ Importe "C" {
 
 #Defina MM_MAX_AXES_NAMELEN 16
 
-  Tipo Estrutura tagAXISINFOA {
+  Pseudônimo Estrutura tagAXISINFOA {
     LONG axMinValue;
     LONG axMaxValue;
     BYTE axAxisName[MM_MAX_AXES_NAMELEN];
   } AXISINFOA,*PAXISINFOA,*LPAXISINFOA;
 
-  Tipo Estrutura tagAXISINFOW {
+  Pseudônimo Estrutura tagAXISINFOW {
     LONG axMinValue;
     LONG axMaxValue;
     WCHAR axAxisName[MM_MAX_AXES_NAMELEN];
   } AXISINFOW,*PAXISINFOW,*LPAXISINFOW;
 #SeDefinido UNICODE
-  Tipo AXISINFOW AXISINFO;
-  Tipo PAXISINFOW PAXISINFO;
-  Tipo LPAXISINFOW LPAXISINFO;
+  Pseudônimo AXISINFOW AXISINFO;
+  Pseudônimo PAXISINFOW PAXISINFO;
+  Pseudônimo LPAXISINFOW LPAXISINFO;
 #Senão
-  Tipo AXISINFOA AXISINFO;
-  Tipo PAXISINFOA PAXISINFO;
-  Tipo LPAXISINFOA LPAXISINFO;
+  Pseudônimo AXISINFOA AXISINFO;
+  Pseudônimo PAXISINFOA PAXISINFO;
+  Pseudônimo LPAXISINFOA LPAXISINFO;
 #FimSe
 
-  Tipo Estrutura tagAXESLISTA {
+  Pseudônimo Estrutura tagAXESLISTA {
     DWORD axlReserved;
     DWORD axlNumAxes;
     AXISINFOA axlAxisInfo[MM_MAX_NUMAXES];
   } AXESLISTA,*PAXESLISTA,*LPAXESLISTA;
 
-  Tipo Estrutura tagAXESLISTW {
+  Pseudônimo Estrutura tagAXESLISTW {
     DWORD axlReserved;
     DWORD axlNumAxes;
     AXISINFOW axlAxisInfo[MM_MAX_NUMAXES];
   } AXESLISTW,*PAXESLISTW,*LPAXESLISTW;
 #SeDefinido UNICODE
-  Tipo AXESLISTW AXESLIST;
-  Tipo PAXESLISTW PAXESLIST;
-  Tipo LPAXESLISTW LPAXESLIST;
+  Pseudônimo AXESLISTW AXESLIST;
+  Pseudônimo PAXESLISTW PAXESLIST;
+  Pseudônimo LPAXESLISTW LPAXESLIST;
 #Senão
-  Tipo AXESLISTA AXESLIST;
-  Tipo PAXESLISTA PAXESLIST;
-  Tipo LPAXESLISTA LPAXESLIST;
+  Pseudônimo AXESLISTA AXESLIST;
+  Pseudônimo PAXESLISTA PAXESLIST;
+  Pseudônimo LPAXESLISTA LPAXESLIST;
 #FimSe
 
-  Tipo Estrutura tagENUMLOGFONTEXDVA {
+  Pseudônimo Estrutura tagENUMLOGFONTEXDVA {
     ENUMLOGFONTEXA elfEnumLogfontEx;
     DESIGNVECTOR elfDesignVector;
   } ENUMLOGFONTEXDVA,*PENUMLOGFONTEXDVA,*LPENUMLOGFONTEXDVA;
 
-  Tipo Estrutura tagENUMLOGFONTEXDVW {
+  Pseudônimo Estrutura tagENUMLOGFONTEXDVW {
     ENUMLOGFONTEXW elfEnumLogfontEx;
     DESIGNVECTOR elfDesignVector;
   } ENUMLOGFONTEXDVW,*PENUMLOGFONTEXDVW,*LPENUMLOGFONTEXDVW;
 #SeDefinido UNICODE
-  Tipo ENUMLOGFONTEXDVW ENUMLOGFONTEXDV;
-  Tipo PENUMLOGFONTEXDVW PENUMLOGFONTEXDV;
-  Tipo LPENUMLOGFONTEXDVW LPENUMLOGFONTEXDV;
+  Pseudônimo ENUMLOGFONTEXDVW ENUMLOGFONTEXDV;
+  Pseudônimo PENUMLOGFONTEXDVW PENUMLOGFONTEXDV;
+  Pseudônimo LPENUMLOGFONTEXDVW LPENUMLOGFONTEXDV;
 #Senão
-  Tipo ENUMLOGFONTEXDVA ENUMLOGFONTEXDV;
-  Tipo PENUMLOGFONTEXDVA PENUMLOGFONTEXDV;
-  Tipo LPENUMLOGFONTEXDVA LPENUMLOGFONTEXDV;
+  Pseudônimo ENUMLOGFONTEXDVA ENUMLOGFONTEXDV;
+  Pseudônimo PENUMLOGFONTEXDVA PENUMLOGFONTEXDV;
+  Pseudônimo LPENUMLOGFONTEXDVA LPENUMLOGFONTEXDV;
 #FimSe
 
 #SeDefinido UNICODE
@@ -2764,23 +2764,23 @@ Importe "C" {
   WINGDIAPI HFONT WINAPI CreateFontIndirectExW(CONST ENUMLOGFONTEXDVW *);
 
 #SeNãoDefinido NOTEXTMETRIC
-  Tipo Estrutura tagENUMTEXTMETRICA {
+  Pseudônimo Estrutura tagENUMTEXTMETRICA {
     NEWTEXTMETRICEXA etmNewTextMetricEx;
     AXESLISTA etmAxesList;
   } ENUMTEXTMETRICA,*PENUMTEXTMETRICA,*LPENUMTEXTMETRICA;
-  Tipo Estrutura tagENUMTEXTMETRICW
+  Pseudônimo Estrutura tagENUMTEXTMETRICW
   {
     NEWTEXTMETRICEXW etmNewTextMetricEx;
     AXESLISTW etmAxesList;
   } ENUMTEXTMETRICW,*PENUMTEXTMETRICW,*LPENUMTEXTMETRICW;
 #SeDefinido UNICODE
-  Tipo ENUMTEXTMETRICW ENUMTEXTMETRIC;
-  Tipo PENUMTEXTMETRICW PENUMTEXTMETRIC;
-  Tipo LPENUMTEXTMETRICW LPENUMTEXTMETRIC;
+  Pseudônimo ENUMTEXTMETRICW ENUMTEXTMETRIC;
+  Pseudônimo PENUMTEXTMETRICW PENUMTEXTMETRIC;
+  Pseudônimo LPENUMTEXTMETRICW LPENUMTEXTMETRIC;
 #Senão
-  Tipo ENUMTEXTMETRICA ENUMTEXTMETRIC;
-  Tipo PENUMTEXTMETRICA PENUMTEXTMETRIC;
-  Tipo LPENUMTEXTMETRICA LPENUMTEXTMETRIC;
+  Pseudônimo ENUMTEXTMETRICA ENUMTEXTMETRIC;
+  Pseudônimo PENUMTEXTMETRICA PENUMTEXTMETRIC;
+  Pseudônimo LPENUMTEXTMETRICA LPENUMTEXTMETRIC;
 #FimSe
 #FimSe
 
@@ -2859,9 +2859,9 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI SetTextJustification(HDC hdc,Inteiro extra,Inteiro count);
   WINGDIAPI WINBOOL WINAPI UpdateColors(HDC hdc);
 
-  Tipo USHORT COLOR16;
+  Pseudônimo USHORT COLOR16;
 
-  Tipo Estrutura _TRIVERTEX {
+  Pseudônimo Estrutura _TRIVERTEX {
     LONG x;
     LONG y;
     COLOR16 Red;
@@ -2870,18 +2870,18 @@ Importe "C" {
     COLOR16 Alpha;
   } TRIVERTEX,*PTRIVERTEX,*LPTRIVERTEX;
 
-  Tipo Estrutura _GRADIENT_TRIANGLE {
+  Pseudônimo Estrutura _GRADIENT_TRIANGLE {
     ULONG Vertex1;
     ULONG Vertex2;
     ULONG Vertex3;
   } GRADIENT_TRIANGLE,*PGRADIENT_TRIANGLE,*LPGRADIENT_TRIANGLE;
 
-  Tipo Estrutura _GRADIENT_RECT {
+  Pseudônimo Estrutura _GRADIENT_RECT {
     ULONG UpperLeft;
     ULONG LowerRight;
   } GRADIENT_RECT,*PGRADIENT_RECT,*LPGRADIENT_RECT;
 
-  Tipo Estrutura _BLENDFUNCTION {
+  Pseudônimo Estrutura _BLENDFUNCTION {
     BYTE BlendOp;
     BYTE BlendFlags;
     BYTE SourceConstantAlpha;
@@ -2917,11 +2917,11 @@ Importe "C" {
 
   WINGDIAPI WINBOOL WINAPI PlayMetaFileRecord(HDC hdc,LPHANDLETABLE lpHandleTable,LPMETARECORD lpMR,UINT noObjs);
 
-  Tipo Inteiro (CALLBACK *MFENUMPROC)(HDC hdc,HANDLETABLE *lpht,METARECORD *lpMR,Inteiro nObj,LPARAM param);
+  Pseudônimo Inteiro (CALLBACK *MFENUMPROC)(HDC hdc,HANDLETABLE *lpht,METARECORD *lpMR,Inteiro nObj,LPARAM param);
 
   WINGDIAPI WINBOOL WINAPI EnumMetaFile(HDC hdc,HMETAFILE hmf,MFENUMPROC proc,LPARAM param);
 
-  Tipo Inteiro (CALLBACK *ENHMFENUMPROC)(HDC hdc,HANDLETABLE *lpht,CONST ENHMETARECORD *lpmr,Inteiro hHandles,LPARAM data);
+  Pseudônimo Inteiro (CALLBACK *ENHMFENUMPROC)(HDC hdc,HANDLETABLE *lpht,CONST ENHMETARECORD *lpmr,Inteiro hHandles,LPARAM data);
 
   WINGDIAPI HENHMETAFILE WINAPI CloseEnhMetaFile(HDC hdc);
   WINGDIAPI HENHMETAFILE WINAPI CopyEnhMetaFileA(HENHMETAFILE hEnh,LPCSTR lpFileName);
@@ -2957,7 +2957,7 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI GetTextMetricsW(HDC hdc,LPTEXTMETRICW lptm);
 #FimSe
 
-  Tipo Estrutura tagDIBSECTION {
+  Pseudônimo Estrutura tagDIBSECTION {
     BITMAP dsBm;
     BITMAPINFOHEADER dsBmih;
     DWORD dsBitfields[3];
@@ -3005,7 +3005,7 @@ Importe "C" {
 #Defina COLOR_ADJ_MIN (SHORT)-100
 #Defina COLOR_ADJ_MAX (SHORT)100
 
-  Tipo Estrutura tagCOLORADJUSTMENT {
+  Pseudônimo Estrutura tagCOLORADJUSTMENT {
     WORD caSize;
     WORD caFlags;
     WORD caIlluminantIndex;
@@ -3024,9 +3024,9 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI GetColorAdjustment(HDC hdc,LPCOLORADJUSTMENT lpca);
   WINGDIAPI HPALETTE WINAPI CreateHalftonePalette(HDC hdc);
 
-  Tipo WINBOOL (CALLBACK *ABORTPROC)(HDC,Inteiro);
+  Pseudônimo WINBOOL (CALLBACK *ABORTPROC)(HDC,Inteiro);
 
-  Tipo Estrutura _DOCINFOA {
+  Pseudônimo Estrutura _DOCINFOA {
     Inteiro cbSize;
     LPCSTR lpszDocName;
     LPCSTR lpszOutput;
@@ -3034,7 +3034,7 @@ Importe "C" {
     DWORD fwType;
   } DOCINFOA,*LPDOCINFOA;
 
-  Tipo Estrutura _DOCINFOW {
+  Pseudônimo Estrutura _DOCINFOW {
     Inteiro cbSize;
     LPCWSTR lpszDocName;
     LPCWSTR lpszOutput;
@@ -3043,11 +3043,11 @@ Importe "C" {
   } DOCINFOW,*LPDOCINFOW;
 
 #SeDefinido UNICODE
-  Tipo DOCINFOW DOCINFO;
-  Tipo LPDOCINFOW LPDOCINFO;
+  Pseudônimo DOCINFOW DOCINFO;
+  Pseudônimo LPDOCINFOW LPDOCINFO;
 #Senão
-  Tipo DOCINFOA DOCINFO;
-  Tipo LPDOCINFOA LPDOCINFO;
+  Pseudônimo DOCINFOA DOCINFO;
+  Pseudônimo LPDOCINFOA LPDOCINFO;
 #FimSe
 
 #Defina DI_APPBANDING 0x00000001
@@ -3127,7 +3127,7 @@ Importe "C" {
 
 #Defina FONTMAPPER_MAX 10
 
-  Tipo Estrutura tagKERNINGPAIR {
+  Pseudônimo Estrutura tagKERNINGPAIR {
     WORD wFirst;
     WORD wSecond;
     Inteiro iKernAmount;
@@ -3153,8 +3153,8 @@ Importe "C" {
 #Defina ICM_QUERY 3
 #Defina ICM_DONE_OUTSIDEDC 4
 
-  Tipo Inteiro (CALLBACK *ICMENUMPROCA)(LPSTR,LPARAM);
-  Tipo Inteiro (CALLBACK *ICMENUMPROCW)(LPWSTR,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *ICMENUMPROCA)(LPSTR,LPARAM);
+  Pseudônimo Inteiro (CALLBACK *ICMENUMPROCW)(LPWSTR,LPARAM);
 
 #SeDefinido UNICODE
 #Defina ICMENUMPROC ICMENUMPROCW
@@ -3329,12 +3329,12 @@ Importe "C" {
 
 #Defina EMR_MAX 122
 
-  Tipo Estrutura tagEMR {
+  Pseudônimo Estrutura tagEMR {
     DWORD iType;
     DWORD nSize;
   } EMR,*PEMR;
 
-  Tipo Estrutura tagEMRTEXT {
+  Pseudônimo Estrutura tagEMRTEXT {
     POINTL ptlReference;
     DWORD nChars;
     DWORD offString;
@@ -3343,60 +3343,60 @@ Importe "C" {
     DWORD offDx;
   } EMRTEXT,*PEMRTEXT;
 
-  Tipo Estrutura tagABORTPATH {
+  Pseudônimo Estrutura tagABORTPATH {
     EMR emr;
   } EMRABORTPATH,*PEMRABORTPATH,EMRBEGINPATH,*PEMRBEGINPATH,EMRENDPATH,*PEMRENDPATH,EMRCLOSEFIGURE,*PEMRCLOSEFIGURE,EMRFLATTENPATH,*PEMRFLATTENPATH,EMRWIDENPATH,*PEMRWIDENPATH,EMRSETMETARGN,*PEMRSETMETARGN,EMRSAVEDC,*PEMRSAVEDC,EMRREALIZEPALETTE,*PEMRREALIZEPALETTE;
 
-  Tipo Estrutura tagEMRSELECTCLIPPATH {
+  Pseudônimo Estrutura tagEMRSELECTCLIPPATH {
     EMR emr;
     DWORD iMode;
   } EMRSELECTCLIPPATH,*PEMRSELECTCLIPPATH,EMRSETBKMODE,*PEMRSETBKMODE,EMRSETMAPMODE,*PEMRSETMAPMODE,EMRSETLAYOUT,*PEMRSETLAYOUT,
     EMRSETPOLYFILLMODE,*PEMRSETPOLYFILLMODE,EMRSETROP2,*PEMRSETROP2,EMRSETSTRETCHBLTMODE,*PEMRSETSTRETCHBLTMODE,EMRSETICMMODE,
     *PEMRSETICMMODE,EMRSETTEXTALIGN,*PEMRSETTEXTALIGN;
 
-  Tipo Estrutura tagEMRSETMITERLIMIT {
+  Pseudônimo Estrutura tagEMRSETMITERLIMIT {
     EMR emr;
     FLOAT eMiterLimit;
   } EMRSETMITERLIMIT,*PEMRSETMITERLIMIT;
 
-  Tipo Estrutura tagEMRRESTOREDC {
+  Pseudônimo Estrutura tagEMRRESTOREDC {
     EMR emr;
     LONG iRelative;
   } EMRRESTOREDC,*PEMRRESTOREDC;
 
-  Tipo Estrutura tagEMRSETARCDIRECTION {
+  Pseudônimo Estrutura tagEMRSETARCDIRECTION {
     EMR emr;
     DWORD iArcDirection;
 
   } EMRSETARCDIRECTION,*PEMRSETARCDIRECTION;
 
-  Tipo Estrutura tagEMRSETMAPPERFLAGS {
+  Pseudônimo Estrutura tagEMRSETMAPPERFLAGS {
     EMR emr;
     DWORD dwFlags;
   } EMRSETMAPPERFLAGS,*PEMRSETMAPPERFLAGS;
 
-  Tipo Estrutura tagEMRSETTEXTCOLOR {
+  Pseudônimo Estrutura tagEMRSETTEXTCOLOR {
     EMR emr;
     COLORREF crColor;
   } EMRSETBKCOLOR,*PEMRSETBKCOLOR,EMRSETTEXTCOLOR,*PEMRSETTEXTCOLOR;
 
-  Tipo Estrutura tagEMRSELECTOBJECT {
+  Pseudônimo Estrutura tagEMRSELECTOBJECT {
     EMR emr;
     DWORD ihObject;
   } EMRSELECTOBJECT,*PEMRSELECTOBJECT,EMRDELETEOBJECT,*PEMRDELETEOBJECT;
 
-  Tipo Estrutura tagEMRSELECTPALETTE {
+  Pseudônimo Estrutura tagEMRSELECTPALETTE {
     EMR emr;
     DWORD ihPal;
   } EMRSELECTPALETTE,*PEMRSELECTPALETTE;
 
-  Tipo Estrutura tagEMRRESIZEPALETTE {
+  Pseudônimo Estrutura tagEMRRESIZEPALETTE {
     EMR emr;
     DWORD ihPal;
     DWORD cEntries;
   } EMRRESIZEPALETTE,*PEMRRESIZEPALETTE;
 
-  Tipo Estrutura tagEMRSETPALETTEENTRIES {
+  Pseudônimo Estrutura tagEMRSETPALETTEENTRIES {
     EMR emr;
     DWORD ihPal;
     DWORD iStart;
@@ -3404,55 +3404,55 @@ Importe "C" {
     PALETTEENTRY aPalEntries[1];
   } EMRSETPALETTEENTRIES,*PEMRSETPALETTEENTRIES;
 
-  Tipo Estrutura tagEMRSETCOLORADJUSTMENT {
+  Pseudônimo Estrutura tagEMRSETCOLORADJUSTMENT {
     EMR emr;
     COLORADJUSTMENT ColorAdjustment;
   } EMRSETCOLORADJUSTMENT,*PEMRSETCOLORADJUSTMENT;
 
-  Tipo Estrutura tagEMRGDICOMMENT {
+  Pseudônimo Estrutura tagEMRGDICOMMENT {
     EMR emr;
     DWORD cbData;
     BYTE Data[1];
   } EMRGDICOMMENT,*PEMRGDICOMMENT;
 
-  Tipo Estrutura tagEMREOF {
+  Pseudônimo Estrutura tagEMREOF {
     EMR emr;
     DWORD nPalEntries;
     DWORD offPalEntries;
     DWORD nSizeLast;
   } EMREOF,*PEMREOF;
 
-  Tipo Estrutura tagEMRLINETO {
+  Pseudônimo Estrutura tagEMRLINETO {
     EMR emr;
     POINTL ptl;
   } EMRLINETO,*PEMRLINETO,EMRMOVETOEX,*PEMRMOVETOEX;
 
-  Tipo Estrutura tagEMROFFSETCLIPRGN {
+  Pseudônimo Estrutura tagEMROFFSETCLIPRGN {
     EMR emr;
     POINTL ptlOffset;
   } EMROFFSETCLIPRGN,*PEMROFFSETCLIPRGN;
 
-  Tipo Estrutura tagEMRFILLPATH {
+  Pseudônimo Estrutura tagEMRFILLPATH {
     EMR emr;
     RECTL rclBounds;
   } EMRFILLPATH,*PEMRFILLPATH,EMRSTROKEANDFILLPATH,*PEMRSTROKEANDFILLPATH,EMRSTROKEPATH,*PEMRSTROKEPATH;
 
-  Tipo Estrutura tagEMREXCLUDECLIPRECT {
+  Pseudônimo Estrutura tagEMREXCLUDECLIPRECT {
     EMR emr;
     RECTL rclClip;
   } EMREXCLUDECLIPRECT,*PEMREXCLUDECLIPRECT,EMRINTERSECTCLIPRECT,*PEMRINTERSECTCLIPRECT;
 
-  Tipo Estrutura tagEMRSETVIEWPORTORGEX {
+  Pseudônimo Estrutura tagEMRSETVIEWPORTORGEX {
     EMR emr;
     POINTL ptlOrigin;
   } EMRSETVIEWPORTORGEX,*PEMRSETVIEWPORTORGEX,EMRSETWINDOWORGEX,*PEMRSETWINDOWORGEX,EMRSETBRUSHORGEX,*PEMRSETBRUSHORGEX;
 
-  Tipo Estrutura tagEMRSETVIEWPORTEXTEX {
+  Pseudônimo Estrutura tagEMRSETVIEWPORTEXTEX {
     EMR emr;
     SIZEL szlExtent;
   } EMRSETVIEWPORTEXTEX,*PEMRSETVIEWPORTEXTEX,EMRSETWINDOWEXTEX,*PEMRSETWINDOWEXTEX;
 
-  Tipo Estrutura tagEMRSCALEVIEWPORTEXTEX {
+  Pseudônimo Estrutura tagEMRSCALEVIEWPORTEXTEX {
     EMR emr;
     LONG xNum;
     LONG xDenom;
@@ -3460,49 +3460,49 @@ Importe "C" {
     LONG yDenom;
   } EMRSCALEVIEWPORTEXTEX,*PEMRSCALEVIEWPORTEXTEX,EMRSCALEWINDOWEXTEX,*PEMRSCALEWINDOWEXTEX;
 
-  Tipo Estrutura tagEMRSETWORLDTRANSFORM {
+  Pseudônimo Estrutura tagEMRSETWORLDTRANSFORM {
     EMR emr;
     XFORM xform;
   } EMRSETWORLDTRANSFORM,*PEMRSETWORLDTRANSFORM;
 
-  Tipo Estrutura tagEMRMODIFYWORLDTRANSFORM {
+  Pseudônimo Estrutura tagEMRMODIFYWORLDTRANSFORM {
     EMR emr;
     XFORM xform;
     DWORD iMode;
   } EMRMODIFYWORLDTRANSFORM,*PEMRMODIFYWORLDTRANSFORM;
 
-  Tipo Estrutura tagEMRSETPIXELV {
+  Pseudônimo Estrutura tagEMRSETPIXELV {
     EMR emr;
     POINTL ptlPixel;
     COLORREF crColor;
   } EMRSETPIXELV,*PEMRSETPIXELV;
 
-  Tipo Estrutura tagEMREXTFLOODFILL {
+  Pseudônimo Estrutura tagEMREXTFLOODFILL {
     EMR emr;
     POINTL ptlStart;
     COLORREF crColor;
     DWORD iMode;
   } EMREXTFLOODFILL,*PEMREXTFLOODFILL;
 
-  Tipo Estrutura tagEMRELLIPSE {
+  Pseudônimo Estrutura tagEMRELLIPSE {
     EMR emr;
     RECTL rclBox;
   } EMRELLIPSE,*PEMRELLIPSE,EMRRECTANGLE,*PEMRRECTANGLE;
 
-  Tipo Estrutura tagEMRROUNDRECT {
+  Pseudônimo Estrutura tagEMRROUNDRECT {
     EMR emr;
     RECTL rclBox;
     SIZEL szlCorner;
   } EMRROUNDRECT,*PEMRROUNDRECT;
 
-  Tipo Estrutura tagEMRARC {
+  Pseudônimo Estrutura tagEMRARC {
     EMR emr;
     RECTL rclBox;
     POINTL ptlStart;
     POINTL ptlEnd;
   } EMRARC,*PEMRARC,EMRARCTO,*PEMRARCTO,EMRCHORD,*PEMRCHORD,EMRPIE,*PEMRPIE;
 
-  Tipo Estrutura tagEMRANGLEARC {
+  Pseudônimo Estrutura tagEMRANGLEARC {
     EMR emr;
     POINTL ptlCenter;
     DWORD nRadius;
@@ -3510,21 +3510,21 @@ Importe "C" {
     FLOAT eSweepAngle;
   } EMRANGLEARC,*PEMRANGLEARC;
 
-  Tipo Estrutura tagEMRPOLYLINE {
+  Pseudônimo Estrutura tagEMRPOLYLINE {
     EMR emr;
     RECTL rclBounds;
     DWORD cptl;
     POINTL aptl[1];
   } EMRPOLYLINE,*PEMRPOLYLINE,EMRPOLYBEZIER,*PEMRPOLYBEZIER,EMRPOLYGON,*PEMRPOLYGON,EMRPOLYBEZIERTO,*PEMRPOLYBEZIERTO,EMRPOLYLINETO,*PEMRPOLYLINETO;
 
-  Tipo Estrutura tagEMRPOLYLINE16 {
+  Pseudônimo Estrutura tagEMRPOLYLINE16 {
     EMR emr;
     RECTL rclBounds;
     DWORD cpts;
     POINTS apts[1];
   } EMRPOLYLINE16,*PEMRPOLYLINE16,EMRPOLYBEZIER16,*PEMRPOLYBEZIER16,EMRPOLYGON16,*PEMRPOLYGON16,EMRPOLYBEZIERTO16,*PEMRPOLYBEZIERTO16,EMRPOLYLINETO16,*PEMRPOLYLINETO16;
 
-  Tipo Estrutura tagEMRPOLYDRAW {
+  Pseudônimo Estrutura tagEMRPOLYDRAW {
     EMR emr;
     RECTL rclBounds;
     DWORD cptl;
@@ -3532,7 +3532,7 @@ Importe "C" {
     BYTE abTypes[1];
   } EMRPOLYDRAW,*PEMRPOLYDRAW;
 
-  Tipo Estrutura tagEMRPOLYDRAW16 {
+  Pseudônimo Estrutura tagEMRPOLYDRAW16 {
     EMR emr;
     RECTL rclBounds;
     DWORD cpts;
@@ -3540,7 +3540,7 @@ Importe "C" {
     BYTE abTypes[1];
   } EMRPOLYDRAW16,*PEMRPOLYDRAW16;
 
-  Tipo Estrutura tagEMRPOLYPOLYLINE {
+  Pseudônimo Estrutura tagEMRPOLYPOLYLINE {
     EMR emr;
     RECTL rclBounds;
     DWORD nPolys;
@@ -3549,7 +3549,7 @@ Importe "C" {
     POINTL aptl[1];
   } EMRPOLYPOLYLINE,*PEMRPOLYPOLYLINE,EMRPOLYPOLYGON,*PEMRPOLYPOLYGON;
 
-  Tipo Estrutura tagEMRPOLYPOLYLINE16 {
+  Pseudônimo Estrutura tagEMRPOLYPOLYLINE16 {
     EMR emr;
     RECTL rclBounds;
     DWORD nPolys;
@@ -3558,14 +3558,14 @@ Importe "C" {
     POINTS apts[1];
   } EMRPOLYPOLYLINE16,*PEMRPOLYPOLYLINE16,EMRPOLYPOLYGON16,*PEMRPOLYPOLYGON16;
 
-  Tipo Estrutura tagEMRINVERTRGN {
+  Pseudônimo Estrutura tagEMRINVERTRGN {
     EMR emr;
     RECTL rclBounds;
     DWORD cbRgnData;
     BYTE RgnData[1];
   } EMRINVERTRGN,*PEMRINVERTRGN,EMRPAINTRGN,*PEMRPAINTRGN;
 
-  Tipo Estrutura tagEMRFILLRGN {
+  Pseudônimo Estrutura tagEMRFILLRGN {
     EMR emr;
     RECTL rclBounds;
     DWORD cbRgnData;
@@ -3573,7 +3573,7 @@ Importe "C" {
     BYTE RgnData[1];
   } EMRFILLRGN,*PEMRFILLRGN;
 
-  Tipo Estrutura tagEMRFRAMERGN {
+  Pseudônimo Estrutura tagEMRFRAMERGN {
     EMR emr;
     RECTL rclBounds;
     DWORD cbRgnData;
@@ -3582,14 +3582,14 @@ Importe "C" {
     BYTE RgnData[1];
   } EMRFRAMERGN,*PEMRFRAMERGN;
 
-  Tipo Estrutura tagEMREXTSELECTCLIPRGN {
+  Pseudônimo Estrutura tagEMREXTSELECTCLIPRGN {
     EMR emr;
     DWORD cbRgnData;
     DWORD iMode;
     BYTE RgnData[1];
   } EMREXTSELECTCLIPRGN,*PEMREXTSELECTCLIPRGN;
 
-  Tipo Estrutura tagEMREXTTEXTOUTA {
+  Pseudônimo Estrutura tagEMREXTTEXTOUTA {
     EMR emr;
     RECTL rclBounds;
     DWORD iGraphicsMode;
@@ -3598,7 +3598,7 @@ Importe "C" {
     EMRTEXT emrtext;
   } EMREXTTEXTOUTA,*PEMREXTTEXTOUTA,EMREXTTEXTOUTW,*PEMREXTTEXTOUTW;
 
-  Tipo Estrutura tagEMRPOLYTEXTOUTA {
+  Pseudônimo Estrutura tagEMRPOLYTEXTOUTA {
     EMR emr;
     RECTL rclBounds;
     DWORD iGraphicsMode;
@@ -3608,7 +3608,7 @@ Importe "C" {
     EMRTEXT aemrtext[1];
   } EMRPOLYTEXTOUTA,*PEMRPOLYTEXTOUTA,EMRPOLYTEXTOUTW,*PEMRPOLYTEXTOUTW;
 
-  Tipo Estrutura tagEMRBITBLT {
+  Pseudônimo Estrutura tagEMRBITBLT {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3627,7 +3627,7 @@ Importe "C" {
     DWORD cbBitsSrc;
   } EMRBITBLT,*PEMRBITBLT;
 
-  Tipo Estrutura tagEMRSTRETCHBLT {
+  Pseudônimo Estrutura tagEMRSTRETCHBLT {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3648,7 +3648,7 @@ Importe "C" {
     LONG cySrc;
   } EMRSTRETCHBLT,*PEMRSTRETCHBLT;
 
-  Tipo Estrutura tagEMRMASKBLT {
+  Pseudônimo Estrutura tagEMRMASKBLT {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3674,7 +3674,7 @@ Importe "C" {
     DWORD cbBitsMask;
   } EMRMASKBLT,*PEMRMASKBLT;
 
-  Tipo Estrutura tagEMRPLGBLT {
+  Pseudônimo Estrutura tagEMRPLGBLT {
     EMR emr;
     RECTL rclBounds;
     POINTL aptlDest[3];
@@ -3698,7 +3698,7 @@ Importe "C" {
     DWORD cbBitsMask;
   } EMRPLGBLT,*PEMRPLGBLT;
 
-  Tipo Estrutura tagEMRSETDIBITSTODEVICE {
+  Pseudônimo Estrutura tagEMRSETDIBITSTODEVICE {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3716,7 +3716,7 @@ Importe "C" {
     DWORD cScans;
   } EMRSETDIBITSTODEVICE,*PEMRSETDIBITSTODEVICE;
 
-  Tipo Estrutura tagEMRSTRETCHDIBITS {
+  Pseudônimo Estrutura tagEMRSTRETCHDIBITS {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3735,25 +3735,25 @@ Importe "C" {
     LONG cyDest;
   } EMRSTRETCHDIBITS,*PEMRSTRETCHDIBITS;
 
-  Tipo Estrutura tagEMREXTCREATEFONTINDIRECTW {
+  Pseudônimo Estrutura tagEMREXTCREATEFONTINDIRECTW {
     EMR emr;
     DWORD ihFont;
     EXTLOGFONTW elfw;
   } EMREXTCREATEFONTINDIRECTW,*PEMREXTCREATEFONTINDIRECTW;
 
-  Tipo Estrutura tagEMRCREATEPALETTE {
+  Pseudônimo Estrutura tagEMRCREATEPALETTE {
     EMR emr;
     DWORD ihPal;
     LOGPALETTE lgpl;
   } EMRCREATEPALETTE,*PEMRCREATEPALETTE;
 
-  Tipo Estrutura tagEMRCREATEPEN {
+  Pseudônimo Estrutura tagEMRCREATEPEN {
     EMR emr;
     DWORD ihPen;
     LOGPEN lopn;
   } EMRCREATEPEN,*PEMRCREATEPEN;
 
-  Tipo Estrutura tagEMREXTCREATEPEN {
+  Pseudônimo Estrutura tagEMREXTCREATEPEN {
     EMR emr;
     DWORD ihPen;
     DWORD offBmi;
@@ -3763,13 +3763,13 @@ Importe "C" {
     EXTLOGPEN elp;
   } EMREXTCREATEPEN,*PEMREXTCREATEPEN;
 
-  Tipo Estrutura tagEMRCREATEBRUSHINDIRECT {
+  Pseudônimo Estrutura tagEMRCREATEBRUSHINDIRECT {
     EMR emr;
     DWORD ihBrush;
     LOGBRUSH32 lb;
   } EMRCREATEBRUSHINDIRECT,*PEMRCREATEBRUSHINDIRECT;
 
-  Tipo Estrutura tagEMRCREATEMONOBRUSH {
+  Pseudônimo Estrutura tagEMRCREATEMONOBRUSH {
     EMR emr;
     DWORD ihBrush;
     DWORD iUsage;
@@ -3779,7 +3779,7 @@ Importe "C" {
     DWORD cbBits;
   } EMRCREATEMONOBRUSH,*PEMRCREATEMONOBRUSH;
 
-  Tipo Estrutura tagEMRCREATEDIBPATTERNBRUSHPT {
+  Pseudônimo Estrutura tagEMRCREATEDIBPATTERNBRUSHPT {
     EMR emr;
     DWORD ihBrush;
     DWORD iUsage;
@@ -3789,50 +3789,50 @@ Importe "C" {
     DWORD cbBits;
   } EMRCREATEDIBPATTERNBRUSHPT,*PEMRCREATEDIBPATTERNBRUSHPT;
 
-  Tipo Estrutura tagEMRFORMAT {
+  Pseudônimo Estrutura tagEMRFORMAT {
     DWORD dSignature;
     DWORD nVersion;
     DWORD cbData;
     DWORD offData;
   } EMRFORMAT,*PEMRFORMAT;
 
-  Tipo Estrutura tagEMRGLSRECORD {
+  Pseudônimo Estrutura tagEMRGLSRECORD {
     EMR emr;
     DWORD cbData;
     BYTE Data[1];
   } EMRGLSRECORD,*PEMRGLSRECORD;
 
-  Tipo Estrutura tagEMRGLSBOUNDEDRECORD {
+  Pseudônimo Estrutura tagEMRGLSBOUNDEDRECORD {
     EMR emr;
     RECTL rclBounds;
     DWORD cbData;
     BYTE Data[1];
   } EMRGLSBOUNDEDRECORD,*PEMRGLSBOUNDEDRECORD;
 
-  Tipo Estrutura tagEMRPIXELFORMAT {
+  Pseudônimo Estrutura tagEMRPIXELFORMAT {
     EMR emr;
     PIXELFORMATDESCRIPTOR pfd;
   } EMRPIXELFORMAT,*PEMRPIXELFORMAT;
 
-  Tipo Estrutura tagEMRCREATECOLORSPACE {
+  Pseudônimo Estrutura tagEMRCREATECOLORSPACE {
     EMR emr;
     DWORD ihCS;
     LOGCOLORSPACEA lcs;
   } EMRCREATECOLORSPACE,*PEMRCREATECOLORSPACE;
 
-  Tipo Estrutura tagEMRSETCOLORSPACE {
+  Pseudônimo Estrutura tagEMRSETCOLORSPACE {
     EMR emr;
     DWORD ihCS;
   } EMRSETCOLORSPACE,*PEMRSETCOLORSPACE,EMRSELECTCOLORSPACE,*PEMRSELECTCOLORSPACE,EMRDELETECOLORSPACE,*PEMRDELETECOLORSPACE;
 
-  Tipo Estrutura tagEMREXTESCAPE {
+  Pseudônimo Estrutura tagEMREXTESCAPE {
     EMR emr;
     INT iEscape;
     INT cbEscData;
     BYTE EscData[1];
   } EMREXTESCAPE,*PEMREXTESCAPE,EMRDRAWESCAPE,*PEMRDRAWESCAPE;
 
-  Tipo Estrutura tagEMRNAMEDESCAPE {
+  Pseudônimo Estrutura tagEMRNAMEDESCAPE {
     EMR emr;
     INT iEscape;
     INT cbDriver;
@@ -3842,7 +3842,7 @@ Importe "C" {
 
 #Defina SETICMPROFILE_EMBEDED 0x00000001
 
-  Tipo Estrutura tagEMRSETICMPROFILE {
+  Pseudônimo Estrutura tagEMRSETICMPROFILE {
     EMR emr;
     DWORD dwFlags;
     DWORD cbName;
@@ -3852,7 +3852,7 @@ Importe "C" {
 
 #Defina CREATECOLORSPACE_EMBEDED 0x00000001
 
-  Tipo Estrutura tagEMRCREATECOLORSPACEW {
+  Pseudônimo Estrutura tagEMRCREATECOLORSPACEW {
     EMR emr;
     DWORD ihCS;
     LOGCOLORSPACEW lcs;
@@ -3863,7 +3863,7 @@ Importe "C" {
 
 #Defina COLORMATCHTOTARGET_EMBEDED 0x00000001
 
-  Tipo Estrutura tagCOLORMATCHTOTARGET {
+  Pseudônimo Estrutura tagCOLORMATCHTOTARGET {
     EMR emr;
     DWORD dwAction;
     DWORD dwFlags;
@@ -3872,7 +3872,7 @@ Importe "C" {
     BYTE Data[1];
   } EMRCOLORMATCHTOTARGET,*PEMRCOLORMATCHTOTARGET;
 
-  Tipo Estrutura tagCOLORCORRECTPALETTE {
+  Pseudônimo Estrutura tagCOLORCORRECTPALETTE {
     EMR emr;
     DWORD ihPalette;
     DWORD nFirstEntry;
@@ -3880,7 +3880,7 @@ Importe "C" {
     DWORD nReserved;
   } EMRCOLORCORRECTPALETTE,*PEMRCOLORCORRECTPALETTE;
 
-  Tipo Estrutura tagEMRALPHABLEND {
+  Pseudônimo Estrutura tagEMRALPHABLEND {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3901,7 +3901,7 @@ Importe "C" {
     LONG cySrc;
   } EMRALPHABLEND,*PEMRALPHABLEND;
 
-  Tipo Estrutura tagEMRGRADIENTFILL {
+  Pseudônimo Estrutura tagEMRGRADIENTFILL {
     EMR emr;
     RECTL rclBounds;
     DWORD nVer;
@@ -3910,7 +3910,7 @@ Importe "C" {
     TRIVERTEX Ver[1];
   } EMRGRADIENTFILL,*PEMRGRADIENTFILL;
 
-  Tipo Estrutura tagEMRTRANSPARENTBLT {
+  Pseudônimo Estrutura tagEMRTRANSPARENTBLT {
     EMR emr;
     RECTL rclBounds;
     LONG xDest;
@@ -3960,12 +3960,12 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI wglUseFontBitmapsW(HDC,DWORD,DWORD,DWORD);
   WINGDIAPI WINBOOL WINAPI SwapBuffers(HDC);
 
-  Tipo Estrutura _POINTFLOAT {
+  Pseudônimo Estrutura _POINTFLOAT {
     FLOAT x;
     FLOAT y;
   } POINTFLOAT,*PPOINTFLOAT;
 
-  Tipo Estrutura _GLYPHMETRICSFLOAT {
+  Pseudônimo Estrutura _GLYPHMETRICSFLOAT {
     FLOAT gmfBlackBoxX;
     FLOAT gmfBlackBoxY;
     POINTFLOAT gmfptGlyphOrigin;
@@ -3985,7 +3985,7 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI wglUseFontOutlinesA(HDC,DWORD,DWORD,DWORD,FLOAT,FLOAT,Inteiro,LPGLYPHMETRICSFLOAT);
   WINGDIAPI WINBOOL WINAPI wglUseFontOutlinesW(HDC,DWORD,DWORD,DWORD,FLOAT,FLOAT,Inteiro,LPGLYPHMETRICSFLOAT);
 
-  Tipo Estrutura tagLAYERPLANEDESCRIPTOR {
+  Pseudônimo Estrutura tagLAYERPLANEDESCRIPTOR {
     WORD nSize;
     WORD nVersion;
     DWORD dwFlags;
@@ -4064,7 +4064,7 @@ Importe "C" {
   WINGDIAPI WINBOOL WINAPI wglRealizeLayerPalette(HDC,Inteiro,WINBOOL);
   WINGDIAPI WINBOOL WINAPI wglSwapLayerBuffers(HDC,UINT);
 
-  Tipo Estrutura _WGLSWAP {
+  Pseudônimo Estrutura _WGLSWAP {
     HDC hdc;
     UINT uiFlags;
   } WGLSWAP,*PWGLSWAP,*LPWGLSWAP;

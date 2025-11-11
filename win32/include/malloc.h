@@ -15,7 +15,7 @@
 #FimSe
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeDefinido _WIN64
@@ -25,7 +25,7 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido _STATIC_ASSERT
-#Defina _STATIC_ASSERT(expr) Importe Vazio __static_assert_t(Inteiro [(expr)?1:-1])
+#Defina _STATIC_ASSERT(expr) Externo Vazio __static_assert_t(Inteiro [(expr)?1:-1])
 #FimSe
 
 /* Return codes Para _heapwalk()  */
@@ -43,14 +43,14 @@ Importe "C" {
 #SeNãoDefinido _HEAPINFO_DEFINED
 #Defina _HEAPINFO_DEFINED
  /* The structure used to walk through the heap with _heapwalk.  */
-  Tipo Estrutura _heapinfo {
+  Pseudônimo Estrutura _heapinfo {
     Inteiro *_pentry;
     size_t _size;
     Inteiro _useflag;
   } _HEAPINFO;
 #FimSe
 
-  Importe Natural Inteiro _amblksiz;
+  Externo Natural Inteiro _amblksiz;
 
 #Defina _mm_free(a) _aligned_free(a)
 #Defina _mm_malloc(a,b) _aligned_malloc(a,b)
@@ -108,12 +108,12 @@ Importe "C" {
 
 #Se(Definido(_X86_) && !Definido(__x86_64))
 #Defina _ALLOCA_S_MARKER_SIZE 8
-#SenãoSe Definido(__ia64__) || Definido(__x86_64)
+#Exceto Definido(__ia64__) || Definido(__x86_64)
 #Defina _ALLOCA_S_MARKER_SIZE 16
 #FimSe
 
 #Se !Definido(RC_INVOKED)
-  Estático __inline Vazio *_MarkAllocaS(Vazio *_Ptr,Natural Inteiro _Marker) {
+  Fixo __inline Vazio *_MarkAllocaS(Vazio *_Ptr,Natural Inteiro _Marker) {
     Se(_Ptr) {
       *((Natural Inteiro*)_Ptr) = _Marker;
       _Ptr = (Caractere*)_Ptr + _ALLOCA_S_MARKER_SIZE;
@@ -132,7 +132,7 @@ Importe "C" {
 
 #SeNãoDefinido RC_INVOKED
 #Esqueça _freea
-  Estático __inline Vazio __cdecl _freea(Vazio *_Memory) {
+  Fixo __inline Vazio __cdecl _freea(Vazio *_Memory) {
     Natural Inteiro _Marker;
     Se(_Memory) {
       _Memory = (Caractere*)_Memory - _ALLOCA_S_MARKER_SIZE;
@@ -159,7 +159,7 @@ Importe "C" {
 #SeDefinido HEAPHOOK
 #SeNãoDefinido _HEAPHOOK_DEFINED
 #Defina _HEAPHOOK_DEFINED
-  Tipo Inteiro (__cdecl *_HEAPHOOK)(Inteiro,size_t,Vazio *,Vazio **);
+  Pseudônimo Inteiro (__cdecl *_HEAPHOOK)(Inteiro,size_t,Vazio *,Vazio **);
 #FimSe
 
   _CRTIMP _HEAPHOOK __cdecl _setheaphook(_HEAPHOOK _NewHook);

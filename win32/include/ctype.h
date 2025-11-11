@@ -9,7 +9,7 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido WEOF
@@ -31,9 +31,9 @@ Importe "C" {
 
 #SeNãoDefinido _pctype
 #SeDefinido _MSVCRT_
-  Importe Natural Curto *_pctype;
+  Externo Natural Curto *_pctype;
 #Senão
-  Importe Natural Curto **_imp___pctype;
+  Externo Natural Curto **_imp___pctype;
 #Defina _pctype (*_imp___pctype)
 #FimSe
 #FimSe
@@ -46,21 +46,21 @@ Importe "C" {
 #SeNãoDefinido _CTYPE_DISABLE_MACROS
 #SeNãoDefinido _wctype
 #SeDefinido _MSVCRT_
-  Importe Natural Curto *_wctype;
+  Externo Natural Curto *_wctype;
 #Senão
-  Importe Natural Curto **_imp___wctype;
+  Externo Natural Curto **_imp___wctype;
 #Defina _wctype (*_imp___wctype)
 #FimSe
 #FimSe
 #SeDefinido _MSVCRT_
 #Defina __pwctype_func() (_pwctype)
 #SeNãoDefinido _pwctype
-  Importe Natural Curto *_pwctype;
+  Externo Natural Curto *_pwctype;
 #FimSe
 #Senão
 #Defina __pwctype_func() (*_imp___pwctype)
 #SeNãoDefinido _pwctype
-  Importe Natural Curto **_imp___pwctype;
+  Externo Natural Curto **_imp___pwctype;
 #Defina _pwctype (*_imp___pwctype)
 #FimSe
 #FimSe
@@ -69,14 +69,14 @@ Importe "C" {
 
   /* CRT stuff */
 #Se 1
-  Importe Constante Natural Caractere __newclmap[];
-  Importe Constante Natural Caractere __newcumap[];
-  Importe pthreadlocinfo __ptlocinfo;
-  Importe pthreadmbcinfo __ptmbcinfo;
-  Importe Inteiro __globallocalestatus;
-  Importe Inteiro __locale_changed;
-  Importe Estrutura threadlocaleinfostruct __initiallocinfo;
-  Importe _locale_tstruct __initiallocalestructinfo;
+  Externo Imutável Natural Caractere __newclmap[];
+  Externo Imutável Natural Caractere __newcumap[];
+  Externo pthreadlocinfo __ptlocinfo;
+  Externo pthreadmbcinfo __ptmbcinfo;
+  Externo Inteiro __globallocalestatus;
+  Externo Inteiro __locale_changed;
+  Externo Estrutura threadlocaleinfostruct __initiallocinfo;
+  Externo _locale_tstruct __initiallocalestructinfo;
   pthreadlocinfo __cdecl __updatetlocinfo(Vazio);
   pthreadmbcinfo __cdecl __updatetmbcinfo(Vazio);
 #FimSe
@@ -188,10 +188,10 @@ Inteiro __cdecl iswblank(wint_t _C);
 #Defina MB_CUR_MAX ___mb_cur_max_func()
 #SeNãoDefinido __mb_cur_max
 #SeDefinido _MSVCRT_
-  Importe Inteiro __mb_cur_max;
+  Externo Inteiro __mb_cur_max;
 #Senão
 #Defina __mb_cur_max	(*_imp____mb_cur_max)
-  Importe Inteiro *_imp____mb_cur_max;
+  Externo Inteiro *_imp____mb_cur_max;
 #FimSe
 #FimSe
 #SeDefinido _MSVCRT_

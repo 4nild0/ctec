@@ -36,12 +36,12 @@ THE SOFTWARE.*/
 /* We rely on the little endianness and EABI calling convention Para this to
    work */
 
-Tipo Estrutura double_unsigned_struct {
+Pseudônimo Estrutura double_unsigned_struct {
     Natural low;
     Natural high;
 } double_unsigned_struct;
 
-Tipo Estrutura unsigned_int_struct {
+Pseudônimo Estrutura unsigned_int_struct {
     Natural low;
     Inteiro high;
 } unsigned_int_struct;
@@ -338,19 +338,19 @@ __AEABI_XL2D(l2d, 1)
 /* TODO: add Erro in Caso of den == 0 (see §4.3.1 and §4.3.2) */
 
 #Defina define_aeabi_xdivmod_signed_type(basetype, type) \
-Tipo Estrutura type {                                    \
+Pseudônimo Estrutura type {                                    \
     basetype quot;                                       \
     Natural basetype rem;                               \
 } type
 
 #Defina define_aeabi_xdivmod_unsigned_type(basetype, type) \
-Tipo Estrutura type {                                      \
+Pseudônimo Estrutura type {                                      \
     basetype quot;                                         \
     basetype rem;                                          \
 } type
 
 #Defina AEABI_UXDIVMOD(name,type, rettype, typemacro)                     \
-Estático EmLinha rettype aeabi_ ## name (type num, type den)                 \
+Fixo Integrado rettype aeabi_ ## name (type num, type den)                 \
 {                                                                         \
     rettype ret;                                                          \
     type quot = 0;                                                        \

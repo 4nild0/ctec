@@ -11,7 +11,7 @@
 #FimSe
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -20,13 +20,13 @@ Importe "C" {
 
 #SeNãoDefinido BASETYPES
 #Defina BASETYPES
-  Tipo Natural Longo ULONG;
-  Tipo ULONG *PULONG;
-  Tipo Natural Curto USHORT;
-  Tipo USHORT *PUSHORT;
-  Tipo Natural Caractere UCHAR;
-  Tipo UCHAR *PUCHAR;
-  Tipo Caractere *PSZ;
+  Pseudônimo Natural Longo ULONG;
+  Pseudônimo ULONG *PULONG;
+  Pseudônimo Natural Curto USHORT;
+  Pseudônimo USHORT *PUSHORT;
+  Pseudônimo Natural Caractere UCHAR;
+  Pseudônimo UCHAR *PUCHAR;
+  Pseudônimo Caractere *PSZ;
 #FimSe
 
 #Defina MAX_PATH 260
@@ -88,35 +88,35 @@ Importe "C" {
 #Defina FAR
 #Defina NEAR
 #SeNãoDefinido CONST
-#Defina CONST Constante
+#Defina CONST Imutável
 #FimSe
 
-  Tipo Natural Longo DWORD;
-  Tipo Inteiro WINBOOL;
+  Pseudônimo Natural Longo DWORD;
+  Pseudônimo Inteiro WINBOOL;
 #Defina BOOL WINBOOL
-  Tipo Natural Caractere BYTE;
-  Tipo Natural Curto WORD;
-  Tipo Real FLOAT;
-  Tipo FLOAT *PFLOAT;
-  Tipo WINBOOL *PBOOL;
-  Tipo WINBOOL *LPBOOL;
-  Tipo BYTE *PBYTE;
-  Tipo BYTE *LPBYTE;
-  Tipo Inteiro *PINT;
-  Tipo Inteiro *LPINT;
-  Tipo WORD *PWORD;
-  Tipo WORD *LPWORD;
-  Tipo Longo *LPLONG;
-  Tipo DWORD *PDWORD;
-  Tipo DWORD *LPDWORD;
-  Tipo Vazio *LPVOID;
+  Pseudônimo Natural Caractere BYTE;
+  Pseudônimo Natural Curto WORD;
+  Pseudônimo Real FLOAT;
+  Pseudônimo FLOAT *PFLOAT;
+  Pseudônimo WINBOOL *PBOOL;
+  Pseudônimo WINBOOL *LPBOOL;
+  Pseudônimo BYTE *PBYTE;
+  Pseudônimo BYTE *LPBYTE;
+  Pseudônimo Inteiro *PINT;
+  Pseudônimo Inteiro *LPINT;
+  Pseudônimo WORD *PWORD;
+  Pseudônimo WORD *LPWORD;
+  Pseudônimo Longo *LPLONG;
+  Pseudônimo DWORD *PDWORD;
+  Pseudônimo DWORD *LPDWORD;
+  Pseudônimo Vazio *LPVOID;
 # SeNãoDefinido _LPCVOID_DEFINED
 #Defina _LPCVOID_DEFINED
-Tipo CONST Vazio *LPCVOID;
+Pseudônimo CONST Vazio *LPCVOID;
 #FimSe
-  Tipo Inteiro INT;
-  Tipo Natural Inteiro UINT;
-  Tipo Natural Inteiro *PUINT;
+  Pseudônimo Inteiro INT;
+  Pseudônimo Natural Inteiro UINT;
+  Pseudônimo Natural Inteiro *PUINT;
 
 #SeNãoDefinido NT_INCLUDED
 #Inclua <winnt.h>
@@ -124,9 +124,9 @@ Tipo CONST Vazio *LPCVOID;
 
 //gr #Inclua <specstrings.h>
 
-  Tipo UINT_PTR WPARAM;
-  Tipo LONG_PTR LPARAM;
-  Tipo LONG_PTR LRESULT;
+  Pseudônimo UINT_PTR WPARAM;
+  Pseudônimo LONG_PTR LPARAM;
+  Pseudônimo LONG_PTR LRESULT;
 
 #SeNãoDefinido __cplusplus
 #SeNãoDefinido NOMINMAX
@@ -155,28 +155,28 @@ Tipo CONST Vazio *LPCVOID;
 #FimSe
 #FimSe
 
-  Tipo WORD ATOM;
+  Pseudônimo WORD ATOM;
 
-  Tipo HANDLE *SPHANDLE;
-  Tipo HANDLE *LPHANDLE;
-  Tipo HANDLE HGLOBAL;
-  Tipo HANDLE HLOCAL;
-  Tipo HANDLE GLOBALHANDLE;
-  Tipo HANDLE LOCALHANDLE;
+  Pseudônimo HANDLE *SPHANDLE;
+  Pseudônimo HANDLE *LPHANDLE;
+  Pseudônimo HANDLE HGLOBAL;
+  Pseudônimo HANDLE HLOCAL;
+  Pseudônimo HANDLE GLOBALHANDLE;
+  Pseudônimo HANDLE LOCALHANDLE;
 #SeDefinido _WIN64
-  Tipo INT_PTR (WINAPI *FARPROC)();
-  Tipo INT_PTR (WINAPI *NEARPROC)();
-  Tipo INT_PTR (WINAPI *PROC)();
+  Pseudônimo INT_PTR (WINAPI *FARPROC)();
+  Pseudônimo INT_PTR (WINAPI *NEARPROC)();
+  Pseudônimo INT_PTR (WINAPI *PROC)();
 #Senão
-  Tipo Inteiro (WINAPI *FARPROC)();
-  Tipo Inteiro (WINAPI *NEARPROC)();
-  Tipo Inteiro (WINAPI *PROC)();
+  Pseudônimo Inteiro (WINAPI *FARPROC)();
+  Pseudônimo Inteiro (WINAPI *NEARPROC)();
+  Pseudônimo Inteiro (WINAPI *PROC)();
 #FimSe
 
-  Tipo Vazio *HGDIOBJ;
+  Pseudônimo Vazio *HGDIOBJ;
 
   DECLARE_HANDLE(HKEY);
-  Tipo HKEY *PHKEY;
+  Pseudônimo HKEY *PHKEY;
 
   DECLARE_HANDLE(HACCEL);
   DECLARE_HANDLE(HBITMAP);
@@ -191,7 +191,7 @@ Tipo CONST Vazio *LPCVOID;
   DECLARE_HANDLE(HMENU);
   DECLARE_HANDLE(HMETAFILE);
   DECLARE_HANDLE(HINSTANCE);
-  Tipo HINSTANCE HMODULE;
+  Pseudônimo HINSTANCE HMODULE;
   DECLARE_HANDLE(HPALETTE);
   DECLARE_HANDLE(HPEN);
   DECLARE_HANDLE(HRGN);
@@ -204,55 +204,55 @@ Tipo CONST Vazio *LPCVOID;
   DECLARE_HANDLE(HWINEVENTHOOK);
   DECLARE_HANDLE(HUMPD);
 
-  Tipo Inteiro HFILE;
-  Tipo HICON HCURSOR;
-  Tipo DWORD COLORREF;
-  Tipo DWORD *LPCOLORREF;
+  Pseudônimo Inteiro HFILE;
+  Pseudônimo HICON HCURSOR;
+  Pseudônimo DWORD COLORREF;
+  Pseudônimo DWORD *LPCOLORREF;
 
 #Defina HFILE_ERROR ((HFILE)-1)
 
-  Tipo Estrutura tagRECT {
+  Pseudônimo Estrutura tagRECT {
     LONG left;
     LONG top;
     LONG right;
     LONG bottom;
   } RECT,*PRECT,*NPRECT,*LPRECT;
 
-  Tipo Constante RECT *LPCRECT;
+  Pseudônimo Imutável RECT *LPCRECT;
 
-  Tipo Estrutura _RECTL {
+  Pseudônimo Estrutura _RECTL {
     LONG left;
     LONG top;
     LONG right;
     LONG bottom;
   } RECTL,*PRECTL,*LPRECTL;
 
-  Tipo Constante RECTL *LPCRECTL;
+  Pseudônimo Imutável RECTL *LPCRECTL;
 
-  Tipo Estrutura tagPOINT {
+  Pseudônimo Estrutura tagPOINT {
     LONG x;
     LONG y;
   } POINT,*PPOINT,*NPPOINT,*LPPOINT;
 
-  Tipo Estrutura _POINTL {
+  Pseudônimo Estrutura _POINTL {
     LONG x;
     LONG y;
   } POINTL,*PPOINTL;
 
-  Tipo Estrutura tagSIZE {
+  Pseudônimo Estrutura tagSIZE {
     LONG cx;
     LONG cy;
   } SIZE,*PSIZE,*LPSIZE;
 
-  Tipo SIZE SIZEL;
-  Tipo SIZE *PSIZEL,*LPSIZEL;
+  Pseudônimo SIZE SIZEL;
+  Pseudônimo SIZE *PSIZEL,*LPSIZEL;
 
-  Tipo Estrutura tagPOINTS {
+  Pseudônimo Estrutura tagPOINTS {
     SHORT x;
     SHORT y;
   } POINTS,*PPOINTS,*LPPOINTS;
 
-  Tipo Estrutura _FILETIME {
+  Pseudônimo Estrutura _FILETIME {
     DWORD dwLowDateTime;
     DWORD dwHighDateTime;
   } FILETIME,*PFILETIME,*LPFILETIME;

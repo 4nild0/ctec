@@ -5,7 +5,7 @@
 
 #Inclua <windows.h>
 
-__declspec(dllexport) Constante Caractere *hello_data = "(not set)";
+__declspec(dllexport) Imutável Caractere *hello_data = "(not set)";
 
 __declspec(dllexport) Vazio hello_func (Vazio)
 {

@@ -11,7 +11,7 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeDefinido _UNICODE
@@ -210,18 +210,18 @@ Importe "C" {
 #Defina _ctecpy_s_l _mbccpy_s_l
 #Senão
 
-  _CRTIMP Caractere *__cdecl _tcsncat_s(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount);
-  _CRTIMP Caractere *__cdecl _tcsncat_s_l(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
-  _CRTIMP Caractere *__cdecl _tcsncpy_s(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount);
-  _CRTIMP Caractere *__cdecl _tcsncpy_s_l(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
-  _CRTIMP Caractere *__cdecl _tcstok_s(Caractere *_Str,Constante Caractere *_Delim,Caractere **_Context);
-  _CRTIMP Caractere *__cdecl _tcstok_s_l(Caractere *_Str,Constante Caractere *_Delim,Caractere **_Context,_locale_t _Locale);
+  _CRTIMP Caractere *__cdecl _tcsncat_s(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount);
+  _CRTIMP Caractere *__cdecl _tcsncat_s_l(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
+  _CRTIMP Caractere *__cdecl _tcsncpy_s(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount);
+  _CRTIMP Caractere *__cdecl _tcsncpy_s_l(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
+  _CRTIMP Caractere *__cdecl _tcstok_s(Caractere *_Str,Imutável Caractere *_Delim,Caractere **_Context);
+  _CRTIMP Caractere *__cdecl _tcstok_s_l(Caractere *_Str,Imutável Caractere *_Delim,Caractere **_Context,_locale_t _Locale);
   _CRTIMP errno_t __cdecl _tcsset_s(Caractere *_Str,size_t _SizeInChars,Natural Inteiro _Val);
   _CRTIMP errno_t __cdecl _tcsset_s_l(Caractere *_Str,size_t _SizeInChars,Natural Inteiro,_locale_t _Locale);
-  _CRTIMP Caractere *__cdecl _tcsnccat_s(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount);
-  _CRTIMP Caractere *__cdecl _tcsnccat_s_l(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
-  _CRTIMP Caractere *__cdecl _tcsnccpy_s(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount);
-  _CRTIMP Caractere *__cdecl _tcsnccpy_s_l(Caractere *_Dst,size_t _DstSizeInChars,Constante Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
+  _CRTIMP Caractere *__cdecl _tcsnccat_s(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount);
+  _CRTIMP Caractere *__cdecl _tcsnccat_s_l(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
+  _CRTIMP Caractere *__cdecl _tcsnccpy_s(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount);
+  _CRTIMP Caractere *__cdecl _tcsnccpy_s_l(Caractere *_Dst,size_t _DstSizeInChars,Imutável Caractere *_Src,size_t _MaxCount,_locale_t _Locale);
   _CRTIMP Caractere *__cdecl _tcslwr_s(Caractere *_Str,size_t _SizeInChars);
   _CRTIMP Caractere *__cdecl _tcslwr_s_l(Caractere *_Str,size_t _SizeInChars,_locale_t _Locale);
   _CRTIMP Caractere *__cdecl _tcsupr_s(Caractere *_Str,size_t _SizeInChars);

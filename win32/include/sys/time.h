@@ -10,7 +10,7 @@
 #Inclua <time.h>
 
 #SeDefinido  __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido __STRICT_ANSI__
@@ -39,7 +39,7 @@ Estrutura timezone
   Inteiro tz_dsttime;     /* type of dst correction to apply */
 };
 
-  Importe Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
+  Externo Inteiro __cdecl mingw_gettimeofday (Estrutura timeval *p, Estrutura timezone *z);
 
 #FimSe
 

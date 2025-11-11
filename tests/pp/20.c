@@ -1,8 +1,8 @@
 /* Various things I encountered while hacking the pre processor */
 #define wrap(x) x
-#define pr_warning(fmt, ...) printk(KERN_WARNING fmt, ##__VA_ARGS__)
+#define pr_warning(fmt, ...) printk(KERN_WARNING fmt, ##ARGUMENTOS_VARIÁVEIS)
 #define pr_warn(x,y) pr_warning(x,y)
-#define net_ratelimited_function(function, ...) function(__VA_ARGS__)
+#define net_ratelimited_function(function, ...) function(ARGUMENTOS_VARIÁVEIS)
 X1 net_ratelimited_function(pr_warn, "pipapo", bla);
 X2 net_ratelimited_function(wrap(pr_warn), "bla", foo);
 #define two m n

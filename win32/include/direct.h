@@ -12,7 +12,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _DISKFREE_T_DEFINED
@@ -28,9 +28,9 @@ Importe "C" {
   _CRTIMP Caractere *__cdecl _getcwd(Caractere *_DstBuf,Inteiro _SizeInBytes);
   _CRTIMP Caractere *__cdecl _getdcwd(Inteiro _Drive,Caractere *_DstBuf,Inteiro _SizeInBytes);
   Caractere *__cdecl _getdcwd_nolock(Inteiro _Drive,Caractere *_DstBuf,Inteiro _SizeInBytes);
-  _CRTIMP Inteiro __cdecl _chdir(Constante Caractere *_Path);
-  _CRTIMP Inteiro __cdecl _mkdir(Constante Caractere *_Path);
-  _CRTIMP Inteiro __cdecl _rmdir(Constante Caractere *_Path);
+  _CRTIMP Inteiro __cdecl _chdir(Imutável Caractere *_Path);
+  _CRTIMP Inteiro __cdecl _mkdir(Imutável Caractere *_Path);
+  _CRTIMP Inteiro __cdecl _rmdir(Imutável Caractere *_Path);
   _CRTIMP Inteiro __cdecl _chdrive(Inteiro _Drive);
   _CRTIMP Inteiro __cdecl _getdrive(Vazio);
   _CRTIMP Natural Longo __cdecl _getdrives(Vazio);
@@ -45,9 +45,9 @@ Importe "C" {
   _CRTIMP wchar_t *__cdecl _wgetcwd(wchar_t *_DstBuf,Inteiro _SizeInWords);
   _CRTIMP wchar_t *__cdecl _wgetdcwd(Inteiro _Drive,wchar_t *_DstBuf,Inteiro _SizeInWords);
   wchar_t *__cdecl _wgetdcwd_nolock(Inteiro _Drive,wchar_t *_DstBuf,Inteiro _SizeInWords);
-  _CRTIMP Inteiro __cdecl _wchdir(Constante wchar_t *_Path);
-  _CRTIMP Inteiro __cdecl _wmkdir(Constante wchar_t *_Path);
-  _CRTIMP Inteiro __cdecl _wrmdir(Constante wchar_t *_Path);
+  _CRTIMP Inteiro __cdecl _wchdir(Imutável wchar_t *_Path);
+  _CRTIMP Inteiro __cdecl _wmkdir(Imutável wchar_t *_Path);
+  _CRTIMP Inteiro __cdecl _wrmdir(Imutável wchar_t *_Path);
 #FimSe
 
 #SeNãoDefinido	NO_OLDNAMES
@@ -55,9 +55,9 @@ Importe "C" {
 #Defina diskfree_t _diskfree_t
 
   Caractere *__cdecl getcwd(Caractere *_DstBuf,Inteiro _SizeInBytes);
-  Inteiro __cdecl chdir(Constante Caractere *_Path);
-  Inteiro __cdecl mkdir(Constante Caractere *_Path);
-  Inteiro __cdecl rmdir(Constante Caractere *_Path);
+  Inteiro __cdecl chdir(Imutável Caractere *_Path);
+  Inteiro __cdecl mkdir(Imutável Caractere *_Path);
+  Inteiro __cdecl rmdir(Imutável Caractere *_Path);
 #FimSe
 
 #SeDefinido __cplusplus

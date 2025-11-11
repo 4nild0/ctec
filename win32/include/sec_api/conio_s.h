@@ -12,26 +12,26 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
   _CRTIMP errno_t __cdecl _cgets_s(Caractere *_Buffer,size_t _Size,size_t *_SizeRead);
-  _CRTIMP Inteiro __cdecl _cprintf_s(Constante Caractere *_Format,...);
-  _CRTIMP Inteiro __cdecl _cscanf_s(Constante Caractere *_Format,...);
-  _CRTIMP Inteiro __cdecl _cscanf_s_l(Constante Caractere *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcprintf_s(Constante Caractere *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cprintf_s_l(Constante Caractere *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcprintf_s_l(Constante Caractere *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cprintf_s(Imutável Caractere *_Format,...);
+  _CRTIMP Inteiro __cdecl _cscanf_s(Imutável Caractere *_Format,...);
+  _CRTIMP Inteiro __cdecl _cscanf_s_l(Imutável Caractere *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcprintf_s(Imutável Caractere *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cprintf_s_l(Imutável Caractere *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcprintf_s_l(Imutável Caractere *_Format,_locale_t _Locale,va_list _ArgList);
 
 #SeNãoDefinido _WCONIO_DEFINED_S
 #Defina _WCONIO_DEFINED_S
   _CRTIMP errno_t __cdecl _cgetws_s(wchar_t *_Buffer,size_t _SizeInWords,size_t *_SizeRead);
-  _CRTIMP Inteiro __cdecl _cwprintf_s(Constante wchar_t *_Format,...);
-  _CRTIMP Inteiro __cdecl _cwscanf_s(Constante wchar_t *_Format,...);
-  _CRTIMP Inteiro __cdecl _cwscanf_s_l(Constante wchar_t *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf_s(Constante wchar_t *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cwprintf_s_l(Constante wchar_t *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf_s_l(Constante wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cwprintf_s(Imutável wchar_t *_Format,...);
+  _CRTIMP Inteiro __cdecl _cwscanf_s(Imutável wchar_t *_Format,...);
+  _CRTIMP Inteiro __cdecl _cwscanf_s_l(Imutável wchar_t *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf_s(Imutável wchar_t *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cwprintf_s_l(Imutável wchar_t *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf_s_l(Imutável wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
 #FimSe
 
 #SeDefinido __cplusplus

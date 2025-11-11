@@ -11,7 +11,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Se (Definido(_X86_) && !Definido(__x86_64))
@@ -19,7 +19,7 @@ Importe "C" {
 #Defina _JBLEN 16
 #Defina _JBTYPE Inteiro
 
-  Tipo Estrutura __JUMP_BUFFER {
+  Pseudônimo Estrutura __JUMP_BUFFER {
     Natural Longo Ebp;
     Natural Longo Ebx;
     Natural Longo Edi;
@@ -32,16 +32,16 @@ Importe "C" {
     Natural Longo UnwindFunc;
     Natural Longo UnwindData[6];
   } _JUMP_BUFFER;
-#SenãoSe Definido(__ia64__)
-  Tipo _CRT_ALIGN(16) Estrutura _SETJMP_FLOAT128 {
+#Exceto Definido(__ia64__)
+  Pseudônimo _CRT_ALIGN(16) Estrutura _SETJMP_FLOAT128 {
     __int64 LowPart;
     __int64 HighPart;
   } SETJMP_FLOAT128;
 
 #Defina _JBLEN 33
-  Tipo SETJMP_FLOAT128 _JBTYPE;
+  Pseudônimo SETJMP_FLOAT128 _JBTYPE;
 
-  Tipo Estrutura __JUMP_BUFFER {
+  Pseudônimo Estrutura __JUMP_BUFFER {
 
     Natural Longo iAReserved[6];
 
@@ -92,15 +92,15 @@ Importe "C" {
     __int64 Preds;
 
   } _JUMP_BUFFER;
-#SenãoSe Definido(__x86_64)
-  Tipo _CRT_ALIGN(16) Estrutura _SETJMP_FLOAT128 {
+#Exceto Definido(__x86_64)
+  Pseudônimo _CRT_ALIGN(16) Estrutura _SETJMP_FLOAT128 {
     Natural __int64 Part[2];
   } SETJMP_FLOAT128;
 
 #Defina _JBLEN 16
-  Tipo SETJMP_FLOAT128 _JBTYPE;
+  Pseudônimo SETJMP_FLOAT128 _JBTYPE;
 
-  Tipo Estrutura _JUMP_BUFFER {
+  Pseudônimo Estrutura _JUMP_BUFFER {
     Natural __int64 Frame;
     Natural __int64 Rbx;
     Natural __int64 Rsp;
@@ -126,7 +126,7 @@ Importe "C" {
   } _JUMP_BUFFER;
 #FimSe
 #SeNãoDefinido _JMP_BUF_DEFINED
-  Tipo _JBTYPE jmp_buf[_JBLEN];
+  Pseudônimo _JBTYPE jmp_buf[_JBLEN];
 #Defina _JMP_BUF_DEFINED
 #FimSe
 

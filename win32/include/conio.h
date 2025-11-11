@@ -9,23 +9,23 @@
 #Inclua <_mingw.h>
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
   _CRTIMP Caractere *_cgets(Caractere *_Buffer);
-  _CRTIMP Inteiro __cdecl _cprintf(Constante Caractere *_Format,...);
-  _CRTIMP Inteiro __cdecl _cputs(Constante Caractere *_Str);
-  _CRTIMP Inteiro __cdecl _cscanf(Constante Caractere *_Format,...);
-  _CRTIMP Inteiro __cdecl _cscanf_l(Constante Caractere *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _cprintf(Imutável Caractere *_Format,...);
+  _CRTIMP Inteiro __cdecl _cputs(Imutável Caractere *_Str);
+  _CRTIMP Inteiro __cdecl _cscanf(Imutável Caractere *_Format,...);
+  _CRTIMP Inteiro __cdecl _cscanf_l(Imutável Caractere *_Format,_locale_t _Locale,...);
   _CRTIMP Inteiro __cdecl _getch(Vazio);
   _CRTIMP Inteiro __cdecl _getche(Vazio);
-  _CRTIMP Inteiro __cdecl _vcprintf(Constante Caractere *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cprintf_p(Constante Caractere *_Format,...);
-  _CRTIMP Inteiro __cdecl _vcprintf_p(Constante Caractere *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cprintf_l(Constante Caractere *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcprintf_l(Constante Caractere *_Format,_locale_t _Locale,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cprintf_p_l(Constante Caractere *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcprintf_p_l(Constante Caractere *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _vcprintf(Imutável Caractere *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cprintf_p(Imutável Caractere *_Format,...);
+  _CRTIMP Inteiro __cdecl _vcprintf_p(Imutável Caractere *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cprintf_l(Imutável Caractere *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcprintf_l(Imutável Caractere *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cprintf_p_l(Imutável Caractere *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcprintf_p_l(Imutável Caractere *_Format,_locale_t _Locale,va_list _ArgList);
   _CRTIMP Inteiro __cdecl _kbhit(Vazio);
 
 #Se Definido(_X86_) && !Definido(__x86_64)
@@ -56,17 +56,17 @@ Importe "C" {
   _CRTIMP wint_t __cdecl _getwche(Vazio);
   _CRTIMP wint_t __cdecl _putwch(wchar_t _WCh);
   _CRTIMP wint_t __cdecl _ungetwch(wint_t _WCh);
-  _CRTIMP Inteiro __cdecl _cputws(Constante wchar_t *_String);
-  _CRTIMP Inteiro __cdecl _cwprintf(Constante wchar_t *_Format,...);
-  _CRTIMP Inteiro __cdecl _cwscanf(Constante wchar_t *_Format,...);
-  _CRTIMP Inteiro __cdecl _cwscanf_l(Constante wchar_t *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf(Constante wchar_t *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cwprintf_p(Constante wchar_t *_Format,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf_p(Constante wchar_t *_Format,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cwprintf_l(Constante wchar_t *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf_l(Constante wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
-  _CRTIMP Inteiro __cdecl _cwprintf_p_l(Constante wchar_t *_Format,_locale_t _Locale,...);
-  _CRTIMP Inteiro __cdecl _vcwprintf_p_l(Constante wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cputws(Imutável wchar_t *_String);
+  _CRTIMP Inteiro __cdecl _cwprintf(Imutável wchar_t *_Format,...);
+  _CRTIMP Inteiro __cdecl _cwscanf(Imutável wchar_t *_Format,...);
+  _CRTIMP Inteiro __cdecl _cwscanf_l(Imutável wchar_t *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf(Imutável wchar_t *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cwprintf_p(Imutável wchar_t *_Format,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf_p(Imutável wchar_t *_Format,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cwprintf_l(Imutável wchar_t *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf_l(Imutável wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
+  _CRTIMP Inteiro __cdecl _cwprintf_p_l(Imutável wchar_t *_Format,_locale_t _Locale,...);
+  _CRTIMP Inteiro __cdecl _vcwprintf_p_l(Imutável wchar_t *_Format,_locale_t _Locale,va_list _ArgList);
   _CRTIMP wint_t __cdecl _putwch_nolock(wchar_t _WCh);
   _CRTIMP wint_t __cdecl _getwch_nolock(Vazio);
   _CRTIMP wint_t __cdecl _getwche_nolock(Vazio);
@@ -75,9 +75,9 @@ Importe "C" {
 
 #SeNãoDefinido	NO_OLDNAMES
   Caractere *__cdecl cgets(Caractere *_Buffer);
-  Inteiro __cdecl cprintf(Constante Caractere *_Format,...);
-  Inteiro __cdecl cputs(Constante Caractere *_Str);
-  Inteiro __cdecl cscanf(Constante Caractere *_Format,...);
+  Inteiro __cdecl cprintf(Imutável Caractere *_Format,...);
+  Inteiro __cdecl cputs(Imutável Caractere *_Str);
+  Inteiro __cdecl cscanf(Imutável Caractere *_Format,...);
   Inteiro __cdecl getch(Vazio);
   Inteiro __cdecl getche(Vazio);
   Inteiro __cdecl kbhit(Vazio);
@@ -278,7 +278,7 @@ Importe "C" {
        : "memory");
  }
  
-#SenãoSe Definido(_WIN32)
+#Exceto Definido(_WIN32)
 
   __CRT_INLINE Vazio __writecr0(Natural Data)
   {

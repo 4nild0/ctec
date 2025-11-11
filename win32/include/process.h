@@ -13,7 +13,7 @@
 
 #SeNãoDefinido _POSIX_
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Defina _P_WAIT 0
@@ -47,49 +47,49 @@ Importe "C" {
   _CRTIMP Vazio __cdecl __MINGW_NOTHROW _c_exit(Vazio);
   _CRTIMP Inteiro __cdecl _getpid(Vazio);
   _CRTIMP intptr_t __cdecl _cwait(Inteiro *_TermStat,intptr_t _ProcHandle,Inteiro _Action);
-  _CRTIMP intptr_t __cdecl _execl(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _execle(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _execlp(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _execlpe(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _execv(Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _execve(Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList,Constante Caractere *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _execvp(Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _execvpe(Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList,Constante Caractere *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _spawnl(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _spawnle(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _spawnlp(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _spawnlpe(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _spawnv(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _spawnve(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList,Constante Caractere *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _spawnvp(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _spawnvpe(Inteiro _Mode,Constante Caractere *_Filename,Constante Caractere *Constante *_ArgList,Constante Caractere *Constante *_Env);
+  _CRTIMP intptr_t __cdecl _execl(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _execle(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _execlp(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _execlpe(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _execv(Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _execve(Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList,Imutável Caractere *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _execvp(Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _execvpe(Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList,Imutável Caractere *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _spawnl(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _spawnle(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _spawnlp(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _spawnlpe(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _spawnv(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _spawnve(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList,Imutável Caractere *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _spawnvp(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _spawnvpe(Inteiro _Mode,Imutável Caractere *_Filename,Imutável Caractere *Imutável *_ArgList,Imutável Caractere *Imutável *_Env);
 
 #SeNãoDefinido _CRT_SYSTEM_DEFINED
 #Defina _CRT_SYSTEM_DEFINED
-  Inteiro __cdecl system(Constante Caractere *_Command);
+  Inteiro __cdecl system(Imutável Caractere *_Command);
 #FimSe
 
 #SeNãoDefinido _WPROCESS_DEFINED
 #Defina _WPROCESS_DEFINED
-  _CRTIMP intptr_t __cdecl _wexecl(Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wexecle(Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wexeclp(Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wexeclpe(Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wexecv(Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _wexecve(Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList,Constante wchar_t *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _wexecvp(Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _wexecvpe(Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList,Constante wchar_t *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _wspawnl(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wspawnle(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wspawnlp(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wspawnlpe(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *_ArgList,...);
-  _CRTIMP intptr_t __cdecl _wspawnv(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _wspawnve(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList,Constante wchar_t *Constante *_Env);
-  _CRTIMP intptr_t __cdecl _wspawnvp(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList);
-  _CRTIMP intptr_t __cdecl _wspawnvpe(Inteiro _Mode,Constante wchar_t *_Filename,Constante wchar_t *Constante *_ArgList,Constante wchar_t *Constante *_Env);
+  _CRTIMP intptr_t __cdecl _wexecl(Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wexecle(Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wexeclp(Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wexeclpe(Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wexecv(Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _wexecve(Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList,Imutável wchar_t *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _wexecvp(Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _wexecvpe(Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList,Imutável wchar_t *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _wspawnl(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wspawnle(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wspawnlp(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wspawnlpe(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *_ArgList,...);
+  _CRTIMP intptr_t __cdecl _wspawnv(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _wspawnve(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList,Imutável wchar_t *Imutável *_Env);
+  _CRTIMP intptr_t __cdecl _wspawnvp(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList);
+  _CRTIMP intptr_t __cdecl _wspawnvpe(Inteiro _Mode,Imutável wchar_t *_Filename,Imutável wchar_t *Imutável *_ArgList,Imutável wchar_t *Imutável *_Env);
 #SeNãoDefinido _CRT_WSYSTEM_DEFINED
 #Defina _CRT_WSYSTEM_DEFINED
-  _CRTIMP Inteiro __cdecl _wsystem(Constante wchar_t *_Command);
+  _CRTIMP Inteiro __cdecl _wsystem(Imutável wchar_t *_Command);
 #FimSe
 #FimSe
 
@@ -101,7 +101,7 @@ Importe "C" {
   Vazio __cdecl __security_check_cookie(uintptr_t _StackCookie);
   __declspec(noreturn) Vazio __cdecl __report_gsfailure(uintptr_t _StackCookie);
 #FimSe
-  Importe uintptr_t __security_cookie;
+  Externo uintptr_t __security_cookie;
 
   intptr_t __cdecl _loaddll(Caractere *_Filename);
   Inteiro __cdecl _unloaddll(intptr_t _Handle);
@@ -112,12 +112,12 @@ Importe "C" {
   WINBOOL WINAPI DllMain(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
   WINBOOL WINAPI _CRT_INIT(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
   WINBOOL WINAPI _wCRT_INIT(HANDLE _HDllHandle,DWORD _Reason,LPVOID _Reserved);
-  Importe WINBOOL (WINAPI *Constante _pRawDllMain)(HANDLE,DWORD,LPVOID);
+  Externo WINBOOL (WINAPI *Imutável _pRawDllMain)(HANDLE,DWORD,LPVOID);
 #Senão
   Inteiro __stdcall DllMain(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
   Inteiro __stdcall _CRT_INIT(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
   Inteiro __stdcall _wCRT_INIT(Vazio *_HDllHandle,Natural _Reason,Vazio *_Reserved);
-  Importe Inteiro (__stdcall *Constante _pRawDllMain)(Vazio *,Natural,Vazio *);
+  Externo Inteiro (__stdcall *Imutável _pRawDllMain)(Vazio *,Natural,Vazio *);
 #FimSe
 #FimSe
 
@@ -133,40 +133,40 @@ Importe "C" {
 
   intptr_t __cdecl cwait(Inteiro *_TermStat,intptr_t _ProcHandle,Inteiro _Action);
 #SeDefinido __GNUC__
-  Inteiro __cdecl execl(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  Inteiro __cdecl execle(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  Inteiro __cdecl execlp(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  Inteiro __cdecl execlpe(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
+  Inteiro __cdecl execl(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  Inteiro __cdecl execle(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  Inteiro __cdecl execlp(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  Inteiro __cdecl execlpe(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
 #Senão
-    intptr_t __cdecl execl(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl execle(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl execlp(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl execlpe(Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
+    intptr_t __cdecl execl(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl execle(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl execlp(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl execlpe(Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
 #FimSe
-  intptr_t __cdecl spawnl(Inteiro,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl spawnle(Inteiro,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl spawnlp(Inteiro,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
-  intptr_t __cdecl spawnlpe(Inteiro,Constante Caractere *_Filename,Constante Caractere *_ArgList,...);
+  intptr_t __cdecl spawnl(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl spawnle(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl spawnlp(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
+  intptr_t __cdecl spawnlpe(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *_ArgList,...);
   Inteiro __cdecl getpid(Vazio);
 #SeDefinido __GNUC__
   /* Those methods are predefined by gcc builtins to Retorne Inteiro. So to prevent
      stupid warnings, Defina them in POSIX way.  This is save, because those
      methods Faça not Retorne in success Caso, so that the Retorne value is not
      really dependent to its scalar width.  */
-  Inteiro __cdecl execv(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  Inteiro __cdecl execve(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Constante Caractere *Constante _Env[]);
-  Inteiro __cdecl execvp(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  Inteiro __cdecl execvpe(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Constante Caractere *Constante _Env[]);
+  Inteiro __cdecl execv(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  Inteiro __cdecl execve(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Imutável Caractere *Imutável _Env[]);
+  Inteiro __cdecl execvp(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  Inteiro __cdecl execvpe(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Imutável Caractere *Imutável _Env[]);
 #Senão
-  intptr_t __cdecl execv(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  intptr_t __cdecl execve(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Constante Caractere *Constante _Env[]);
-  intptr_t __cdecl execvp(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  intptr_t __cdecl execvpe(Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Constante Caractere *Constante _Env[]);
+  intptr_t __cdecl execv(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  intptr_t __cdecl execve(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Imutável Caractere *Imutável _Env[]);
+  intptr_t __cdecl execvp(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  intptr_t __cdecl execvpe(Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Imutável Caractere *Imutável _Env[]);
 #FimSe
-  intptr_t __cdecl spawnv(Inteiro,Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  intptr_t __cdecl spawnve(Inteiro,Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Constante Caractere *Constante _Env[]);
-  intptr_t __cdecl spawnvp(Inteiro,Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[]);
-  intptr_t __cdecl spawnvpe(Inteiro,Constante Caractere *_Filename,Constante Caractere *Constante _ArgList[],Caractere *Constante _Env[]);
+  intptr_t __cdecl spawnv(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  intptr_t __cdecl spawnve(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Imutável Caractere *Imutável _Env[]);
+  intptr_t __cdecl spawnvp(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[]);
+  intptr_t __cdecl spawnvpe(Inteiro,Imutável Caractere *_Filename,Imutável Caractere *Imutável _ArgList[],Caractere *Imutável _Env[]);
 #FimSe
 
 #SeDefinido __cplusplus

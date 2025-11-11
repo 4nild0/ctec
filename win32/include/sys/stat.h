@@ -16,7 +16,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -38,28 +38,28 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido _TIME32_T_DEFINED
-  Tipo Longo __time32_t;
+  Pseudônimo Longo __time32_t;
 #Defina _TIME32_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Se _INTEGRAL_MAX_BITS >= 64
-  Tipo __int64 __time64_t;
+  Pseudônimo __int64 __time64_t;
 #FimSe
 #Defina _TIME64_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-  Tipo __time32_t time_t;
+  Pseudônimo __time32_t time_t;
 #Senão
-  Tipo __time64_t time_t;
+  Pseudônimo __time64_t time_t;
 #FimSe
 #Defina _TIME_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _WCHAR_T_DEFINED
-  Tipo Natural Curto wchar_t;
+  Pseudônimo Natural Curto wchar_t;
 #Defina _WCHAR_T_DEFINED
 #FimSe
 
@@ -176,7 +176,7 @@ Importe "C" {
 #Defina _S_IEXEC 0x0040
 
   _CRTIMP Inteiro __cdecl _fstat32(Inteiro _FileDes,Estrutura _stat32 *_Stat);
-  _CRTIMP Inteiro __cdecl _stat32(Constante Caractere *_Name,Estrutura _stat32 *_Stat);
+  _CRTIMP Inteiro __cdecl _stat32(Imutável Caractere *_Name,Estrutura _stat32 *_Stat);
 #Se _INTEGRAL_MAX_BITS >= 64
   _CRTIMP Inteiro __cdecl _fstat64(Inteiro _FileDes,Estrutura _stat64 *_Stat);
   _CRTIMP Inteiro __cdecl _fstat32i64(Inteiro _FileDes,Estrutura _stat32i64 *_Stat);
@@ -198,10 +198,10 @@ Importe "C" {
     _Stat->st_ctime=st.st_ctime;
     Retorne ret;
   }
-  _CRTIMP Inteiro __cdecl _stat64(Constante Caractere *_Name,Estrutura _stat64 *_Stat);
-  _CRTIMP Inteiro __cdecl _stat32i64(Constante Caractere *_Name,Estrutura _stat32i64 *_Stat);
-  Inteiro __cdecl _stat64i32(Constante Caractere *_Name,Estrutura _stat64i32 *_Stat);
-  __CRT_INLINE Inteiro __cdecl _stat64i32(Constante Caractere *_Name,Estrutura _stat64i32 *_Stat)
+  _CRTIMP Inteiro __cdecl _stat64(Imutável Caractere *_Name,Estrutura _stat64 *_Stat);
+  _CRTIMP Inteiro __cdecl _stat32i64(Imutável Caractere *_Name,Estrutura _stat32i64 *_Stat);
+  Inteiro __cdecl _stat64i32(Imutável Caractere *_Name,Estrutura _stat64i32 *_Stat);
+  __CRT_INLINE Inteiro __cdecl _stat64i32(Imutável Caractere *_Name,Estrutura _stat64i32 *_Stat)
   {
     Estrutura _stat64 st;
     Inteiro ret=_stat64(_Name,&st);
@@ -222,11 +222,11 @@ Importe "C" {
 
 #SeNãoDefinido _WSTAT_DEFINED
 #Defina _WSTAT_DEFINED
-  _CRTIMP Inteiro __cdecl _wstat32(Constante wchar_t *_Name,Estrutura _stat32 *_Stat);
+  _CRTIMP Inteiro __cdecl _wstat32(Imutável wchar_t *_Name,Estrutura _stat32 *_Stat);
 #Se _INTEGRAL_MAX_BITS >= 64
-  _CRTIMP Inteiro __cdecl _wstat32i64(Constante wchar_t *_Name,Estrutura _stat32i64 *_Stat);
-  Inteiro __cdecl _wstat64i32(Constante wchar_t *_Name,Estrutura _stat64i32 *_Stat);
-  _CRTIMP Inteiro __cdecl _wstat64(Constante wchar_t *_Name,Estrutura _stat64 *_Stat);
+  _CRTIMP Inteiro __cdecl _wstat32i64(Imutável wchar_t *_Name,Estrutura _stat32i64 *_Stat);
+  Inteiro __cdecl _wstat64i32(Imutável wchar_t *_Name,Estrutura _stat64i32 *_Stat);
+  _CRTIMP Inteiro __cdecl _wstat64(Imutável wchar_t *_Name,Estrutura _stat64 *_Stat);
 #FimSe
 #FimSe
 
@@ -262,21 +262,21 @@ Importe "C" {
 #FimSe
 
 #Se !Definido (RC_INVOKED) && !Definido (NO_OLDNAMES)
-Inteiro __cdecl stat(Constante Caractere *_Filename,Estrutura stat *_Stat);
+Inteiro __cdecl stat(Imutável Caractere *_Filename,Estrutura stat *_Stat);
 Inteiro __cdecl fstat(Inteiro _Desc,Estrutura stat *_Stat);
-Inteiro __cdecl wstat(Constante wchar_t *_Filename,Estrutura stat *_Stat);
+Inteiro __cdecl wstat(Imutável wchar_t *_Filename,Estrutura stat *_Stat);
 #SeDefinido _USE_32BIT_TIME_T
 __CRT_INLINE Inteiro __cdecl fstat(Inteiro _Desc,Estrutura stat *_Stat) {
   Retorne _fstat32(_Desc,(Estrutura _stat32 *)_Stat);
 }
-__CRT_INLINE Inteiro __cdecl stat(Constante Caractere *_Filename,Estrutura stat *_Stat) {
+__CRT_INLINE Inteiro __cdecl stat(Imutável Caractere *_Filename,Estrutura stat *_Stat) {
   Retorne _stat32(_Filename,(Estrutura _stat32 *)_Stat);
 }
 #Senão
 __CRT_INLINE Inteiro __cdecl fstat(Inteiro _Desc,Estrutura stat *_Stat) {
   Retorne _fstat64i32(_Desc,(Estrutura _stat64i32 *)_Stat);
 }
-__CRT_INLINE Inteiro __cdecl stat(Constante Caractere *_Filename,Estrutura stat *_Stat) {
+__CRT_INLINE Inteiro __cdecl stat(Imutável Caractere *_Filename,Estrutura stat *_Stat) {
   Retorne _stat64i32(_Filename,(Estrutura _stat64i32 *)_Stat);
 }
 #FimSe

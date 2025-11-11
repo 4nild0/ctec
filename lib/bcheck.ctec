@@ -42,7 +42,7 @@
  #Defina dprintf(a...)
 #FimSe
 
-/* Defina so that bound array is Estático (faster, but use memory Se
+/* Defina so that bound array is Fixo (faster, but use memory Se
    bound checking not used) */
 /* #Defina BOUND_STATIC */
 
@@ -82,7 +82,7 @@
 /* size of an invalid region */
 #Defina INVALID_SIZE      0
 
-Tipo Estrutura BoundEntry {
+Pseudônimo Estrutura BoundEntry {
     size_t start;
     size_t size;
     Estrutura BoundEntry *next;
@@ -100,39 +100,39 @@ Inteiro __bound_delete_region(Vazio *p);
 #FimSe
 #Defina FASTCALL __attribute__((regparm(3)))
 
-Vazio *__bound_malloc(size_t size, Constante Vazio *caller);
-Vazio *__bound_memalign(size_t size, size_t align, Constante Vazio *caller);
-Vazio __bound_free(Vazio *ptr, Constante Vazio *caller);
-Vazio *__bound_realloc(Vazio *ptr, size_t size, Constante Vazio *caller);
-Estático Vazio *libc_malloc(size_t size);
-Estático Vazio libc_free(Vazio *ptr);
-Estático Vazio install_malloc_hooks(Vazio);
-Estático Vazio restore_malloc_hooks(Vazio);
+Vazio *__bound_malloc(size_t size, Imutável Vazio *caller);
+Vazio *__bound_memalign(size_t size, size_t align, Imutável Vazio *caller);
+Vazio __bound_free(Vazio *ptr, Imutável Vazio *caller);
+Vazio *__bound_realloc(Vazio *ptr, size_t size, Imutável Vazio *caller);
+Fixo Vazio *libc_malloc(size_t size);
+Fixo Vazio libc_free(Vazio *ptr);
+Fixo Vazio install_malloc_hooks(Vazio);
+Fixo Vazio restore_malloc_hooks(Vazio);
 
 #SeDefinido CONFIG_CTEC_MALLOC_HOOKS
-Estático Vazio *saved_malloc_hook;
-Estático Vazio *saved_free_hook;
-Estático Vazio *saved_realloc_hook;
-Estático Vazio *saved_memalign_hook;
+Fixo Vazio *saved_malloc_hook;
+Fixo Vazio *saved_free_hook;
+Fixo Vazio *saved_realloc_hook;
+Fixo Vazio *saved_memalign_hook;
 #FimSe
 
 /* CTEC definitions */
-Importe Caractere __bounds_start; /* start of Estático bounds table */
+Externo Caractere __bounds_start; /* start of Fixo bounds table */
 /* Erro message, just Para CTEC */
-Constante Caractere *__bound_error_msg;
+Imutável Caractere *__bound_error_msg;
 
 /* runtime Erro output */
-Importe Vazio rt_error(size_t pc, Constante Caractere *fmt, ...);
+Externo Vazio rt_error(size_t pc, Imutável Caractere *fmt, ...);
 
 #SeDefinido BOUND_STATIC
-Estático BoundEntry *__bound_t1[BOUND_T1_SIZE]; /* page table */
+Fixo BoundEntry *__bound_t1[BOUND_T1_SIZE]; /* page table */
 #Senão
-Estático BoundEntry **__bound_t1; /* page table */
+Fixo BoundEntry **__bound_t1; /* page table */
 #FimSe
-Estático BoundEntry *__bound_empty_t2;   /* empty page, Para unused pages */
-Estático BoundEntry *__bound_invalid_t2; /* invalid page, Para invalid pointers */
+Fixo BoundEntry *__bound_empty_t2;   /* empty page, Para unused pages */
+Fixo BoundEntry *__bound_invalid_t2; /* invalid page, Para invalid pointers */
 
-Estático BoundEntry *__bound_find_region(BoundEntry *e1, Vazio *p)
+Fixo BoundEntry *__bound_find_region(BoundEntry *e1, Vazio *p)
 {
     size_t addr, tmp;
     BoundEntry *e;
@@ -161,14 +161,14 @@ Estático BoundEntry *__bound_find_region(BoundEntry *e1, Vazio *p)
 }
 
 /* print a bound Erro message */
-Estático Vazio bound_error(Constante Caractere *fmt, ...)
+Fixo Vazio bound_error(Imutável Caractere *fmt, ...)
 {
     __bound_error_msg = fmt;
-    fprintf(stderr,"%s %s: %s\n", __FILE__, __FUNCTION__, fmt);
+    fprintf(stderr,"%s %s: %s\n", ARQUIVO, FUNÇÃO, fmt);
     *(Vazio **)0 = 0; /* force a runtime Erro */
 }
 
-Estático Vazio bound_alloc_error(Vazio)
+Fixo Vazio bound_alloc_error(Vazio)
 {
     bound_error("not enough memory Para bound checking code");
 }
@@ -181,7 +181,7 @@ Vazio * FASTCALL __bound_ptr_add(Vazio *p, size_t offset)
     BoundEntry *e;
 
     dprintf(stderr, "%s %s: %p %x\n",
-        __FILE__, __FUNCTION__, p, (Natural)offset);
+        ARQUIVO, FUNÇÃO, p, (Natural)offset);
 
     __bound_init();
 
@@ -197,7 +197,7 @@ Vazio * FASTCALL __bound_ptr_add(Vazio *p, size_t offset)
     addr += offset;
     Se (addr >= e->size) {
 	fprintf(stderr,"%s %s: %p is outside of the region\n",
-            __FILE__, __FUNCTION__, p + offset);
+            ARQUIVO, FUNÇÃO, p + offset);
         Retorne INVALID_POINTER; /* Retorne an invalid pointer */
     }
     Retorne p + offset;
@@ -212,7 +212,7 @@ Vazio * FASTCALL __bound_ptr_indir ## dsize (Vazio *p, size_t offset)     \
     BoundEntry *e;                                                      \
                                                                         \
     dprintf(stderr, "%s %s: %p %x start\n",                             \
-        __FILE__, __FUNCTION__, p, (Natural)offset);	                \
+        ARQUIVO, FUNÇÃO, p, (Natural)offset);	                \
 									\
     __bound_init();							\
     e = __bound_t1[addr >> (BOUND_T2_BITS + BOUND_T3_BITS)];            \
@@ -227,11 +227,11 @@ Vazio * FASTCALL __bound_ptr_indir ## dsize (Vazio *p, size_t offset)     \
     addr += offset + dsize;                                             \
     Se (addr > e->size) {                                               \
 	fprintf(stderr,"%s %s: %p is outside of the region\n",          \
-            __FILE__, __FUNCTION__, p + offset);                        \
+            ARQUIVO, FUNÇÃO, p + offset);                        \
         Retorne INVALID_POINTER; /* Retorne an invalid pointer */         \
     }									\
     dprintf(stderr, "%s %s: Retorne p+offset = %p\n",                    \
-        __FILE__, __FUNCTION__, p + offset);                            \
+        ARQUIVO, FUNÇÃO, p + offset);                            \
     Retorne p + offset;                                                  \
 }
 
@@ -262,7 +262,7 @@ Vazio FASTCALL __bound_local_new(Vazio *p1)
 {
     size_t addr, size, fp, *p = p1;
 
-    dprintf(stderr, "%s, %s start p1=%p\n", __FILE__, __FUNCTION__, p);
+    dprintf(stderr, "%s, %s start p1=%p\n", ARQUIVO, FUNÇÃO, p);
     GET_CALLER_FP(fp);
     Para(;;) {
         addr = p[0];
@@ -273,7 +273,7 @@ Vazio FASTCALL __bound_local_new(Vazio *p1)
         p += 2;
         __bound_new_region((Vazio *)addr, size);
     }
-    dprintf(stderr, "%s, %s end\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s, %s end\n", ARQUIVO, FUNÇÃO);
 }
 
 /* called when leaving a function to delete all the local regions */
@@ -295,7 +295,7 @@ Vazio FASTCALL __bound_local_delete(Vazio *p1)
 #Diretiva GCC diagnostic pop
 #FimSe
 
-Estático BoundEntry *__bound_new_page(Vazio)
+Fixo BoundEntry *__bound_new_page(Vazio)
 {
     BoundEntry *page;
     size_t i;
@@ -314,19 +314,19 @@ Estático BoundEntry *__bound_new_page(Vazio)
 }
 
 /* currently we use malloc(). Should use bound_new_page() */
-Estático BoundEntry *bound_new_entry(Vazio)
+Fixo BoundEntry *bound_new_entry(Vazio)
 {
     BoundEntry *e;
     e = libc_malloc(Meça(BoundEntry));
     Retorne e;
 }
 
-Estático Vazio bound_free_entry(BoundEntry *e)
+Fixo Vazio bound_free_entry(BoundEntry *e)
 {
     libc_free(e);
 }
 
-Estático BoundEntry *get_page(size_t index)
+Fixo BoundEntry *get_page(size_t index)
 {
     BoundEntry *page;
     page = __bound_t1[index];
@@ -339,7 +339,7 @@ Estático BoundEntry *get_page(size_t index)
 }
 
 /* mark a region as being invalid (can only be used during init) */
-Estático Vazio mark_invalid(size_t addr, size_t size)
+Fixo Vazio mark_invalid(size_t addr, size_t size)
 {
     size_t start, end;
     BoundEntry *page;
@@ -399,13 +399,13 @@ Vazio __bound_init(Vazio)
     size_t start, size;
     size_t *p;
 
-    Estático Inteiro inited;
+    Fixo Inteiro inited;
     Se (inited)
 	Retorne;
 
     inited = 1;
 
-    dprintf(stderr, "%s, %s() start\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s, %s() start\n", ARQUIVO, FUNÇÃO);
 
     /* save malloc hooks and install bound check hooks */
     install_malloc_hooks();
@@ -467,14 +467,14 @@ Vazio __bound_init(Vazio)
     mark_invalid(start, size);
 #FimSe
 
-    /* add all Estático bound check values */
+    /* add all Fixo bound check values */
     p = (size_t *)&__bounds_start;
     Enquanto (p[0] != 0) {
         __bound_new_region((Vazio *)p[0], p[1]);
         p += 2;
     }
 
-    dprintf(stderr, "%s, %s() end\n\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s, %s() end\n\n", ARQUIVO, FUNÇÃO);
 }
 
 Vazio __bound_main_arg(Vazio **p)
@@ -483,18 +483,18 @@ Vazio __bound_main_arg(Vazio **p)
     Enquanto (*p++);
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p %x)\n",
-            __FILE__, __FUNCTION__, start, (Natural)((Vazio *)p - start));
+            ARQUIVO, FUNÇÃO, start, (Natural)((Vazio *)p - start));
 
     __bound_new_region(start, (Vazio *) p - start);
 }
 
 Vazio __bound_exit(Vazio)
 {
-    dprintf(stderr, "%s, %s()\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s, %s()\n", ARQUIVO, FUNÇÃO);
     restore_malloc_hooks();
 }
 
-Estático EmLinha Vazio add_region(BoundEntry *e, 
+Fixo Integrado Vazio add_region(BoundEntry *e, 
                               size_t start, size_t size)
 {
     BoundEntry *e1;
@@ -522,7 +522,7 @@ Vazio __bound_new_region(Vazio *p, size_t size)
     size_t t1_start, t1_end, i, t2_start, t2_end;
 
     dprintf(stderr, "%s, %s(%p, %x) start\n",
-        __FILE__, __FUNCTION__, p, (Natural)size);
+        ARQUIVO, FUNÇÃO, p, (Natural)size);
 
     __bound_init();
 
@@ -580,11 +580,11 @@ Vazio __bound_new_region(Vazio *p, size_t size)
         add_region(e, start, size);
     }
 
-    dprintf(stderr, "%s, %s end\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s, %s end\n", ARQUIVO, FUNÇÃO);
 }
 
 /* delete a region */
-Estático EmLinha Vazio delete_region(BoundEntry *e, Vazio *p, size_t empty_size)
+Fixo Integrado Vazio delete_region(BoundEntry *e, Vazio *p, size_t empty_size)
 {
     size_t addr;
     BoundEntry *e1;
@@ -632,7 +632,7 @@ Inteiro __bound_delete_region(Vazio *p)
     BoundEntry *page, *e, *e2;
     size_t t1_start, t1_end, t2_start, t2_end, i;
 
-    dprintf(stderr, "%s %s() start\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s %s() start\n", ARQUIVO, FUNÇÃO);
 
     __bound_init();
 
@@ -703,14 +703,14 @@ Inteiro __bound_delete_region(Vazio *p)
         delete_region(e, p, empty_size);
     }
 
-    dprintf(stderr, "%s %s() end\n", __FILE__, __FUNCTION__);
+    dprintf(stderr, "%s %s() end\n", ARQUIVO, FUNÇÃO);
 
     Retorne 0;
 }
 
 /* Retorne the size of the region starting at p, or EMPTY_SIZE Se non
    existent region. */
-Estático size_t get_region_size(Vazio *p)
+Fixo size_t get_region_size(Vazio *p)
 {
     size_t addr = (size_t)p;
     BoundEntry *e;
@@ -732,7 +732,7 @@ Estático size_t get_region_size(Vazio *p)
 /* force compiler to perform stores coded up to this point */
 #Defina barrier()   __asm__ __volatile__ ("": : : "memory")
 
-Estático Vazio install_malloc_hooks(Vazio)
+Fixo Vazio install_malloc_hooks(Vazio)
 {
 #SeDefinido CONFIG_CTEC_MALLOC_HOOKS
     saved_malloc_hook = __malloc_hook;
@@ -748,7 +748,7 @@ Estático Vazio install_malloc_hooks(Vazio)
 #FimSe
 }
 
-Estático Vazio restore_malloc_hooks(Vazio)
+Fixo Vazio restore_malloc_hooks(Vazio)
 {
 #SeDefinido CONFIG_CTEC_MALLOC_HOOKS
     __malloc_hook = saved_malloc_hook;
@@ -760,7 +760,7 @@ Estático Vazio restore_malloc_hooks(Vazio)
 #FimSe
 }
 
-Estático Vazio *libc_malloc(size_t size)
+Fixo Vazio *libc_malloc(size_t size)
 {
     Vazio *ptr;
     restore_malloc_hooks();
@@ -769,7 +769,7 @@ Estático Vazio *libc_malloc(size_t size)
     Retorne ptr;
 }
 
-Estático Vazio libc_free(Vazio *ptr)
+Fixo Vazio libc_free(Vazio *ptr)
 {
     restore_malloc_hooks();
     free(ptr);
@@ -779,7 +779,7 @@ Estático Vazio libc_free(Vazio *ptr)
 /* XXX: we should use a malloc which ensure that it is unlikely that
    two malloc'ed data have the same address Se 'free' are made in
    between. */
-Vazio *__bound_malloc(size_t size, Constante Vazio *caller)
+Vazio *__bound_malloc(size_t size, Imutável Vazio *caller)
 {
     Vazio *ptr;
     
@@ -792,13 +792,13 @@ Vazio *__bound_malloc(size_t size, Constante Vazio *caller)
         Retorne NULL;
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p, %x)\n",
-           __FILE__, __FUNCTION__, ptr, (Natural)size);
+           ARQUIVO, FUNÇÃO, ptr, (Natural)size);
 
     __bound_new_region(ptr, size);
     Retorne ptr;
 }
 
-Vazio *__bound_memalign(size_t size, size_t align, Constante Vazio *caller)
+Vazio *__bound_memalign(size_t size, size_t align, Imutável Vazio *caller)
 {
     Vazio *ptr;
 
@@ -825,13 +825,13 @@ Vazio *__bound_memalign(size_t size, size_t align, Constante Vazio *caller)
         Retorne NULL;
 
     dprintf(stderr, "%s, %s calling __bound_new_region(%p, %x)\n",
-           __FILE__, __FUNCTION__, ptr, (Natural)size);
+           ARQUIVO, FUNÇÃO, ptr, (Natural)size);
 
     __bound_new_region(ptr, size);
     Retorne ptr;
 }
 
-Vazio __bound_free(Vazio *ptr, Constante Vazio *caller)
+Vazio __bound_free(Vazio *ptr, Imutável Vazio *caller)
 {
     Se (ptr == NULL)
         Retorne;
@@ -841,7 +841,7 @@ Vazio __bound_free(Vazio *ptr, Constante Vazio *caller)
     libc_free(ptr);
 }
 
-Vazio *__bound_realloc(Vazio *ptr, size_t size, Constante Vazio *caller)
+Vazio *__bound_realloc(Vazio *ptr, size_t size, Imutável Vazio *caller)
 {
     Vazio *ptr1;
     size_t old_size;
@@ -876,7 +876,7 @@ Vazio *__bound_calloc(size_t nmemb, size_t size)
 #FimSe
 
 #Se 0
-Estático Vazio bound_dump(Vazio)
+Fixo Vazio bound_dump(Vazio)
 {
     BoundEntry *page, *e;
     size_t i, j;
@@ -905,7 +905,7 @@ Estático Vazio bound_dump(Vazio)
 /* some useful checked functions */
 
 /* check that (p ... p + size - 1) lies inside 'p' region, Se any */
-Estático Vazio __bound_check(Constante Vazio *p, size_t size)
+Fixo Vazio __bound_check(Imutável Vazio *p, size_t size)
 {
     Se (size == 0)
         Retorne;
@@ -914,12 +914,12 @@ Estático Vazio __bound_check(Constante Vazio *p, size_t size)
         bound_error("invalid pointer");
 }
 
-Vazio *__bound_memcpy(Vazio *dst, Constante Vazio *src, size_t size)
+Vazio *__bound_memcpy(Vazio *dst, Imutável Vazio *src, size_t size)
 {
     Vazio* p;
 
     dprintf(stderr, "%s %s: start, dst=%p src=%p size=%x\n",
-            __FILE__, __FUNCTION__, dst, src, (Natural)size);
+            ARQUIVO, FUNÇÃO, dst, src, (Natural)size);
 
     __bound_check(dst, size);
     __bound_check(src, size);
@@ -929,11 +929,11 @@ Vazio *__bound_memcpy(Vazio *dst, Constante Vazio *src, size_t size)
 
     p = memcpy(dst, src, size);
 
-    dprintf(stderr, "%s %s: end, p=%p\n", __FILE__, __FUNCTION__, p);
+    dprintf(stderr, "%s %s: end, p=%p\n", ARQUIVO, FUNÇÃO, p);
     Retorne p;
 }
 
-Vazio *__bound_memmove(Vazio *dst, Constante Vazio *src, size_t size)
+Vazio *__bound_memmove(Vazio *dst, Imutável Vazio *src, size_t size)
 {
     __bound_check(dst, size);
     __bound_check(src, size);
@@ -947,9 +947,9 @@ Vazio *__bound_memset(Vazio *dst, Inteiro c, size_t size)
 }
 
 /* XXX: could be optimized */
-Inteiro __bound_strlen(Constante Caractere *s)
+Inteiro __bound_strlen(Imutável Caractere *s)
 {
-    Constante Caractere *p;
+    Imutável Caractere *p;
     size_t len;
 
     len = 0;
@@ -964,16 +964,16 @@ Inteiro __bound_strlen(Constante Caractere *s)
     Retorne len;
 }
 
-Caractere *__bound_strcpy(Caractere *dst, Constante Caractere *src)
+Caractere *__bound_strcpy(Caractere *dst, Imutável Caractere *src)
 {
     size_t len;
     Vazio *p;
 
     dprintf(stderr, "%s %s: strcpy start, dst=%p src=%p\n",
-            __FILE__, __FUNCTION__, dst, src);
+            ARQUIVO, FUNÇÃO, dst, src);
     len = __bound_strlen(src);
     p = __bound_memcpy(dst, src, len + 1);
     dprintf(stderr, "%s %s: strcpy end, p = %p\n",
-            __FILE__, __FUNCTION__, p);
+            ARQUIVO, FUNÇÃO, p);
     Retorne p;
 }

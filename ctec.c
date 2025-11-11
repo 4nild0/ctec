@@ -25,7 +25,7 @@
 #include "ctectools.c"
 
 static const char help[] =
-    "CTEC Compiler "CTEC_VERSION" - Copyright (C) 2001-2006 Fabrice Bellard\n"
+    "Compilador CTEC "CTEC_VERSION" - Copyright (C) 2001-2006 Fabrice Bellard\n"
     "Usage: ctec [options...] [-o outfile] [-c] infile(s)...\n"
     "       ctec [options...] -run infile [arguments...]\n"
     "General options:\n"

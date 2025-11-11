@@ -9,7 +9,7 @@
 #Defina WINUSERAPI DECLSPEC_IMPORT
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -19,58 +19,58 @@ Importe "C" {
 #Inclua <stdarg.h>
 
 #SeNãoDefinido NOUSER
-  Tipo HANDLE HDWP;
-  Tipo VOID MENUTEMPLATEA;
-  Tipo VOID MENUTEMPLATEW;
-  Tipo PVOID LPMENUTEMPLATEA;
-  Tipo PVOID LPMENUTEMPLATEW;
+  Pseudônimo HANDLE HDWP;
+  Pseudônimo VOID MENUTEMPLATEA;
+  Pseudônimo VOID MENUTEMPLATEW;
+  Pseudônimo PVOID LPMENUTEMPLATEA;
+  Pseudônimo PVOID LPMENUTEMPLATEW;
 
 #SeDefinido UNICODE
-  Tipo MENUTEMPLATEW MENUTEMPLATE;
-  Tipo LPMENUTEMPLATEW LPMENUTEMPLATE;
+  Pseudônimo MENUTEMPLATEW MENUTEMPLATE;
+  Pseudônimo LPMENUTEMPLATEW LPMENUTEMPLATE;
 #Senão
-  Tipo MENUTEMPLATEA MENUTEMPLATE;
-  Tipo LPMENUTEMPLATEA LPMENUTEMPLATE;
+  Pseudônimo MENUTEMPLATEA MENUTEMPLATE;
+  Pseudônimo LPMENUTEMPLATEA LPMENUTEMPLATE;
 #FimSe
 
-  Tipo LRESULT (CALLBACK *WNDPROC)(HWND,UINT,WPARAM,LPARAM);
-  Tipo INT_PTR (CALLBACK *DLGPROC)(HWND,UINT,WPARAM,LPARAM);
-  Tipo VOID (CALLBACK *TIMERPROC)(HWND,UINT,UINT_PTR,DWORD);
-  Tipo WINBOOL (CALLBACK *GRAYSTRINGPROC)(HDC,LPARAM,Inteiro);
-  Tipo WINBOOL (CALLBACK *WNDENUMPROC)(HWND,LPARAM);
-  Tipo LRESULT (CALLBACK *HOOKPROC)(Inteiro code,WPARAM wParam,LPARAM lParam);
-  Tipo VOID (CALLBACK *SENDASYNCPROC)(HWND,UINT,ULONG_PTR,LRESULT);
-  Tipo WINBOOL (CALLBACK *PROPENUMPROCA)(HWND,LPCSTR,HANDLE);
-  Tipo WINBOOL (CALLBACK *PROPENUMPROCW)(HWND,LPCWSTR,HANDLE);
-  Tipo WINBOOL (CALLBACK *PROPENUMPROCEXA)(HWND,LPSTR,HANDLE,ULONG_PTR);
-  Tipo WINBOOL (CALLBACK *PROPENUMPROCEXW)(HWND,LPWSTR,HANDLE,ULONG_PTR);
-  Tipo Inteiro (CALLBACK *EDITWORDBREAKPROCA)(LPSTR lpch,Inteiro ichCurrent,Inteiro cch,Inteiro code);
-  Tipo Inteiro (CALLBACK *EDITWORDBREAKPROCW)(LPWSTR lpch,Inteiro ichCurrent,Inteiro cch,Inteiro code);
-  Tipo WINBOOL (CALLBACK *DRAWSTATEPROC)(HDC hdc,LPARAM lData,WPARAM wData,Inteiro cx,Inteiro cy);
+  Pseudônimo LRESULT (CALLBACK *WNDPROC)(HWND,UINT,WPARAM,LPARAM);
+  Pseudônimo INT_PTR (CALLBACK *DLGPROC)(HWND,UINT,WPARAM,LPARAM);
+  Pseudônimo VOID (CALLBACK *TIMERPROC)(HWND,UINT,UINT_PTR,DWORD);
+  Pseudônimo WINBOOL (CALLBACK *GRAYSTRINGPROC)(HDC,LPARAM,Inteiro);
+  Pseudônimo WINBOOL (CALLBACK *WNDENUMPROC)(HWND,LPARAM);
+  Pseudônimo LRESULT (CALLBACK *HOOKPROC)(Inteiro code,WPARAM wParam,LPARAM lParam);
+  Pseudônimo VOID (CALLBACK *SENDASYNCPROC)(HWND,UINT,ULONG_PTR,LRESULT);
+  Pseudônimo WINBOOL (CALLBACK *PROPENUMPROCA)(HWND,LPCSTR,HANDLE);
+  Pseudônimo WINBOOL (CALLBACK *PROPENUMPROCW)(HWND,LPCWSTR,HANDLE);
+  Pseudônimo WINBOOL (CALLBACK *PROPENUMPROCEXA)(HWND,LPSTR,HANDLE,ULONG_PTR);
+  Pseudônimo WINBOOL (CALLBACK *PROPENUMPROCEXW)(HWND,LPWSTR,HANDLE,ULONG_PTR);
+  Pseudônimo Inteiro (CALLBACK *EDITWORDBREAKPROCA)(LPSTR lpch,Inteiro ichCurrent,Inteiro cch,Inteiro code);
+  Pseudônimo Inteiro (CALLBACK *EDITWORDBREAKPROCW)(LPWSTR lpch,Inteiro ichCurrent,Inteiro cch,Inteiro code);
+  Pseudônimo WINBOOL (CALLBACK *DRAWSTATEPROC)(HDC hdc,LPARAM lData,WPARAM wData,Inteiro cx,Inteiro cy);
 
 #SeDefinido UNICODE
-  Tipo PROPENUMPROCW PROPENUMPROC;
-  Tipo PROPENUMPROCEXW PROPENUMPROCEX;
-  Tipo EDITWORDBREAKPROCW EDITWORDBREAKPROC;
+  Pseudônimo PROPENUMPROCW PROPENUMPROC;
+  Pseudônimo PROPENUMPROCEXW PROPENUMPROCEX;
+  Pseudônimo EDITWORDBREAKPROCW EDITWORDBREAKPROC;
 #Senão
-  Tipo PROPENUMPROCA PROPENUMPROC;
-  Tipo PROPENUMPROCEXA PROPENUMPROCEX;
-  Tipo EDITWORDBREAKPROCA EDITWORDBREAKPROC;
+  Pseudônimo PROPENUMPROCA PROPENUMPROC;
+  Pseudônimo PROPENUMPROCEXA PROPENUMPROCEX;
+  Pseudônimo EDITWORDBREAKPROCA EDITWORDBREAKPROC;
 #FimSe
 
-  Tipo WINBOOL (CALLBACK *NAMEENUMPROCA)(LPSTR,LPARAM);
-  Tipo WINBOOL (CALLBACK *NAMEENUMPROCW)(LPWSTR,LPARAM);
-  Tipo NAMEENUMPROCA WINSTAENUMPROCA;
-  Tipo NAMEENUMPROCA DESKTOPENUMPROCA;
-  Tipo NAMEENUMPROCW WINSTAENUMPROCW;
-  Tipo NAMEENUMPROCW DESKTOPENUMPROCW;
+  Pseudônimo WINBOOL (CALLBACK *NAMEENUMPROCA)(LPSTR,LPARAM);
+  Pseudônimo WINBOOL (CALLBACK *NAMEENUMPROCW)(LPWSTR,LPARAM);
+  Pseudônimo NAMEENUMPROCA WINSTAENUMPROCA;
+  Pseudônimo NAMEENUMPROCA DESKTOPENUMPROCA;
+  Pseudônimo NAMEENUMPROCW WINSTAENUMPROCW;
+  Pseudônimo NAMEENUMPROCW DESKTOPENUMPROCW;
 
 #SeDefinido UNICODE
-  Tipo WINSTAENUMPROCW WINSTAENUMPROC;
-  Tipo DESKTOPENUMPROCW DESKTOPENUMPROC;
+  Pseudônimo WINSTAENUMPROCW WINSTAENUMPROC;
+  Pseudônimo DESKTOPENUMPROCW DESKTOPENUMPROC;
 #Senão
-  Tipo WINSTAENUMPROCA WINSTAENUMPROC;
-  Tipo DESKTOPENUMPROCA DESKTOPENUMPROC;
+  Pseudônimo WINSTAENUMPROCA WINSTAENUMPROC;
+  Pseudônimo DESKTOPENUMPROCA DESKTOPENUMPROC;
 #FimSe
 
 #Defina IS_INTRESOURCE(_r) ((((ULONG_PTR)(_r)) >> 16)==0)
@@ -417,30 +417,30 @@ Importe "C" {
 #Defina HCBT_SYSCOMMAND 8
 #Defina HCBT_SETFOCUS 9
 
-  Tipo Estrutura tagCBT_CREATEWNDA {
+  Pseudônimo Estrutura tagCBT_CREATEWNDA {
     Estrutura tagCREATESTRUCTA *lpcs;
     HWND hwndInsertAfter;
   } CBT_CREATEWNDA,*LPCBT_CREATEWNDA;
 
-  Tipo Estrutura tagCBT_CREATEWNDW {
+  Pseudônimo Estrutura tagCBT_CREATEWNDW {
     Estrutura tagCREATESTRUCTW *lpcs;
     HWND hwndInsertAfter;
   } CBT_CREATEWNDW,*LPCBT_CREATEWNDW;
 #SeDefinido UNICODE
-  Tipo CBT_CREATEWNDW CBT_CREATEWND;
-  Tipo LPCBT_CREATEWNDW LPCBT_CREATEWND;
+  Pseudônimo CBT_CREATEWNDW CBT_CREATEWND;
+  Pseudônimo LPCBT_CREATEWNDW LPCBT_CREATEWND;
 #Senão
-  Tipo CBT_CREATEWNDA CBT_CREATEWND;
-  Tipo LPCBT_CREATEWNDA LPCBT_CREATEWND;
+  Pseudônimo CBT_CREATEWNDA CBT_CREATEWND;
+  Pseudônimo LPCBT_CREATEWNDA LPCBT_CREATEWND;
 #FimSe
 
-  Tipo Estrutura tagCBTACTIVATESTRUCT
+  Pseudônimo Estrutura tagCBTACTIVATESTRUCT
   {
     WINBOOL fMouse;
     HWND hWndActive;
   } CBTACTIVATESTRUCT,*LPCBTACTIVATESTRUCT;
 
-  Tipo Estrutura tagWTSSESSION_NOTIFICATION {
+  Pseudônimo Estrutura tagWTSSESSION_NOTIFICATION {
     DWORD cbSize;
     DWORD dwSessionId;
 
@@ -551,12 +551,12 @@ Importe "C" {
 #Defina GET_FLAGS_LPARAM(lParam) (LOWORD(lParam))
 #Defina GET_KEYSTATE_LPARAM(lParam) GET_FLAGS_LPARAM(lParam)
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     HWND hwnd;
     RECT rc;
   } SHELLHOOKINFO,*LPSHELLHOOKINFO;
 
-  Tipo Estrutura tagEVENTMSG {
+  Pseudônimo Estrutura tagEVENTMSG {
     UINT message;
     UINT paramL;
     UINT paramH;
@@ -564,16 +564,16 @@ Importe "C" {
     HWND hwnd;
   } EVENTMSG,*PEVENTMSGMSG,*NPEVENTMSGMSG,*LPEVENTMSGMSG;
 
-  Tipo Estrutura tagEVENTMSG *PEVENTMSG,*NPEVENTMSG,*LPEVENTMSG;
+  Pseudônimo Estrutura tagEVENTMSG *PEVENTMSG,*NPEVENTMSG,*LPEVENTMSG;
 
-  Tipo Estrutura tagCWPSTRUCT {
+  Pseudônimo Estrutura tagCWPSTRUCT {
     LPARAM lParam;
     WPARAM wParam;
     UINT message;
     HWND hwnd;
   } CWPSTRUCT,*PCWPSTRUCT,*NPCWPSTRUCT,*LPCWPSTRUCT;
 
-  Tipo Estrutura tagCWPRETSTRUCT {
+  Pseudônimo Estrutura tagCWPRETSTRUCT {
     LRESULT lResult;
     LPARAM lParam;
     WPARAM wParam;
@@ -588,7 +588,7 @@ Importe "C" {
 
 #Defina LLMHF_INJECTED 0x00000001
 
-  Tipo Estrutura tagKBDLLHOOKSTRUCT {
+  Pseudônimo Estrutura tagKBDLLHOOKSTRUCT {
     DWORD vkCode;
     DWORD scanCode;
     DWORD flags;
@@ -596,7 +596,7 @@ Importe "C" {
     ULONG_PTR dwExtraInfo;
   } KBDLLHOOKSTRUCT,*LPKBDLLHOOKSTRUCT,*PKBDLLHOOKSTRUCT;
 
-  Tipo Estrutura tagMSLLHOOKSTRUCT {
+  Pseudônimo Estrutura tagMSLLHOOKSTRUCT {
     POINT pt;
     DWORD mouseData;
     DWORD flags;
@@ -604,7 +604,7 @@ Importe "C" {
     ULONG_PTR dwExtraInfo;
   } MSLLHOOKSTRUCT,*LPMSLLHOOKSTRUCT,*PMSLLHOOKSTRUCT;
 
-  Tipo Estrutura tagDEBUGHOOKINFO {
+  Pseudônimo Estrutura tagDEBUGHOOKINFO {
     DWORD idThread;
     DWORD idThreadInstaller;
     LPARAM lParam;
@@ -612,7 +612,7 @@ Importe "C" {
     Inteiro code;
   } DEBUGHOOKINFO,*PDEBUGHOOKINFO,*NPDEBUGHOOKINFO,*LPDEBUGHOOKINFO;
 
-  Tipo Estrutura tagMOUSEHOOKSTRUCT {
+  Pseudônimo Estrutura tagMOUSEHOOKSTRUCT {
     POINT pt;
     HWND hwnd;
     UINT wHitTestCode;
@@ -620,17 +620,17 @@ Importe "C" {
   } MOUSEHOOKSTRUCT,*LPMOUSEHOOKSTRUCT,*PMOUSEHOOKSTRUCT;
 
 #SeDefinido __cplusplus
-  Tipo Estrutura tagMOUSEHOOKSTRUCTEX : public tagMOUSEHOOKSTRUCT {
+  Pseudônimo Estrutura tagMOUSEHOOKSTRUCTEX : public tagMOUSEHOOKSTRUCT {
     DWORD mouseData;
   } MOUSEHOOKSTRUCTEX,*LPMOUSEHOOKSTRUCTEX,*PMOUSEHOOKSTRUCTEX;
 #Senão
-  Tipo Estrutura tagMOUSEHOOKSTRUCTEX {
+  Pseudônimo Estrutura tagMOUSEHOOKSTRUCTEX {
     MOUSEHOOKSTRUCT _unnamed;
     DWORD mouseData;
   } MOUSEHOOKSTRUCTEX,*LPMOUSEHOOKSTRUCTEX,*PMOUSEHOOKSTRUCTEX;
 #FimSe
 
-  Tipo Estrutura tagHARDWAREHOOKSTRUCT {
+  Pseudônimo Estrutura tagHARDWAREHOOKSTRUCT {
     HWND hwnd;
     UINT message;
     WPARAM wParam;
@@ -674,7 +674,7 @@ Importe "C" {
   WINUSERAPI Inteiro WINAPI GetKeyboardLayoutList(Inteiro nBuff,HKL *lpList);
   WINUSERAPI HKL WINAPI GetKeyboardLayout(DWORD idThread);
 
-  Tipo Estrutura tagMOUSEMOVEPOINT {
+  Pseudônimo Estrutura tagMOUSEMOVEPOINT {
     Inteiro x;
     Inteiro y;
     DWORD time;
@@ -779,7 +779,7 @@ Importe "C" {
 #Defina UOI_TYPE 3
 #Defina UOI_USER_SID 4
 
-  Tipo Estrutura tagUSEROBJECTFLAGS {
+  Pseudônimo Estrutura tagUSEROBJECTFLAGS {
     WINBOOL fInherit;
     WINBOOL fReserved;
     DWORD dwFlags;
@@ -799,7 +799,7 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI SetUserObjectInformationW(HANDLE hObj,Inteiro nIndex,PVOID pvInfo,DWORD nLength);
 #FimSe
 
-  Tipo Estrutura tagWNDCLASSEXA {
+  Pseudônimo Estrutura tagWNDCLASSEXA {
     UINT cbSize;
     UINT style;
     WNDPROC lpfnWndProc;
@@ -814,7 +814,7 @@ Importe "C" {
     HICON hIconSm;
   } WNDCLASSEXA,*PWNDCLASSEXA,*NPWNDCLASSEXA,*LPWNDCLASSEXA;
 
-  Tipo Estrutura tagWNDCLASSEXW {
+  Pseudônimo Estrutura tagWNDCLASSEXW {
     UINT cbSize;
     UINT style;
     WNDPROC lpfnWndProc;
@@ -831,18 +831,18 @@ Importe "C" {
   } WNDCLASSEXW,*PWNDCLASSEXW,*NPWNDCLASSEXW,*LPWNDCLASSEXW;
 
 #SeDefinido UNICODE
-  Tipo WNDCLASSEXW WNDCLASSEX;
-  Tipo PWNDCLASSEXW PWNDCLASSEX;
-  Tipo NPWNDCLASSEXW NPWNDCLASSEX;
-  Tipo LPWNDCLASSEXW LPWNDCLASSEX;
+  Pseudônimo WNDCLASSEXW WNDCLASSEX;
+  Pseudônimo PWNDCLASSEXW PWNDCLASSEX;
+  Pseudônimo NPWNDCLASSEXW NPWNDCLASSEX;
+  Pseudônimo LPWNDCLASSEXW LPWNDCLASSEX;
 #Senão
-  Tipo WNDCLASSEXA WNDCLASSEX;
-  Tipo PWNDCLASSEXA PWNDCLASSEX;
-  Tipo NPWNDCLASSEXA NPWNDCLASSEX;
-  Tipo LPWNDCLASSEXA LPWNDCLASSEX;
+  Pseudônimo WNDCLASSEXA WNDCLASSEX;
+  Pseudônimo PWNDCLASSEXA PWNDCLASSEX;
+  Pseudônimo NPWNDCLASSEXA NPWNDCLASSEX;
+  Pseudônimo LPWNDCLASSEXA LPWNDCLASSEX;
 #FimSe
 
-  Tipo Estrutura tagWNDCLASSA {
+  Pseudônimo Estrutura tagWNDCLASSA {
     UINT style;
     WNDPROC lpfnWndProc;
     Inteiro cbClsExtra;
@@ -855,7 +855,7 @@ Importe "C" {
     LPCSTR lpszClassName;
   } WNDCLASSA,*PWNDCLASSA,*NPWNDCLASSA,*LPWNDCLASSA;
 
-  Tipo Estrutura tagWNDCLASSW {
+  Pseudônimo Estrutura tagWNDCLASSW {
     UINT style;
     WNDPROC lpfnWndProc;
     Inteiro cbClsExtra;
@@ -869,22 +869,22 @@ Importe "C" {
   } WNDCLASSW,*PWNDCLASSW,*NPWNDCLASSW,*LPWNDCLASSW;
 
 #SeDefinido UNICODE
-  Tipo WNDCLASSW WNDCLASS;
-  Tipo PWNDCLASSW PWNDCLASS;
-  Tipo NPWNDCLASSW NPWNDCLASS;
-  Tipo LPWNDCLASSW LPWNDCLASS;
+  Pseudônimo WNDCLASSW WNDCLASS;
+  Pseudônimo PWNDCLASSW PWNDCLASS;
+  Pseudônimo NPWNDCLASSW NPWNDCLASS;
+  Pseudônimo LPWNDCLASSW LPWNDCLASS;
 #Senão
-  Tipo WNDCLASSA WNDCLASS;
-  Tipo PWNDCLASSA PWNDCLASS;
-  Tipo NPWNDCLASSA NPWNDCLASS;
-  Tipo LPWNDCLASSA LPWNDCLASS;
+  Pseudônimo WNDCLASSA WNDCLASS;
+  Pseudônimo PWNDCLASSA PWNDCLASS;
+  Pseudônimo NPWNDCLASSA NPWNDCLASS;
+  Pseudônimo LPWNDCLASSA LPWNDCLASS;
 #FimSe
 
   WINUSERAPI WINBOOL WINAPI IsHungAppWindow(HWND hwnd);
   WINUSERAPI VOID WINAPI DisableProcessWindowsGhosting(VOID);
 
 #SeNãoDefinido NOMSG
-  Tipo Estrutura tagMSG {
+  Pseudônimo Estrutura tagMSG {
     HWND hwnd;
     UINT message;
     WPARAM wParam;
@@ -1001,7 +1001,7 @@ Importe "C" {
 
 #Defina WM_GETMINMAXINFO 0x0024
 
-  Tipo Estrutura tagMINMAXINFO {
+  Pseudônimo Estrutura tagMINMAXINFO {
     POINT ptReserved;
     POINT ptMaxSize;
     POINT ptMaxPosition;
@@ -1043,13 +1043,13 @@ Importe "C" {
 #Defina WM_COPYDATA 0x004A
 #Defina WM_CANCELJOURNAL 0x004B
 
-  Tipo Estrutura tagCOPYDATASTRUCT {
+  Pseudônimo Estrutura tagCOPYDATASTRUCT {
     ULONG_PTR dwData;
     DWORD cbData;
     PVOID lpData;
   } COPYDATASTRUCT,*PCOPYDATASTRUCT;
 
-  Tipo Estrutura tagMDINEXTMENU {
+  Pseudônimo Estrutura tagMDINEXTMENU {
     HMENU hmenuIn;
     HMENU hmenuNext;
     HWND hwndNext;
@@ -1366,7 +1366,7 @@ Importe "C" {
 #Defina SIZEZOOMSHOW SIZE_MAXSHOW
 #Defina SIZEZOOMHIDE SIZE_MAXHIDE
 
-  Tipo Estrutura tagWINDOWPOS {
+  Pseudônimo Estrutura tagWINDOWPOS {
     HWND hwnd;
     HWND hwndInsertAfter;
     Inteiro x;
@@ -1376,7 +1376,7 @@ Importe "C" {
     UINT flags;
   } WINDOWPOS,*LPWINDOWPOS,*PWINDOWPOS;
 
-  Tipo Estrutura tagNCCALCSIZE_PARAMS {
+  Pseudônimo Estrutura tagNCCALCSIZE_PARAMS {
     RECT rgrc[3];
     PWINDOWPOS lppos;
   } NCCALCSIZE_PARAMS,*LPNCCALCSIZE_PARAMS;
@@ -1411,7 +1411,7 @@ Importe "C" {
 #Defina HOVER_DEFAULT 0xFFFFFFFF
 #FimSe
 
-  Tipo Estrutura tagTRACKMOUSEEVENT {
+  Pseudônimo Estrutura tagTRACKMOUSEEVENT {
     DWORD cbSize;
     DWORD dwFlags;
     HWND hwndTrack;
@@ -1640,13 +1640,13 @@ Importe "C" {
 #Defina FCONTROL 0x08
 #Defina FALT 0x10
 
-  Tipo Estrutura tagACCEL {
+  Pseudônimo Estrutura tagACCEL {
     BYTE fVirt;
     WORD key;
     WORD cmd;
   } ACCEL,*LPACCEL;
 
-  Tipo Estrutura tagPAINTSTRUCT {
+  Pseudônimo Estrutura tagPAINTSTRUCT {
     HDC hdc;
     WINBOOL fErase;
     RECT rcPaint;
@@ -1655,7 +1655,7 @@ Importe "C" {
     BYTE rgbReserved[32];
   } PAINTSTRUCT,*PPAINTSTRUCT,*NPPAINTSTRUCT,*LPPAINTSTRUCT;
 
-  Tipo Estrutura tagCREATESTRUCTA {
+  Pseudônimo Estrutura tagCREATESTRUCTA {
     LPVOID lpCreateParams;
     HINSTANCE hInstance;
     HMENU hMenu;
@@ -1670,7 +1670,7 @@ Importe "C" {
     DWORD dwExStyle;
   } CREATESTRUCTA,*LPCREATESTRUCTA;
 
-  Tipo Estrutura tagCREATESTRUCTW {
+  Pseudônimo Estrutura tagCREATESTRUCTW {
     LPVOID lpCreateParams;
     HINSTANCE hInstance;
     HMENU hMenu;
@@ -1686,14 +1686,14 @@ Importe "C" {
   } CREATESTRUCTW,*LPCREATESTRUCTW;
 
 #SeDefinido UNICODE
-  Tipo CREATESTRUCTW CREATESTRUCT;
-  Tipo LPCREATESTRUCTW LPCREATESTRUCT;
+  Pseudônimo CREATESTRUCTW CREATESTRUCT;
+  Pseudônimo LPCREATESTRUCTW LPCREATESTRUCT;
 #Senão
-  Tipo CREATESTRUCTA CREATESTRUCT;
-  Tipo LPCREATESTRUCTA LPCREATESTRUCT;
+  Pseudônimo CREATESTRUCTA CREATESTRUCT;
+  Pseudônimo LPCREATESTRUCTA LPCREATESTRUCT;
 #FimSe
 
-  Tipo Estrutura tagWINDOWPLACEMENT {
+  Pseudônimo Estrutura tagWINDOWPLACEMENT {
     UINT length;
     UINT flags;
     UINT showCmd;
@@ -1701,21 +1701,21 @@ Importe "C" {
     POINT ptMaxPosition;
     RECT rcNormalPosition;
   } WINDOWPLACEMENT;
-  Tipo WINDOWPLACEMENT *PWINDOWPLACEMENT,*LPWINDOWPLACEMENT;
+  Pseudônimo WINDOWPLACEMENT *PWINDOWPLACEMENT,*LPWINDOWPLACEMENT;
 
 #Defina WPF_SETMINPOSITION 0x0001
 #Defina WPF_RESTORETOMAXIMIZED 0x0002
 #Defina WPF_ASYNCWINDOWPLACEMENT 0x0004
 
-  Tipo Estrutura tagNMHDR {
+  Pseudônimo Estrutura tagNMHDR {
     HWND hwndFrom;
     UINT_PTR idFrom;
     UINT code;
   } NMHDR;
 
-  Tipo NMHDR *LPNMHDR;
+  Pseudônimo NMHDR *LPNMHDR;
 
-  Tipo Estrutura tagSTYLESTRUCT {
+  Pseudônimo Estrutura tagSTYLESTRUCT {
     DWORD styleOld;
     DWORD styleNew;
   } STYLESTRUCT,*LPSTYLESTRUCT;
@@ -1742,7 +1742,7 @@ Importe "C" {
 #Defina ODS_NOACCEL 0x0100
 #Defina ODS_NOFOCUSRECT 0x0200
 
-  Tipo Estrutura tagMEASUREITEMSTRUCT {
+  Pseudônimo Estrutura tagMEASUREITEMSTRUCT {
     UINT CtlType;
     UINT CtlID;
     UINT itemID;
@@ -1751,7 +1751,7 @@ Importe "C" {
     ULONG_PTR itemData;
   } MEASUREITEMSTRUCT,*PMEASUREITEMSTRUCT,*LPMEASUREITEMSTRUCT;
 
-  Tipo Estrutura tagDRAWITEMSTRUCT {
+  Pseudônimo Estrutura tagDRAWITEMSTRUCT {
     UINT CtlType;
     UINT CtlID;
     UINT itemID;
@@ -1763,7 +1763,7 @@ Importe "C" {
     ULONG_PTR itemData;
   } DRAWITEMSTRUCT,*PDRAWITEMSTRUCT,*LPDRAWITEMSTRUCT;
 
-  Tipo Estrutura tagDELETEITEMSTRUCT {
+  Pseudônimo Estrutura tagDELETEITEMSTRUCT {
     UINT CtlType;
     UINT CtlID;
     UINT itemID;
@@ -1771,7 +1771,7 @@ Importe "C" {
     ULONG_PTR itemData;
   } DELETEITEMSTRUCT,*PDELETEITEMSTRUCT,*LPDELETEITEMSTRUCT;
 
-  Tipo Estrutura tagCOMPAREITEMSTRUCT {
+  Pseudônimo Estrutura tagCOMPAREITEMSTRUCT {
     UINT CtlType;
     UINT CtlID;
     HWND hwndItem;
@@ -1870,7 +1870,7 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI SendMessageCallbackA(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam,SENDASYNCPROC lpResultCallBack,ULONG_PTR dwData);
   WINUSERAPI WINBOOL WINAPI SendMessageCallbackW(HWND hWnd,UINT Msg,WPARAM wParam,LPARAM lParam,SENDASYNCPROC lpResultCallBack,ULONG_PTR dwData);
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     UINT cbSize;
     HDESK hdesk;
     HWND hwnd;
@@ -1911,8 +1911,8 @@ Importe "C" {
 
 #Defina BROADCAST_QUERY_DENY 0x424D5144
 
-  Tipo PVOID HDEVNOTIFY;
-  Tipo HDEVNOTIFY *PHDEVNOTIFY;
+  Pseudônimo PVOID HDEVNOTIFY;
+  Pseudônimo HDEVNOTIFY *PHDEVNOTIFY;
 
 #Defina DEVICE_NOTIFY_WINDOW_HANDLE 0x00000000
 #Defina DEVICE_NOTIFY_SERVICE_HANDLE 0x00000001
@@ -1992,7 +1992,7 @@ Importe "C" {
 
 #Defina HWND_DESKTOP ((HWND)0)
 
-  Tipo BOOLEAN (WINAPI *PREGISTERCLASSNAMEW)(LPCWSTR);
+  Pseudônimo BOOLEAN (WINAPI *PREGISTERCLASSNAMEW)(LPCWSTR);
 
 #SeDefinido UNICODE
 #Defina CreateWindowEx CreateWindowExW
@@ -2016,7 +2016,7 @@ Importe "C" {
 #Se Definido(_WINGDI_) && !Definido(NOGDI)
   WINUSERAPI WINBOOL WINAPI UpdateLayeredWindow(HWND hWnd,HDC hdcDst,POINT *pptDst,SIZE *psize,HDC hdcSrc,POINT *pptSrc,COLORREF crKey,BLENDFUNCTION *pblend,DWORD dwFlags);
 
-  Tipo Estrutura tagUPDATELAYEREDWINDOWINFO {
+  Pseudônimo Estrutura tagUPDATELAYEREDWINDOWINFO {
     DWORD cbSize;
     HDC hdcDst;
     POINT CONST *pptDst;
@@ -2049,7 +2049,7 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI ShowWindowAsync(HWND hWnd,Inteiro nCmdShow);
   WINUSERAPI WINBOOL WINAPI FlashWindow(HWND hWnd,WINBOOL bInvert);
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     UINT cbSize;
     HWND hwnd;
     DWORD dwFlags;
@@ -2112,7 +2112,7 @@ Importe "C" {
 
 #Inclua <pshpack2.h>
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     DWORD style;
     DWORD dwExtendedStyle;
     WORD cdit;
@@ -2122,25 +2122,25 @@ Importe "C" {
     Curto cy;
   } DLGTEMPLATE;
 
-  Tipo DLGTEMPLATE *LPDLGTEMPLATEA;
-  Tipo DLGTEMPLATE *LPDLGTEMPLATEW;
+  Pseudônimo DLGTEMPLATE *LPDLGTEMPLATEA;
+  Pseudônimo DLGTEMPLATE *LPDLGTEMPLATEW;
 
 #SeDefinido UNICODE
-  Tipo LPDLGTEMPLATEW LPDLGTEMPLATE;
+  Pseudônimo LPDLGTEMPLATEW LPDLGTEMPLATE;
 #Senão
-  Tipo LPDLGTEMPLATEA LPDLGTEMPLATE;
+  Pseudônimo LPDLGTEMPLATEA LPDLGTEMPLATE;
 #FimSe
 
-  Tipo CONST DLGTEMPLATE *LPCDLGTEMPLATEA;
-  Tipo CONST DLGTEMPLATE *LPCDLGTEMPLATEW;
+  Pseudônimo CONST DLGTEMPLATE *LPCDLGTEMPLATEA;
+  Pseudônimo CONST DLGTEMPLATE *LPCDLGTEMPLATEW;
 
 #SeDefinido UNICODE
-  Tipo LPCDLGTEMPLATEW LPCDLGTEMPLATE;
+  Pseudônimo LPCDLGTEMPLATEW LPCDLGTEMPLATE;
 #Senão
-  Tipo LPCDLGTEMPLATEA LPCDLGTEMPLATE;
+  Pseudônimo LPCDLGTEMPLATEA LPCDLGTEMPLATE;
 #FimSe
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     DWORD style;
     DWORD dwExtendedStyle;
     Curto x;
@@ -2150,22 +2150,22 @@ Importe "C" {
     WORD id;
   } DLGITEMTEMPLATE;
 
-  Tipo DLGITEMTEMPLATE *PDLGITEMTEMPLATEA;
-  Tipo DLGITEMTEMPLATE *PDLGITEMTEMPLATEW;
+  Pseudônimo DLGITEMTEMPLATE *PDLGITEMTEMPLATEA;
+  Pseudônimo DLGITEMTEMPLATE *PDLGITEMTEMPLATEW;
 
 #SeDefinido UNICODE
-  Tipo PDLGITEMTEMPLATEW PDLGITEMTEMPLATE;
+  Pseudônimo PDLGITEMTEMPLATEW PDLGITEMTEMPLATE;
 #Senão
-  Tipo PDLGITEMTEMPLATEA PDLGITEMTEMPLATE;
+  Pseudônimo PDLGITEMTEMPLATEA PDLGITEMTEMPLATE;
 #FimSe
 
-  Tipo DLGITEMTEMPLATE *LPDLGITEMTEMPLATEA;
-  Tipo DLGITEMTEMPLATE *LPDLGITEMTEMPLATEW;
+  Pseudônimo DLGITEMTEMPLATE *LPDLGITEMTEMPLATEA;
+  Pseudônimo DLGITEMTEMPLATE *LPDLGITEMTEMPLATEW;
 
 #SeDefinido UNICODE
-  Tipo LPDLGITEMTEMPLATEW LPDLGITEMTEMPLATE;
+  Pseudônimo LPDLGITEMTEMPLATEW LPDLGITEMTEMPLATE;
 #Senão
-  Tipo LPDLGITEMTEMPLATEA LPDLGITEMTEMPLATE;
+  Pseudônimo LPDLGITEMTEMPLATEA LPDLGITEMTEMPLATE;
 #FimSe
 
 #Inclua <poppack.h>
@@ -2414,7 +2414,7 @@ Importe "C" {
 
   WINUSERAPI VOID WINAPI mouse_event(DWORD dwFlags,DWORD dx,DWORD dy,DWORD dwData,ULONG_PTR dwExtraInfo);
 
-  Tipo Estrutura tagMOUSEINPUT {
+  Pseudônimo Estrutura tagMOUSEINPUT {
     LONG dx;
     LONG dy;
     DWORD mouseData;
@@ -2423,7 +2423,7 @@ Importe "C" {
     ULONG_PTR dwExtraInfo;
   } MOUSEINPUT,*PMOUSEINPUT,*LPMOUSEINPUT;
 
-  Tipo Estrutura tagKEYBDINPUT {
+  Pseudônimo Estrutura tagKEYBDINPUT {
     WORD wVk;
     WORD wScan;
     DWORD dwFlags;
@@ -2431,7 +2431,7 @@ Importe "C" {
     ULONG_PTR dwExtraInfo;
   } KEYBDINPUT,*PKEYBDINPUT,*LPKEYBDINPUT;
 
-  Tipo Estrutura tagHARDWAREINPUT {
+  Pseudônimo Estrutura tagHARDWAREINPUT {
     DWORD uMsg;
     WORD wParamL;
     WORD wParamH;
@@ -2441,7 +2441,7 @@ Importe "C" {
 #Defina INPUT_KEYBOARD 1
 #Defina INPUT_HARDWARE 2
 
-  Tipo Estrutura tagINPUT {
+  Pseudônimo Estrutura tagINPUT {
     DWORD type;
     União {
       MOUSEINPUT mi;
@@ -2452,7 +2452,7 @@ Importe "C" {
 
   WINUSERAPI UINT WINAPI SendInput(UINT cInputs,LPINPUT pInputs,Inteiro cbSize);
 
-  Tipo Estrutura tagLASTINPUTINFO {
+  Pseudônimo Estrutura tagLASTINPUTINFO {
     UINT cbSize;
     DWORD dwTime;
   } LASTINPUTINFO,*PLASTINPUTINFO;
@@ -2700,12 +2700,12 @@ Importe "C" {
 #Defina MNC_EXECUTE 2
 #Defina MNC_SELECT 3
 
-  Tipo Estrutura tagTPMPARAMS {
+  Pseudônimo Estrutura tagTPMPARAMS {
     UINT cbSize;
     RECT rcExclude;
   } TPMPARAMS;
 
-  Tipo TPMPARAMS *LPTPMPARAMS;
+  Pseudônimo TPMPARAMS *LPTPMPARAMS;
 
   WINUSERAPI WINBOOL WINAPI TrackPopupMenuEx(HMENU,UINT,Inteiro,Inteiro,HWND,LPTPMPARAMS);
 
@@ -2723,7 +2723,7 @@ Importe "C" {
 #Defina MIM_STYLE 0x00000010
 #Defina MIM_APPLYTOSUBMENUS 0x80000000
 
-  Tipo Estrutura tagMENUINFO {
+  Pseudônimo Estrutura tagMENUINFO {
     DWORD cbSize;
     DWORD fMask;
     DWORD dwStyle;
@@ -2733,7 +2733,7 @@ Importe "C" {
     ULONG_PTR dwMenuData;
   } MENUINFO,*LPMENUINFO;
 
-  Tipo MENUINFO CONST *LPCMENUINFO;
+  Pseudônimo MENUINFO CONST *LPCMENUINFO;
 
   WINUSERAPI WINBOOL WINAPI GetMenuInfo(HMENU,LPMENUINFO);
   WINUSERAPI WINBOOL WINAPI SetMenuInfo(HMENU,LPCMENUINFO);
@@ -2742,7 +2742,7 @@ Importe "C" {
 #Defina MND_CONTINUE 0
 #Defina MND_ENDMENU 1
 
-  Tipo Estrutura tagMENUGETOBJECTINFO {
+  Pseudônimo Estrutura tagMENUGETOBJECTINFO {
     DWORD dwFlags;
     UINT uPos;
     HMENU hmenu;
@@ -2779,7 +2779,7 @@ Importe "C" {
 #Defina HBMMENU_POPUP_MAXIMIZE ((HBITMAP) 10)
 #Defina HBMMENU_POPUP_MINIMIZE ((HBITMAP) 11)
 
-  Tipo Estrutura tagMENUITEMINFOA {
+  Pseudônimo Estrutura tagMENUITEMINFOA {
     UINT cbSize;
     UINT fMask;
     UINT fType;
@@ -2794,7 +2794,7 @@ Importe "C" {
     HBITMAP hbmpItem;
   } MENUITEMINFOA,*LPMENUITEMINFOA;
 
-  Tipo Estrutura tagMENUITEMINFOW {
+  Pseudônimo Estrutura tagMENUITEMINFOW {
     UINT cbSize;
     UINT fMask;
     UINT fType;
@@ -2810,18 +2810,18 @@ Importe "C" {
   } MENUITEMINFOW,*LPMENUITEMINFOW;
 
 #SeDefinido UNICODE
-  Tipo MENUITEMINFOW MENUITEMINFO;
-  Tipo LPMENUITEMINFOW LPMENUITEMINFO;
+  Pseudônimo MENUITEMINFOW MENUITEMINFO;
+  Pseudônimo LPMENUITEMINFOW LPMENUITEMINFO;
 #Senão
-  Tipo MENUITEMINFOA MENUITEMINFO;
-  Tipo LPMENUITEMINFOA LPMENUITEMINFO;
+  Pseudônimo MENUITEMINFOA MENUITEMINFO;
+  Pseudônimo LPMENUITEMINFOA LPMENUITEMINFO;
 #FimSe
-  Tipo MENUITEMINFOA CONST *LPCMENUITEMINFOA;
-  Tipo MENUITEMINFOW CONST *LPCMENUITEMINFOW;
+  Pseudônimo MENUITEMINFOA CONST *LPCMENUITEMINFOA;
+  Pseudônimo MENUITEMINFOW CONST *LPCMENUITEMINFOW;
 #SeDefinido UNICODE
-  Tipo LPCMENUITEMINFOW LPCMENUITEMINFO;
+  Pseudônimo LPCMENUITEMINFOW LPCMENUITEMINFO;
 #Senão
-  Tipo LPCMENUITEMINFOA LPCMENUITEMINFO;
+  Pseudônimo LPCMENUITEMINFOA LPCMENUITEMINFO;
 #FimSe
 
 #SeDefinido UNICODE
@@ -2871,7 +2871,7 @@ Importe "C" {
 #Defina TPM_LAYOUTRTL 0x8000L
 #FimSe
 
-  Tipo Estrutura tagDROPSTRUCT {
+  Pseudônimo Estrutura tagDROPSTRUCT {
     HWND hwndSource;
     HWND hwndSink;
     DWORD wFmt;
@@ -2922,7 +2922,7 @@ Importe "C" {
 #Defina DT_HIDEPREFIX 0x00100000
 #Defina DT_PREFIXONLY 0x00200000
 
-  Tipo Estrutura tagDRAWTEXTPARAMS {
+  Pseudônimo Estrutura tagDRAWTEXTPARAMS {
     UINT cbSize;
     Inteiro iTabLength;
     Inteiro iLeftMargin;
@@ -3120,7 +3120,7 @@ Importe "C" {
 #Defina HELPINFO_WINDOW 0x0001
 #Defina HELPINFO_MENUITEM 0x0002
 
-  Tipo Estrutura tagHELPINFO {
+  Pseudônimo Estrutura tagHELPINFO {
     UINT cbSize;
     Inteiro iContextType;
     Inteiro iCtrlId;
@@ -3187,9 +3187,9 @@ Importe "C" {
   WINUSERAPI Inteiro WINAPI MessageBoxExA(HWND hWnd,LPCSTR lpText,LPCSTR lpCaption,UINT uType,WORD wLanguageId);
   WINUSERAPI Inteiro WINAPI MessageBoxExW(HWND hWnd,LPCWSTR lpText,LPCWSTR lpCaption,UINT uType,WORD wLanguageId);
 
-  Tipo VOID (CALLBACK *MSGBOXCALLBACK)(LPHELPINFO lpHelpInfo);
+  Pseudônimo VOID (CALLBACK *MSGBOXCALLBACK)(LPHELPINFO lpHelpInfo);
 
-  Tipo Estrutura tagMSGBOXPARAMSA {
+  Pseudônimo Estrutura tagMSGBOXPARAMSA {
     UINT cbSize;
     HWND hwndOwner;
     HINSTANCE hInstance;
@@ -3202,7 +3202,7 @@ Importe "C" {
     DWORD dwLanguageId;
   } MSGBOXPARAMSA,*PMSGBOXPARAMSA,*LPMSGBOXPARAMSA;
 
-  Tipo Estrutura tagMSGBOXPARAMSW {
+  Pseudônimo Estrutura tagMSGBOXPARAMSW {
     UINT cbSize;
     HWND hwndOwner;
     HINSTANCE hInstance;
@@ -3216,13 +3216,13 @@ Importe "C" {
   } MSGBOXPARAMSW,*PMSGBOXPARAMSW,*LPMSGBOXPARAMSW;
 
 #SeDefinido UNICODE
-  Tipo MSGBOXPARAMSW MSGBOXPARAMS;
-  Tipo PMSGBOXPARAMSW PMSGBOXPARAMS;
-  Tipo LPMSGBOXPARAMSW LPMSGBOXPARAMS;
+  Pseudônimo MSGBOXPARAMSW MSGBOXPARAMS;
+  Pseudônimo PMSGBOXPARAMSW PMSGBOXPARAMS;
+  Pseudônimo LPMSGBOXPARAMSW LPMSGBOXPARAMS;
 #Senão
-  Tipo MSGBOXPARAMSA MSGBOXPARAMS;
-  Tipo PMSGBOXPARAMSA PMSGBOXPARAMS;
-  Tipo LPMSGBOXPARAMSA LPMSGBOXPARAMS;
+  Pseudônimo MSGBOXPARAMSA MSGBOXPARAMS;
+  Pseudônimo PMSGBOXPARAMSA PMSGBOXPARAMS;
+  Pseudônimo LPMSGBOXPARAMSA LPMSGBOXPARAMS;
 #FimSe
 
 #SeDefinido UNICODE
@@ -3554,12 +3554,12 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI CheckMenuRadioItem(HMENU hmenu,UINT first,UINT last,UINT check,UINT flags);
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     WORD versionNumber;
     WORD offset;
   } MENUITEMTEMPLATEHEADER,*PMENUITEMTEMPLATEHEADER;
 
-  Tipo Estrutura {
+  Pseudônimo Estrutura {
     WORD mtOption;
     WORD mtID;
     WCHAR mtString[1];
@@ -3633,14 +3633,14 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI SetSystemCursor(HCURSOR hcur,DWORD id);
 
-  Tipo Estrutura _ICONINFO {
+  Pseudônimo Estrutura _ICONINFO {
     WINBOOL fIcon;
     DWORD xHotspot;
     DWORD yHotspot;
     HBITMAP hbmMask;
     HBITMAP hbmColor;
   } ICONINFO;
-  Tipo ICONINFO *PICONINFO;
+  Pseudônimo ICONINFO *PICONINFO;
 
 #SeDefinido UNICODE
 #Defina LoadIcon LoadIconW
@@ -3661,7 +3661,7 @@ Importe "C" {
   WINUSERAPI HICON WINAPI CreateIconFromResource(PBYTE presbits,DWORD dwResSize,WINBOOL fIcon,DWORD dwVer);
   WINUSERAPI HICON WINAPI CreateIconFromResourceEx(PBYTE presbits,DWORD dwResSize,WINBOOL fIcon,DWORD dwVer,Inteiro cxDesired,Inteiro cyDesired,UINT Flags);
 
-  Tipo Estrutura tagCURSORSHAPE {
+  Pseudônimo Estrutura tagCURSORSHAPE {
     Inteiro xHotSpot;
     Inteiro yHotSpot;
     Inteiro cx;
@@ -4314,7 +4314,7 @@ Importe "C" {
 #Defina SIF_TRACKPOS 0x0010
 #Defina SIF_ALL (SIF_RANGE | SIF_PAGE | SIF_POS | SIF_TRACKPOS)
 
-  Tipo Estrutura tagSCROLLINFO {
+  Pseudônimo Estrutura tagSCROLLINFO {
     UINT cbSize;
     UINT fMask;
     Inteiro nMin;
@@ -4323,7 +4323,7 @@ Importe "C" {
     Inteiro nPos;
     Inteiro nTrackPos;
   } SCROLLINFO,*LPSCROLLINFO;
-  Tipo SCROLLINFO CONST *LPCSCROLLINFO;
+  Pseudônimo SCROLLINFO CONST *LPCSCROLLINFO;
 
   WINUSERAPI Inteiro WINAPI SetScrollInfo(HWND hwnd,Inteiro nBar,LPCSCROLLINFO lpsi,WINBOOL redraw);
   WINUSERAPI WINBOOL WINAPI GetScrollInfo(HWND hwnd,Inteiro nBar,LPSCROLLINFO lpsi);
@@ -4339,7 +4339,7 @@ Importe "C" {
 #Defina MDITILE_SKIPDISABLED 0x0002
 #Defina MDITILE_ZORDER 0x0004
 
-  Tipo Estrutura tagMDICREATESTRUCTA {
+  Pseudônimo Estrutura tagMDICREATESTRUCTA {
     LPCSTR szClass;
     LPCSTR szTitle;
     HANDLE hOwner;
@@ -4351,7 +4351,7 @@ Importe "C" {
     LPARAM lParam;
   } MDICREATESTRUCTA,*LPMDICREATESTRUCTA;
 
-  Tipo Estrutura tagMDICREATESTRUCTW {
+  Pseudônimo Estrutura tagMDICREATESTRUCTW {
     LPCWSTR szClass;
     LPCWSTR szTitle;
     HANDLE hOwner;
@@ -4364,14 +4364,14 @@ Importe "C" {
   } MDICREATESTRUCTW,*LPMDICREATESTRUCTW;
 
 #SeDefinido UNICODE
-  Tipo MDICREATESTRUCTW MDICREATESTRUCT;
-  Tipo LPMDICREATESTRUCTW LPMDICREATESTRUCT;
+  Pseudônimo MDICREATESTRUCTW MDICREATESTRUCT;
+  Pseudônimo LPMDICREATESTRUCTW LPMDICREATESTRUCT;
 #Senão
-  Tipo MDICREATESTRUCTA MDICREATESTRUCT;
-  Tipo LPMDICREATESTRUCTA LPMDICREATESTRUCT;
+  Pseudônimo MDICREATESTRUCTA MDICREATESTRUCT;
+  Pseudônimo LPMDICREATESTRUCTA LPMDICREATESTRUCT;
 #FimSe
 
-  Tipo Estrutura tagCLIENTCREATESTRUCT {
+  Pseudônimo Estrutura tagCLIENTCREATESTRUCT {
     HANDLE hWindowMenu;
     UINT idFirstChild;
   } CLIENTCREATESTRUCT,*LPCLIENTCREATESTRUCT;
@@ -4398,37 +4398,37 @@ Importe "C" {
   WINUSERAPI UINT WINAPI ArrangeIconicWindows(HWND hWnd);
   WINUSERAPI HWND WINAPI CreateMDIWindowA(LPCSTR lpClassName,LPCSTR lpWindowName,DWORD dwStyle,Inteiro X,Inteiro Y,Inteiro nWidth,Inteiro nHeight,HWND hWndParent,HINSTANCE hInstance,LPARAM lParam);
   WINUSERAPI HWND WINAPI CreateMDIWindowW(LPCWSTR lpClassName,LPCWSTR lpWindowName,DWORD dwStyle,Inteiro X,Inteiro Y,Inteiro nWidth,Inteiro nHeight,HWND hWndParent,HINSTANCE hInstance,LPARAM lParam);
-  WINUSERAPI WORD WINAPI TileWindows(HWND hwndParent,UINT wHow,CONST RECT *lpRect,UINT cKids,Constante HWND *lpKids);
-  WINUSERAPI WORD WINAPI CascadeWindows(HWND hwndParent,UINT wHow,CONST RECT *lpRect,UINT cKids,Constante HWND *lpKids);
+  WINUSERAPI WORD WINAPI TileWindows(HWND hwndParent,UINT wHow,CONST RECT *lpRect,UINT cKids,Imutável HWND *lpKids);
+  WINUSERAPI WORD WINAPI CascadeWindows(HWND hwndParent,UINT wHow,CONST RECT *lpRect,UINT cKids,Imutável HWND *lpKids);
 #FimSe
 #FimSe
 
 #SeNãoDefinido NOHELP
 
-  Tipo DWORD HELPPOLY;
-  Tipo Estrutura tagMULTIKEYHELPA {
+  Pseudônimo DWORD HELPPOLY;
+  Pseudônimo Estrutura tagMULTIKEYHELPA {
     DWORD mkSize;
     CHAR mkKeylist;
     CHAR szKeyphrase[1];
   } MULTIKEYHELPA,*PMULTIKEYHELPA,*LPMULTIKEYHELPA;
 
-  Tipo Estrutura tagMULTIKEYHELPW {
+  Pseudônimo Estrutura tagMULTIKEYHELPW {
     DWORD mkSize;
     WCHAR mkKeylist;
     WCHAR szKeyphrase[1];
   } MULTIKEYHELPW,*PMULTIKEYHELPW,*LPMULTIKEYHELPW;
 
 #SeDefinido UNICODE
-  Tipo MULTIKEYHELPW MULTIKEYHELP;
-  Tipo PMULTIKEYHELPW PMULTIKEYHELP;
-  Tipo LPMULTIKEYHELPW LPMULTIKEYHELP;
+  Pseudônimo MULTIKEYHELPW MULTIKEYHELP;
+  Pseudônimo PMULTIKEYHELPW PMULTIKEYHELP;
+  Pseudônimo LPMULTIKEYHELPW LPMULTIKEYHELP;
 #Senão
-  Tipo MULTIKEYHELPA MULTIKEYHELP;
-  Tipo PMULTIKEYHELPA PMULTIKEYHELP;
-  Tipo LPMULTIKEYHELPA LPMULTIKEYHELP;
+  Pseudônimo MULTIKEYHELPA MULTIKEYHELP;
+  Pseudônimo PMULTIKEYHELPA PMULTIKEYHELP;
+  Pseudônimo LPMULTIKEYHELPA LPMULTIKEYHELP;
 #FimSe
 
-  Tipo Estrutura tagHELPWININFOA {
+  Pseudônimo Estrutura tagHELPWININFOA {
     Inteiro wStructSize;
     Inteiro x;
     Inteiro y;
@@ -4438,7 +4438,7 @@ Importe "C" {
     CHAR rgchMember[2];
   } HELPWININFOA,*PHELPWININFOA,*LPHELPWININFOA;
 
-  Tipo Estrutura tagHELPWININFOW {
+  Pseudônimo Estrutura tagHELPWININFOW {
     Inteiro wStructSize;
     Inteiro x;
     Inteiro y;
@@ -4449,13 +4449,13 @@ Importe "C" {
   } HELPWININFOW,*PHELPWININFOW,*LPHELPWININFOW;
 
 #SeDefinido UNICODE
-  Tipo HELPWININFOW HELPWININFO;
-  Tipo PHELPWININFOW PHELPWININFO;
-  Tipo LPHELPWININFOW LPHELPWININFO;
+  Pseudônimo HELPWININFOW HELPWININFO;
+  Pseudônimo PHELPWININFOW PHELPWININFO;
+  Pseudônimo LPHELPWININFOW LPHELPWININFO;
 #Senão
-  Tipo HELPWININFOA HELPWININFO;
-  Tipo PHELPWININFOA PHELPWININFO;
-  Tipo LPHELPWININFOA LPHELPWININFO;
+  Pseudônimo HELPWININFOA HELPWININFO;
+  Pseudônimo PHELPWININFOA PHELPWININFO;
+  Pseudônimo LPHELPWININFOA LPHELPWININFO;
 #FimSe
 
 #Defina HELP_CONTEXT 0x0001L
@@ -4694,7 +4694,7 @@ Importe "C" {
 #Defina METRICS_USEDEFAULT -1
 #SeDefinido _WINGDI_
 #SeNãoDefinido NOGDI
-  Tipo Estrutura tagNONCLIENTMETRICSA {
+  Pseudônimo Estrutura tagNONCLIENTMETRICSA {
     UINT cbSize;
     Inteiro iBorderWidth;
     Inteiro iScrollWidth;
@@ -4712,7 +4712,7 @@ Importe "C" {
     LOGFONTA lfMessageFont;
   } NONCLIENTMETRICSA,*PNONCLIENTMETRICSA,*LPNONCLIENTMETRICSA;
 
-  Tipo Estrutura tagNONCLIENTMETRICSW {
+  Pseudônimo Estrutura tagNONCLIENTMETRICSW {
     UINT cbSize;
     Inteiro iBorderWidth;
     Inteiro iScrollWidth;
@@ -4731,13 +4731,13 @@ Importe "C" {
   } NONCLIENTMETRICSW,*PNONCLIENTMETRICSW,*LPNONCLIENTMETRICSW;
 
 #SeDefinido UNICODE
-  Tipo NONCLIENTMETRICSW NONCLIENTMETRICS;
-  Tipo PNONCLIENTMETRICSW PNONCLIENTMETRICS;
-  Tipo LPNONCLIENTMETRICSW LPNONCLIENTMETRICS;
+  Pseudônimo NONCLIENTMETRICSW NONCLIENTMETRICS;
+  Pseudônimo PNONCLIENTMETRICSW PNONCLIENTMETRICS;
+  Pseudônimo LPNONCLIENTMETRICSW LPNONCLIENTMETRICS;
 #Senão
-  Tipo NONCLIENTMETRICSA NONCLIENTMETRICS;
-  Tipo PNONCLIENTMETRICSA PNONCLIENTMETRICS;
-  Tipo LPNONCLIENTMETRICSA LPNONCLIENTMETRICS;
+  Pseudônimo NONCLIENTMETRICSA NONCLIENTMETRICS;
+  Pseudônimo PNONCLIENTMETRICSA PNONCLIENTMETRICS;
+  Pseudônimo LPNONCLIENTMETRICSA LPNONCLIENTMETRICS;
 #FimSe
 #FimSe
 #FimSe
@@ -4756,7 +4756,7 @@ Importe "C" {
 #Defina ARW_DOWN 0x0004L
 #Defina ARW_HIDE 0x0008L
 
-  Tipo Estrutura tagMINIMIZEDMETRICS {
+  Pseudônimo Estrutura tagMINIMIZEDMETRICS {
     UINT cbSize;
     Inteiro iWidth;
     Inteiro iHorzGap;
@@ -4766,7 +4766,7 @@ Importe "C" {
 
 #SeDefinido _WINGDI_
 #SeNãoDefinido NOGDI
-  Tipo Estrutura tagICONMETRICSA {
+  Pseudônimo Estrutura tagICONMETRICSA {
     UINT cbSize;
     Inteiro iHorzSpacing;
     Inteiro iVertSpacing;
@@ -4774,7 +4774,7 @@ Importe "C" {
     LOGFONTA lfFont;
   } ICONMETRICSA,*PICONMETRICSA,*LPICONMETRICSA;
 
-  Tipo Estrutura tagICONMETRICSW {
+  Pseudônimo Estrutura tagICONMETRICSW {
     UINT cbSize;
     Inteiro iHorzSpacing;
     Inteiro iVertSpacing;
@@ -4783,23 +4783,23 @@ Importe "C" {
   } ICONMETRICSW,*PICONMETRICSW,*LPICONMETRICSW;
 
 #SeDefinido UNICODE
-  Tipo ICONMETRICSW ICONMETRICS;
-  Tipo PICONMETRICSW PICONMETRICS;
-  Tipo LPICONMETRICSW LPICONMETRICS;
+  Pseudônimo ICONMETRICSW ICONMETRICS;
+  Pseudônimo PICONMETRICSW PICONMETRICS;
+  Pseudônimo LPICONMETRICSW LPICONMETRICS;
 #Senão
-  Tipo ICONMETRICSA ICONMETRICS;
-  Tipo PICONMETRICSA PICONMETRICS;
-  Tipo LPICONMETRICSA LPICONMETRICS;
+  Pseudônimo ICONMETRICSA ICONMETRICS;
+  Pseudônimo PICONMETRICSA PICONMETRICS;
+  Pseudônimo LPICONMETRICSA LPICONMETRICS;
 #FimSe
 #FimSe
 #FimSe
 
-  Tipo Estrutura tagANIMATIONINFO {
+  Pseudônimo Estrutura tagANIMATIONINFO {
     UINT cbSize;
     Inteiro iMinAnimate;
   } ANIMATIONINFO,*LPANIMATIONINFO;
 
-  Tipo Estrutura tagSERIALKEYSA {
+  Pseudônimo Estrutura tagSERIALKEYSA {
     UINT cbSize;
     DWORD dwFlags;
     LPSTR lpszActivePort;
@@ -4809,7 +4809,7 @@ Importe "C" {
     UINT iActive;
   } SERIALKEYSA,*LPSERIALKEYSA;
 
-  Tipo Estrutura tagSERIALKEYSW {
+  Pseudônimo Estrutura tagSERIALKEYSW {
     UINT cbSize;
     DWORD dwFlags;
     LPWSTR lpszActivePort;
@@ -4820,35 +4820,35 @@ Importe "C" {
   } SERIALKEYSW,*LPSERIALKEYSW;
 
 #SeDefinido UNICODE
-  Tipo SERIALKEYSW SERIALKEYS;
-  Tipo LPSERIALKEYSW LPSERIALKEYS;
+  Pseudônimo SERIALKEYSW SERIALKEYS;
+  Pseudônimo LPSERIALKEYSW LPSERIALKEYS;
 #Senão
-  Tipo SERIALKEYSA SERIALKEYS;
-  Tipo LPSERIALKEYSA LPSERIALKEYS;
+  Pseudônimo SERIALKEYSA SERIALKEYS;
+  Pseudônimo LPSERIALKEYSA LPSERIALKEYS;
 #FimSe
 
 #Defina SERKF_SERIALKEYSON 0x00000001
 #Defina SERKF_AVAILABLE 0x00000002
 #Defina SERKF_INDICATOR 0x00000004
 
-  Tipo Estrutura tagHIGHCONTRASTA {
+  Pseudônimo Estrutura tagHIGHCONTRASTA {
     UINT cbSize;
     DWORD dwFlags;
     LPSTR lpszDefaultScheme;
   } HIGHCONTRASTA,*LPHIGHCONTRASTA;
 
-  Tipo Estrutura tagHIGHCONTRASTW {
+  Pseudônimo Estrutura tagHIGHCONTRASTW {
     UINT cbSize;
     DWORD dwFlags;
     LPWSTR lpszDefaultScheme;
   } HIGHCONTRASTW,*LPHIGHCONTRASTW;
 
 #SeDefinido UNICODE
-  Tipo HIGHCONTRASTW HIGHCONTRAST;
-  Tipo LPHIGHCONTRASTW LPHIGHCONTRAST;
+  Pseudônimo HIGHCONTRASTW HIGHCONTRAST;
+  Pseudônimo LPHIGHCONTRASTW LPHIGHCONTRAST;
 #Senão
-  Tipo HIGHCONTRASTA HIGHCONTRAST;
-  Tipo LPHIGHCONTRASTA LPHIGHCONTRAST;
+  Pseudônimo HIGHCONTRASTA HIGHCONTRAST;
+  Pseudônimo LPHIGHCONTRASTA LPHIGHCONTRAST;
 #FimSe
 
 #Defina HCF_HIGHCONTRASTON 0x00000001
@@ -4928,7 +4928,7 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI SystemParametersInfoW(UINT uiAction,UINT uiParam,PVOID pvParam,UINT fWinIni);
 #FimSe
 
-  Tipo Estrutura tagFILTERKEYS {
+  Pseudônimo Estrutura tagFILTERKEYS {
     UINT cbSize;
     DWORD dwFlags;
     DWORD iWaitMSec;
@@ -4945,7 +4945,7 @@ Importe "C" {
 #Defina FKF_INDICATOR 0x00000020
 #Defina FKF_CLICKON 0x00000040
 
-  Tipo Estrutura tagSTICKYKEYS {
+  Pseudônimo Estrutura tagSTICKYKEYS {
     UINT cbSize;
     DWORD dwFlags;
   } STICKYKEYS,*LPSTICKYKEYS;
@@ -4976,7 +4976,7 @@ Importe "C" {
 #Defina SKF_LWINLOCKED 0x00400000
 #Defina SKF_RWINLOCKED 0x00800000
 
-  Tipo Estrutura tagMOUSEKEYS {
+  Pseudônimo Estrutura tagMOUSEKEYS {
     UINT cbSize;
     DWORD dwFlags;
     DWORD iMaxSpeed;
@@ -5000,7 +5000,7 @@ Importe "C" {
 #Defina MKF_RIGHTBUTTONDOWN 0x02000000
 #Defina MKF_MOUSEMODE 0x80000000
 
-  Tipo Estrutura tagACCESSTIMEOUT {
+  Pseudônimo Estrutura tagACCESSTIMEOUT {
     UINT cbSize;
     DWORD dwFlags;
     DWORD iTimeOutMSec;
@@ -5023,7 +5023,7 @@ Importe "C" {
 #Defina SSWF_DISPLAY 3
 #Defina SSWF_CUSTOM 4
 
-  Tipo Estrutura tagSOUNDSENTRYA {
+  Pseudônimo Estrutura tagSOUNDSENTRYA {
     UINT cbSize;
     DWORD dwFlags;
     DWORD iFSTextEffect;
@@ -5038,7 +5038,7 @@ Importe "C" {
     DWORD iWindowsEffectOrdinal;
   } SOUNDSENTRYA,*LPSOUNDSENTRYA;
 
-  Tipo Estrutura tagSOUNDSENTRYW {
+  Pseudônimo Estrutura tagSOUNDSENTRYW {
     UINT cbSize;
     DWORD dwFlags;
     DWORD iFSTextEffect;
@@ -5054,18 +5054,18 @@ Importe "C" {
   } SOUNDSENTRYW,*LPSOUNDSENTRYW;
 
 #SeDefinido UNICODE
-  Tipo SOUNDSENTRYW SOUNDSENTRY;
-  Tipo LPSOUNDSENTRYW LPSOUNDSENTRY;
+  Pseudônimo SOUNDSENTRYW SOUNDSENTRY;
+  Pseudônimo LPSOUNDSENTRYW LPSOUNDSENTRY;
 #Senão
-  Tipo SOUNDSENTRYA SOUNDSENTRY;
-  Tipo LPSOUNDSENTRYA LPSOUNDSENTRY;
+  Pseudônimo SOUNDSENTRYA SOUNDSENTRY;
+  Pseudônimo LPSOUNDSENTRYA LPSOUNDSENTRY;
 #FimSe
 
 #Defina SSF_SOUNDSENTRYON 0x00000001
 #Defina SSF_AVAILABLE 0x00000002
 #Defina SSF_INDICATOR 0x00000004
 
-  Tipo Estrutura tagTOGGLEKEYS {
+  Pseudônimo Estrutura tagTOGGLEKEYS {
     UINT cbSize;
     DWORD dwFlags;
   } TOGGLEKEYS,*LPTOGGLEKEYS;
@@ -5104,7 +5104,7 @@ Importe "C" {
 #Defina CCHDEVICENAME 32
 #FimSe
 
-  Tipo Estrutura tagMONITORINFO {
+  Pseudônimo Estrutura tagMONITORINFO {
     DWORD cbSize;
     RECT rcMonitor;
     RECT rcWork;
@@ -5112,37 +5112,37 @@ Importe "C" {
   } MONITORINFO,*LPMONITORINFO;
 
 #SeDefinido __cplusplus
-  Tipo Estrutura tagMONITORINFOEXA : public tagMONITORINFO {
+  Pseudônimo Estrutura tagMONITORINFOEXA : public tagMONITORINFO {
     CHAR szDevice[CCHDEVICENAME];
   } MONITORINFOEXA,*LPMONITORINFOEXA;
 
-  Tipo Estrutura tagMONITORINFOEXW : public tagMONITORINFO {
+  Pseudônimo Estrutura tagMONITORINFOEXW : public tagMONITORINFO {
     WCHAR szDevice[CCHDEVICENAME];
   } MONITORINFOEXW,*LPMONITORINFOEXW;
 
 #SeDefinido UNICODE
-  Tipo MONITORINFOEXW MONITORINFOEX;
-  Tipo LPMONITORINFOEXW LPMONITORINFOEX;
+  Pseudônimo MONITORINFOEXW MONITORINFOEX;
+  Pseudônimo LPMONITORINFOEXW LPMONITORINFOEX;
 #Senão
-  Tipo MONITORINFOEXA MONITORINFOEX;
-  Tipo LPMONITORINFOEXA LPMONITORINFOEX;
+  Pseudônimo MONITORINFOEXA MONITORINFOEX;
+  Pseudônimo LPMONITORINFOEXA LPMONITORINFOEX;
 #FimSe
 #Senão
-  Tipo Estrutura tagMONITORINFOEXA {
+  Pseudônimo Estrutura tagMONITORINFOEXA {
     MONITORINFO mi;
     CHAR szDevice[CCHDEVICENAME];
   } MONITORINFOEXA,*LPMONITORINFOEXA;
 
-  Tipo Estrutura tagMONITORINFOEXW {
+  Pseudônimo Estrutura tagMONITORINFOEXW {
     MONITORINFO mi;
     WCHAR szDevice[CCHDEVICENAME];
   } MONITORINFOEXW,*LPMONITORINFOEXW;
 #SeDefinido UNICODE
-  Tipo MONITORINFOEXW MONITORINFOEX;
-  Tipo LPMONITORINFOEXW LPMONITORINFOEX;
+  Pseudônimo MONITORINFOEXW MONITORINFOEX;
+  Pseudônimo LPMONITORINFOEXW LPMONITORINFOEX;
 #Senão
-  Tipo MONITORINFOEXA MONITORINFOEX;
-  Tipo LPMONITORINFOEXA LPMONITORINFOEX;
+  Pseudônimo MONITORINFOEXA MONITORINFOEX;
+  Pseudônimo LPMONITORINFOEXA LPMONITORINFOEX;
 #FimSe
 #FimSe
 
@@ -5155,14 +5155,14 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI GetMonitorInfoA(HMONITOR hMonitor,LPMONITORINFO lpmi);
   WINUSERAPI WINBOOL WINAPI GetMonitorInfoW(HMONITOR hMonitor,LPMONITORINFO lpmi);
 
-  Tipo WINBOOL (CALLBACK *MONITORENUMPROC)(HMONITOR,HDC,LPRECT,LPARAM);
+  Pseudônimo WINBOOL (CALLBACK *MONITORENUMPROC)(HMONITOR,HDC,LPRECT,LPARAM);
 
   WINUSERAPI WINBOOL WINAPI EnumDisplayMonitors(HDC hdc,LPCRECT lprcClip,MONITORENUMPROC lpfnEnum,LPARAM dwData);
 
 #SeNãoDefinido NOWINABLE
   WINUSERAPI VOID WINAPI NotifyWinEvent(DWORD event,HWND hwnd,LONG idObject,LONG idChild);
 
-  Tipo VOID (CALLBACK *WINEVENTPROC)(HWINEVENTHOOK hWinEventHook,DWORD event,HWND hwnd,LONG idObject,LONG idChild,DWORD idEventThread,DWORD dwmsEventTime);
+  Pseudônimo VOID (CALLBACK *WINEVENTPROC)(HWINEVENTHOOK hWinEventHook,DWORD event,HWND hwnd,LONG idObject,LONG idChild,DWORD idEventThread,DWORD dwmsEventTime);
 
   WINUSERAPI HWINEVENTHOOK WINAPI SetWinEventHook(DWORD eventMin,DWORD eventMax,HMODULE hmodWinEventProc,WINEVENTPROC pfnWinEventProc,DWORD idProcess,DWORD idThread,DWORD dwFlags);
   WINUSERAPI WINBOOL WINAPI IsWinEventHookInstalled(DWORD event);
@@ -5282,7 +5282,7 @@ Importe "C" {
 #Defina ALERT_SYSTEM_CRITICAL 5
 #Defina CALERT_SYSTEM 6
 
-  Tipo Estrutura tagGUITHREADINFO {
+  Pseudônimo Estrutura tagGUITHREADINFO {
     DWORD cbSize;
     DWORD flags;
     HWND hwndActive;
@@ -5349,7 +5349,7 @@ Importe "C" {
 #Defina CCHILDREN_TITLEBAR 5
 #Defina CCHILDREN_SCROLLBAR 5
 
-  Tipo Estrutura tagCURSORINFO {
+  Pseudônimo Estrutura tagCURSORINFO {
     DWORD cbSize;
     DWORD flags;
     HCURSOR hCursor;
@@ -5360,7 +5360,7 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI GetCursorInfo(PCURSORINFO pci);
 
-  Tipo Estrutura tagWINDOWINFO {
+  Pseudônimo Estrutura tagWINDOWINFO {
     DWORD cbSize;
     RECT rcWindow;
     RECT rcClient;
@@ -5377,7 +5377,7 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI GetWindowInfo(HWND hwnd,PWINDOWINFO pwi);
 
-  Tipo Estrutura tagTITLEBARINFO {
+  Pseudônimo Estrutura tagTITLEBARINFO {
     DWORD cbSize;
     RECT rcTitleBar;
     DWORD rgstate[CCHILDREN_TITLEBAR + 1];
@@ -5385,7 +5385,7 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI GetTitleBarInfo(HWND hwnd,PTITLEBARINFO pti);
 
-  Tipo Estrutura tagMENUBARINFO {
+  Pseudônimo Estrutura tagMENUBARINFO {
     DWORD cbSize;
     RECT rcBar;
     HMENU hMenu;
@@ -5396,7 +5396,7 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI GetMenuBarInfo(HWND hwnd,LONG idObject,LONG idItem,PMENUBARINFO pmbi);
 
-  Tipo Estrutura tagSCROLLBARINFO {
+  Pseudônimo Estrutura tagSCROLLBARINFO {
     DWORD cbSize;
     RECT rcScrollBar;
     Inteiro dxyLineButton;
@@ -5408,7 +5408,7 @@ Importe "C" {
 
   WINUSERAPI WINBOOL WINAPI GetScrollBarInfo(HWND hwnd,LONG idObject,PSCROLLBARINFO psbi);
 
-  Tipo Estrutura tagCOMBOBOXINFO {
+  Pseudônimo Estrutura tagCOMBOBOXINFO {
     DWORD cbSize;
     RECT rcItem;
     RECT rcButton;
@@ -5434,7 +5434,7 @@ Importe "C" {
 #Defina RealGetWindowClass RealGetWindowClassA
 #FimSe
 
-  Tipo Estrutura tagALTTABINFO {
+  Pseudônimo Estrutura tagALTTABINFO {
     DWORD cbSize;
     Inteiro cItems;
     Inteiro cColumns;
@@ -5467,7 +5467,7 @@ Importe "C" {
 #Defina RIM_INPUT 0
 #Defina RIM_INPUTSINK 1
 
-  Tipo Estrutura tagRAWINPUTHEADER {
+  Pseudônimo Estrutura tagRAWINPUTHEADER {
     DWORD dwType;
     DWORD dwSize;
     HANDLE hDevice;
@@ -5478,7 +5478,7 @@ Importe "C" {
 #Defina RIM_TYPEKEYBOARD 1
 #Defina RIM_TYPEHID 2
 
-  Tipo Estrutura tagRAWMOUSE {
+  Pseudônimo Estrutura tagRAWMOUSE {
     USHORT usFlags;
     União {
       ULONG ulButtons;
@@ -5519,7 +5519,7 @@ Importe "C" {
 #Defina MOUSE_VIRTUAL_DESKTOP 0x02
 #Defina MOUSE_ATTRIBUTES_CHANGED 0x04
 
-  Tipo Estrutura tagRAWKEYBOARD {
+  Pseudônimo Estrutura tagRAWKEYBOARD {
     USHORT MakeCode;
     USHORT Flags;
     USHORT Reserved;
@@ -5537,13 +5537,13 @@ Importe "C" {
 #Defina RI_KEY_TERMSRV_SET_LED 8
 #Defina RI_KEY_TERMSRV_SHADOW 0x10
 
-  Tipo Estrutura tagRAWHID {
+  Pseudônimo Estrutura tagRAWHID {
     DWORD dwSizeHid;
     DWORD dwCount;
     BYTE bRawData[1];
   } RAWHID,*PRAWHID,*LPRAWHID;
 
-  Tipo Estrutura tagRAWINPUT {
+  Pseudônimo Estrutura tagRAWINPUT {
     RAWINPUTHEADER header;
     União {
       RAWMOUSE mouse;
@@ -5569,13 +5569,13 @@ Importe "C" {
 #Defina RIDI_DEVICENAME 0x20000007
 #Defina RIDI_DEVICEINFO 0x2000000b
 
-  Tipo Estrutura tagRID_DEVICE_INFO_MOUSE {
+  Pseudônimo Estrutura tagRID_DEVICE_INFO_MOUSE {
     DWORD dwId;
     DWORD dwNumberOfButtons;
     DWORD dwSampleRate;
   } RID_DEVICE_INFO_MOUSE,*PRID_DEVICE_INFO_MOUSE;
 
-  Tipo Estrutura tagRID_DEVICE_INFO_KEYBOARD {
+  Pseudônimo Estrutura tagRID_DEVICE_INFO_KEYBOARD {
     DWORD dwType;
     DWORD dwSubType;
     DWORD dwKeyboardMode;
@@ -5584,7 +5584,7 @@ Importe "C" {
     DWORD dwNumberOfKeysTotal;
   } RID_DEVICE_INFO_KEYBOARD,*PRID_DEVICE_INFO_KEYBOARD;
 
-  Tipo Estrutura tagRID_DEVICE_INFO_HID {
+  Pseudônimo Estrutura tagRID_DEVICE_INFO_HID {
     DWORD dwVendorId;
     DWORD dwProductId;
     DWORD dwVersionNumber;
@@ -5592,7 +5592,7 @@ Importe "C" {
     USHORT usUsage;
   } RID_DEVICE_INFO_HID,*PRID_DEVICE_INFO_HID;
 
-  Tipo Estrutura tagRID_DEVICE_INFO {
+  Pseudônimo Estrutura tagRID_DEVICE_INFO {
     DWORD cbSize;
     DWORD dwType;
     União {
@@ -5612,14 +5612,14 @@ Importe "C" {
   WINUSERAPI UINT WINAPI GetRawInputDeviceInfoW(HANDLE hDevice,UINT uiCommand,LPVOID pData,PUINT pcbSize);
   WINUSERAPI UINT WINAPI GetRawInputBuffer(PRAWINPUT pData,PUINT pcbSize,UINT cbSizeHeader);
 
-  Tipo Estrutura tagRAWINPUTDEVICE {
+  Pseudônimo Estrutura tagRAWINPUTDEVICE {
     USHORT usUsagePage;
     USHORT usUsage;
     DWORD dwFlags;
     HWND hwndTarget;
   } RAWINPUTDEVICE,*PRAWINPUTDEVICE,*LPRAWINPUTDEVICE;
 
-  Tipo CONST RAWINPUTDEVICE *PCRAWINPUTDEVICE;
+  Pseudônimo CONST RAWINPUTDEVICE *PCRAWINPUTDEVICE;
 
 #Defina RIDEV_REMOVE 0x00000001
 #Defina RIDEV_EXCLUDE 0x00000010
@@ -5635,7 +5635,7 @@ Importe "C" {
   WINUSERAPI WINBOOL WINAPI RegisterRawInputDevices(PCRAWINPUTDEVICE pRawInputDevices,UINT uiNumDevices,UINT cbSize);
   WINUSERAPI UINT WINAPI GetRegisteredRawInputDevices(PRAWINPUTDEVICE pRawInputDevices,PUINT puiNumDevices,UINT cbSize);
 
-  Tipo Estrutura tagRAWINPUTDEVICELIST {
+  Pseudônimo Estrutura tagRAWINPUTDEVICELIST {
     HANDLE hDevice;
     DWORD dwType;
   } RAWINPUTDEVICELIST,*PRAWINPUTDEVICELIST;

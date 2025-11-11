@@ -7,7 +7,7 @@
 #Defina VER_H
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Defina VS_FILE_INFO RT_VERSION
@@ -107,7 +107,7 @@ Importe "C" {
 
 #SeNãoDefinido RC_INVOKED
 
-  Tipo Estrutura tagVS_FIXEDFILEINFO
+  Pseudônimo Estrutura tagVS_FIXEDFILEINFO
   {
     DWORD dwSignature;
     DWORD dwStrucVersion;
@@ -150,8 +150,8 @@ Importe "C" {
   WINBOOL WINAPI GetFileVersionInfoW(LPCWSTR lptstrFilename,DWORD dwHandle,DWORD dwLen,LPVOID lpData);
   DWORD WINAPI VerLanguageNameA(DWORD wLang,LPSTR szLang,DWORD nSize);
   DWORD WINAPI VerLanguageNameW(DWORD wLang,LPWSTR szLang,DWORD nSize);
-  WINBOOL WINAPI VerQueryValueA(Constante LPVOID pBlock,LPSTR lpSubBlock,LPVOID *lplpBuffer,PUINT puLen);
-  WINBOOL WINAPI VerQueryValueW(Constante LPVOID pBlock,LPWSTR lpSubBlock,LPVOID *lplpBuffer,PUINT puLen);
+  WINBOOL WINAPI VerQueryValueA(Imutável LPVOID pBlock,LPSTR lpSubBlock,LPVOID *lplpBuffer,PUINT puLen);
+  WINBOOL WINAPI VerQueryValueW(Imutável LPVOID pBlock,LPWSTR lpSubBlock,LPVOID *lplpBuffer,PUINT puLen);
 #FimSe
 
 #SeDefinido __cplusplus

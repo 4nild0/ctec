@@ -7,7 +7,7 @@
 #Defina _WINREG_
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido WINVER
@@ -29,7 +29,7 @@ Importe "C" {
 #Defina RRF_NOEXPAND 0x10000000
 #Defina RRF_ZEROONFAILURE 0x20000000
 
-  Tipo ACCESS_MASK REGSAM;
+  Pseudônimo ACCESS_MASK REGSAM;
 
 #Defina HKEY_CLASSES_ROOT ((HKEY) (ULONG_PTR)((LONG)0x80000000))
 #Defina HKEY_CURRENT_USER ((HKEY) (ULONG_PTR)((LONG)0x80000001))
@@ -53,16 +53,16 @@ Importe "C" {
     LPVOID val_buff_ptr;
   };
 
-  Tipo Estrutura val_context *PVALCONTEXT;
+  Pseudônimo Estrutura val_context *PVALCONTEXT;
 
-  Tipo Estrutura pvalueA {
+  Pseudônimo Estrutura pvalueA {
     LPSTR pv_valuename;
     Inteiro pv_valuelen;
     LPVOID pv_value_context;
     DWORD pv_type;
   }PVALUEA,*PPVALUEA;
 
-  Tipo Estrutura pvalueW {
+  Pseudônimo Estrutura pvalueW {
     LPWSTR pv_valuename;
     Inteiro pv_valuelen;
     LPVOID pv_value_context;
@@ -70,18 +70,18 @@ Importe "C" {
   }PVALUEW,*PPVALUEW;
 
 #SeDefinido UNICODE
-  Tipo PVALUEW PVALUE;
-  Tipo PPVALUEW PPVALUE;
+  Pseudônimo PVALUEW PVALUE;
+  Pseudônimo PPVALUEW PPVALUE;
 #Senão
-  Tipo PVALUEA PVALUE;
-  Tipo PPVALUEA PPVALUE;
+  Pseudônimo PVALUEA PVALUE;
+  Pseudônimo PPVALUEA PPVALUE;
 #FimSe
 
-  Tipo DWORD __cdecl QUERYHANDLER(LPVOID keycontext,PVALCONTEXT val_list,DWORD num_vals,LPVOID outputbuffer,DWORD *total_outlen,DWORD input_blen);
+  Pseudônimo DWORD __cdecl QUERYHANDLER(LPVOID keycontext,PVALCONTEXT val_list,DWORD num_vals,LPVOID outputbuffer,DWORD *total_outlen,DWORD input_blen);
 
-  Tipo QUERYHANDLER *PQUERYHANDLER;
+  Pseudônimo QUERYHANDLER *PQUERYHANDLER;
 
-  Tipo Estrutura provider_info {
+  Pseudônimo Estrutura provider_info {
     PQUERYHANDLER pi_R0_1val;
     PQUERYHANDLER pi_R0_allvals;
     PQUERYHANDLER pi_R3_1val;
@@ -90,16 +90,16 @@ Importe "C" {
     LPVOID pi_key_context;
   } REG_PROVIDER;
 
-  Tipo Estrutura provider_info *PPROVIDER;
+  Pseudônimo Estrutura provider_info *PPROVIDER;
 
-  Tipo Estrutura value_entA {
+  Pseudônimo Estrutura value_entA {
     LPSTR ve_valuename;
     DWORD ve_valuelen;
     DWORD_PTR ve_valueptr;
     DWORD ve_type;
   } VALENTA,*PVALENTA;
 
-  Tipo Estrutura value_entW {
+  Pseudônimo Estrutura value_entW {
     LPWSTR ve_valuename;
     DWORD ve_valuelen;
     DWORD_PTR ve_valueptr;
@@ -107,11 +107,11 @@ Importe "C" {
   } VALENTW,*PVALENTW;
 
 #SeDefinido UNICODE
-  Tipo VALENTW VALENT;
-  Tipo PVALENTW PVALENT;
+  Pseudônimo VALENTW VALENT;
+  Pseudônimo PVALENTW PVALENT;
 #Senão
-  Tipo VALENTA VALENT;
-  Tipo PVALENTA PVALENT;
+  Pseudônimo VALENTA VALENT;
+  Pseudônimo PVALENTA PVALENT;
 #FimSe
 #FimSe
 

@@ -7,7 +7,7 @@
 #Defina _WINNT_
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Inclua <ctype.h>
@@ -65,7 +65,7 @@ Importe "C" {
 #SeDefinido _WIN64
 #SeDefinido _AMD64_
 #Defina PROBE_ALIGNMENT(_s) TYPE_ALIGNMENT(DWORD)
-#SenãoSe Definido(_IA64_)
+#Exceto Definido(_IA64_)
 #Defina PROBE_ALIGNMENT(_s) (TYPE_ALIGNMENT(_s) > TYPE_ALIGNMENT(DWORD) ? TYPE_ALIGNMENT(_s) : TYPE_ALIGNMENT(DWORD))
 #Senão
 #Erro No Target Architecture
@@ -75,7 +75,7 @@ Importe "C" {
 #Defina PROBE_ALIGNMENT(_s) TYPE_ALIGNMENT(DWORD)
 #FimSe
 
-#Defina C_ASSERT(e) Tipo Caractere __C_ASSERT__[(e)?1:-1]
+#Defina C_ASSERT(e) Pseudônimo Caractere __C_ASSERT__[(e)?1:-1]
 
 #Inclua <basetsd.h>
 
@@ -126,7 +126,7 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido FORCEINLINE
-#Defina FORCEINLINE Estático __inline__
+#Defina FORCEINLINE Fixo __inline__
 #FimSe
 
 #SeNãoDefinido DECLSPEC_DEPRECATED
@@ -137,8 +137,8 @@ Importe "C" {
 #Defina DECLSPEC_DEPRECATED_DDK
 #Defina PRAGMA_DEPRECATED_DDK 0
 
-  Tipo Vazio *PVOID;
-  Tipo Vazio *PVOID64;
+  Pseudônimo Vazio *PVOID;
+  Pseudônimo Vazio *PVOID64;
 
 #Defina NTAPI __stdcall
 #Defina NTSYSAPI DECLSPEC_IMPORT
@@ -146,78 +146,78 @@ Importe "C" {
 
 #SeNãoDefinido VOID
 #Defina VOID Vazio
-  Tipo Caractere CHAR;
-  Tipo Curto SHORT;
-  Tipo Longo LONG;
+  Pseudônimo Caractere CHAR;
+  Pseudônimo Curto SHORT;
+  Pseudônimo Longo LONG;
 #FimSe
 
-  Tipo wchar_t WCHAR;
-  Tipo WCHAR *PWCHAR,*LPWCH,*PWCH;
-  Tipo CONST WCHAR *LPCWCH,*PCWCH;
-  Tipo WCHAR *NWPSTR,*LPWSTR,*PWSTR;
-  Tipo PWSTR *PZPWSTR;
-  Tipo CONST PWSTR *PCZPWSTR;
-  Tipo WCHAR UNALIGNED *LPUWSTR,*PUWSTR;
-  Tipo CONST WCHAR *LPCWSTR,*PCWSTR;
-  Tipo PCWSTR *PZPCWSTR;
-  Tipo CONST WCHAR UNALIGNED *LPCUWSTR,*PCUWSTR;
-  Tipo CHAR *PCHAR,*LPCH,*PCH;
-  Tipo CONST CHAR *LPCCH,*PCCH;
-  Tipo CHAR *NPSTR,*LPSTR,*PSTR;
-  Tipo PSTR *PZPSTR;
-  Tipo CONST PSTR *PCZPSTR;
-  Tipo CONST CHAR *LPCSTR,*PCSTR;
-  Tipo PCSTR *PZPCSTR;
+  Pseudônimo wchar_t WCHAR;
+  Pseudônimo WCHAR *PWCHAR,*LPWCH,*PWCH;
+  Pseudônimo CONST WCHAR *LPCWCH,*PCWCH;
+  Pseudônimo WCHAR *NWPSTR,*LPWSTR,*PWSTR;
+  Pseudônimo PWSTR *PZPWSTR;
+  Pseudônimo CONST PWSTR *PCZPWSTR;
+  Pseudônimo WCHAR UNALIGNED *LPUWSTR,*PUWSTR;
+  Pseudônimo CONST WCHAR *LPCWSTR,*PCWSTR;
+  Pseudônimo PCWSTR *PZPCWSTR;
+  Pseudônimo CONST WCHAR UNALIGNED *LPCUWSTR,*PCUWSTR;
+  Pseudônimo CHAR *PCHAR,*LPCH,*PCH;
+  Pseudônimo CONST CHAR *LPCCH,*PCCH;
+  Pseudônimo CHAR *NPSTR,*LPSTR,*PSTR;
+  Pseudônimo PSTR *PZPSTR;
+  Pseudônimo CONST PSTR *PCZPSTR;
+  Pseudônimo CONST CHAR *LPCSTR,*PCSTR;
+  Pseudônimo PCSTR *PZPCSTR;
 
 #SeDefinido UNICODE
 #SeNãoDefinido _TCHAR_DEFINED
 #Defina _TCHAR_DEFINED
-  Tipo WCHAR TCHAR,*PTCHAR;
-  Tipo WCHAR TBYTE ,*PTBYTE;
+  Pseudônimo WCHAR TCHAR,*PTCHAR;
+  Pseudônimo WCHAR TBYTE ,*PTBYTE;
 #FimSe
 
-  Tipo LPWSTR LPTCH,PTCH;
-  Tipo LPWSTR PTSTR,LPTSTR;
-  Tipo LPCWSTR PCTSTR,LPCTSTR;
-  Tipo LPUWSTR PUTSTR,LPUTSTR;
-  Tipo LPCUWSTR PCUTSTR,LPCUTSTR;
-  Tipo LPWSTR LP;
+  Pseudônimo LPWSTR LPTCH,PTCH;
+  Pseudônimo LPWSTR PTSTR,LPTSTR;
+  Pseudônimo LPCWSTR PCTSTR,LPCTSTR;
+  Pseudônimo LPUWSTR PUTSTR,LPUTSTR;
+  Pseudônimo LPCUWSTR PCUTSTR,LPCUTSTR;
+  Pseudônimo LPWSTR LP;
 #Defina __TEXT(quote) L##quote
 #Senão
 #SeNãoDefinido _TCHAR_DEFINED
 #Defina _TCHAR_DEFINED
-  Tipo Caractere TCHAR,*PTCHAR;
-  Tipo Natural Caractere TBYTE ,*PTBYTE;
+  Pseudônimo Caractere TCHAR,*PTCHAR;
+  Pseudônimo Natural Caractere TBYTE ,*PTBYTE;
 #FimSe
 
-  Tipo LPSTR LPTCH,PTCH;
-  Tipo LPSTR PTSTR,LPTSTR,PUTSTR,LPUTSTR;
-  Tipo LPCSTR PCTSTR,LPCTSTR,PCUTSTR,LPCUTSTR;
+  Pseudônimo LPSTR LPTCH,PTCH;
+  Pseudônimo LPSTR PTSTR,LPTSTR,PUTSTR,LPUTSTR;
+  Pseudônimo LPCSTR PCTSTR,LPCTSTR,PCUTSTR,LPCUTSTR;
 #Defina __TEXT(quote) quote
 #FimSe
 
 #Defina TEXT(quote) __TEXT(quote)
 
-  Tipo SHORT *PSHORT;
-  Tipo LONG *PLONG;
+  Pseudônimo SHORT *PSHORT;
+  Pseudônimo LONG *PLONG;
 
-  Tipo Vazio *HANDLE;
-#Defina DECLARE_HANDLE(name) Estrutura name##__ { Inteiro unused; }; Tipo Estrutura name##__ *name
-  Tipo HANDLE *PHANDLE;
+  Pseudônimo Vazio *HANDLE;
+#Defina DECLARE_HANDLE(name) Estrutura name##__ { Inteiro unused; }; Pseudônimo Estrutura name##__ *name
+  Pseudônimo HANDLE *PHANDLE;
 
-  Tipo BYTE FCHAR;
-  Tipo WORD FSHORT;
-  Tipo DWORD FLONG;
+  Pseudônimo BYTE FCHAR;
+  Pseudônimo WORD FSHORT;
+  Pseudônimo DWORD FLONG;
 
 #SeNãoDefinido _HRESULT_DEFINED
 #Defina _HRESULT_DEFINED
-  Tipo LONG HRESULT;
+  Pseudônimo LONG HRESULT;
 #FimSe
 
 #SeDefinido __cplusplus
-#Defina EXTERN_C Importe "C"
+#Defina EXTERN_C Externo "C"
 #Senão
-#Defina EXTERN_C Importe
+#Defina EXTERN_C Externo
 #FimSe
 
 #Defina STDMETHODCALLTYPE WINAPI
@@ -233,15 +233,15 @@ Importe "C" {
 #Defina STDMETHODIMPV HRESULT STDMETHODVCALLTYPE
 #Defina STDMETHODIMPV_(type) type STDMETHODVCALLTYPE
 
-  Tipo Caractere CCHAR;
+  Pseudônimo Caractere CCHAR;
 #SeNãoDefinido _LCID_DEFINED
 #Defina _LCID_DEFINED
-Tipo DWORD LCID;
+Pseudônimo DWORD LCID;
 #FimSe
-  Tipo PDWORD PLCID;
+  Pseudônimo PDWORD PLCID;
 #SeNãoDefinido _LANGID_DEFINED
 #Defina _LANGID_DEFINED
-  Tipo WORD LANGID;
+  Pseudônimo WORD LANGID;
 #FimSe
 #Defina APPLICATION_ERROR_MASK 0x20000000
 #Defina ERROR_SEVERITY_SUCCESS 0x00000000
@@ -252,31 +252,31 @@ Tipo DWORD LCID;
 #SeDefinido __ia64__
   __declspec(align(16))
 #FimSe
-    Tipo Estrutura _FLOAT128 {
+    Pseudônimo Estrutura _FLOAT128 {
       __int64 LowPart;
       __int64 HighPart;
   } FLOAT128;
 
-  Tipo FLOAT128 *PFLOAT128;
+  Pseudônimo FLOAT128 *PFLOAT128;
 
 #Defina _ULONGLONG_
 #Se((!(Definido(_X86_) && !Definido(__x86_64)) || (Definido(_INTEGRAL_MAX_BITS) && _INTEGRAL_MAX_BITS >= 64)))
-  Tipo __int64 LONGLONG;
-  Tipo Natural __int64 ULONGLONG;
+  Pseudônimo __int64 LONGLONG;
+  Pseudônimo Natural __int64 ULONGLONG;
 
 #Defina MAXLONGLONG (0x7fffffffffffffff)
 #Senão
 
-  Tipo Duplo LONGLONG;
-  Tipo Duplo ULONGLONG;
+  Pseudônimo Duplo LONGLONG;
+  Pseudônimo Duplo ULONGLONG;
 #FimSe
 
-  Tipo LONGLONG *PLONGLONG;
-  Tipo ULONGLONG *PULONGLONG;
+  Pseudônimo LONGLONG *PLONGLONG;
+  Pseudônimo ULONGLONG *PULONGLONG;
 
-  Tipo LONGLONG USN;
+  Pseudônimo LONGLONG USN;
 
-  Tipo União _LARGE_INTEGER {
+  Pseudônimo União _LARGE_INTEGER {
     Estrutura {
       DWORD LowPart;
       LONG HighPart;
@@ -288,9 +288,9 @@ Tipo DWORD LCID;
     LONGLONG QuadPart;
   } LARGE_INTEGER;
 
-  Tipo LARGE_INTEGER *PLARGE_INTEGER;
+  Pseudônimo LARGE_INTEGER *PLARGE_INTEGER;
 
-  Tipo União _ULARGE_INTEGER {
+  Pseudônimo União _ULARGE_INTEGER {
     Estrutura {
       DWORD LowPart;
       DWORD HighPart;
@@ -302,26 +302,26 @@ Tipo DWORD LCID;
     ULONGLONG QuadPart;
   } ULARGE_INTEGER;
 
-  Tipo ULARGE_INTEGER *PULARGE_INTEGER;
+  Pseudônimo ULARGE_INTEGER *PULARGE_INTEGER;
 
-  Tipo Estrutura _LUID {
+  Pseudônimo Estrutura _LUID {
     DWORD LowPart;
     LONG HighPart;
   } LUID,*PLUID;
 
 #Defina _DWORDLONG_
-  Tipo ULONGLONG DWORDLONG;
-  Tipo DWORDLONG *PDWORDLONG;
+  Pseudônimo ULONGLONG DWORDLONG;
+  Pseudônimo DWORDLONG *PDWORDLONG;
 
 #SeDefinido RC_INVOKED
 #Defina Int32x32To64(a,b) ((LONGLONG)((LONG)(a)) *(LONGLONG)((LONG)(b)))
 #Defina UInt32x32To64(a,b) ((ULONGLONG)((DWORD)(a)) *(ULONGLONG)((DWORD)(b)))
 #Defina Int64ShrlMod32(a,b) ((ULONGLONG)(a) >> (b))
-#SenãoSe (Definido(_X86_) && !Definido(__x86_64))
+#Exceto (Definido(_X86_) && !Definido(__x86_64))
 #Defina Int32x32To64(a,b) (LONGLONG)((LONGLONG)(LONG)(a) *(LONG)(b))
 #Defina UInt32x32To64(a,b) (ULONGLONG)((ULONGLONG)(DWORD)(a) *(DWORD)(b))
 #Defina Int64ShrlMod32(a,b) ((DWORDLONG)(a)>>(b))
-#SenãoSe Definido(__ia64__) || Definido(__x86_64)
+#Exceto Definido(__ia64__) || Definido(__x86_64)
 #Defina Int32x32To64(a,b) ((LONGLONG)((LONG)(a)) *(LONGLONG)((LONG)(b)))
 #Defina UInt32x32To64(a,b) ((ULONGLONG)((DWORD)(a)) *(ULONGLONG)((DWORD)(b)))
 #Defina Int64ShrlMod32(a,b) ((ULONGLONG)(a) >> (b))
@@ -333,7 +333,7 @@ Tipo DWORD LCID;
 #Defina Int64ShllMod32(a,b) ((ULONGLONG)(a) << (b))
 
 #SeDefinido __cplusplus
-  Importe "C" {
+  Externo "C" {
 #FimSe
 
 #SeDefinido __x86_64
@@ -369,36 +369,36 @@ Tipo DWORD LCID;
 
 #SeNãoDefinido _BOOLEAN_
 #Defina _BOOLEAN_
-  Tipo BYTE BOOLEAN;
+  Pseudônimo BYTE BOOLEAN;
 #FimSe
-  Tipo BOOLEAN *PBOOLEAN;
+  Pseudônimo BOOLEAN *PBOOLEAN;
 
-  Tipo Estrutura _LIST_ENTRY {
+  Pseudônimo Estrutura _LIST_ENTRY {
     Estrutura _LIST_ENTRY *Flink;
     Estrutura _LIST_ENTRY *Blink;
   } LIST_ENTRY,*PLIST_ENTRY,*RESTRICTED_POINTER PRLIST_ENTRY;
 
-  Tipo Estrutura _SINGLE_LIST_ENTRY {
+  Pseudônimo Estrutura _SINGLE_LIST_ENTRY {
     Estrutura _SINGLE_LIST_ENTRY *Next;
   } SINGLE_LIST_ENTRY,*PSINGLE_LIST_ENTRY;
 
-  Tipo Estrutura LIST_ENTRY32 {
+  Pseudônimo Estrutura LIST_ENTRY32 {
     DWORD Flink;
     DWORD Blink;
   } LIST_ENTRY32;
-  Tipo LIST_ENTRY32 *PLIST_ENTRY32;
+  Pseudônimo LIST_ENTRY32 *PLIST_ENTRY32;
 
-  Tipo Estrutura LIST_ENTRY64 {
+  Pseudônimo Estrutura LIST_ENTRY64 {
     ULONGLONG Flink;
     ULONGLONG Blink;
   } LIST_ENTRY64;
-  Tipo LIST_ENTRY64 *PLIST_ENTRY64;
+  Pseudônimo LIST_ENTRY64 *PLIST_ENTRY64;
 
 #Inclua <guiddef.h>
 
 #SeNãoDefinido __OBJECTID_DEFINED
 #Defina __OBJECTID_DEFINED
-  Tipo Estrutura _OBJECTID {
+  Pseudônimo Estrutura _OBJECTID {
     GUID Lineage;
     DWORD Uniquifier;
   } OBJECTID;
@@ -826,15 +826,15 @@ Tipo DWORD LCID;
 #Defina MAXIMUM_WAIT_OBJECTS 64
 #Defina MAXIMUM_SUSPEND_COUNT MAXCHAR
 
-  Tipo ULONG_PTR KSPIN_LOCK;
-  Tipo KSPIN_LOCK *PKSPIN_LOCK;
+  Pseudônimo ULONG_PTR KSPIN_LOCK;
+  Pseudônimo KSPIN_LOCK *PKSPIN_LOCK;
 
 #SeDefinido _AMD64_
 
 #Se Definido(__x86_64) && !Definido(RC_INVOKED)
 
 #SeDefinido __cplusplus
-  Importe "C" {
+  Externo "C" {
 #FimSe
 
 #Defina BitTest _bittest
@@ -850,94 +850,94 @@ Tipo DWORD LCID;
 #Defina InterlockedBitTestAndSet64 _interlockedbittestandset64
 #Defina InterlockedBitTestAndReset64 _interlockedbittestandreset64
 
-    __CRT_INLINE BOOLEAN _bittest(LONG Constante *Base,LONG Offset) {
+    __CRT_INLINE BOOLEAN _bittest(LONG Imutável *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandcomplement(LONG *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btcl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN InterlockedBitTestAndComplement(LONG *Base,LONG Bit) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btcl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btsl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandreset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btrl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btsl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandreset(LONG *Base,LONG Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btrl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
-    __CRT_INLINE BOOLEAN _bittest64(LONG64 Constante *Base,LONG64 Offset) {
+    __CRT_INLINE BOOLEAN _bittest64(LONG64 Imutável *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandcomplement64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btcq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btsq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _bittestandreset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("btrq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btsq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
     __CRT_INLINE BOOLEAN _interlockedbittestandreset64(LONG64 *Base,LONG64 Offset) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btrq %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo Longo *) Base))
 	:"Ir" (Offset));
       Retorne (BOOLEAN) (old!=0);
     }
@@ -947,19 +947,19 @@ Tipo DWORD LCID;
 #Defina BitScanReverse64 _BitScanReverse64
 
     __CRT_INLINE BOOLEAN _BitScanForward(DWORD *Index,DWORD Mask) {
-      __asm__ __volatile__("bsfl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
+      __asm__ __volatile__("bsfl %1,%0" : "=r" (Mask),"=m" ((*(Instável Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanReverse(DWORD *Index,DWORD Mask) {
-      __asm__ __volatile__("bsrl %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo *)Index)));
+      __asm__ __volatile__("bsrl %1,%0" : "=r" (Mask),"=m" ((*(Instável Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanForward64(DWORD *Index,DWORD64 Mask) {
-      __asm__ __volatile__("bsfq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
+      __asm__ __volatile__("bsfq %1,%0" : "=r" (Mask),"=m" ((*(Instável Longo Longo *)Index)));
       Retorne Mask!=0;
     }
     __CRT_INLINE BOOLEAN _BitScanReverse64(DWORD *Index,DWORD64 Mask) {
-      __asm__ __volatile__("bsrq %1,%0" : "=r" (Mask),"=m" ((*(Volátil Longo Longo *)Index)));
+      __asm__ __volatile__("bsrq %1,%0" : "=r" (Mask),"=m" ((*(Instável Longo Longo *)Index)));
       Retorne Mask!=0;
     }
 
@@ -1007,7 +1007,7 @@ Tipo DWORD LCID;
 #Defina InterlockedIncrementSizeT(a) InterlockedIncrement64((LONG64 *)a)
 #Defina InterlockedDecrementSizeT(a) InterlockedDecrement64((LONG64 *)a)
 
-    __CRT_INLINE SHORT InterlockedIncrement16(SHORT Volátil *Addend) {
+    __CRT_INLINE SHORT InterlockedIncrement16(SHORT Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1016,7 +1016,7 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE SHORT InterlockedDecrement16(SHORT Volátil *Addend) {
+    __CRT_INLINE SHORT InterlockedDecrement16(SHORT Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1025,7 +1025,7 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE SHORT InterlockedCompareExchange16(SHORT Volátil *Destination,SHORT ExChange,SHORT Comperand) {
+    __CRT_INLINE SHORT InterlockedCompareExchange16(SHORT Instável *Destination,SHORT ExChange,SHORT Comperand) {
       SHORT prev;
       __asm__ __volatile__("lock ; cmpxchgw %w1,%2"
 	:"=a"(prev)
@@ -1033,39 +1033,39 @@ Tipo DWORD LCID;
 	: "memory");
       Retorne prev;
     }
-    __CRT_INLINE LONG InterlockedAnd(LONG Volátil *Destination,LONG Value) {
+    __CRT_INLINE LONG InterlockedAnd(LONG Instável *Destination,LONG Value) {
       __asm__ __volatile__("lock ; andl %0,%1"
 	: :"r"(Value),"m"(*Destination)
 	: "memory");
       Retorne *Destination;
     }
-    __CRT_INLINE LONG InterlockedOr(LONG Volátil *Destination,LONG Value) {
+    __CRT_INLINE LONG InterlockedOr(LONG Instável *Destination,LONG Value) {
       __asm__ __volatile__("lock ; orl %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
-    __CRT_INLINE LONG InterlockedXor(LONG Volátil *Destination,LONG Value) {
+    __CRT_INLINE LONG InterlockedXor(LONG Instável *Destination,LONG Value) {
       __asm__ __volatile__("lock ; xorl %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
     //		$$$$
-    __CRT_INLINE LONG64 InterlockedAnd64(LONG64 Volátil *Destination,LONG64 Value) {
+    __CRT_INLINE LONG64 InterlockedAnd64(LONG64 Instável *Destination,LONG64 Value) {
       __asm__ __volatile__("lock ; andq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
-    __CRT_INLINE LONG64 InterlockedOr64(LONG64 Volátil *Destination,LONG64 Value) {
+    __CRT_INLINE LONG64 InterlockedOr64(LONG64 Instável *Destination,LONG64 Value) {
       __asm__ __volatile__("lock ; orq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
-    __CRT_INLINE LONG64 InterlockedXor64(LONG64 Volátil *Destination,LONG64 Value) {
+    __CRT_INLINE LONG64 InterlockedXor64(LONG64 Instável *Destination,LONG64 Value) {
       __asm__ __volatile__("lock ; xorq %0,%1"
 	: : "r"(Value),"m"(*Destination) : "memory");
       Retorne *Destination;
     }
-    __CRT_INLINE LONG InterlockedIncrement(LONG Volátil *Addend) {
+    __CRT_INLINE LONG InterlockedIncrement(LONG Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1074,7 +1074,7 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE LONG InterlockedDecrement(LONG Volátil *Addend) {
+    __CRT_INLINE LONG InterlockedDecrement(LONG Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1083,24 +1083,24 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE LONG InterlockedExchange(LONG Volátil *Target,LONG Value) {
+    __CRT_INLINE LONG InterlockedExchange(LONG Instável *Target,LONG Value) {
       __asm__ __volatile("lock ; xchgl %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
 	: "memory");
       Retorne Value;
     }
-    LONG InterlockedExchangeAdd(LONG Volátil *Addend,LONG Value);
+    LONG InterlockedExchangeAdd(LONG Instável *Addend,LONG Value);
 
 #SeNãoDefinido _X86AMD64_
-    __CRT_INLINE LONG InterlockedAdd(LONG Volátil *Addend,LONG Value) { Retorne InterlockedExchangeAdd(Addend,Value) + Value; }
+    __CRT_INLINE LONG InterlockedAdd(LONG Instável *Addend,LONG Value) { Retorne InterlockedExchangeAdd(Addend,Value) + Value; }
 #FimSe
-    __CRT_INLINE LONG InterlockedCompareExchange(LONG Volátil *Destination,LONG ExChange,LONG Comperand) {
+    __CRT_INLINE LONG InterlockedCompareExchange(LONG Instável *Destination,LONG ExChange,LONG Comperand) {
       LONG prev;
       __asm__ __volatile__("lock ; cmpxchgl %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
-    __CRT_INLINE LONG64 InterlockedIncrement64(LONG64 Volátil *Addend) {
+    __CRT_INLINE LONG64 InterlockedIncrement64(LONG64 Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1109,7 +1109,7 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE LONG64 InterlockedDecrement64(LONG64 Volátil *Addend) {
+    __CRT_INLINE LONG64 InterlockedDecrement64(LONG64 Instável *Addend) {
       Natural Caractere c;
       Natural Caractere s;
       __asm__ __volatile__(
@@ -1118,30 +1118,30 @@ Tipo DWORD LCID;
 	:"m" (*Addend) : "memory");
       Retorne (c != 0 ? 0 : (s != 0 ? -1 : 1));
     }
-    __CRT_INLINE LONG64 InterlockedExchange64(LONG64 Volátil *Target,LONG64 Value) {
+    __CRT_INLINE LONG64 InterlockedExchange64(LONG64 Instável *Target,LONG64 Value) {
       __asm__ __volatile("lock ; xchgq %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
 	: "memory");
       Retorne Value;
     }
-    LONG64 InterlockedExchangeAdd64(LONG64 Volátil *Addend,LONG64 Value);
+    LONG64 InterlockedExchangeAdd64(LONG64 Instável *Addend,LONG64 Value);
 
 #SeNãoDefinido _X86AMD64_
-    __CRT_INLINE LONG64 InterlockedAdd64(LONG64 Volátil *Addend,LONG64 Value) { Retorne InterlockedExchangeAdd64(Addend,Value) + Value; }
+    __CRT_INLINE LONG64 InterlockedAdd64(LONG64 Instável *Addend,LONG64 Value) { Retorne InterlockedExchangeAdd64(Addend,Value) + Value; }
 #FimSe
 
-    __CRT_INLINE LONG64 InterlockedCompareExchange64(LONG64 Volátil *Destination,LONG64 ExChange,LONG64 Comperand) {
+    __CRT_INLINE LONG64 InterlockedCompareExchange64(LONG64 Instável *Destination,LONG64 ExChange,LONG64 Comperand) {
       LONG64 prev;
       __asm__ __volatile__("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
-    __CRT_INLINE PVOID InterlockedCompareExchangePointer(PVOID Volátil *Destination,PVOID ExChange,PVOID Comperand) {
+    __CRT_INLINE PVOID InterlockedCompareExchangePointer(PVOID Instável *Destination,PVOID ExChange,PVOID Comperand) {
       PVOID prev;
       __asm__ __volatile__("lock ; cmpxchgq %1,%2" : "=a" (prev) : "q" (ExChange),"m" (*Destination), "0" (Comperand) : "memory");
       Retorne prev;
     }
-    __CRT_INLINE PVOID InterlockedExchangePointer(PVOID Volátil *Target,PVOID Value) {
+    __CRT_INLINE PVOID InterlockedExchangePointer(PVOID Instável *Target,PVOID Value) {
       __asm__ __volatile("lock ; xchgq %0,%1"
 	: "=r"(Value)
 	: "m"(*Target),"0"(Value)
@@ -1159,7 +1159,7 @@ Tipo DWORD LCID;
 #Defina StoreFence _mm_sfence
 
     VOID __faststorefence(VOID);
-    VOID _m_prefetchw(Volátil CONST VOID *Source);
+    VOID _m_prefetchw(Instável CONST VOID *Source);
 
 //!__TINYC__: #Inclua <intrin.h>
 
@@ -1191,10 +1191,10 @@ Tipo DWORD LCID;
 #Defina ReadTimeStampCounter() __rdtsc()
 
     DWORD64 __rdtsc(VOID);
-    VOID __movsb(PBYTE Destination,BYTE Constante *Source,SIZE_T Count);
-    VOID __movsw(PWORD Destination,WORD Constante *Source,SIZE_T Count);
-    VOID __movsd(PDWORD Destination,DWORD Constante *Source,SIZE_T Count);
-    VOID __movsq(PDWORD64 Destination,DWORD64 Constante *Source,SIZE_T Count);
+    VOID __movsb(PBYTE Destination,BYTE Imutável *Source,SIZE_T Count);
+    VOID __movsw(PWORD Destination,WORD Imutável *Source,SIZE_T Count);
+    VOID __movsd(PDWORD Destination,DWORD Imutável *Source,SIZE_T Count);
+    VOID __movsq(PDWORD64 Destination,DWORD64 Imutável *Source,SIZE_T Count);
     VOID __stosb(PBYTE Destination,BYTE Value,SIZE_T Count);
     VOID __stosw(PWORD Destination,WORD Value,SIZE_T Count);
     VOID __stosd(PDWORD Destination,DWORD Value,SIZE_T Count);
@@ -1240,43 +1240,43 @@ Tipo DWORD LCID;
 
     __CRT_INLINE BYTE __readgsbyte(DWORD Offset) {
       BYTE ret;
-      __asm__ Volátil ("movb	%%gs:%1,%0"
-	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movb	%%gs:%1,%0"
+	: "=r" (ret) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE WORD __readgsword(DWORD Offset) {
       WORD ret;
-      __asm__ Volátil ("movw	%%gs:%1,%0"
-	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movw	%%gs:%1,%0"
+	: "=r" (ret) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE DWORD __readgsdword(DWORD Offset) {
       DWORD ret;
-      __asm__ Volátil ("movl	%%gs:%1,%0"
-	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movl	%%gs:%1,%0"
+	: "=r" (ret) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
       Retorne ret;
     }
     __CRT_INLINE DWORD64 __readgsqword(DWORD Offset) {
       Vazio *ret;
-      __asm__ Volátil ("movq	%%gs:%1,%0"
-	: "=r" (ret) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movq	%%gs:%1,%0"
+	: "=r" (ret) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
       Retorne (DWORD64) ret;
     }
     __CRT_INLINE VOID __writegsbyte(DWORD Offset,BYTE Data) {
-      __asm__ Volátil ("movb	%0,%%gs:%1"
-	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movb	%0,%%gs:%1"
+	: "=r" (Data) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsword(DWORD Offset,WORD Data) {
-      __asm__ Volátil ("movw	%0,%%gs:%1"
-	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movw	%0,%%gs:%1"
+	: "=r" (Data) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsdword(DWORD Offset,DWORD Data) {
-      __asm__ Volátil ("movl	%0,%%gs:%1"
-	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movl	%0,%%gs:%1"
+	: "=r" (Data) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
     }
     __CRT_INLINE VOID __writegsqword(DWORD Offset,DWORD64 Data) {
-      __asm__ Volátil ("movq	%0,%%gs:%1"
-	: "=r" (Data) ,"=m" ((*(Volátil Longo *) (DWORD64) Offset)));
+      __asm__ Instável ("movq	%0,%%gs:%1"
+	: "=r" (Data) ,"=m" ((*(Instável Longo *) (DWORD64) Offset)));
     }
 
 #SeDefinido __cplusplus
@@ -1310,12 +1310,12 @@ Tipo DWORD LCID;
 #Defina INITIAL_MXCSR 0x1f80
 #Defina INITIAL_FPCSR 0x027f
 
-  Tipo DECLSPEC_ALIGN(16) Estrutura _M128A {
+  Pseudônimo DECLSPEC_ALIGN(16) Estrutura _M128A {
     ULONGLONG Low;
     LONGLONG High;
   } M128A,*PM128A;
 
-  Tipo Estrutura _XMM_SAVE_AREA32 {
+  Pseudônimo Estrutura _XMM_SAVE_AREA32 {
     WORD ControlWord;
     WORD StatusWord;
     BYTE TagWord;
@@ -1336,7 +1336,7 @@ Tipo DWORD LCID;
 
 #Defina LEGACY_SAVE_AREA_LENGTH Meça(XMM_SAVE_AREA32)
 
-  Tipo DECLSPEC_ALIGN(16) Estrutura _CONTEXT {
+  Pseudônimo DECLSPEC_ALIGN(16) Estrutura _CONTEXT {
     DWORD64 P1Home;
     DWORD64 P2Home;
     DWORD64 P3Home;
@@ -1410,14 +1410,14 @@ Tipo DWORD LCID;
 
 #Defina RUNTIME_FUNCTION_INDIRECT 0x1
 
-  Tipo Estrutura _RUNTIME_FUNCTION {
+  Pseudônimo Estrutura _RUNTIME_FUNCTION {
     DWORD BeginAddress;
     DWORD EndAddress;
     DWORD UnwindData;
   } RUNTIME_FUNCTION,*PRUNTIME_FUNCTION;
 
-  Tipo PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD64 ControlPc,PVOID Context);
-  Tipo DWORD (*POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK)(HANDLE Process,PVOID TableAddress,PDWORD Entries,PRUNTIME_FUNCTION *Functions);
+  Pseudônimo PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD64 ControlPc,PVOID Context);
+  Pseudônimo DWORD (*POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK)(HANDLE Process,PVOID TableAddress,PDWORD Entries,PRUNTIME_FUNCTION *Functions);
 
 #Defina OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME "OutOfProcessFunctionTableCallback"
 
@@ -1430,13 +1430,13 @@ Tipo DWORD LCID;
 #SeDefinido I_X86_
 #Se(Definido(_X86_) && !Definido(__x86_64)) && !Definido(RC_INVOKED)
 #SeDefinido __cplusplus
-  Importe "C" {
+  Externo "C" {
 #FimSe
 
     __CRT_INLINE BOOLEAN InterlockedBitTestAndSet(LONG *Base,LONG Bit) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btsl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
     }
@@ -1444,7 +1444,7 @@ Tipo DWORD LCID;
     __CRT_INLINE BOOLEAN InterlockedBitTestAndReset(LONG *Base,LONG Bit) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btrl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
     }
@@ -1452,7 +1452,7 @@ Tipo DWORD LCID;
     __CRT_INLINE BOOLEAN InterlockedBitTestAndComplement(LONG *Base,LONG Bit) {
       Inteiro old = 0;
       __asm__ __volatile__("lock ; btcl %2,%1\n\tsbbl %0,%0 "
-	:"=r" (old),"=m" ((*(Volátil Longo *) Base))
+	:"=r" (old),"=m" ((*(Instável Longo *) Base))
 	:"Ir" (Bit));
       Retorne (BOOLEAN) (old!=0);
     }
@@ -1492,7 +1492,7 @@ Tipo DWORD LCID;
   __CRT_INLINE PVOID GetCurrentFiber(Vazio)
   {
     Vazio *ret;
-    __asm__ Volátil ("movl	%%fs:0x10,%0"
+    __asm__ Instável ("movl	%%fs:0x10,%0"
 	: "=r" (ret));
     Retorne ret;
   }
@@ -1500,7 +1500,7 @@ Tipo DWORD LCID;
   __CRT_INLINE PVOID GetFiberData(Vazio)
   {
     Vazio *ret;
-    __asm__ Volátil ("movl	%%fs:0x10,%0\n"
+    __asm__ Instável ("movl	%%fs:0x10,%0\n"
 	"movl	(%0),%0"
 	: "=r" (ret));
     Retorne ret;
@@ -1532,7 +1532,7 @@ Tipo DWORD LCID;
 
 #Defina MAXIMUM_SUPPORTED_EXTENSION 512
 
-    Tipo Estrutura _FLOATING_SAVE_AREA {
+    Pseudônimo Estrutura _FLOATING_SAVE_AREA {
       DWORD ControlWord;
       DWORD StatusWord;
       DWORD TagWord;
@@ -1544,9 +1544,9 @@ Tipo DWORD LCID;
       DWORD Cr0NpxState;
     } FLOATING_SAVE_AREA;
 
-    Tipo FLOATING_SAVE_AREA *PFLOATING_SAVE_AREA;
+    Pseudônimo FLOATING_SAVE_AREA *PFLOATING_SAVE_AREA;
 
-    Tipo Estrutura _CONTEXT {
+    Pseudônimo Estrutura _CONTEXT {
       DWORD ContextFlags;
       DWORD Dr0;
       DWORD Dr1;
@@ -1575,13 +1575,13 @@ Tipo DWORD LCID;
       BYTE ExtendedRegisters[MAXIMUM_SUPPORTED_EXTENSION];
     } CONTEXT;
 
-    Tipo CONTEXT *PCONTEXT;
+    Pseudônimo CONTEXT *PCONTEXT;
 #FimSe
 
 #SeNãoDefinido _LDT_ENTRY_DEFINED
 #Defina _LDT_ENTRY_DEFINED
 
-    Tipo Estrutura _LDT_ENTRY {
+    Pseudônimo Estrutura _LDT_ENTRY {
       WORD LimitLow;
       WORD BaseLow;
       União {
@@ -1610,7 +1610,7 @@ Tipo DWORD LCID;
 #Se Definido(__ia64__) && !Definido(RC_INVOKED)
 
 #SeDefinido __cplusplus
-    Importe "C" {
+    Externo "C" {
 #FimSe
 
       BOOLEAN BitScanForward64(DWORD *Index,DWORD64 Mask);
@@ -1631,7 +1631,7 @@ Tipo DWORD LCID;
 #Defina GetFiberData() (*(PVOID *)(GetCurrentFiber()))
 
 #SeDefinido __cplusplus
-    Importe "C" {
+    Externo "C" {
 #FimSe
 
       Vazio __break(Inteiro);
@@ -1695,7 +1695,7 @@ Tipo DWORD LCID;
 #Defina CONTEXT_EXCEPTION_REPORTING 0x80000000
 #FimSe
 
-    Tipo Estrutura _CONTEXT {
+    Pseudônimo Estrutura _CONTEXT {
       DWORD ContextFlags;
       DWORD Fill1[3];
       ULONGLONG DbI0;
@@ -1906,19 +1906,19 @@ Tipo DWORD LCID;
       ULONGLONG UNUSEDPACK;
     } CONTEXT,*PCONTEXT;
 
-    Tipo Estrutura _PLABEL_DESCRIPTOR {
+    Pseudônimo Estrutura _PLABEL_DESCRIPTOR {
       ULONGLONG EntryPoint;
       ULONGLONG GlobalPointer;
     } PLABEL_DESCRIPTOR,*PPLABEL_DESCRIPTOR;
 
-    Tipo Estrutura _RUNTIME_FUNCTION {
+    Pseudônimo Estrutura _RUNTIME_FUNCTION {
       DWORD BeginAddress;
       DWORD EndAddress;
       DWORD UnwindInfoAddress;
     } RUNTIME_FUNCTION,*PRUNTIME_FUNCTION;
 
-    Tipo PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD64 ControlPc,PVOID Context);
-    Tipo DWORD (*POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK)(HANDLE Process,PVOID TableAddress,PDWORD Entries,PRUNTIME_FUNCTION *Functions);
+    Pseudônimo PRUNTIME_FUNCTION (*PGET_RUNTIME_FUNCTION_CALLBACK)(DWORD64 ControlPc,PVOID Context);
+    Pseudônimo DWORD (*POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK)(HANDLE Process,PVOID TableAddress,PDWORD Entries,PRUNTIME_FUNCTION *Functions);
 
 #Defina OUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK_EXPORT_NAME "OutOfProcessFunctionTableCallback"
 
@@ -1932,7 +1932,7 @@ Tipo DWORD LCID;
 #Defina EXCEPTION_NONCONTINUABLE 0x1
 #Defina EXCEPTION_MAXIMUM_PARAMETERS 15
 
-    Tipo Estrutura _EXCEPTION_RECORD {
+    Pseudônimo Estrutura _EXCEPTION_RECORD {
       DWORD ExceptionCode;
       DWORD ExceptionFlags;
       Estrutura _EXCEPTION_RECORD *ExceptionRecord;
@@ -1941,9 +1941,9 @@ Tipo DWORD LCID;
       ULONG_PTR ExceptionInformation[EXCEPTION_MAXIMUM_PARAMETERS];
     } EXCEPTION_RECORD;
 
-    Tipo EXCEPTION_RECORD *PEXCEPTION_RECORD;
+    Pseudônimo EXCEPTION_RECORD *PEXCEPTION_RECORD;
 
-    Tipo Estrutura _EXCEPTION_RECORD32 {
+    Pseudônimo Estrutura _EXCEPTION_RECORD32 {
       DWORD ExceptionCode;
       DWORD ExceptionFlags;
       DWORD ExceptionRecord;
@@ -1952,7 +1952,7 @@ Tipo DWORD LCID;
       DWORD ExceptionInformation[EXCEPTION_MAXIMUM_PARAMETERS];
     } EXCEPTION_RECORD32,*PEXCEPTION_RECORD32;
 
-    Tipo Estrutura _EXCEPTION_RECORD64 {
+    Pseudônimo Estrutura _EXCEPTION_RECORD64 {
       DWORD ExceptionCode;
       DWORD ExceptionFlags;
       DWORD64 ExceptionRecord;
@@ -1962,24 +1962,24 @@ Tipo DWORD LCID;
       DWORD64 ExceptionInformation[EXCEPTION_MAXIMUM_PARAMETERS];
     } EXCEPTION_RECORD64,*PEXCEPTION_RECORD64;
 
-    Tipo Estrutura _EXCEPTION_POINTERS {
+    Pseudônimo Estrutura _EXCEPTION_POINTERS {
       PEXCEPTION_RECORD ExceptionRecord;
       PCONTEXT ContextRecord;
     } EXCEPTION_POINTERS,*PEXCEPTION_POINTERS;
 
 #SeDefinido __x86_64
 
-    Tipo EXCEPTION_DISPOSITION NTAPI EXCEPTION_ROUTINE (Estrutura _EXCEPTION_RECORD *ExceptionRecord, PVOID EstablisherFrame, Estrutura _CONTEXT *ContextRecord, PVOID DispatcherContext);
+    Pseudônimo EXCEPTION_DISPOSITION NTAPI EXCEPTION_ROUTINE (Estrutura _EXCEPTION_RECORD *ExceptionRecord, PVOID EstablisherFrame, Estrutura _CONTEXT *ContextRecord, PVOID DispatcherContext);
 #SeNãoDefinido __PEXCEPTION_ROUTINE_DEFINED
 #Defina __PEXCEPTION_ROUTINE_DEFINED
-    Tipo EXCEPTION_ROUTINE *PEXCEPTION_ROUTINE;
+    Pseudônimo EXCEPTION_ROUTINE *PEXCEPTION_ROUTINE;
 #FimSe
 
     /* http://msdn.microsoft.com/en-us/library/ms680597(VS.85).aspx */
 
 #Defina UNWIND_HISTORY_TABLE_SIZE 12
 
-  Tipo Estrutura _UNWIND_HISTORY_TABLE_ENTRY {
+  Pseudônimo Estrutura _UNWIND_HISTORY_TABLE_ENTRY {
     ULONG64 ImageBase;
     PRUNTIME_FUNCTION FunctionEntry;
   } UNWIND_HISTORY_TABLE_ENTRY, *PUNWIND_HISTORY_TABLE_ENTRY;
@@ -1988,7 +1988,7 @@ Tipo DWORD LCID;
 #Defina UNWIND_HISTORY_TABLE_GLOBAL  1
 #Defina UNWIND_HISTORY_TABLE_LOCAL   2
 
-  Tipo Estrutura _UNWIND_HISTORY_TABLE {
+  Pseudônimo Estrutura _UNWIND_HISTORY_TABLE {
     ULONG Count;
     UCHAR Search;
     ULONG64 LowAddress;
@@ -1999,8 +1999,8 @@ Tipo DWORD LCID;
   /* http://msdn.microsoft.com/en-us/library/b6sf5kbd(VS.80).aspx */
 
   Estrutura _DISPATCHER_CONTEXT;
-  Tipo Estrutura _DISPATCHER_CONTEXT DISPATCHER_CONTEXT;
-  Tipo Estrutura _DISPATCHER_CONTEXT *PDISPATCHER_CONTEXT;
+  Pseudônimo Estrutura _DISPATCHER_CONTEXT DISPATCHER_CONTEXT;
+  Pseudônimo Estrutura _DISPATCHER_CONTEXT *PDISPATCHER_CONTEXT;
 
   Estrutura _DISPATCHER_CONTEXT {
     ULONG64 ControlPc;
@@ -2019,19 +2019,19 @@ Tipo DWORD LCID;
 
   /* http://msdn.microsoft.com/en-us/library/ms680617(VS.85).aspx */
 
-  Tipo Estrutura _KNONVOLATILE_CONTEXT_POINTERS
+  Pseudônimo Estrutura _KNONVOLATILE_CONTEXT_POINTERS
   {
     PM128A FloatingContext[16];
     PULONG64 IntegerContext[16];
   } KNONVOLATILE_CONTEXT_POINTERS, *PKNONVOLATILE_CONTEXT_POINTERS;
 #FimSe /* Definido(__x86_64) */
 
-    Tipo PVOID PACCESS_TOKEN;
-    Tipo PVOID PSECURITY_DESCRIPTOR;
-    Tipo PVOID PSID;
+    Pseudônimo PVOID PACCESS_TOKEN;
+    Pseudônimo PVOID PSECURITY_DESCRIPTOR;
+    Pseudônimo PVOID PSID;
 
-    Tipo DWORD ACCESS_MASK;
-    Tipo ACCESS_MASK *PACCESS_MASK;
+    Pseudônimo DWORD ACCESS_MASK;
+    Pseudônimo ACCESS_MASK *PACCESS_MASK;
 
 #Defina DELETE (0x00010000L)
 #Defina READ_CONTROL (0x00020000L)
@@ -2056,35 +2056,35 @@ Tipo DWORD LCID;
 #Defina GENERIC_EXECUTE (0x20000000L)
 #Defina GENERIC_ALL (0x10000000L)
 
-    Tipo Estrutura _GENERIC_MAPPING {
+    Pseudônimo Estrutura _GENERIC_MAPPING {
       ACCESS_MASK GenericRead;
       ACCESS_MASK GenericWrite;
       ACCESS_MASK GenericExecute;
       ACCESS_MASK GenericAll;
     } GENERIC_MAPPING;
-    Tipo GENERIC_MAPPING *PGENERIC_MAPPING;
+    Pseudônimo GENERIC_MAPPING *PGENERIC_MAPPING;
 
 #Inclua <pshpack4.h>
 
-    Tipo Estrutura _LUID_AND_ATTRIBUTES {
+    Pseudônimo Estrutura _LUID_AND_ATTRIBUTES {
       LUID Luid;
       DWORD Attributes;
     } LUID_AND_ATTRIBUTES,*PLUID_AND_ATTRIBUTES;
-    Tipo LUID_AND_ATTRIBUTES LUID_AND_ATTRIBUTES_ARRAY[ANYSIZE_ARRAY];
-    Tipo LUID_AND_ATTRIBUTES_ARRAY *PLUID_AND_ATTRIBUTES_ARRAY;
+    Pseudônimo LUID_AND_ATTRIBUTES LUID_AND_ATTRIBUTES_ARRAY[ANYSIZE_ARRAY];
+    Pseudônimo LUID_AND_ATTRIBUTES_ARRAY *PLUID_AND_ATTRIBUTES_ARRAY;
 
 #Inclua <poppack.h>
 
 #SeNãoDefinido SID_IDENTIFIER_AUTHORITY_DEFINED
 #Defina SID_IDENTIFIER_AUTHORITY_DEFINED
-    Tipo Estrutura _SID_IDENTIFIER_AUTHORITY {
+    Pseudônimo Estrutura _SID_IDENTIFIER_AUTHORITY {
       BYTE Value[6];
     } SID_IDENTIFIER_AUTHORITY,*PSID_IDENTIFIER_AUTHORITY;
 #FimSe
 
 #SeNãoDefinido SID_DEFINED
 #Defina SID_DEFINED
-    Tipo Estrutura _SID {
+    Pseudônimo Estrutura _SID {
       BYTE Revision;
       BYTE SubAuthorityCount;
       SID_IDENTIFIER_AUTHORITY IdentifierAuthority;
@@ -2098,17 +2098,17 @@ Tipo DWORD LCID;
 
 #Defina SECURITY_MAX_SID_SIZE (Meça(SID) - Meça(DWORD) + (SID_MAX_SUB_AUTHORITIES *Meça(DWORD)))
 
-    Tipo Enumeração _SID_NAME_USE {
+    Pseudônimo Enumeração _SID_NAME_USE {
       SidTypeUser = 1,SidTypeGroup,SidTypeDomain,SidTypeAlias,SidTypeWellKnownGroup,SidTypeDeletedAccount,SidTypeInvalid,SidTypeUnknown,SidTypeComputer
     } SID_NAME_USE,*PSID_NAME_USE;
 
-    Tipo Estrutura _SID_AND_ATTRIBUTES {
+    Pseudônimo Estrutura _SID_AND_ATTRIBUTES {
       PSID Sid;
       DWORD Attributes;
     } SID_AND_ATTRIBUTES,*PSID_AND_ATTRIBUTES;
 
-    Tipo SID_AND_ATTRIBUTES SID_AND_ATTRIBUTES_ARRAY[ANYSIZE_ARRAY];
-    Tipo SID_AND_ATTRIBUTES_ARRAY *PSID_AND_ATTRIBUTES_ARRAY;
+    Pseudônimo SID_AND_ATTRIBUTES SID_AND_ATTRIBUTES_ARRAY[ANYSIZE_ARRAY];
+    Pseudônimo SID_AND_ATTRIBUTES_ARRAY *PSID_AND_ATTRIBUTES_ARRAY;
 
 #Defina SECURITY_NULL_SID_AUTHORITY {0,0,0,0,0,0}
 #Defina SECURITY_WORLD_SID_AUTHORITY {0,0,0,0,0,1}
@@ -2236,7 +2236,7 @@ Tipo DWORD LCID;
 
 #Defina MANDATORY_LEVEL_TO_MANDATORY_RID(IL) (IL * 0x1000)
 
-    Tipo Enumeração {
+    Pseudônimo Enumeração {
       WinNullSid = 0,WinWorldSid = 1,WinLocalSid = 2,WinCreatorOwnerSid = 3,WinCreatorGroupSid = 4,WinCreatorOwnerServerSid = 5,WinCreatorGroupServerSid = 6,WinNtAuthoritySid = 7,WinDialupSid = 8,WinNetworkSid = 9,WinBatchSid = 10,WinInteractiveSid = 11,WinServiceSid = 12,WinAnonymousSid = 13,WinProxySid = 14,WinEnterpriseControllersSid = 15,WinSelfSid = 16,WinAuthenticatedUserSid = 17,WinRestrictedCodeSid = 18,WinTerminalServerSid = 19,WinRemoteLogonIdSid = 20,WinLogonIdsSid = 21,WinLocalSystemSid = 22,WinLocalServiceSid = 23,WinNetworkServiceSid = 24,WinBuiltinDomainSid = 25,WinBuiltinAdministratorsSid = 26,WinBuiltinUsersSid = 27,WinBuiltinGuestsSid = 28,WinBuiltinPowerUsersSid = 29,WinBuiltinAccountOperatorsSid = 30,WinBuiltinSystemOperatorsSid = 31,WinBuiltinPrintOperatorsSid = 32,WinBuiltinBackupOperatorsSid = 33,WinBuiltinReplicatorSid = 34,WinBuiltinPreWindows2000CompatibleAccessSid = 35,WinBuiltinRemoteDesktopUsersSid = 36,WinBuiltinNetworkConfigurationOperatorsSid = 37,WinAccountAdministratorSid = 38,WinAccountGuestSid = 39,WinAccountKrbtgtSid = 40,WinAccountDomainAdminsSid = 41,WinAccountDomainUsersSid = 42,WinAccountDomainGuestsSid = 43,WinAccountComputersSid = 44,WinAccountControllersSid = 45,WinAccountCertAdminsSid = 46,WinAccountSchemaAdminsSid = 47,WinAccountEnterpriseAdminsSid = 48,WinAccountPolicyAdminsSid = 49,WinAccountRasAndIasServersSid = 50,WinNTLMAuthenticationSid = 51,WinDigestAuthenticationSid = 52,WinSChannelAuthenticationSid = 53,WinThisOrganizationSid = 54,WinOtherOrganizationSid = 55,WinBuiltinIncomingForestTrustBuildersSid = 56,WinBuiltinPerfMonitoringUsersSid = 57,WinBuiltinPerfLoggingUsersSid = 58,WinBuiltinAuthorizationAccessSid = 59,WinBuiltinTerminalServerLicenseServersSid = 60,WinBuiltinDCOMUsersSid = 61
     } WELL_KNOWN_SID_TYPE;
 
@@ -2266,21 +2266,21 @@ Tipo DWORD LCID;
 #Defina ACL_REVISION4 (4)
 #Defina MAX_ACL_REVISION ACL_REVISION4
 
-    Tipo Estrutura _ACL {
+    Pseudônimo Estrutura _ACL {
       BYTE AclRevision;
       BYTE Sbz1;
       WORD AclSize;
       WORD AceCount;
       WORD Sbz2;
     } ACL;
-    Tipo ACL *PACL;
+    Pseudônimo ACL *PACL;
 
-    Tipo Estrutura _ACE_HEADER {
+    Pseudônimo Estrutura _ACE_HEADER {
       BYTE AceType;
       BYTE AceFlags;
       WORD AceSize;
     } ACE_HEADER;
-    Tipo ACE_HEADER *PACE_HEADER;
+    Pseudônimo ACE_HEADER *PACE_HEADER;
 
 #Defina ACCESS_MIN_MS_ACE_TYPE (0x0)
 #Defina ACCESS_ALLOWED_ACE_TYPE (0x0)
@@ -2324,36 +2324,36 @@ Tipo DWORD LCID;
 #Defina SUCCESSFUL_ACCESS_ACE_FLAG (0x40)
 #Defina FAILED_ACCESS_ACE_FLAG (0x80)
 
-    Tipo Estrutura _ACCESS_ALLOWED_ACE {
+    Pseudônimo Estrutura _ACCESS_ALLOWED_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
     } ACCESS_ALLOWED_ACE;
 
-    Tipo ACCESS_ALLOWED_ACE *PACCESS_ALLOWED_ACE;
+    Pseudônimo ACCESS_ALLOWED_ACE *PACCESS_ALLOWED_ACE;
 
-    Tipo Estrutura _ACCESS_DENIED_ACE {
+    Pseudônimo Estrutura _ACCESS_DENIED_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
     } ACCESS_DENIED_ACE;
-    Tipo ACCESS_DENIED_ACE *PACCESS_DENIED_ACE;
+    Pseudônimo ACCESS_DENIED_ACE *PACCESS_DENIED_ACE;
 
-    Tipo Estrutura _SYSTEM_AUDIT_ACE {
+    Pseudônimo Estrutura _SYSTEM_AUDIT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
     } SYSTEM_AUDIT_ACE;
-    Tipo SYSTEM_AUDIT_ACE *PSYSTEM_AUDIT_ACE;
+    Pseudônimo SYSTEM_AUDIT_ACE *PSYSTEM_AUDIT_ACE;
 
-    Tipo Estrutura _SYSTEM_ALARM_ACE {
+    Pseudônimo Estrutura _SYSTEM_ALARM_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
     } SYSTEM_ALARM_ACE;
-    Tipo SYSTEM_ALARM_ACE *PSYSTEM_ALARM_ACE;
+    Pseudônimo SYSTEM_ALARM_ACE *PSYSTEM_ALARM_ACE;
 
-    Tipo Estrutura _ACCESS_ALLOWED_OBJECT_ACE {
+    Pseudônimo Estrutura _ACCESS_ALLOWED_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2362,7 +2362,7 @@ Tipo DWORD LCID;
       DWORD SidStart;
     } ACCESS_ALLOWED_OBJECT_ACE,*PACCESS_ALLOWED_OBJECT_ACE;
 
-    Tipo Estrutura _ACCESS_DENIED_OBJECT_ACE {
+    Pseudônimo Estrutura _ACCESS_DENIED_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2371,7 +2371,7 @@ Tipo DWORD LCID;
       DWORD SidStart;
     } ACCESS_DENIED_OBJECT_ACE,*PACCESS_DENIED_OBJECT_ACE;
 
-    Tipo Estrutura _SYSTEM_AUDIT_OBJECT_ACE {
+    Pseudônimo Estrutura _SYSTEM_AUDIT_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2380,7 +2380,7 @@ Tipo DWORD LCID;
       DWORD SidStart;
     } SYSTEM_AUDIT_OBJECT_ACE,*PSYSTEM_AUDIT_OBJECT_ACE;
 
-    Tipo Estrutura _SYSTEM_ALARM_OBJECT_ACE {
+    Pseudônimo Estrutura _SYSTEM_ALARM_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2389,35 +2389,35 @@ Tipo DWORD LCID;
       DWORD SidStart;
     } SYSTEM_ALARM_OBJECT_ACE,*PSYSTEM_ALARM_OBJECT_ACE;
 
-    Tipo Estrutura _ACCESS_ALLOWED_CALLBACK_ACE {
+    Pseudônimo Estrutura _ACCESS_ALLOWED_CALLBACK_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
 
     } ACCESS_ALLOWED_CALLBACK_ACE,*PACCESS_ALLOWED_CALLBACK_ACE;
 
-    Tipo Estrutura _ACCESS_DENIED_CALLBACK_ACE {
+    Pseudônimo Estrutura _ACCESS_DENIED_CALLBACK_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
 
     } ACCESS_DENIED_CALLBACK_ACE,*PACCESS_DENIED_CALLBACK_ACE;
 
-    Tipo Estrutura _SYSTEM_AUDIT_CALLBACK_ACE {
+    Pseudônimo Estrutura _SYSTEM_AUDIT_CALLBACK_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
 
     } SYSTEM_AUDIT_CALLBACK_ACE,*PSYSTEM_AUDIT_CALLBACK_ACE;
 
-    Tipo Estrutura _SYSTEM_ALARM_CALLBACK_ACE {
+    Pseudônimo Estrutura _SYSTEM_ALARM_CALLBACK_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD SidStart;
 
     } SYSTEM_ALARM_CALLBACK_ACE,*PSYSTEM_ALARM_CALLBACK_ACE;
 
-    Tipo Estrutura _ACCESS_ALLOWED_CALLBACK_OBJECT_ACE {
+    Pseudônimo Estrutura _ACCESS_ALLOWED_CALLBACK_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2427,7 +2427,7 @@ Tipo DWORD LCID;
 
     } ACCESS_ALLOWED_CALLBACK_OBJECT_ACE,*PACCESS_ALLOWED_CALLBACK_OBJECT_ACE;
 
-    Tipo Estrutura _ACCESS_DENIED_CALLBACK_OBJECT_ACE {
+    Pseudônimo Estrutura _ACCESS_DENIED_CALLBACK_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2437,7 +2437,7 @@ Tipo DWORD LCID;
 
     } ACCESS_DENIED_CALLBACK_OBJECT_ACE,*PACCESS_DENIED_CALLBACK_OBJECT_ACE;
 
-    Tipo Estrutura _SYSTEM_AUDIT_CALLBACK_OBJECT_ACE {
+    Pseudônimo Estrutura _SYSTEM_AUDIT_CALLBACK_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2447,7 +2447,7 @@ Tipo DWORD LCID;
 
     } SYSTEM_AUDIT_CALLBACK_OBJECT_ACE,*PSYSTEM_AUDIT_CALLBACK_OBJECT_ACE;
 
-    Tipo Estrutura _SYSTEM_ALARM_CALLBACK_OBJECT_ACE {
+    Pseudônimo Estrutura _SYSTEM_ALARM_CALLBACK_OBJECT_ACE {
       ACE_HEADER Header;
       ACCESS_MASK Mask;
       DWORD Flags;
@@ -2460,28 +2460,28 @@ Tipo DWORD LCID;
 #Defina ACE_OBJECT_TYPE_PRESENT 0x1
 #Defina ACE_INHERITED_OBJECT_TYPE_PRESENT 0x2
 
-    Tipo Enumeração _ACL_INFORMATION_CLASS {
+    Pseudônimo Enumeração _ACL_INFORMATION_CLASS {
       AclRevisionInformation = 1,AclSizeInformation
     } ACL_INFORMATION_CLASS;
 
-    Tipo Estrutura _ACL_REVISION_INFORMATION {
+    Pseudônimo Estrutura _ACL_REVISION_INFORMATION {
       DWORD AclRevision;
     } ACL_REVISION_INFORMATION;
-    Tipo ACL_REVISION_INFORMATION *PACL_REVISION_INFORMATION;
+    Pseudônimo ACL_REVISION_INFORMATION *PACL_REVISION_INFORMATION;
 
-    Tipo Estrutura _ACL_SIZE_INFORMATION {
+    Pseudônimo Estrutura _ACL_SIZE_INFORMATION {
       DWORD AceCount;
       DWORD AclBytesInUse;
       DWORD AclBytesFree;
     } ACL_SIZE_INFORMATION;
-    Tipo ACL_SIZE_INFORMATION *PACL_SIZE_INFORMATION;
+    Pseudônimo ACL_SIZE_INFORMATION *PACL_SIZE_INFORMATION;
 
 #Defina SECURITY_DESCRIPTOR_REVISION (1)
 #Defina SECURITY_DESCRIPTOR_REVISION1 (1)
 
 #Defina SECURITY_DESCRIPTOR_MIN_LENGTH (Meça(SECURITY_DESCRIPTOR))
 
-    Tipo WORD SECURITY_DESCRIPTOR_CONTROL,*PSECURITY_DESCRIPTOR_CONTROL;
+    Pseudônimo WORD SECURITY_DESCRIPTOR_CONTROL,*PSECURITY_DESCRIPTOR_CONTROL;
 
 #Defina SE_OWNER_DEFAULTED (0x0001)
 #Defina SE_GROUP_DEFAULTED (0x0002)
@@ -2498,7 +2498,7 @@ Tipo DWORD LCID;
 #Defina SE_RM_CONTROL_VALID (0x4000)
 #Defina SE_SELF_RELATIVE (0x8000)
 
-    Tipo Estrutura _SECURITY_DESCRIPTOR_RELATIVE {
+    Pseudônimo Estrutura _SECURITY_DESCRIPTOR_RELATIVE {
       BYTE Revision;
       BYTE Sbz1;
       SECURITY_DESCRIPTOR_CONTROL Control;
@@ -2508,7 +2508,7 @@ Tipo DWORD LCID;
       DWORD Dacl;
     } SECURITY_DESCRIPTOR_RELATIVE,*PISECURITY_DESCRIPTOR_RELATIVE;
 
-    Tipo Estrutura _SECURITY_DESCRIPTOR {
+    Pseudônimo Estrutura _SECURITY_DESCRIPTOR {
       BYTE Revision;
       BYTE Sbz1;
       SECURITY_DESCRIPTOR_CONTROL Control;
@@ -2519,7 +2519,7 @@ Tipo DWORD LCID;
 
     } SECURITY_DESCRIPTOR,*PISECURITY_DESCRIPTOR;
 
-    Tipo Estrutura _OBJECT_TYPE_LIST {
+    Pseudônimo Estrutura _OBJECT_TYPE_LIST {
       WORD Level;
       WORD Sbz;
       GUID *ObjectType;
@@ -2531,7 +2531,7 @@ Tipo DWORD LCID;
 
 #Defina ACCESS_MAX_LEVEL 4
 
-    Tipo Enumeração _AUDIT_EVENT_TYPE {
+    Pseudônimo Enumeração _AUDIT_EVENT_TYPE {
       AuditEventObjectAccess,AuditEventDirectoryServiceAccess
     } AUDIT_EVENT_TYPE,*PAUDIT_EVENT_TYPE;
 
@@ -2549,7 +2549,7 @@ Tipo DWORD LCID;
 
 #Defina PRIVILEGE_SET_ALL_NECESSARY (1)
 
-    Tipo Estrutura _PRIVILEGE_SET {
+    Pseudônimo Estrutura _PRIVILEGE_SET {
       DWORD PrivilegeCount;
       DWORD Control;
       LUID_AND_ATTRIBUTES Privilege[ANYSIZE_ARRAY];
@@ -2586,7 +2586,7 @@ Tipo DWORD LCID;
 #Defina SE_IMPERSONATE_NAME TEXT("SeImpersonatePrivilege")
 #Defina SE_CREATE_GLOBAL_NAME TEXT("SeCreateGlobalPrivilege")
 
-    Tipo Enumeração _SECURITY_IMPERSONATION_LEVEL {
+    Pseudônimo Enumeração _SECURITY_IMPERSONATION_LEVEL {
       SecurityAnonymous,SecurityIdentification,SecurityImpersonation,SecurityDelegation
     } SECURITY_IMPERSONATION_LEVEL,*PSECURITY_IMPERSONATION_LEVEL;
 
@@ -2613,44 +2613,44 @@ Tipo DWORD LCID;
 
 #Defina TOKEN_EXECUTE (STANDARD_RIGHTS_EXECUTE)
 
-    Tipo Enumeração _TOKEN_TYPE {
+    Pseudônimo Enumeração _TOKEN_TYPE {
       TokenPrimary = 1,TokenImpersonation
     } TOKEN_TYPE;
-    Tipo TOKEN_TYPE *PTOKEN_TYPE;
+    Pseudônimo TOKEN_TYPE *PTOKEN_TYPE;
 
-    Tipo Enumeração _TOKEN_INFORMATION_CLASS {
+    Pseudônimo Enumeração _TOKEN_INFORMATION_CLASS {
       TokenUser = 1,TokenGroups,TokenPrivileges,TokenOwner,TokenPrimaryGroup,TokenDefaultDacl,TokenSource,TokenType,TokenImpersonationLevel,
       TokenStatistics,TokenRestrictedSids,TokenSessionId,TokenGroupsAndPrivileges,TokenSessionReference,TokenSandBoxInert,TokenAuditPolicy,
       TokenOrigin,MaxTokenInfoClass
     } TOKEN_INFORMATION_CLASS,*PTOKEN_INFORMATION_CLASS;
 
-    Tipo Estrutura _TOKEN_USER {
+    Pseudônimo Estrutura _TOKEN_USER {
       SID_AND_ATTRIBUTES User;
     } TOKEN_USER,*PTOKEN_USER;
 
-    Tipo Estrutura _TOKEN_GROUPS {
+    Pseudônimo Estrutura _TOKEN_GROUPS {
       DWORD GroupCount;
       SID_AND_ATTRIBUTES Groups[ANYSIZE_ARRAY];
     } TOKEN_GROUPS,*PTOKEN_GROUPS;
 
-    Tipo Estrutura _TOKEN_PRIVILEGES {
+    Pseudônimo Estrutura _TOKEN_PRIVILEGES {
       DWORD PrivilegeCount;
       LUID_AND_ATTRIBUTES Privileges[ANYSIZE_ARRAY];
     } TOKEN_PRIVILEGES,*PTOKEN_PRIVILEGES;
 
-    Tipo Estrutura _TOKEN_OWNER {
+    Pseudônimo Estrutura _TOKEN_OWNER {
       PSID Owner;
     } TOKEN_OWNER,*PTOKEN_OWNER;
 
-    Tipo Estrutura _TOKEN_PRIMARY_GROUP {
+    Pseudônimo Estrutura _TOKEN_PRIMARY_GROUP {
       PSID PrimaryGroup;
     } TOKEN_PRIMARY_GROUP,*PTOKEN_PRIMARY_GROUP;
 
-    Tipo Estrutura _TOKEN_DEFAULT_DACL {
+    Pseudônimo Estrutura _TOKEN_DEFAULT_DACL {
       PACL DefaultDacl;
     } TOKEN_DEFAULT_DACL,*PTOKEN_DEFAULT_DACL;
 
-    Tipo Estrutura _TOKEN_GROUPS_AND_PRIVILEGES {
+    Pseudônimo Estrutura _TOKEN_GROUPS_AND_PRIVILEGES {
       DWORD SidCount;
       DWORD SidLength;
       PSID_AND_ATTRIBUTES Sids;
@@ -2671,12 +2671,12 @@ Tipo DWORD LCID;
 #Defina VALID_AUDIT_POLICY_BITS (TOKEN_AUDIT_SUCCESS_INCLUDE | TOKEN_AUDIT_SUCCESS_EXCLUDE | TOKEN_AUDIT_FAILURE_INCLUDE | TOKEN_AUDIT_FAILURE_EXCLUDE)
 #Defina VALID_TOKEN_AUDIT_POLICY_ELEMENT(P) ((((P).PolicyMask & ~VALID_AUDIT_POLICY_BITS)==0) && ((P).Category <= AuditEventMaxType))
 
-    Tipo Estrutura _TOKEN_AUDIT_POLICY_ELEMENT {
+    Pseudônimo Estrutura _TOKEN_AUDIT_POLICY_ELEMENT {
       DWORD Category;
       DWORD PolicyMask;
     } TOKEN_AUDIT_POLICY_ELEMENT,*PTOKEN_AUDIT_POLICY_ELEMENT;
 
-    Tipo Estrutura _TOKEN_AUDIT_POLICY {
+    Pseudônimo Estrutura _TOKEN_AUDIT_POLICY {
       DWORD PolicyCount;
       TOKEN_AUDIT_POLICY_ELEMENT Policy[ANYSIZE_ARRAY];
     } TOKEN_AUDIT_POLICY,*PTOKEN_AUDIT_POLICY;
@@ -2686,12 +2686,12 @@ Tipo DWORD LCID;
 
 #Defina TOKEN_SOURCE_LENGTH 8
 
-    Tipo Estrutura _TOKEN_SOURCE {
+    Pseudônimo Estrutura _TOKEN_SOURCE {
       CHAR SourceName[TOKEN_SOURCE_LENGTH];
       LUID SourceIdentifier;
     } TOKEN_SOURCE,*PTOKEN_SOURCE;
 
-    Tipo Estrutura _TOKEN_STATISTICS {
+    Pseudônimo Estrutura _TOKEN_STATISTICS {
       LUID TokenId;
       LUID AuthenticationId;
       LARGE_INTEGER ExpirationTime;
@@ -2704,30 +2704,30 @@ Tipo DWORD LCID;
       LUID ModifiedId;
     } TOKEN_STATISTICS,*PTOKEN_STATISTICS;
 
-    Tipo Estrutura _TOKEN_CONTROL {
+    Pseudônimo Estrutura _TOKEN_CONTROL {
       LUID TokenId;
       LUID AuthenticationId;
       LUID ModifiedId;
       TOKEN_SOURCE TokenSource;
     } TOKEN_CONTROL,*PTOKEN_CONTROL;
 
-    Tipo Estrutura _TOKEN_ORIGIN {
+    Pseudônimo Estrutura _TOKEN_ORIGIN {
       LUID OriginatingLogonSession;
     } TOKEN_ORIGIN,*PTOKEN_ORIGIN;
 
 #Defina SECURITY_DYNAMIC_TRACKING (TRUE)
 #Defina SECURITY_STATIC_TRACKING (FALSE)
 
-    Tipo BOOLEAN SECURITY_CONTEXT_TRACKING_MODE,*PSECURITY_CONTEXT_TRACKING_MODE;
+    Pseudônimo BOOLEAN SECURITY_CONTEXT_TRACKING_MODE,*PSECURITY_CONTEXT_TRACKING_MODE;
 
-    Tipo Estrutura _SECURITY_QUALITY_OF_SERVICE {
+    Pseudônimo Estrutura _SECURITY_QUALITY_OF_SERVICE {
       DWORD Length;
       SECURITY_IMPERSONATION_LEVEL ImpersonationLevel;
       SECURITY_CONTEXT_TRACKING_MODE ContextTrackingMode;
       BOOLEAN EffectiveOnly;
     } SECURITY_QUALITY_OF_SERVICE,*PSECURITY_QUALITY_OF_SERVICE;
 
-    Tipo Estrutura _SE_IMPERSONATION_STATE {
+    Pseudônimo Estrutura _SE_IMPERSONATION_STATE {
       PACCESS_TOKEN Token;
       BOOLEAN CopyOnOpen;
       BOOLEAN EffectiveOnly;
@@ -2737,7 +2737,7 @@ Tipo DWORD LCID;
 #Defina DISABLE_MAX_PRIVILEGE 0x1
 #Defina SANDBOX_INERT 0x2
 
-    Tipo DWORD SECURITY_INFORMATION,*PSECURITY_INFORMATION;
+    Pseudônimo DWORD SECURITY_INFORMATION,*PSECURITY_INFORMATION;
 
 #Defina OWNER_SECURITY_INFORMATION (0x00000001L)
 #Defina GROUP_SECURITY_INFORMATION (0x00000002L)
@@ -2788,7 +2788,7 @@ Tipo DWORD LCID;
 #Defina JOB_OBJECT_SET_SECURITY_ATTRIBUTES (0x0010)
 #Defina JOB_OBJECT_ALL_ACCESS (STANDARD_RIGHTS_REQUIRED | SYNCHRONIZE | 0x1F)
 
-    Tipo Estrutura _JOB_SET_ARRAY {
+    Pseudônimo Estrutura _JOB_SET_ARRAY {
       HANDLE JobHandle;
       DWORD MemberLevel;
       DWORD Flags;
@@ -2799,7 +2799,7 @@ Tipo DWORD LCID;
 
 #SeNãoDefinido _NT_TIB_DEFINED
 #Defina _NT_TIB_DEFINED
-    Tipo Estrutura _NT_TIB {
+    Pseudônimo Estrutura _NT_TIB {
       Estrutura _EXCEPTION_REGISTRATION_RECORD *ExceptionList;
       PVOID StackBase;
       PVOID StackLimit;
@@ -2811,10 +2811,10 @@ Tipo DWORD LCID;
       PVOID ArbitraryUserPointer;
       Estrutura _NT_TIB *Self;
     } NT_TIB;
-    Tipo NT_TIB *PNT_TIB;
+    Pseudônimo NT_TIB *PNT_TIB;
 #FimSe
 
-    Tipo Estrutura _NT_TIB32 {
+    Pseudônimo Estrutura _NT_TIB32 {
       DWORD ExceptionList;
       DWORD StackBase;
       DWORD StackLimit;
@@ -2827,7 +2827,7 @@ Tipo DWORD LCID;
       DWORD Self;
     } NT_TIB32,*PNT_TIB32;
 
-    Tipo Estrutura _NT_TIB64 {
+    Pseudônimo Estrutura _NT_TIB64 {
       DWORD64 ExceptionList;
       DWORD64 StackBase;
       DWORD64 StackLimit;
@@ -2849,7 +2849,7 @@ Tipo DWORD LCID;
 #Defina THREAD_BASE_PRIORITY_MIN (-2)
 #Defina THREAD_BASE_PRIORITY_IDLE (-15)
 
-    Tipo Estrutura _QUOTA_LIMITS {
+    Pseudônimo Estrutura _QUOTA_LIMITS {
       SIZE_T PagedPoolLimit;
       SIZE_T NonPagedPoolLimit;
       SIZE_T MinimumWorkingSetSize;
@@ -2863,7 +2863,7 @@ Tipo DWORD LCID;
 #Defina QUOTA_LIMITS_HARDWS_MAX_ENABLE 0x00000004
 #Defina QUOTA_LIMITS_HARDWS_MAX_DISABLE 0x00000008
 
-    Tipo Estrutura _QUOTA_LIMITS_EX {
+    Pseudônimo Estrutura _QUOTA_LIMITS_EX {
       SIZE_T PagedPoolLimit;
       SIZE_T NonPagedPoolLimit;
       SIZE_T MinimumWorkingSetSize;
@@ -2878,7 +2878,7 @@ Tipo DWORD LCID;
       DWORD Reserved5;
     } QUOTA_LIMITS_EX,*PQUOTA_LIMITS_EX;
 
-    Tipo Estrutura _IO_COUNTERS {
+    Pseudônimo Estrutura _IO_COUNTERS {
       ULONGLONG ReadOperationCount;
       ULONGLONG WriteOperationCount;
       ULONGLONG OtherOperationCount;
@@ -2886,9 +2886,9 @@ Tipo DWORD LCID;
       ULONGLONG WriteTransferCount;
       ULONGLONG OtherTransferCount;
     } IO_COUNTERS;
-    Tipo IO_COUNTERS *PIO_COUNTERS;
+    Pseudônimo IO_COUNTERS *PIO_COUNTERS;
 
-    Tipo Estrutura _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
       LARGE_INTEGER TotalUserTime;
       LARGE_INTEGER TotalKernelTime;
       LARGE_INTEGER ThisPeriodTotalUserTime;
@@ -2899,7 +2899,7 @@ Tipo DWORD LCID;
       DWORD TotalTerminatedProcesses;
     } JOBOBJECT_BASIC_ACCOUNTING_INFORMATION,*PJOBOBJECT_BASIC_ACCOUNTING_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_BASIC_LIMIT_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_BASIC_LIMIT_INFORMATION {
       LARGE_INTEGER PerProcessUserTimeLimit;
       LARGE_INTEGER PerJobUserTimeLimit;
       DWORD LimitFlags;
@@ -2911,7 +2911,7 @@ Tipo DWORD LCID;
       DWORD SchedulingClass;
     } JOBOBJECT_BASIC_LIMIT_INFORMATION,*PJOBOBJECT_BASIC_LIMIT_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_EXTENDED_LIMIT_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_EXTENDED_LIMIT_INFORMATION {
       JOBOBJECT_BASIC_LIMIT_INFORMATION BasicLimitInformation;
       IO_COUNTERS IoInfo;
       SIZE_T ProcessMemoryLimit;
@@ -2920,17 +2920,17 @@ Tipo DWORD LCID;
       SIZE_T PeakJobMemoryUsed;
     } JOBOBJECT_EXTENDED_LIMIT_INFORMATION,*PJOBOBJECT_EXTENDED_LIMIT_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_BASIC_PROCESS_ID_LIST {
+    Pseudônimo Estrutura _JOBOBJECT_BASIC_PROCESS_ID_LIST {
       DWORD NumberOfAssignedProcesses;
       DWORD NumberOfProcessIdsInList;
       ULONG_PTR ProcessIdList[1];
     } JOBOBJECT_BASIC_PROCESS_ID_LIST,*PJOBOBJECT_BASIC_PROCESS_ID_LIST;
 
-    Tipo Estrutura _JOBOBJECT_BASIC_UI_RESTRICTIONS {
+    Pseudônimo Estrutura _JOBOBJECT_BASIC_UI_RESTRICTIONS {
       DWORD UIRestrictionsClass;
     } JOBOBJECT_BASIC_UI_RESTRICTIONS,*PJOBOBJECT_BASIC_UI_RESTRICTIONS;
 
-    Tipo Estrutura _JOBOBJECT_SECURITY_LIMIT_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_SECURITY_LIMIT_INFORMATION {
       DWORD SecurityLimitFlags;
       HANDLE JobToken;
       PTOKEN_GROUPS SidsToDisable;
@@ -2938,21 +2938,21 @@ Tipo DWORD LCID;
       PTOKEN_GROUPS RestrictedSids;
     } JOBOBJECT_SECURITY_LIMIT_INFORMATION,*PJOBOBJECT_SECURITY_LIMIT_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_END_OF_JOB_TIME_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_END_OF_JOB_TIME_INFORMATION {
       DWORD EndOfJobTimeAction;
     } JOBOBJECT_END_OF_JOB_TIME_INFORMATION,*PJOBOBJECT_END_OF_JOB_TIME_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_ASSOCIATE_COMPLETION_PORT {
+    Pseudônimo Estrutura _JOBOBJECT_ASSOCIATE_COMPLETION_PORT {
       PVOID CompletionKey;
       HANDLE CompletionPort;
     } JOBOBJECT_ASSOCIATE_COMPLETION_PORT,*PJOBOBJECT_ASSOCIATE_COMPLETION_PORT;
 
-    Tipo Estrutura _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION {
       JOBOBJECT_BASIC_ACCOUNTING_INFORMATION BasicInfo;
       IO_COUNTERS IoInfo;
     } JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION,*PJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION;
 
-    Tipo Estrutura _JOBOBJECT_JOBSET_INFORMATION {
+    Pseudônimo Estrutura _JOBOBJECT_JOBSET_INFORMATION {
       DWORD MemberLevel;
     } JOBOBJECT_JOBSET_INFORMATION,*PJOBOBJECT_JOBSET_INFORMATION;
 
@@ -3019,7 +3019,7 @@ Tipo DWORD LCID;
 
 #Defina JOB_OBJECT_SECURITY_VALID_FLAGS 0x0000000f
 
-    Tipo Enumeração _JOBOBJECTINFOCLASS {
+    Pseudônimo Enumeração _JOBOBJECTINFOCLASS {
       JobObjectBasicAccountingInformation = 1,JobObjectBasicLimitInformation,JobObjectBasicProcessIdList,JobObjectBasicUIRestrictions,
       JobObjectSecurityLimitInformation,JobObjectEndOfJobTimeInformation,JobObjectAssociateCompletionPortInformation,
       JobObjectBasicAndIoAccountingInformation,JobObjectExtendedLimitInformation,JobObjectJobSetInformation,MaxJobObjectInfoClass
@@ -3043,19 +3043,19 @@ Tipo DWORD LCID;
 #Defina TIME_ZONE_ID_STANDARD 1
 #Defina TIME_ZONE_ID_DAYLIGHT 2
 
-    Tipo Enumeração _LOGICAL_PROCESSOR_RELATIONSHIP {
+    Pseudônimo Enumeração _LOGICAL_PROCESSOR_RELATIONSHIP {
       RelationProcessorCore,RelationNumaNode,RelationCache
     } LOGICAL_PROCESSOR_RELATIONSHIP;
 
 #Defina LTP_PC_SMT 0x1
 
-    Tipo Enumeração _PROCESSOR_CACHE_TYPE {
+    Pseudônimo Enumeração _PROCESSOR_CACHE_TYPE {
       CacheUnified,CacheInstruction,CacheData,CacheTrace
     } PROCESSOR_CACHE_TYPE;
 
 #Defina CACHE_FULLY_ASSOCIATIVE 0xFF
 
-    Tipo Estrutura _CACHE_DESCRIPTOR {
+    Pseudônimo Estrutura _CACHE_DESCRIPTOR {
       BYTE Level;
       BYTE Associativity;
       WORD LineSize;
@@ -3063,7 +3063,7 @@ Tipo DWORD LCID;
       PROCESSOR_CACHE_TYPE Type;
     } CACHE_DESCRIPTOR,*PCACHE_DESCRIPTOR;
 
-    Tipo Estrutura _SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
+    Pseudônimo Estrutura _SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
       ULONG_PTR ProcessorMask;
       LOGICAL_PROCESSOR_RELATIONSHIP Relationship;
       União {
@@ -3130,7 +3130,7 @@ Tipo DWORD LCID;
 #Defina PF_SSE_DAZ_MODE_AVAILABLE 11
 #Defina PF_NX_ENABLED 12
 
-    Tipo Estrutura _MEMORY_BASIC_INFORMATION {
+    Pseudônimo Estrutura _MEMORY_BASIC_INFORMATION {
       PVOID BaseAddress;
       PVOID AllocationBase;
       DWORD AllocationProtect;
@@ -3140,7 +3140,7 @@ Tipo DWORD LCID;
       DWORD Type;
     } MEMORY_BASIC_INFORMATION,*PMEMORY_BASIC_INFORMATION;
 
-    Tipo Estrutura _MEMORY_BASIC_INFORMATION32 {
+    Pseudônimo Estrutura _MEMORY_BASIC_INFORMATION32 {
       DWORD BaseAddress;
       DWORD AllocationBase;
       DWORD AllocationProtect;
@@ -3150,7 +3150,7 @@ Tipo DWORD LCID;
       DWORD Type;
     } MEMORY_BASIC_INFORMATION32,*PMEMORY_BASIC_INFORMATION32;
 
-    Tipo DECLSPEC_ALIGN(16) Estrutura _MEMORY_BASIC_INFORMATION64 {
+    Pseudônimo DECLSPEC_ALIGN(16) Estrutura _MEMORY_BASIC_INFORMATION64 {
       ULONGLONG BaseAddress;
       ULONGLONG AllocationBase;
       DWORD AllocationProtect;
@@ -3278,19 +3278,19 @@ Tipo DWORD LCID;
 #Defina FILE_NAMED_STREAMS 0x00040000
 #Defina FILE_READ_ONLY_VOLUME 0x00080000
 
-    Tipo Estrutura _FILE_NOTIFY_INFORMATION {
+    Pseudônimo Estrutura _FILE_NOTIFY_INFORMATION {
       DWORD NextEntryOffset;
       DWORD Action;
       DWORD FileNameLength;
       WCHAR FileName[1];
     } FILE_NOTIFY_INFORMATION,*PFILE_NOTIFY_INFORMATION;
 
-    Tipo União _FILE_SEGMENT_ELEMENT {
+    Pseudônimo União _FILE_SEGMENT_ELEMENT {
       PVOID64 Buffer;
       ULONGLONG Alignment;
     }FILE_SEGMENT_ELEMENT,*PFILE_SEGMENT_ELEMENT;
 
-    Tipo Estrutura _REPARSE_GUID_DATA_BUFFER {
+    Pseudônimo Estrutura _REPARSE_GUID_DATA_BUFFER {
       DWORD ReparseTag;
       WORD ReparseDataLength;
       WORD Reserved;
@@ -3322,17 +3322,17 @@ Tipo DWORD LCID;
 #Defina DUPLICATE_CLOSE_SOURCE 0x00000001
 #Defina DUPLICATE_SAME_ACCESS 0x00000002
 
-    Tipo Enumeração _SYSTEM_POWER_STATE {
+    Pseudônimo Enumeração _SYSTEM_POWER_STATE {
       PowerSystemUnspecified = 0,PowerSystemWorking = 1,PowerSystemSleeping1 = 2,PowerSystemSleeping2 = 3,PowerSystemSleeping3 = 4,PowerSystemHibernate = 5,PowerSystemShutdown = 6,PowerSystemMaximum = 7
     } SYSTEM_POWER_STATE,*PSYSTEM_POWER_STATE;
 
 #Defina POWER_SYSTEM_MAXIMUM 7
 
-    Tipo Enumeração {
+    Pseudônimo Enumeração {
       PowerActionNone = 0,PowerActionReserved,PowerActionSleep,PowerActionHibernate,PowerActionShutdown,PowerActionShutdownReset,PowerActionShutdownOff,PowerActionWarmEject
     } POWER_ACTION,*PPOWER_ACTION;
 
-    Tipo Enumeração _DEVICE_POWER_STATE {
+    Pseudônimo Enumeração _DEVICE_POWER_STATE {
       PowerDeviceUnspecified = 0,PowerDeviceD0,PowerDeviceD1,PowerDeviceD2,PowerDeviceD3,PowerDeviceMaximum
     } DEVICE_POWER_STATE,*PDEVICE_POWER_STATE;
 
@@ -3341,9 +3341,9 @@ Tipo DWORD LCID;
 #Defina ES_USER_PRESENT ((DWORD)0x00000004)
 #Defina ES_CONTINUOUS ((DWORD)0x80000000)
 
-    Tipo DWORD EXECUTION_STATE;
+    Pseudônimo DWORD EXECUTION_STATE;
 
-    Tipo Enumeração {
+    Pseudônimo Enumeração {
       LT_DONT_CARE,LT_LOWEST_LATENCY
     } LATENCY_TIME;
 
@@ -3357,7 +3357,7 @@ Tipo DWORD LCID;
 #Defina PDCAP_WAKE_FROM_D3_SUPPORTED 0x00000080
 #Defina PDCAP_WARM_EJECT_SUPPORTED 0x00000100
 
-    Tipo Estrutura CM_Power_Data_s {
+    Pseudônimo Estrutura CM_Power_Data_s {
       DWORD PD_Size;
       DEVICE_POWER_STATE PD_MostRecentPowerState;
       DWORD PD_Capabilities;
@@ -3368,16 +3368,16 @@ Tipo DWORD LCID;
       SYSTEM_POWER_STATE PD_DeepestSystemWake;
     } CM_POWER_DATA,*PCM_POWER_DATA;
 
-    Tipo Enumeração {
+    Pseudônimo Enumeração {
       SystemPowerPolicyAc,SystemPowerPolicyDc,VerifySystemPolicyAc,VerifySystemPolicyDc,SystemPowerCapabilities,SystemBatteryState,SystemPowerStateHandler,ProcessorStateHandler,SystemPowerPolicyCurrent,AdministratorPowerPolicy,SystemReserveHiberFile,ProcessorInformation,SystemPowerInformation,ProcessorStateHandler2,LastWakeTime,LastSleepTime,SystemExecutionState,SystemPowerStateNotifyHandler,ProcessorPowerPolicyAc,ProcessorPowerPolicyDc,VerifyProcessorPowerPolicyAc,VerifyProcessorPowerPolicyDc,ProcessorPowerPolicyCurrent,SystemPowerStateLogging,SystemPowerLoggingEntry
     } POWER_INFORMATION_LEVEL;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       DWORD Granularity;
       DWORD Capacity;
     } BATTERY_REPORTING_SCALE,*PBATTERY_REPORTING_SCALE;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       POWER_ACTION Action;
       DWORD Flags;
       DWORD EventCode;
@@ -3398,7 +3398,7 @@ Tipo DWORD LCID;
 #Defina POWER_USER_NOTIFY_SHUTDOWN 0x00000010
 #Defina POWER_FORCE_TRIGGER_RESET 0x80000000
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       BOOLEAN Enable;
       BYTE Spare[3];
       DWORD BatteryLevel;
@@ -3416,7 +3416,7 @@ Tipo DWORD LCID;
 #Defina PO_THROTTLE_ADAPTIVE 3
 #Defina PO_THROTTLE_MAXIMUM 4
 
-    Tipo Estrutura _SYSTEM_POWER_POLICY {
+    Pseudônimo Estrutura _SYSTEM_POWER_POLICY {
       DWORD Revision;
       POWER_ACTION_POLICY PowerButton;
       POWER_ACTION_POLICY SleepButton;
@@ -3447,7 +3447,7 @@ Tipo DWORD LCID;
       POWER_ACTION_POLICY OverThrottled;
     } SYSTEM_POWER_POLICY,*PSYSTEM_POWER_POLICY;
 
-    Tipo Estrutura _PROCESSOR_POWER_POLICY_INFO {
+    Pseudônimo Estrutura _PROCESSOR_POWER_POLICY_INFO {
       DWORD TimeCheck;
       DWORD DemoteLimit;
       DWORD PromoteLimit;
@@ -3459,7 +3459,7 @@ Tipo DWORD LCID;
       DWORD Reserved:30;
     } PROCESSOR_POWER_POLICY_INFO,*PPROCESSOR_POWER_POLICY_INFO;
 
-    Tipo Estrutura _PROCESSOR_POWER_POLICY {
+    Pseudônimo Estrutura _PROCESSOR_POWER_POLICY {
       DWORD Revision;
       BYTE DynamicThrottle;
       BYTE Spare[3];
@@ -3469,7 +3469,7 @@ Tipo DWORD LCID;
       PROCESSOR_POWER_POLICY_INFO Policy[3];
     } PROCESSOR_POWER_POLICY,*PPROCESSOR_POWER_POLICY;
 
-    Tipo Estrutura _ADMINISTRATOR_POWER_POLICY {
+    Pseudônimo Estrutura _ADMINISTRATOR_POWER_POLICY {
       SYSTEM_POWER_STATE MinSleep;
       SYSTEM_POWER_STATE MaxSleep;
       DWORD MinVideoTimeout;
@@ -3478,7 +3478,7 @@ Tipo DWORD LCID;
       DWORD MaxSpindownTimeout;
     } ADMINISTRATOR_POWER_POLICY,*PADMINISTRATOR_POWER_POLICY;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       BOOLEAN PowerButtonPresent;
       BOOLEAN SleepButtonPresent;
       BOOLEAN LidPresent;
@@ -3509,7 +3509,7 @@ Tipo DWORD LCID;
       SYSTEM_POWER_STATE DefaultLowLatencyWake;
     } SYSTEM_POWER_CAPABILITIES,*PSYSTEM_POWER_CAPABILITIES;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       BOOLEAN AcOnLine;
       BOOLEAN BatteryPresent;
       BOOLEAN Charging;
@@ -3533,7 +3533,7 @@ Tipo DWORD LCID;
 
 #Inclua "pshpack2.h"
 
-    Tipo Estrutura _IMAGE_DOS_HEADER {
+    Pseudônimo Estrutura _IMAGE_DOS_HEADER {
       WORD e_magic;
       WORD e_cblp;
       WORD e_cp;
@@ -3555,7 +3555,7 @@ Tipo DWORD LCID;
       LONG e_lfanew;
     } IMAGE_DOS_HEADER,*PIMAGE_DOS_HEADER;
 
-    Tipo Estrutura _IMAGE_OS2_HEADER {
+    Pseudônimo Estrutura _IMAGE_OS2_HEADER {
       WORD ne_magic;
       CHAR ne_ver;
       CHAR ne_rev;
@@ -3588,7 +3588,7 @@ Tipo DWORD LCID;
       WORD ne_expver;
     } IMAGE_OS2_HEADER,*PIMAGE_OS2_HEADER;
 
-    Tipo Estrutura _IMAGE_VXD_HEADER {
+    Pseudônimo Estrutura _IMAGE_VXD_HEADER {
       WORD e32_magic;
       BYTE e32_border;
       BYTE e32_worder;
@@ -3644,7 +3644,7 @@ Tipo DWORD LCID;
 
 #Inclua "poppack.h"
 
-    Tipo Estrutura _IMAGE_FILE_HEADER {
+    Pseudônimo Estrutura _IMAGE_FILE_HEADER {
       WORD Machine;
       WORD NumberOfSections;
       DWORD TimeDateStamp;
@@ -3702,14 +3702,14 @@ Tipo DWORD LCID;
 #Defina IMAGE_FILE_MACHINE_M32R 0x9041
 #Defina IMAGE_FILE_MACHINE_CEE 0xC0EE
 
-    Tipo Estrutura _IMAGE_DATA_DIRECTORY {
+    Pseudônimo Estrutura _IMAGE_DATA_DIRECTORY {
       DWORD VirtualAddress;
       DWORD Size;
     } IMAGE_DATA_DIRECTORY,*PIMAGE_DATA_DIRECTORY;
 
 #Defina IMAGE_NUMBEROF_DIRECTORY_ENTRIES 16
 
-    Tipo Estrutura _IMAGE_OPTIONAL_HEADER {
+    Pseudônimo Estrutura _IMAGE_OPTIONAL_HEADER {
 
       WORD Magic;
       BYTE MajorLinkerVersion;
@@ -3744,7 +3744,7 @@ Tipo DWORD LCID;
       IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];
     } IMAGE_OPTIONAL_HEADER32,*PIMAGE_OPTIONAL_HEADER32;
 
-    Tipo Estrutura _IMAGE_ROM_OPTIONAL_HEADER {
+    Pseudônimo Estrutura _IMAGE_ROM_OPTIONAL_HEADER {
       WORD Magic;
       BYTE MajorLinkerVersion;
       BYTE MinorLinkerVersion;
@@ -3760,7 +3760,7 @@ Tipo DWORD LCID;
       DWORD GpValue;
     } IMAGE_ROM_OPTIONAL_HEADER,*PIMAGE_ROM_OPTIONAL_HEADER;
 
-    Tipo Estrutura _IMAGE_OPTIONAL_HEADER64 {
+    Pseudônimo Estrutura _IMAGE_OPTIONAL_HEADER64 {
       WORD Magic;
       BYTE MajorLinkerVersion;
       BYTE MinorLinkerVersion;
@@ -3803,40 +3803,40 @@ Tipo DWORD LCID;
 #Defina IMAGE_ROM_OPTIONAL_HDR_MAGIC 0x107
 
 #SeDefinido _WIN64
-    Tipo IMAGE_OPTIONAL_HEADER64 IMAGE_OPTIONAL_HEADER;
-    Tipo PIMAGE_OPTIONAL_HEADER64 PIMAGE_OPTIONAL_HEADER;
+    Pseudônimo IMAGE_OPTIONAL_HEADER64 IMAGE_OPTIONAL_HEADER;
+    Pseudônimo PIMAGE_OPTIONAL_HEADER64 PIMAGE_OPTIONAL_HEADER;
 #Defina IMAGE_SIZEOF_NT_OPTIONAL_HEADER IMAGE_SIZEOF_NT_OPTIONAL64_HEADER
 #Defina IMAGE_NT_OPTIONAL_HDR_MAGIC IMAGE_NT_OPTIONAL_HDR64_MAGIC
 #Senão
-    Tipo IMAGE_OPTIONAL_HEADER32 IMAGE_OPTIONAL_HEADER;
-    Tipo PIMAGE_OPTIONAL_HEADER32 PIMAGE_OPTIONAL_HEADER;
+    Pseudônimo IMAGE_OPTIONAL_HEADER32 IMAGE_OPTIONAL_HEADER;
+    Pseudônimo PIMAGE_OPTIONAL_HEADER32 PIMAGE_OPTIONAL_HEADER;
 #Defina IMAGE_SIZEOF_NT_OPTIONAL_HEADER IMAGE_SIZEOF_NT_OPTIONAL32_HEADER
 #Defina IMAGE_NT_OPTIONAL_HDR_MAGIC IMAGE_NT_OPTIONAL_HDR32_MAGIC
 #FimSe
 
-    Tipo Estrutura _IMAGE_NT_HEADERS64 {
+    Pseudônimo Estrutura _IMAGE_NT_HEADERS64 {
       DWORD Signature;
       IMAGE_FILE_HEADER FileHeader;
       IMAGE_OPTIONAL_HEADER64 OptionalHeader;
     } IMAGE_NT_HEADERS64,*PIMAGE_NT_HEADERS64;
 
-    Tipo Estrutura _IMAGE_NT_HEADERS {
+    Pseudônimo Estrutura _IMAGE_NT_HEADERS {
       DWORD Signature;
       IMAGE_FILE_HEADER FileHeader;
       IMAGE_OPTIONAL_HEADER32 OptionalHeader;
     } IMAGE_NT_HEADERS32,*PIMAGE_NT_HEADERS32;
 
-    Tipo Estrutura _IMAGE_ROM_HEADERS {
+    Pseudônimo Estrutura _IMAGE_ROM_HEADERS {
       IMAGE_FILE_HEADER FileHeader;
       IMAGE_ROM_OPTIONAL_HEADER OptionalHeader;
     } IMAGE_ROM_HEADERS,*PIMAGE_ROM_HEADERS;
 
 #SeDefinido _WIN64
-    Tipo IMAGE_NT_HEADERS64 IMAGE_NT_HEADERS;
-    Tipo PIMAGE_NT_HEADERS64 PIMAGE_NT_HEADERS;
+    Pseudônimo IMAGE_NT_HEADERS64 IMAGE_NT_HEADERS;
+    Pseudônimo PIMAGE_NT_HEADERS64 PIMAGE_NT_HEADERS;
 #Senão
-    Tipo IMAGE_NT_HEADERS32 IMAGE_NT_HEADERS;
-    Tipo PIMAGE_NT_HEADERS32 PIMAGE_NT_HEADERS;
+    Pseudônimo IMAGE_NT_HEADERS32 IMAGE_NT_HEADERS;
+    Pseudônimo PIMAGE_NT_HEADERS32 PIMAGE_NT_HEADERS;
 #FimSe
 
 #Defina IMAGE_FIRST_SECTION(ntheader) ((PIMAGE_SECTION_HEADER) ((ULONG_PTR)ntheader + FIELD_OFFSET(IMAGE_NT_HEADERS,OptionalHeader) + ((PIMAGE_NT_HEADERS)(ntheader))->FileHeader.SizeOfOptionalHeader))
@@ -3878,7 +3878,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_DIRECTORY_ENTRY_DELAY_IMPORT 13
 #Defina IMAGE_DIRECTORY_ENTRY_COM_DESCRIPTOR 14
 
-    Tipo Estrutura ANON_OBJECT_HEADER {
+    Pseudônimo Estrutura ANON_OBJECT_HEADER {
       WORD Sig1;
       WORD Sig2;
       WORD Version;
@@ -3890,7 +3890,7 @@ Tipo DWORD LCID;
 
 #Defina IMAGE_SIZEOF_SHORT_NAME 8
 
-    Tipo Estrutura _IMAGE_SECTION_HEADER {
+    Pseudônimo Estrutura _IMAGE_SECTION_HEADER {
       BYTE Name[IMAGE_SIZEOF_SHORT_NAME];
       União {
 	DWORD PhysicalAddress;
@@ -3955,7 +3955,7 @@ Tipo DWORD LCID;
 
 #Inclua "pshpack2.h"
 
-    Tipo Estrutura _IMAGE_SYMBOL {
+    Pseudônimo Estrutura _IMAGE_SYMBOL {
       União {
 	BYTE ShortName[8];
 	Estrutura {
@@ -3970,7 +3970,7 @@ Tipo DWORD LCID;
       BYTE StorageClass;
       BYTE NumberOfAuxSymbols;
     } IMAGE_SYMBOL;
-    Tipo IMAGE_SYMBOL UNALIGNED *PIMAGE_SYMBOL;
+    Pseudônimo IMAGE_SYMBOL UNALIGNED *PIMAGE_SYMBOL;
 
 #Defina IMAGE_SIZEOF_SYMBOL 18
 
@@ -4063,7 +4063,7 @@ Tipo DWORD LCID;
 #Defina DECREF(x) ((((x)>>N_TSHIFT)&~N_BTMASK)|((x)&N_BTMASK))
 #FimSe
 
-    Tipo União _IMAGE_AUX_SYMBOL {
+    Pseudônimo União _IMAGE_AUX_SYMBOL {
       Estrutura {
 	DWORD TagIndex;
 	União {
@@ -4096,24 +4096,24 @@ Tipo DWORD LCID;
 	BYTE Selection;
       } Section;
     } IMAGE_AUX_SYMBOL;
-    Tipo IMAGE_AUX_SYMBOL UNALIGNED *PIMAGE_AUX_SYMBOL;
+    Pseudônimo IMAGE_AUX_SYMBOL UNALIGNED *PIMAGE_AUX_SYMBOL;
 
 #Defina IMAGE_SIZEOF_AUX_SYMBOL 18
 
-    Tipo Enumeração IMAGE_AUX_SYMBOL_TYPE {
+    Pseudônimo Enumeração IMAGE_AUX_SYMBOL_TYPE {
       IMAGE_AUX_SYMBOL_TYPE_TOKEN_DEF = 1
     } IMAGE_AUX_SYMBOL_TYPE;
 
 #Inclua <pshpack2.h>
 
-    Tipo Estrutura IMAGE_AUX_SYMBOL_TOKEN_DEF {
+    Pseudônimo Estrutura IMAGE_AUX_SYMBOL_TOKEN_DEF {
       BYTE bAuxType;
       BYTE bReserved;
       DWORD SymbolTableIndex;
       BYTE rgbReserved[12];
     } IMAGE_AUX_SYMBOL_TOKEN_DEF;
 
-    Tipo IMAGE_AUX_SYMBOL_TOKEN_DEF UNALIGNED *PIMAGE_AUX_SYMBOL_TOKEN_DEF;
+    Pseudônimo IMAGE_AUX_SYMBOL_TOKEN_DEF UNALIGNED *PIMAGE_AUX_SYMBOL_TOKEN_DEF;
 
 #Inclua <poppack.h>
 
@@ -4129,7 +4129,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_WEAK_EXTERN_SEARCH_LIBRARY 2
 #Defina IMAGE_WEAK_EXTERN_SEARCH_ALIAS 3
 
-    Tipo Estrutura _IMAGE_RELOCATION {
+    Pseudônimo Estrutura _IMAGE_RELOCATION {
       União {
 	DWORD VirtualAddress;
 	DWORD RelocCount;
@@ -4137,7 +4137,7 @@ Tipo DWORD LCID;
       DWORD SymbolTableIndex;
       WORD Type;
     } IMAGE_RELOCATION;
-    Tipo IMAGE_RELOCATION UNALIGNED *PIMAGE_RELOCATION;
+    Pseudônimo IMAGE_RELOCATION UNALIGNED *PIMAGE_RELOCATION;
 
 #Defina IMAGE_SIZEOF_RELOCATION 10
 
@@ -4451,25 +4451,25 @@ Tipo DWORD LCID;
 #Defina X3_EMPTY_INST_WORD_POS_X 14
 #Defina X3_EMPTY_INST_VAL_POS_X 0
 
-    Tipo Estrutura _IMAGE_LINENUMBER {
+    Pseudônimo Estrutura _IMAGE_LINENUMBER {
       União {
 	DWORD SymbolTableIndex;
 	DWORD VirtualAddress;
       } Type;
       WORD Linenumber;
     } IMAGE_LINENUMBER;
-    Tipo IMAGE_LINENUMBER UNALIGNED *PIMAGE_LINENUMBER;
+    Pseudônimo IMAGE_LINENUMBER UNALIGNED *PIMAGE_LINENUMBER;
 
 #Defina IMAGE_SIZEOF_LINENUMBER 6
 
 #Inclua "poppack.h"
 
-    Tipo Estrutura _IMAGE_BASE_RELOCATION {
+    Pseudônimo Estrutura _IMAGE_BASE_RELOCATION {
       DWORD VirtualAddress;
       DWORD SizeOfBlock;
 
     } IMAGE_BASE_RELOCATION;
-    Tipo IMAGE_BASE_RELOCATION UNALIGNED *PIMAGE_BASE_RELOCATION;
+    Pseudônimo IMAGE_BASE_RELOCATION UNALIGNED *PIMAGE_BASE_RELOCATION;
 
 #Defina IMAGE_SIZEOF_BASE_RELOCATION 8
 
@@ -4490,7 +4490,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_ARCHIVE_LINKER_MEMBER "/               "
 #Defina IMAGE_ARCHIVE_LONGNAMES_MEMBER "//              "
 
-    Tipo Estrutura _IMAGE_ARCHIVE_MEMBER_HEADER {
+    Pseudônimo Estrutura _IMAGE_ARCHIVE_MEMBER_HEADER {
       BYTE Name[16];
       BYTE Date[12];
       BYTE UserID[6];
@@ -4502,7 +4502,7 @@ Tipo DWORD LCID;
 
 #Defina IMAGE_SIZEOF_ARCHIVE_MEMBER_HDR 60
 
-    Tipo Estrutura _IMAGE_EXPORT_DIRECTORY {
+    Pseudônimo Estrutura _IMAGE_EXPORT_DIRECTORY {
       DWORD Characteristics;
       DWORD TimeDateStamp;
       WORD MajorVersion;
@@ -4516,14 +4516,14 @@ Tipo DWORD LCID;
       DWORD AddressOfNameOrdinals;
     } IMAGE_EXPORT_DIRECTORY,*PIMAGE_EXPORT_DIRECTORY;
 
-    Tipo Estrutura _IMAGE_IMPORT_BY_NAME {
+    Pseudônimo Estrutura _IMAGE_IMPORT_BY_NAME {
       WORD Hint;
       BYTE Name[1];
     } IMAGE_IMPORT_BY_NAME,*PIMAGE_IMPORT_BY_NAME;
 
 #Inclua "pshpack8.h"
 
-    Tipo Estrutura _IMAGE_THUNK_DATA64 {
+    Pseudônimo Estrutura _IMAGE_THUNK_DATA64 {
       União {
 	ULONGLONG ForwarderString;
 	ULONGLONG Function;
@@ -4531,11 +4531,11 @@ Tipo DWORD LCID;
 	ULONGLONG AddressOfData;
       } u1;
     } IMAGE_THUNK_DATA64;
-    Tipo IMAGE_THUNK_DATA64 *PIMAGE_THUNK_DATA64;
+    Pseudônimo IMAGE_THUNK_DATA64 *PIMAGE_THUNK_DATA64;
 
 #Inclua "poppack.h"
 
-    Tipo Estrutura _IMAGE_THUNK_DATA32 {
+    Pseudônimo Estrutura _IMAGE_THUNK_DATA32 {
       União {
 	DWORD ForwarderString;
 	DWORD Function;
@@ -4543,7 +4543,7 @@ Tipo DWORD LCID;
 	DWORD AddressOfData;
       } u1;
     } IMAGE_THUNK_DATA32;
-    Tipo IMAGE_THUNK_DATA32 *PIMAGE_THUNK_DATA32;
+    Pseudônimo IMAGE_THUNK_DATA32 *PIMAGE_THUNK_DATA32;
 
 #Defina IMAGE_ORDINAL_FLAG64 0x8000000000000000ull
 #Defina IMAGE_ORDINAL_FLAG32 0x80000000
@@ -4552,10 +4552,10 @@ Tipo DWORD LCID;
 #Defina IMAGE_SNAP_BY_ORDINAL64(Ordinal) ((Ordinal & IMAGE_ORDINAL_FLAG64)!=0)
 #Defina IMAGE_SNAP_BY_ORDINAL32(Ordinal) ((Ordinal & IMAGE_ORDINAL_FLAG32)!=0)
 
-    Tipo VOID
+    Pseudônimo VOID
       (NTAPI *PIMAGE_TLS_CALLBACK)(PVOID DllHandle,DWORD Reason,PVOID Reserved);
 
-    Tipo Estrutura _IMAGE_TLS_DIRECTORY64 {
+    Pseudônimo Estrutura _IMAGE_TLS_DIRECTORY64 {
       ULONGLONG StartAddressOfRawData;
       ULONGLONG EndAddressOfRawData;
       ULONGLONG AddressOfIndex;
@@ -4563,9 +4563,9 @@ Tipo DWORD LCID;
       DWORD SizeOfZeroFill;
       DWORD Characteristics;
     } IMAGE_TLS_DIRECTORY64;
-    Tipo IMAGE_TLS_DIRECTORY64 *PIMAGE_TLS_DIRECTORY64;
+    Pseudônimo IMAGE_TLS_DIRECTORY64 *PIMAGE_TLS_DIRECTORY64;
 
-    Tipo Estrutura _IMAGE_TLS_DIRECTORY32 {
+    Pseudônimo Estrutura _IMAGE_TLS_DIRECTORY32 {
       DWORD StartAddressOfRawData;
       DWORD EndAddressOfRawData;
       DWORD AddressOfIndex;
@@ -4573,27 +4573,27 @@ Tipo DWORD LCID;
       DWORD SizeOfZeroFill;
       DWORD Characteristics;
     } IMAGE_TLS_DIRECTORY32;
-    Tipo IMAGE_TLS_DIRECTORY32 *PIMAGE_TLS_DIRECTORY32;
+    Pseudônimo IMAGE_TLS_DIRECTORY32 *PIMAGE_TLS_DIRECTORY32;
 
 #SeDefinido _WIN64
 #Defina IMAGE_ORDINAL_FLAG IMAGE_ORDINAL_FLAG64
 #Defina IMAGE_ORDINAL(Ordinal) IMAGE_ORDINAL64(Ordinal)
-    Tipo IMAGE_THUNK_DATA64 IMAGE_THUNK_DATA;
-    Tipo PIMAGE_THUNK_DATA64 PIMAGE_THUNK_DATA;
+    Pseudônimo IMAGE_THUNK_DATA64 IMAGE_THUNK_DATA;
+    Pseudônimo PIMAGE_THUNK_DATA64 PIMAGE_THUNK_DATA;
 #Defina IMAGE_SNAP_BY_ORDINAL(Ordinal) IMAGE_SNAP_BY_ORDINAL64(Ordinal)
-    Tipo IMAGE_TLS_DIRECTORY64 IMAGE_TLS_DIRECTORY;
-    Tipo PIMAGE_TLS_DIRECTORY64 PIMAGE_TLS_DIRECTORY;
+    Pseudônimo IMAGE_TLS_DIRECTORY64 IMAGE_TLS_DIRECTORY;
+    Pseudônimo PIMAGE_TLS_DIRECTORY64 PIMAGE_TLS_DIRECTORY;
 #Senão
 #Defina IMAGE_ORDINAL_FLAG IMAGE_ORDINAL_FLAG32
 #Defina IMAGE_ORDINAL(Ordinal) IMAGE_ORDINAL32(Ordinal)
-    Tipo IMAGE_THUNK_DATA32 IMAGE_THUNK_DATA;
-    Tipo PIMAGE_THUNK_DATA32 PIMAGE_THUNK_DATA;
+    Pseudônimo IMAGE_THUNK_DATA32 IMAGE_THUNK_DATA;
+    Pseudônimo PIMAGE_THUNK_DATA32 PIMAGE_THUNK_DATA;
 #Defina IMAGE_SNAP_BY_ORDINAL(Ordinal) IMAGE_SNAP_BY_ORDINAL32(Ordinal)
-    Tipo IMAGE_TLS_DIRECTORY32 IMAGE_TLS_DIRECTORY;
-    Tipo PIMAGE_TLS_DIRECTORY32 PIMAGE_TLS_DIRECTORY;
+    Pseudônimo IMAGE_TLS_DIRECTORY32 IMAGE_TLS_DIRECTORY;
+    Pseudônimo PIMAGE_TLS_DIRECTORY32 PIMAGE_TLS_DIRECTORY;
 #FimSe
 
-    Tipo Estrutura _IMAGE_IMPORT_DESCRIPTOR {
+    Pseudônimo Estrutura _IMAGE_IMPORT_DESCRIPTOR {
       União {
 	DWORD Characteristics;
 	DWORD OriginalFirstThunk;
@@ -4604,21 +4604,21 @@ Tipo DWORD LCID;
       DWORD Name;
       DWORD FirstThunk;
     } IMAGE_IMPORT_DESCRIPTOR;
-    Tipo IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;
+    Pseudônimo IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;
 
-    Tipo Estrutura _IMAGE_BOUND_IMPORT_DESCRIPTOR {
+    Pseudônimo Estrutura _IMAGE_BOUND_IMPORT_DESCRIPTOR {
       DWORD TimeDateStamp;
       WORD OffsetModuleName;
       WORD NumberOfModuleForwarderRefs;
     } IMAGE_BOUND_IMPORT_DESCRIPTOR,*PIMAGE_BOUND_IMPORT_DESCRIPTOR;
 
-    Tipo Estrutura _IMAGE_BOUND_FORWARDER_REF {
+    Pseudônimo Estrutura _IMAGE_BOUND_FORWARDER_REF {
       DWORD TimeDateStamp;
       WORD OffsetModuleName;
       WORD Reserved;
     } IMAGE_BOUND_FORWARDER_REF,*PIMAGE_BOUND_FORWARDER_REF;
 
-    Tipo Estrutura _IMAGE_RESOURCE_DIRECTORY {
+    Pseudônimo Estrutura _IMAGE_RESOURCE_DIRECTORY {
       DWORD Characteristics;
       DWORD TimeDateStamp;
       WORD MajorVersion;
@@ -4630,7 +4630,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_RESOURCE_NAME_IS_STRING 0x80000000
 #Defina IMAGE_RESOURCE_DATA_IS_DIRECTORY 0x80000000
 
-    Tipo Estrutura _IMAGE_RESOURCE_DIRECTORY_ENTRY {
+    Pseudônimo Estrutura _IMAGE_RESOURCE_DIRECTORY_ENTRY {
       União {
 	Estrutura {
 	  DWORD NameOffset:31;
@@ -4648,24 +4648,24 @@ Tipo DWORD LCID;
       };
     } IMAGE_RESOURCE_DIRECTORY_ENTRY,*PIMAGE_RESOURCE_DIRECTORY_ENTRY;
 
-    Tipo Estrutura _IMAGE_RESOURCE_DIRECTORY_STRING {
+    Pseudônimo Estrutura _IMAGE_RESOURCE_DIRECTORY_STRING {
       WORD Length;
       CHAR NameString[1];
     } IMAGE_RESOURCE_DIRECTORY_STRING,*PIMAGE_RESOURCE_DIRECTORY_STRING;
 
-    Tipo Estrutura _IMAGE_RESOURCE_DIR_STRING_U {
+    Pseudônimo Estrutura _IMAGE_RESOURCE_DIR_STRING_U {
       WORD Length;
       WCHAR NameString[1];
     } IMAGE_RESOURCE_DIR_STRING_U,*PIMAGE_RESOURCE_DIR_STRING_U;
 
-    Tipo Estrutura _IMAGE_RESOURCE_DATA_ENTRY {
+    Pseudônimo Estrutura _IMAGE_RESOURCE_DATA_ENTRY {
       DWORD OffsetToData;
       DWORD Size;
       DWORD CodePage;
       DWORD Reserved;
     } IMAGE_RESOURCE_DATA_ENTRY,*PIMAGE_RESOURCE_DATA_ENTRY;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       DWORD Size;
       DWORD TimeDateStamp;
       WORD MajorVersion;
@@ -4688,7 +4688,7 @@ Tipo DWORD LCID;
       DWORD SEHandlerCount;
     } IMAGE_LOAD_CONFIG_DIRECTORY32,*PIMAGE_LOAD_CONFIG_DIRECTORY32;
 
-    Tipo Estrutura {
+    Pseudônimo Estrutura {
       DWORD Size;
       DWORD TimeDateStamp;
       WORD MajorVersion;
@@ -4712,14 +4712,14 @@ Tipo DWORD LCID;
     } IMAGE_LOAD_CONFIG_DIRECTORY64,*PIMAGE_LOAD_CONFIG_DIRECTORY64;
 
 #SeDefinido _WIN64
-    Tipo IMAGE_LOAD_CONFIG_DIRECTORY64 IMAGE_LOAD_CONFIG_DIRECTORY;
-    Tipo PIMAGE_LOAD_CONFIG_DIRECTORY64 PIMAGE_LOAD_CONFIG_DIRECTORY;
+    Pseudônimo IMAGE_LOAD_CONFIG_DIRECTORY64 IMAGE_LOAD_CONFIG_DIRECTORY;
+    Pseudônimo PIMAGE_LOAD_CONFIG_DIRECTORY64 PIMAGE_LOAD_CONFIG_DIRECTORY;
 #Senão
-    Tipo IMAGE_LOAD_CONFIG_DIRECTORY32 IMAGE_LOAD_CONFIG_DIRECTORY;
-    Tipo PIMAGE_LOAD_CONFIG_DIRECTORY32 PIMAGE_LOAD_CONFIG_DIRECTORY;
+    Pseudônimo IMAGE_LOAD_CONFIG_DIRECTORY32 IMAGE_LOAD_CONFIG_DIRECTORY;
+    Pseudônimo PIMAGE_LOAD_CONFIG_DIRECTORY32 PIMAGE_LOAD_CONFIG_DIRECTORY;
 #FimSe
 
-    Tipo Estrutura _IMAGE_CE_RUNTIME_FUNCTION_ENTRY {
+    Pseudônimo Estrutura _IMAGE_CE_RUNTIME_FUNCTION_ENTRY {
       DWORD FuncStart;
       DWORD PrologLen : 8;
       DWORD FuncLen : 22;
@@ -4727,7 +4727,7 @@ Tipo DWORD LCID;
       DWORD ExceptionFlag : 1;
     } IMAGE_CE_RUNTIME_FUNCTION_ENTRY,*PIMAGE_CE_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo Estrutura _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY {
+    Pseudônimo Estrutura _IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY {
       ULONGLONG BeginAddress;
       ULONGLONG EndAddress;
       ULONGLONG ExceptionHandler;
@@ -4735,7 +4735,7 @@ Tipo DWORD LCID;
       ULONGLONG PrologEndAddress;
     } IMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY,*PIMAGE_ALPHA64_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo Estrutura _IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY {
+    Pseudônimo Estrutura _IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY {
       DWORD BeginAddress;
       DWORD EndAddress;
       DWORD ExceptionHandler;
@@ -4743,19 +4743,19 @@ Tipo DWORD LCID;
       DWORD PrologEndAddress;
     } IMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY,*PIMAGE_ALPHA_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo Estrutura _IMAGE_RUNTIME_FUNCTION_ENTRY {
+    Pseudônimo Estrutura _IMAGE_RUNTIME_FUNCTION_ENTRY {
       DWORD BeginAddress;
       DWORD EndAddress;
       DWORD UnwindInfoAddress;
     } _IMAGE_RUNTIME_FUNCTION_ENTRY,*_PIMAGE_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo _IMAGE_RUNTIME_FUNCTION_ENTRY IMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
-    Tipo _PIMAGE_RUNTIME_FUNCTION_ENTRY PIMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
+    Pseudônimo _IMAGE_RUNTIME_FUNCTION_ENTRY IMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
+    Pseudônimo _PIMAGE_RUNTIME_FUNCTION_ENTRY PIMAGE_IA64_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo _IMAGE_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
-    Tipo _PIMAGE_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
+    Pseudônimo _IMAGE_RUNTIME_FUNCTION_ENTRY IMAGE_RUNTIME_FUNCTION_ENTRY;
+    Pseudônimo _PIMAGE_RUNTIME_FUNCTION_ENTRY PIMAGE_RUNTIME_FUNCTION_ENTRY;
 
-    Tipo Estrutura _IMAGE_DEBUG_DIRECTORY {
+    Pseudônimo Estrutura _IMAGE_DEBUG_DIRECTORY {
       DWORD Characteristics;
       DWORD TimeDateStamp;
       WORD MajorVersion;
@@ -4779,7 +4779,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_DEBUG_TYPE_RESERVED10 10
 #Defina IMAGE_DEBUG_TYPE_CLSID 11
 
-    Tipo Estrutura _IMAGE_COFF_SYMBOLS_HEADER {
+    Pseudônimo Estrutura _IMAGE_COFF_SYMBOLS_HEADER {
       DWORD NumberOfSymbols;
       DWORD LvaToFirstSymbol;
       DWORD NumberOfLinenumbers;
@@ -4795,7 +4795,7 @@ Tipo DWORD LCID;
 #Defina FRAME_TSS 2
 #Defina FRAME_NONFPO 3
 
-    Tipo Estrutura _FPO_DATA {
+    Pseudônimo Estrutura _FPO_DATA {
       DWORD ulOffStart;
       DWORD cbProcSize;
       DWORD cdwLocals;
@@ -4811,7 +4811,7 @@ Tipo DWORD LCID;
 
 #Defina IMAGE_DEBUG_MISC_EXENAME 1
 
-    Tipo Estrutura _IMAGE_DEBUG_MISC {
+    Pseudônimo Estrutura _IMAGE_DEBUG_MISC {
       DWORD DataType;
       DWORD Length;
       BOOLEAN Unicode;
@@ -4819,13 +4819,13 @@ Tipo DWORD LCID;
       BYTE Data[1];
     } IMAGE_DEBUG_MISC,*PIMAGE_DEBUG_MISC;
 
-    Tipo Estrutura _IMAGE_FUNCTION_ENTRY {
+    Pseudônimo Estrutura _IMAGE_FUNCTION_ENTRY {
       DWORD StartingAddress;
       DWORD EndingAddress;
       DWORD EndOfPrologue;
     } IMAGE_FUNCTION_ENTRY,*PIMAGE_FUNCTION_ENTRY;
 
-    Tipo Estrutura _IMAGE_FUNCTION_ENTRY64 {
+    Pseudônimo Estrutura _IMAGE_FUNCTION_ENTRY64 {
       ULONGLONG StartingAddress;
       ULONGLONG EndingAddress;
       União {
@@ -4834,7 +4834,7 @@ Tipo DWORD LCID;
       };
     } IMAGE_FUNCTION_ENTRY64,*PIMAGE_FUNCTION_ENTRY64;
 
-    Tipo Estrutura _IMAGE_SEPARATE_DEBUG_HEADER {
+    Pseudônimo Estrutura _IMAGE_SEPARATE_DEBUG_HEADER {
       WORD Signature;
       WORD Flags;
       WORD Machine;
@@ -4850,7 +4850,7 @@ Tipo DWORD LCID;
       DWORD Reserved[2];
     } IMAGE_SEPARATE_DEBUG_HEADER,*PIMAGE_SEPARATE_DEBUG_HEADER;
 
-    Tipo Estrutura _NON_PAGED_DEBUG_INFO {
+    Pseudônimo Estrutura _NON_PAGED_DEBUG_INFO {
       WORD Signature;
       WORD Flags;
       DWORD Size;
@@ -4869,7 +4869,7 @@ Tipo DWORD LCID;
 #Defina IMAGE_SEPARATE_DEBUG_FLAGS_MASK 0x8000
 #Defina IMAGE_SEPARATE_DEBUG_MISMATCH 0x8000
 
-    Tipo Estrutura _ImageArchitectureHeader {
+    Pseudônimo Estrutura _ImageArchitectureHeader {
       Natural Inteiro AmaskValue: 1;
       Inteiro Adummy1 :7;
       Natural Inteiro AmaskShift: 8;
@@ -4877,7 +4877,7 @@ Tipo DWORD LCID;
       DWORD FirstEntryRVA;
     } IMAGE_ARCHITECTURE_HEADER,*PIMAGE_ARCHITECTURE_HEADER;
 
-    Tipo Estrutura _ImageArchitectureEntry {
+    Pseudônimo Estrutura _ImageArchitectureEntry {
       DWORD FixupInstRVA;
       DWORD NewInst;
     } IMAGE_ARCHITECTURE_ENTRY,*PIMAGE_ARCHITECTURE_ENTRY;
@@ -4886,7 +4886,7 @@ Tipo DWORD LCID;
 
 #Defina IMPORT_OBJECT_HDR_SIG2 0xffff
 
-    Tipo Estrutura IMPORT_OBJECT_HEADER {
+    Pseudônimo Estrutura IMPORT_OBJECT_HEADER {
       WORD Sig1;
       WORD Sig2;
       WORD Version;
@@ -4902,17 +4902,17 @@ Tipo DWORD LCID;
       WORD Reserved : 11;
     } IMPORT_OBJECT_HEADER;
 
-    Tipo Enumeração IMPORT_OBJECT_TYPE {
+    Pseudônimo Enumeração IMPORT_OBJECT_TYPE {
       IMPORT_OBJECT_CODE = 0,IMPORT_OBJECT_DATA = 1,IMPORT_OBJECT_CONST = 2
     } IMPORT_OBJECT_TYPE;
 
-    Tipo Enumeração IMPORT_OBJECT_NAME_TYPE {
+    Pseudônimo Enumeração IMPORT_OBJECT_NAME_TYPE {
       IMPORT_OBJECT_ORDINAL = 0,IMPORT_OBJECT_NAME = 1,IMPORT_OBJECT_NAME_NO_PREFIX = 2,IMPORT_OBJECT_NAME_UNDECORATE = 3
     } IMPORT_OBJECT_NAME_TYPE;
 
 #SeNãoDefinido __IMAGE_COR20_HEADER_DEFINED__
 #Defina __IMAGE_COR20_HEADER_DEFINED__
-    Tipo Enumeração ReplacesCorHdrNumericDefines {
+    Pseudônimo Enumeração ReplacesCorHdrNumericDefines {
       COMIMAGE_FLAGS_ILONLY =0x00000001,COMIMAGE_FLAGS_32BITREQUIRED =0x00000002,COMIMAGE_FLAGS_IL_LIBRARY =0x00000004,
       COMIMAGE_FLAGS_STRONGNAMESIGNED =0x00000008,COMIMAGE_FLAGS_TRACKDEBUGDATA =0x00010000,COR_VERSION_MAJOR_V2 =2,
       COR_VERSION_MAJOR =COR_VERSION_MAJOR_V2,COR_VERSION_MINOR =0,COR_DELETED_NAME_LENGTH =8,COR_VTABLEGAP_NAME_LENGTH =8,
@@ -4921,7 +4921,7 @@ Tipo DWORD LCID;
       COR_VTABLE_CALL_MOST_DERIVED =0x10,IMAGE_COR_EATJ_THUNK_SIZE =32,MAX_CLASS_NAME =1024,MAX_PACKAGE_NAME =1024
     } ReplacesCorHdrNumericDefines;
 
-    Tipo Estrutura IMAGE_COR20_HEADER {
+    Pseudônimo Estrutura IMAGE_COR20_HEADER {
       DWORD cb;
       WORD MajorRuntimeVersion;
       WORD MinorRuntimeVersion;
@@ -4948,8 +4948,8 @@ Tipo DWORD LCID;
 #Defina _SLIST_HEADER_
 
 #SeDefinido _WIN64
-    Tipo Estrutura _SLIST_ENTRY *PSLIST_ENTRY;
-    Tipo DECLSPEC_ALIGN(16) Estrutura _SLIST_ENTRY {
+    Pseudônimo Estrutura _SLIST_ENTRY *PSLIST_ENTRY;
+    Pseudônimo DECLSPEC_ALIGN(16) Estrutura _SLIST_ENTRY {
       PSLIST_ENTRY Next;
     } SLIST_ENTRY;
 #Senão
@@ -4961,15 +4961,15 @@ Tipo DWORD LCID;
 
 #Se Definido(_WIN64)
 
-    Tipo DECLSPEC_ALIGN(16) Estrutura _SLIST_HEADER {
+    Pseudônimo DECLSPEC_ALIGN(16) Estrutura _SLIST_HEADER {
       ULONGLONG Alignment;
       ULONGLONG Region;
     } SLIST_HEADER;
 
-    Tipo Estrutura _SLIST_HEADER *PSLIST_HEADER;
+    Pseudônimo Estrutura _SLIST_HEADER *PSLIST_HEADER;
 #Senão
 
-    Tipo União _SLIST_HEADER {
+    Pseudônimo União _SLIST_HEADER {
       ULONGLONG Alignment;
       Estrutura {
 	SLIST_ENTRY Next;
@@ -4981,7 +4981,7 @@ Tipo DWORD LCID;
 #FimSe
 
     NTSYSAPI VOID NTAPI RtlInitializeSListHead(PSLIST_HEADER ListHead);
-    NTSYSAPI PSLIST_ENTRY NTAPI RtlFirstEntrySList(Constante SLIST_HEADER *ListHead);
+    NTSYSAPI PSLIST_ENTRY NTAPI RtlFirstEntrySList(Imutável SLIST_HEADER *ListHead);
     NTSYSAPI PSLIST_ENTRY NTAPI RtlInterlockedPopEntrySList(PSLIST_HEADER ListHead);
     NTSYSAPI PSLIST_ENTRY NTAPI RtlInterlockedPushEntrySList(PSLIST_HEADER ListHead,PSLIST_ENTRY ListEntry);
     NTSYSAPI PSLIST_ENTRY NTAPI RtlInterlockedFlushSList(PSLIST_HEADER ListHead);
@@ -5036,7 +5036,7 @@ Tipo DWORD LCID;
 
 #Se _DBG_MEMCPY_INLINE_ && !Definido(_MEMCPY_INLINE_) && !Definido(_CRTBLD)
 #Defina _MEMCPY_INLINE_
-    __CRT_INLINE PVOID __cdecl memcpy_inline(Vazio *dst,Constante Vazio *src,size_t size) {
+    __CRT_INLINE PVOID __cdecl memcpy_inline(Vazio *dst,Imutável Vazio *src,size_t size) {
       Se(((Caractere *)dst > (Caractere *)src) && ((Caractere *)dst < ((Caractere *)src + size))) {
 	__debugbreak();
       }
@@ -5045,7 +5045,7 @@ Tipo DWORD LCID;
 #Defina memcpy memcpy_inline
 #FimSe
 
-    NTSYSAPI SIZE_T NTAPI RtlCompareMemory(Constante VOID *Source1,Constante VOID *Source2,SIZE_T Length);
+    NTSYSAPI SIZE_T NTAPI RtlCompareMemory(Imutável VOID *Source1,Imutável VOID *Source2,SIZE_T Length);
 
 #Defina RtlEqualMemory(Destination,Source,Length) (!memcmp((Destination),(Source),(Length)))
 #Defina RtlMoveMemory(Destination,Source,Length) memmove((Destination),(Source),(Length))
@@ -5054,7 +5054,7 @@ Tipo DWORD LCID;
 #Defina RtlZeroMemory(Destination,Length) memset((Destination),0,(Length))
 
     __CRT_INLINE PVOID RtlSecureZeroMemory(PVOID ptr,SIZE_T cnt) {
-      Volátil Caractere *vptr =(Volátil Caractere *)ptr;
+      Instável Caractere *vptr =(Instável Caractere *)ptr;
 #SeDefinido __x86_64
       __stosb((PBYTE)((DWORD64)vptr),0,cnt);
 #Senão
@@ -5067,7 +5067,7 @@ Tipo DWORD LCID;
       Retorne ptr;
     }
 
-    Tipo Estrutura _MESSAGE_RESOURCE_ENTRY {
+    Pseudônimo Estrutura _MESSAGE_RESOURCE_ENTRY {
       WORD Length;
       WORD Flags;
       BYTE Text[1];
@@ -5075,18 +5075,18 @@ Tipo DWORD LCID;
 
 #Defina MESSAGE_RESOURCE_UNICODE 0x0001
 
-    Tipo Estrutura _MESSAGE_RESOURCE_BLOCK {
+    Pseudônimo Estrutura _MESSAGE_RESOURCE_BLOCK {
       DWORD LowId;
       DWORD HighId;
       DWORD OffsetToEntries;
     } MESSAGE_RESOURCE_BLOCK,*PMESSAGE_RESOURCE_BLOCK;
 
-    Tipo Estrutura _MESSAGE_RESOURCE_DATA {
+    Pseudônimo Estrutura _MESSAGE_RESOURCE_DATA {
       DWORD NumberOfBlocks;
       MESSAGE_RESOURCE_BLOCK Blocks[1];
     } MESSAGE_RESOURCE_DATA,*PMESSAGE_RESOURCE_DATA;
 
-    Tipo Estrutura _OSVERSIONINFOA {
+    Pseudônimo Estrutura _OSVERSIONINFOA {
       DWORD dwOSVersionInfoSize;
       DWORD dwMajorVersion;
       DWORD dwMinorVersion;
@@ -5095,7 +5095,7 @@ Tipo DWORD LCID;
       CHAR szCSDVersion[128];
     } OSVERSIONINFOA,*POSVERSIONINFOA,*LPOSVERSIONINFOA;
 
-    Tipo Estrutura _OSVERSIONINFOW {
+    Pseudônimo Estrutura _OSVERSIONINFOW {
       DWORD dwOSVersionInfoSize;
       DWORD dwMajorVersion;
       DWORD dwMinorVersion;
@@ -5105,16 +5105,16 @@ Tipo DWORD LCID;
     } OSVERSIONINFOW,*POSVERSIONINFOW,*LPOSVERSIONINFOW,RTL_OSVERSIONINFOW,*PRTL_OSVERSIONINFOW;
 
 #SeDefinido UNICODE
-    Tipo OSVERSIONINFOW OSVERSIONINFO;
-    Tipo POSVERSIONINFOW POSVERSIONINFO;
-    Tipo LPOSVERSIONINFOW LPOSVERSIONINFO;
+    Pseudônimo OSVERSIONINFOW OSVERSIONINFO;
+    Pseudônimo POSVERSIONINFOW POSVERSIONINFO;
+    Pseudônimo LPOSVERSIONINFOW LPOSVERSIONINFO;
 #Senão
-    Tipo OSVERSIONINFOA OSVERSIONINFO;
-    Tipo POSVERSIONINFOA POSVERSIONINFO;
-    Tipo LPOSVERSIONINFOA LPOSVERSIONINFO;
+    Pseudônimo OSVERSIONINFOA OSVERSIONINFO;
+    Pseudônimo POSVERSIONINFOA POSVERSIONINFO;
+    Pseudônimo LPOSVERSIONINFOA LPOSVERSIONINFO;
 #FimSe
 
-    Tipo Estrutura _OSVERSIONINFOEXA {
+    Pseudônimo Estrutura _OSVERSIONINFOEXA {
       DWORD dwOSVersionInfoSize;
       DWORD dwMajorVersion;
       DWORD dwMinorVersion;
@@ -5128,7 +5128,7 @@ Tipo DWORD LCID;
       BYTE wReserved;
     } OSVERSIONINFOEXA,*POSVERSIONINFOEXA,*LPOSVERSIONINFOEXA;
 
-    Tipo Estrutura _OSVERSIONINFOEXW {
+    Pseudônimo Estrutura _OSVERSIONINFOEXW {
       DWORD dwOSVersionInfoSize;
       DWORD dwMajorVersion;
       DWORD dwMinorVersion;
@@ -5142,13 +5142,13 @@ Tipo DWORD LCID;
       BYTE wReserved;
     } OSVERSIONINFOEXW,*POSVERSIONINFOEXW,*LPOSVERSIONINFOEXW,RTL_OSVERSIONINFOEXW,*PRTL_OSVERSIONINFOEXW;
 #SeDefinido UNICODE
-    Tipo OSVERSIONINFOEXW OSVERSIONINFOEX;
-    Tipo POSVERSIONINFOEXW POSVERSIONINFOEX;
-    Tipo LPOSVERSIONINFOEXW LPOSVERSIONINFOEX;
+    Pseudônimo OSVERSIONINFOEXW OSVERSIONINFOEX;
+    Pseudônimo POSVERSIONINFOEXW POSVERSIONINFOEX;
+    Pseudônimo LPOSVERSIONINFOEXW LPOSVERSIONINFOEX;
 #Senão
-    Tipo OSVERSIONINFOEXA OSVERSIONINFOEX;
-    Tipo POSVERSIONINFOEXA POSVERSIONINFOEX;
-    Tipo LPOSVERSIONINFOEXA LPOSVERSIONINFOEX;
+    Pseudônimo OSVERSIONINFOEXA OSVERSIONINFOEX;
+    Pseudônimo POSVERSIONINFOEXA POSVERSIONINFOEX;
+    Pseudônimo LPOSVERSIONINFOEXA LPOSVERSIONINFOEX;
 #FimSe
 
 #Defina VER_EQUAL 1
@@ -5183,7 +5183,7 @@ Tipo DWORD LCID;
 
     NTSYSAPI ULONGLONG NTAPI VerSetConditionMask(ULONGLONG ConditionMask,DWORD TypeMask,BYTE Condition);
 
-    Tipo Estrutura _RTL_CRITICAL_SECTION_DEBUG {
+    Pseudônimo Estrutura _RTL_CRITICAL_SECTION_DEBUG {
       WORD Type;
       WORD CreatorBackTraceIndex;
       Estrutura _RTL_CRITICAL_SECTION *CriticalSection;
@@ -5196,7 +5196,7 @@ Tipo DWORD LCID;
 #Defina RTL_CRITSECT_TYPE 0
 #Defina RTL_RESOURCE_TYPE 1
 
-    Tipo Estrutura _RTL_CRITICAL_SECTION {
+    Pseudônimo Estrutura _RTL_CRITICAL_SECTION {
       PRTL_CRITICAL_SECTION_DEBUG DebugInfo;
       LONG LockCount;
       LONG RecursionCount;
@@ -5205,24 +5205,24 @@ Tipo DWORD LCID;
       ULONG_PTR SpinCount;
     } RTL_CRITICAL_SECTION,*PRTL_CRITICAL_SECTION;
 
-    Tipo VOID (NTAPI *RTL_VERIFIER_DLL_LOAD_CALLBACK) (PWSTR DllName,PVOID DllBase,SIZE_T DllSize,PVOID Reserved);
-    Tipo VOID (NTAPI *RTL_VERIFIER_DLL_UNLOAD_CALLBACK) (PWSTR DllName,PVOID DllBase,SIZE_T DllSize,PVOID Reserved);
-    Tipo VOID (NTAPI *RTL_VERIFIER_NTDLLHEAPFREE_CALLBACK)(PVOID AllocationBase,SIZE_T AllocationSize);
+    Pseudônimo VOID (NTAPI *RTL_VERIFIER_DLL_LOAD_CALLBACK) (PWSTR DllName,PVOID DllBase,SIZE_T DllSize,PVOID Reserved);
+    Pseudônimo VOID (NTAPI *RTL_VERIFIER_DLL_UNLOAD_CALLBACK) (PWSTR DllName,PVOID DllBase,SIZE_T DllSize,PVOID Reserved);
+    Pseudônimo VOID (NTAPI *RTL_VERIFIER_NTDLLHEAPFREE_CALLBACK)(PVOID AllocationBase,SIZE_T AllocationSize);
 
-    Tipo Estrutura _RTL_VERIFIER_THUNK_DESCRIPTOR {
+    Pseudônimo Estrutura _RTL_VERIFIER_THUNK_DESCRIPTOR {
       PCHAR ThunkName;
       PVOID ThunkOldAddress;
       PVOID ThunkNewAddress;
     } RTL_VERIFIER_THUNK_DESCRIPTOR,*PRTL_VERIFIER_THUNK_DESCRIPTOR;
 
-    Tipo Estrutura _RTL_VERIFIER_DLL_DESCRIPTOR {
+    Pseudônimo Estrutura _RTL_VERIFIER_DLL_DESCRIPTOR {
       PWCHAR DllName;
       DWORD DllFlags;
       PVOID DllAddress;
       PRTL_VERIFIER_THUNK_DESCRIPTOR DllThunks;
     } RTL_VERIFIER_DLL_DESCRIPTOR,*PRTL_VERIFIER_DLL_DESCRIPTOR;
 
-    Tipo Estrutura _RTL_VERIFIER_PROVIDER_DESCRIPTOR {
+    Pseudônimo Estrutura _RTL_VERIFIER_PROVIDER_DESCRIPTOR {
       DWORD Length;
       PRTL_VERIFIER_DLL_DESCRIPTOR ProviderDlls;
       RTL_VERIFIER_DLL_LOAD_CALLBACK ProviderDllLoadCallback;
@@ -5343,7 +5343,7 @@ Tipo DWORD LCID;
 
     VOID NTAPI RtlApplicationVerifierStop(ULONG_PTR Code,PSTR Message,ULONG_PTR Param1,PSTR Description1,ULONG_PTR Param2,PSTR Description2,ULONG_PTR Param3,PSTR Description3,ULONG_PTR Param4,PSTR Description4);
 
-    Tipo LONG (NTAPI *PVECTORED_EXCEPTION_HANDLER)(Estrutura _EXCEPTION_POINTERS *ExceptionInfo);
+    Pseudônimo LONG (NTAPI *PVECTORED_EXCEPTION_HANDLER)(Estrutura _EXCEPTION_POINTERS *ExceptionInfo);
 #Defina SEF_DACL_AUTO_INHERIT 0x01
 #Defina SEF_SACL_AUTO_INHERIT 0x02
 #Defina SEF_DEFAULT_DESCRIPTOR_FOR_OBJECT 0x04
@@ -5352,7 +5352,7 @@ Tipo DWORD LCID;
 #Defina SEF_DEFAULT_OWNER_FROM_PARENT 0x20
 #Defina SEF_DEFAULT_GROUP_FROM_PARENT 0x40
 
-    Tipo Enumeração _HEAP_INFORMATION_CLASS {
+    Pseudônimo Enumeração _HEAP_INFORMATION_CLASS {
       HeapCompatibilityInformation
     } HEAP_INFORMATION_CLASS;
 
@@ -5372,34 +5372,34 @@ Tipo DWORD LCID;
 #Defina WT_EXECUTEINPERSISTENTTHREAD 0x00000080
 #Defina WT_TRANSFER_IMPERSONATION 0x00000100
 #Defina WT_SET_MAX_THREADPOOL_THREADS(Flags,Limit) ((Flags) |= (Limit)<<16)
-    Tipo VOID (NTAPI *WAITORTIMERCALLBACKFUNC)(PVOID,BOOLEAN);
-    Tipo VOID (NTAPI *WORKERCALLBACKFUNC)(PVOID);
-    Tipo VOID (NTAPI *APC_CALLBACK_FUNCTION)(DWORD ,PVOID,PVOID);
-    Tipo
+    Pseudônimo VOID (NTAPI *WAITORTIMERCALLBACKFUNC)(PVOID,BOOLEAN);
+    Pseudônimo VOID (NTAPI *WORKERCALLBACKFUNC)(PVOID);
+    Pseudônimo VOID (NTAPI *APC_CALLBACK_FUNCTION)(DWORD ,PVOID,PVOID);
+    Pseudônimo
       VOID
       (NTAPI *PFLS_CALLBACK_FUNCTION)(PVOID lpFlsData);
 #Defina WT_EXECUTEINLONGTHREAD 0x00000010
 #Defina WT_EXECUTEDELETEWAIT 0x00000008
 
-    Tipo Enumeração _ACTIVATION_CONTEXT_INFO_CLASS {
+    Pseudônimo Enumeração _ACTIVATION_CONTEXT_INFO_CLASS {
       ActivationContextBasicInformation = 1,ActivationContextDetailedInformation = 2,AssemblyDetailedInformationInActivationContext = 3,FileInformationInAssemblyOfAssemblyInActivationContext = 4,MaxActivationContextInfoClass,AssemblyDetailedInformationInActivationContxt = 3,FileInformationInAssemblyOfAssemblyInActivationContxt = 4
     } ACTIVATION_CONTEXT_INFO_CLASS;
 
 #Defina ACTIVATIONCONTEXTINFOCLASS ACTIVATION_CONTEXT_INFO_CLASS
 
-    Tipo Estrutura _ACTIVATION_CONTEXT_QUERY_INDEX {
+    Pseudônimo Estrutura _ACTIVATION_CONTEXT_QUERY_INDEX {
       DWORD ulAssemblyIndex;
       DWORD ulFileIndexInAssembly;
     } ACTIVATION_CONTEXT_QUERY_INDEX,*PACTIVATION_CONTEXT_QUERY_INDEX;
 
-    Tipo Constante Estrutura _ACTIVATION_CONTEXT_QUERY_INDEX *PCACTIVATION_CONTEXT_QUERY_INDEX;
+    Pseudônimo Imutável Estrutura _ACTIVATION_CONTEXT_QUERY_INDEX *PCACTIVATION_CONTEXT_QUERY_INDEX;
 
 #Defina ACTIVATION_CONTEXT_PATH_TYPE_NONE (1)
 #Defina ACTIVATION_CONTEXT_PATH_TYPE_WIN32_FILE (2)
 #Defina ACTIVATION_CONTEXT_PATH_TYPE_URL (3)
 #Defina ACTIVATION_CONTEXT_PATH_TYPE_ASSEMBLYREF (4)
 
-    Tipo Estrutura _ASSEMBLY_FILE_DETAILED_INFORMATION {
+    Pseudônimo Estrutura _ASSEMBLY_FILE_DETAILED_INFORMATION {
       DWORD ulFlags;
       DWORD ulFilenameLength;
       DWORD ulPathLength;
@@ -5407,14 +5407,14 @@ Tipo DWORD LCID;
       PCWSTR lpFileName;
       PCWSTR lpFilePath;
     } ASSEMBLY_FILE_DETAILED_INFORMATION,*PASSEMBLY_FILE_DETAILED_INFORMATION;
-    Tipo Constante ASSEMBLY_FILE_DETAILED_INFORMATION *PCASSEMBLY_FILE_DETAILED_INFORMATION;
+    Pseudônimo Imutável ASSEMBLY_FILE_DETAILED_INFORMATION *PCASSEMBLY_FILE_DETAILED_INFORMATION;
 
 #Defina _ASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION _ASSEMBLY_FILE_DETAILED_INFORMATION
 #Defina ASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION ASSEMBLY_FILE_DETAILED_INFORMATION
 #Defina PASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION PASSEMBLY_FILE_DETAILED_INFORMATION
 #Defina PCASSEMBLY_DLL_REDIRECTION_DETAILED_INFORMATION PCASSEMBLY_FILE_DETAILED_INFORMATION
 
-    Tipo Estrutura _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION {
+    Pseudônimo Estrutura _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION {
       DWORD ulFlags;
       DWORD ulEncodedAssemblyIdentityLength;
       DWORD ulManifestPathType;
@@ -5436,9 +5436,9 @@ Tipo DWORD LCID;
       DWORD ulFileCount;
     } ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION,*PACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION;
 
-    Tipo Constante Estrutura _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION *PCACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION;
+    Pseudônimo Imutável Estrutura _ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION *PCACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION;
 
-    Tipo Estrutura _ACTIVATION_CONTEXT_DETAILED_INFORMATION {
+    Pseudônimo Estrutura _ACTIVATION_CONTEXT_DETAILED_INFORMATION {
       DWORD dwFlags;
       DWORD ulFormatVersion;
       DWORD ulAssemblyCount;
@@ -5453,7 +5453,7 @@ Tipo DWORD LCID;
       PCWSTR lpAppDirPath;
     } ACTIVATION_CONTEXT_DETAILED_INFORMATION,*PACTIVATION_CONTEXT_DETAILED_INFORMATION;
 
-    Tipo Constante Estrutura _ACTIVATION_CONTEXT_DETAILED_INFORMATION *PCACTIVATION_CONTEXT_DETAILED_INFORMATION;
+    Pseudônimo Imutável Estrutura _ACTIVATION_CONTEXT_DETAILED_INFORMATION *PCACTIVATION_CONTEXT_DETAILED_INFORMATION;
 
 #Defina DLL_PROCESS_ATTACH 1
 #Defina DLL_THREAD_ATTACH 2
@@ -5479,7 +5479,7 @@ Tipo DWORD LCID;
 #Defina EVENTLOG_PAIRED_EVENT_ACTIVE 0x0008
 #Defina EVENTLOG_PAIRED_EVENT_INACTIVE 0x0010
 
-    Tipo Estrutura _EVENTLOGRECORD {
+    Pseudônimo Estrutura _EVENTLOGRECORD {
       DWORD Length;
       DWORD Reserved;
       DWORD RecordNumber;
@@ -5500,14 +5500,14 @@ Tipo DWORD LCID;
 
 #Defina MAXLOGICALLOGNAMESIZE 256
 
-    Tipo Estrutura _EVENTSFORLOGFILE{
+    Pseudônimo Estrutura _EVENTSFORLOGFILE{
       DWORD ulSize;
       WCHAR szLogicalLogFile[MAXLOGICALLOGNAMESIZE];
       DWORD ulNumRecords;
       EVENTLOGRECORD pEventLogRecords[];
     } EVENTSFORLOGFILE,*PEVENTSFORLOGFILE;
 
-    Tipo Estrutura _PACKEDEVENTINFO{
+    Pseudônimo Estrutura _PACKEDEVENTINFO{
       DWORD ulSize;
       DWORD ulNumEventsForLogFile;
       DWORD ulOffsets[];
@@ -5595,24 +5595,24 @@ Tipo DWORD LCID;
 #Defina SERVICE_ERROR_SEVERE 0x00000002
 #Defina SERVICE_ERROR_CRITICAL 0x00000003
 
-    Tipo Enumeração _CM_SERVICE_NODE_TYPE {
+    Pseudônimo Enumeração _CM_SERVICE_NODE_TYPE {
       DriverType = SERVICE_KERNEL_DRIVER,FileSystemType = SERVICE_FILE_SYSTEM_DRIVER,Win32ServiceOwnProcess = SERVICE_WIN32_OWN_PROCESS,
       Win32ServiceShareProcess = SERVICE_WIN32_SHARE_PROCESS,AdapterType = SERVICE_ADAPTER,RecognizerType = SERVICE_RECOGNIZER_DRIVER
     } SERVICE_NODE_TYPE;
 
-    Tipo Enumeração _CM_SERVICE_LOAD_TYPE {
+    Pseudônimo Enumeração _CM_SERVICE_LOAD_TYPE {
       BootLoad = SERVICE_BOOT_START,SystemLoad = SERVICE_SYSTEM_START,AutoLoad = SERVICE_AUTO_START,DemandLoad = SERVICE_DEMAND_START,
       DisableLoad = SERVICE_DISABLED
     } SERVICE_LOAD_TYPE;
 
-    Tipo Enumeração _CM_ERROR_CONTROL_TYPE {
+    Pseudônimo Enumeração _CM_ERROR_CONTROL_TYPE {
       IgnoreError = SERVICE_ERROR_IGNORE,NormalError = SERVICE_ERROR_NORMAL,SevereError = SERVICE_ERROR_SEVERE,CriticalError = SERVICE_ERROR_CRITICAL
     } SERVICE_ERROR_TYPE;
 
 #Defina TAPE_ERASE_SHORT 0L
 #Defina TAPE_ERASE_LONG 1L
 
-    Tipo Estrutura _TAPE_ERASE {
+    Pseudônimo Estrutura _TAPE_ERASE {
       DWORD Type;
       BOOLEAN Immediate;
     } TAPE_ERASE,*PTAPE_ERASE;
@@ -5624,7 +5624,7 @@ Tipo DWORD LCID;
 #Defina TAPE_UNLOCK 4L
 #Defina TAPE_FORMAT 5L
 
-    Tipo Estrutura _TAPE_PREPARE {
+    Pseudônimo Estrutura _TAPE_PREPARE {
       DWORD Operation;
       BOOLEAN Immediate;
     } TAPE_PREPARE,*PTAPE_PREPARE;
@@ -5634,7 +5634,7 @@ Tipo DWORD LCID;
 #Defina TAPE_SHORT_FILEMARKS 2L
 #Defina TAPE_LONG_FILEMARKS 3L
 
-    Tipo Estrutura _TAPE_WRITE_MARKS {
+    Pseudônimo Estrutura _TAPE_WRITE_MARKS {
       DWORD Type;
       DWORD Count;
       BOOLEAN Immediate;
@@ -5644,7 +5644,7 @@ Tipo DWORD LCID;
 #Defina TAPE_LOGICAL_POSITION 1L
 #Defina TAPE_PSEUDO_LOGICAL_POSITION 2L
 
-    Tipo Estrutura _TAPE_GET_POSITION {
+    Pseudônimo Estrutura _TAPE_GET_POSITION {
       DWORD Type;
       DWORD Partition;
       LARGE_INTEGER Offset;
@@ -5661,7 +5661,7 @@ Tipo DWORD LCID;
 #Defina TAPE_SPACE_SETMARKS 8L
 #Defina TAPE_SPACE_SEQUENTIAL_SMKS 9L
 
-    Tipo Estrutura _TAPE_SET_POSITION {
+    Pseudônimo Estrutura _TAPE_SET_POSITION {
       DWORD Method;
       DWORD Partition;
       LARGE_INTEGER Offset;
@@ -5740,7 +5740,7 @@ Tipo DWORD LCID;
 #Defina TAPE_DRIVE_FORMAT_IMMEDIATE 0xC0000000
 #Defina TAPE_DRIVE_HIGH_FEATURES 0x80000000
 
-    Tipo Estrutura _TAPE_GET_DRIVE_PARAMETERS {
+    Pseudônimo Estrutura _TAPE_GET_DRIVE_PARAMETERS {
       BOOLEAN ECC;
       BOOLEAN Compression;
       BOOLEAN DataPadding;
@@ -5754,7 +5754,7 @@ Tipo DWORD LCID;
       DWORD EOTWarningZoneSize;
     } TAPE_GET_DRIVE_PARAMETERS,*PTAPE_GET_DRIVE_PARAMETERS;
 
-    Tipo Estrutura _TAPE_SET_DRIVE_PARAMETERS {
+    Pseudônimo Estrutura _TAPE_SET_DRIVE_PARAMETERS {
       BOOLEAN ECC;
       BOOLEAN Compression;
       BOOLEAN DataPadding;
@@ -5762,7 +5762,7 @@ Tipo DWORD LCID;
       DWORD EOTWarningZoneSize;
     } TAPE_SET_DRIVE_PARAMETERS,*PTAPE_SET_DRIVE_PARAMETERS;
 
-    Tipo Estrutura _TAPE_GET_MEDIA_PARAMETERS {
+    Pseudônimo Estrutura _TAPE_GET_MEDIA_PARAMETERS {
       LARGE_INTEGER Capacity;
       LARGE_INTEGER Remaining;
       DWORD BlockSize;
@@ -5770,7 +5770,7 @@ Tipo DWORD LCID;
       BOOLEAN WriteProtected;
     } TAPE_GET_MEDIA_PARAMETERS,*PTAPE_GET_MEDIA_PARAMETERS;
 
-    Tipo Estrutura _TAPE_SET_MEDIA_PARAMETERS {
+    Pseudônimo Estrutura _TAPE_SET_MEDIA_PARAMETERS {
       DWORD BlockSize;
     } TAPE_SET_MEDIA_PARAMETERS,*PTAPE_SET_MEDIA_PARAMETERS;
 
@@ -5778,7 +5778,7 @@ Tipo DWORD LCID;
 #Defina TAPE_SELECT_PARTITIONS 1L
 #Defina TAPE_INITIATOR_PARTITIONS 2L
 
-    Tipo Estrutura _TAPE_CREATE_PARTITION {
+    Pseudônimo Estrutura _TAPE_CREATE_PARTITION {
       DWORD Method;
       DWORD Count;
       DWORD Size;
@@ -5790,13 +5790,13 @@ Tipo DWORD LCID;
 #Defina TAPE_QUERY_IO_ERROR_DATA 3L
 #Defina TAPE_QUERY_DEVICE_ERROR_DATA 4L
 
-    Tipo Estrutura _TAPE_WMI_OPERATIONS {
+    Pseudônimo Estrutura _TAPE_WMI_OPERATIONS {
       DWORD Method;
       DWORD DataBufferSize;
       PVOID DataBuffer;
     } TAPE_WMI_OPERATIONS,*PTAPE_WMI_OPERATIONS;
 
-    Tipo Enumeração _TAPE_DRIVE_PROBLEM_TYPE {
+    Pseudônimo Enumeração _TAPE_DRIVE_PROBLEM_TYPE {
       TapeDriveProblemNone,TapeDriveReadWriteWarning,TapeDriveReadWriteError,TapeDriveReadWarning,TapeDriveWriteWarning,TapeDriveReadError,TapeDriveWriteError,TapeDriveHardwareError,TapeDriveUnsupportedMedia,TapeDriveScsiConnectionError,TapeDriveTimetoClean,TapeDriveCleanDriveNow,TapeDriveMediaLifeExpired,TapeDriveSnappedTape
     } TAPE_DRIVE_PROBLEM_TYPE;
 
@@ -5812,7 +5812,7 @@ Tipo DWORD LCID;
 #Defina PcTeb 0x18
     __CRT_INLINE Estrutura _TEB *NtCurrentTeb(Vazio) {
       Estrutura _TEB *ret;
-      __asm__ Volátil ("movl	%%fs:0x18,%0"
+      __asm__ Instável ("movl	%%fs:0x18,%0"
 	: "=r" (ret));
       Retorne ret;
     }

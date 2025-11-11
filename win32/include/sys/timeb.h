@@ -15,7 +15,7 @@
 #Diretiva pack(push,_CRT_PACKING)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #SeNãoDefinido _CRTIMP
@@ -35,22 +35,22 @@ Importe "C" {
 #FimSe
 
 #SeNãoDefinido _TIME32_T_DEFINED
-  Tipo Longo __time32_t;
+  Pseudônimo Longo __time32_t;
 #Defina _TIME32_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _TIME64_T_DEFINED
 #Se _INTEGRAL_MAX_BITS >= 64
-  Tipo __int64 __time64_t;
+  Pseudônimo __int64 __time64_t;
 #FimSe
 #Defina _TIME64_T_DEFINED
 #FimSe
 
 #SeNãoDefinido _TIME_T_DEFINED
 #SeDefinido _USE_32BIT_TIME_T
-  Tipo __time32_t time_t;
+  Pseudônimo __time32_t time_t;
 #Senão
-  Tipo __time64_t time_t;
+  Pseudônimo __time64_t time_t;
 #FimSe
 #Defina _TIME_T_DEFINED
 #FimSe

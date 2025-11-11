@@ -11,12 +11,12 @@
 #Se Definido(MINGW_HAS_SECURE_API)
 
 #SeDefinido __cplusplus
-Importe "C" {
+Externo "C" {
 #FimSe
 
 #Se !Definido(I_X86_) && Definido(_WSTRING_S_DEFINED)
 #Se Definido(__cplusplus) && Definido(_WConst_Return)
-  Estático __inline PUWSTR ua_wcscpy_s(PUWSTR Destination,size_t DestinationSize,PCUWSTR Source) {
+  Fixo __inline PUWSTR ua_wcscpy_s(PUWSTR Destination,size_t DestinationSize,PCUWSTR Source) {
     Se(WSTR_ALIGNED(Source) && WSTR_ALIGNED(Destination)) Retorne (wcscpy_s((PWSTR)Destination,DestinationSize,(PCWSTR)Source)==0 ? Destination : NULL);
     Retorne uaw_wcscpy((PCUWSTR)String,Character);
   }
